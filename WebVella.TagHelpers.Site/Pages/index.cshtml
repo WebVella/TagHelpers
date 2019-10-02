@@ -1,10 +1,48 @@
 ﻿@page
 @model WebVella.TagHelpers.Site.Pages.indexModel
 @addTagHelper *, WebVella.TagHelpers
+@using WebVella.TagHelpers.Models;
+@using System.Web;
+@using Newtonsoft.Json;
 @{
 	Layout = null;
 	var apiUrl = "/";
 	var cb = DateTime.Now.ToString("yyyyMMddHHmmss");
+	var textFieldValue = "this is a test";
+	var chartDs = new WvChartDataset(){
+		BorderColor = "#FF9800",
+		Data = new List<decimal>{5,15,25}
+	};
+	var chartDsList = new List<WvChartDataset>{ chartDs};
+
+	var htmlEncoded = HttpUtility.HtmlEncode("<div class=\"text\">text</div>");
+
+	var chGridRows = new List<WvSelectOption>(){
+		new WvSelectOption(){Label = "row 1", Value = "row1"},
+		new WvSelectOption(){Label = "row 2", Value = "row2"},
+		new WvSelectOption(){Label = "row 3", Value = "row3"},
+	};
+
+	var chGridColumns = new List<WvSelectOption>(){
+		new WvSelectOption(){Label = "col 1", Value = "col1"},
+		new WvSelectOption(){Label = "col 2", Value = "col2"},
+		new WvSelectOption(){Label = "col 3", Value = "col3"},
+	};
+
+	var chGridValues = new List<WvKeyStringList>(){
+		new WvKeyStringList(){Key = "row1",Values = new List<string>{"col1","col2"}}
+	};
+
+	var chGridValuesJson = JsonConvert.SerializeObject(chGridValues);
+
+	var chkBxList = new List<WvSelectOption>(){
+		new WvSelectOption(){Value = "1", Label = "one"},
+		new WvSelectOption(){Value = "2", Label = "two"},
+	};
+
+	var chkBxListValues = new List<string>{"1"};
+
+	decimal decVal = (decimal)23.3434;
 }
 
 <!DOCTYPE html>
@@ -15,48 +53,335 @@
 	<title>TagHelpers Kitchen Sink</title>
 	<meta charset="utf-8">
 
-	@* CSS lib *@
-	<link href="/lib/twitter-bootstrap/css/bootstrap.css?cb=@cb" rel="stylesheet" type="text/css" />
-	<link href="/lib/flatpickr/flatpickr.min.css?cb=@cb" rel="stylesheet" type="text/css" />
-	<link href="/lib/select2/css/select2.min.css?cb=@cb" rel="stylesheet" type="text/css" />
-	<link href="/lib/font-awesome/css/all.min.css?cb=@cb" rel="stylesheet" type="text/css" />
-	<link href="/lib/toastr.js/toastr.min.css?cb=@cb" rel="stylesheet" type="text/css" />
-	<link href="/lib/spectrum/spectrum.min.css?cb=@cb" rel="stylesheet" type="text/css" />
+	<wv-includes></wv-includes>
 
-	@* JS lib *@
-	<script src="/lib/jquery/jquery.min.js?cb=@cb" type="text/javascript"></script>
-	<script src="/lib/twitter-bootstrap/js/bootstrap.bundle.min.js?cb=@cb" type="text/javascript"></script>
-	<script src="/lib/URI.js/URI.min.js?cb=@cb" type="text/javascript"></script>
-	<script src="/lib/moment.js/moment.min.js?cb=@cb" type="text/javascript"></script>
-	<script src="/lib/ckeditor/ckeditor.js?cb=@cb" type="text/javascript"></script>
-	<script src="/lib/lodash.js/lodash.min.js?cb=@cb" type="text/javascript"></script>
-	<script src="/lib/flatpickr/flatpickr.min.js?cb=@cb" type="text/javascript"></script>
-	<script src="/lib/select2/js/select2.min.js?cb=@cb" type="text/javascript"></script>
-	<script src="/lib/js-cookie/js.cookie.min.js?cb=@cb" type="text/javascript"></script>
-	<script src="/lib/decimal.js/decimal.min.js?cb=@cb" type="text/javascript"></script>
-	<script src="/lib/toastr.js/toastr.min.js?cb=@cb" type="text/javascript"></script>
-	<script src="/lib/spectrum/spectrum.min.js?cb=@cb" type="text/javascript"></script>
-
-
-	@* WebVella Taghelper includes *@
-	<link href="/css/styles.css?cb=@cb" rel="stylesheet" type="text/css" />
-	<script src="~/js/scripts.js?cb=@cb" type="text/javascript"></script>
 
 	@* Demo Only *@
 	<link href="/css/demo.css?cb=@cb" rel="stylesheet" type="text/css" />
 
-
-	<script src="~/x/scripts.js?cb=@cb" type="text/javascript"></script>
-	<script src="~/x/styles.css?cb=@cb" type="text/javascript"></script>
-
-
 </head>
 <body>
-	<img src="~/s/background.png" />
-	<h2>Text Field</h2>
-	@{
-		var textFieldValue = "this is a test";
-	}
+
+	<h2>wv-button</h2>
+	<div class="row">
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Button
+				</div>
+				<div class="card-body">
+					<wv-button type="Button" color="Blue" text="This is a Button"></wv-button>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Text Form
+				</div>
+				<div class="card-body">
+					<wv-button type="ButtonLink" color="Blue" text="This is a Button"></wv-button>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Text Form
+				</div>
+				<div class="card-body">
+					<wv-button type="LinkAsButton" color="Blue" text="This is a Button"></wv-button>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Text Form
+				</div>
+				<div class="card-body">
+					<wv-button type="Submit" color="Blue" text="This is a Button"></wv-button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<h2>wv-button-group</h2>
+	<div class="row">
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Horizontal group
+				</div>
+				<div class="card-body">
+					<wv-button-group>
+						<wv-button color="Red" is-outline="true" text="This is a Button"></wv-button>
+						<wv-button color="Blue" is-outline="true" text="This is a Button"></wv-button>
+					</wv-button-group>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Vertical group
+				</div>
+				<div class="card-body">
+					<wv-button-group is-vertical="true">
+						<wv-button color="Red" is-outline="true" text="This is a Button"></wv-button>
+						<wv-button color="Blue" is-outline="true" text="This is a Button"></wv-button>
+					</wv-button-group>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<h2>wv-button-toolbar</h2>
+	<div class="row">
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Horizontal toolbar
+				</div>
+				<div class="card-body">
+					<wv-button-toolbar>
+						<wv-button-group>
+							<wv-button color="Red" is-outline="true" text="A"></wv-button>
+							<wv-button color="Blue" is-outline="true" text="B"></wv-button>
+						</wv-button-group>
+						<wv-button-group class="ml-2">
+							<wv-button color="Red" is-outline="true" text="C"></wv-button>
+							<wv-button color="Blue" is-outline="true" text="D"></wv-button>
+						</wv-button-group>
+					</wv-button-toolbar>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Vertical toolbar
+				</div>
+				<div class="card-body">
+					<wv-button-toolbar is-vertical="true">
+						<wv-button-group>
+							<wv-button color="Red" is-outline="true" text="A"></wv-button>
+							<wv-button color="Blue" is-outline="true" text="B"></wv-button>
+						</wv-button-group>
+						<wv-button-group class="ml-2">
+							<wv-button color="Red" is-outline="true" text="C"></wv-button>
+							<wv-button color="Blue" is-outline="true" text="D"></wv-button>
+						</wv-button-group>
+					</wv-button-toolbar>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<h2>wv-chart</h2>
+	<div class="row">
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Line
+				</div>
+				<div class="card-body">
+					<wv-chart datasets="@chartDsList" type="Line"></wv-chart>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<h2>wv-code-highlight</h2>
+	<div class="row">
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Html
+				</div>
+				<div class="card-body">
+					<wv-code-highlight code="@htmlEncoded"></wv-code-highlight>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<h2>wv-field-checkbox</h2>
+	<div class="row">
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Text Form
+				</div>
+				<div class="card-body">
+					<wv-field-checkbox value="@true" label-text="FieldLabel" name="text" mode="Form"></wv-field-checkbox>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Text InlineEdit
+				</div>
+				<div class="card-body">
+					<wv-field-checkbox value="@true" label-text="FieldLabel" name="text" mode="InlineEdit" api-url="@apiUrl"></wv-field-checkbox>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Text Display
+				</div>
+				<div class="card-body">
+					<wv-field-checkbox value="@true" label-text="FieldLabel" name="text" mode="Display"></wv-field-checkbox>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Text Display
+				</div>
+				<div class="card-body">
+					<wv-field-checkbox value="@true" label-text="FieldLabel" name="text" mode="Simple"></wv-field-checkbox>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<h2>wv-field-checkbox-grid</h2>
+	<div class="row">
+		<div class="col-6">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Text Form
+				</div>
+				<div class="card-body">
+					<wv-field-checkbox-grid rows="chGridRows" columns="chGridColumns" name="Grid" value="@chGridValuesJson"></wv-field-checkbox-grid>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<h2>wv-field-checkbox-list</h2>
+	<div class="row">
+		<div class="col-6">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Text Form
+				</div>
+				<div class="card-body">
+					<wv-field-checkbox-list options="chkBxList" value="@chkBxListValues" name="chkList"></wv-field-checkbox-list>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<h2>wv-field-code</h2>
+	<div class="row">
+		<div class="col-6">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Text Form
+				</div>
+				<div class="card-body">
+					<wv-field-code  value="@htmlEncoded" name="chkList" is-encoded="true" label-mode="Hidden"></wv-field-code>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<h2>wv-field-color</h2>
+	<div class="row">
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Text Form
+				</div>
+				<div class="card-body">
+					<wv-field-color value="@("#eeeeee")" label-text="FieldLabel" name="text" mode="Form"></wv-field-color>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Text InlineEdit
+				</div>
+				<div class="card-body">
+					<wv-field-color value="@("#eeeeee")" label-text="FieldLabel" name="text" mode="InlineEdit" api-url="@apiUrl"></wv-field-color>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Text Display
+				</div>
+				<div class="card-body">
+					<wv-field-color value="@("#eeeeee")" label-text="FieldLabel" name="text" mode="Display"></wv-field-color>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Text Display
+				</div>
+				<div class="card-body">
+					<wv-field-color value="@("#eeeeee")" label-text="FieldLabel" name="text" mode="Simple"></wv-field-color>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<h2>wv-field-currency</h2>
+	<div class="row">
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Text Form
+				</div>
+				<div class="card-body">
+					<wv-field-currency value="@decVal" label-text="FieldLabel" name="text" mode="Form"></wv-field-currency>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Text InlineEdit
+				</div>
+				<div class="card-body">
+					<wv-field-currency value="@decVal" label-text="FieldLabel" name="text" mode="InlineEdit" api-url="@apiUrl"></wv-field-currency>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Text Display
+				</div>
+				<div class="card-body">
+					<wv-field-currency value="@decVal" label-text="FieldLabel" name="text" mode="Display"></wv-field-currency>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Text Display
+				</div>
+				<div class="card-body">
+					<wv-field-currency value="@decVal" label-text="FieldLabel" name="text" mode="Simple"></wv-field-currency>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<h2>wv-field-text</h2>
 	<div class="row">
 		<div class="col-3">
 			<div class="card mt-3 mb-3">
@@ -99,5 +424,7 @@
 			</div>
 		</div>
 	</div>
+
+
 </body>
 </html>

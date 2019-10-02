@@ -1,0 +1,827 @@
+﻿/*#region << Colors >> */
+/*Red*/
+.go-red {
+	color: --red_color !important;
+	fill: --red_color !important;
+}
+
+	.go-red * {
+		fill: --red_color !important;
+	}
+
+.go-bkg-red {
+	background-color: --red_color !important;
+}
+
+.go-red-light {
+	color: --red_light_color !important;
+	fill: --red_light_color !important;
+}
+
+	.go-red-light * {
+		fill: --red_light_color !important;
+	}
+
+.go-bkg-red-light {
+	background-color: --red_light_color !important;
+}
+
+.go-red-dark {
+	color: --red_dark_color !important;
+	fill: --red_dark_color !important;
+}
+
+	.go-red-dark * {
+		fill: --red_dark_color !important;
+	}
+
+.go-bkg-red-dark {
+	background-color: --red_dark_color !important;
+}
+
+/*Pink*/
+.go-pink {
+	color: --pink_color !important;
+	fill: --pink_color !important;
+}
+
+	.go-pink * {
+		fill: --pink_color !important;
+	}
+
+.go-bkg-pink {
+	background-color: --pink_color !important;
+}
+
+.go-pink-light {
+	color: --pink_light_color !important;
+	fill: --pink_light_color !important;
+}
+
+	.go-pink-light * {
+		fill: --pink_light_color !important;
+	}
+
+.go-bkg-pink-light {
+	background-color: --pink_light_color !important;
+}
+
+.go-pink-dark {
+	color: --pink_dark_color !important;
+	fill: --pink_dark_color !important;
+}
+
+	.go-pink-dark * {
+		fill: --pink_dark_color !important;
+	}
+
+.go-bkg-pink-dark {
+	background-color: --pink_dark_color !important;
+}
+
+/*Purple*/
+
+.go-purple {
+	color: --purple_color !important;
+	fill: --purple_color !important;
+}
+
+	.go-purple * {
+		fill: --purple_color !important;
+	}
+
+.go-bkg-purple {
+	background-color: --purple_color !important;
+}
+
+.go-purple-light {
+	color: --purple_light_color !important;
+	fill: --purple_light_color !important;
+}
+
+	.go-purple-light * {
+		fill: --purple_light_color !important;
+	}
+
+.go-bkg-purple-light {
+	background-color: --purple_light_color !important;
+}
+
+.go-purple-dark {
+	color: --purple_dark_color !important;
+	fill: --purple_dark_color !important;
+}
+
+	.go-purple-dark * {
+		fill: --purple_dark_color !important;
+	}
+
+.go-bkg-purple-dark {
+	background-color: --purple_dark_color !important;
+}
+
+
+/*Deep Purple*/
+.go-deep-purple {
+	color: --deep_purple_color !important;
+	fill: --deep_purple_color !important;
+}
+
+	.go-deep-purple * {
+		fill: --deep_purple_color !important;
+	}
+
+.go-bkg-deep-purple {
+	background-color: --deep_purple_color !important;
+}
+
+.go-deep-purple-light {
+	color: --deep_purple_light_color !important;
+	fill: --deep_purple_light_color !important;
+}
+
+	.go-deep-purple-light * {
+		fill: --deep_purple_light_color !important;
+	}
+
+.go-bkg-deep-purple-light {
+	background-color: --deep_purple_light_color !important;
+}
+
+.go-deep-purple-dark {
+	color: --deep_purple_dark_color !important;
+	fill: --deep_purple_dark_color !important;
+}
+
+	.go-deep-purple-dark * {
+		fill: --deep_purple_dark_color !important;
+	}
+
+.go-bkg-deep-purple-dark {
+	background-color: --deep_purple_dark_color !important;
+}
+
+/*Indigo*/
+
+.go-indigo {
+	color: --indigo_color !important;
+	fill: --indigo_color !important;
+}
+
+	.go-indigo * {
+		fill: --indigo_color !important;
+	}
+
+.go-bkg-indigo {
+	background-color: --indigo_color !important;
+}
+
+.go-indigo-light {
+	color: --indigo_light_color !important;
+	fill: --indigo_light_color !important;
+}
+
+	.go-indigo-light * {
+		fill: --indigo_light_color !important;
+	}
+
+.go-bkg-indigo-light {
+	background-color: --indigo_light_color !important;
+}
+
+.go-indigo-dark {
+	color: --indigo_dark_color !important;
+	fill: --indigo_dark_color !important;
+}
+
+	.go-indigo-dark * {
+		fill: --indigo_dark_color !important;
+	}
+
+.go-bkg-indigo-dark {
+	background-color: --indigo_dark_color !important;
+}
+
+/*Blue*/
+
+.go-blue {
+	color: --blue_color !important;
+	fill: --blue_color !important;
+}
+
+	.go-blue * {
+		fill: --blue_color !important;
+	}
+
+.go-bkg-blue {
+	background-color: --blue_color !important;
+}
+
+.go-blue-light {
+	color: --blue_light_color !important;
+	fill: --blue_light_color !important;
+}
+
+	.go-blue-light * {
+		fill: --blue_light_color !important;
+	}
+
+.go-bkg-blue-light {
+	background-color: --blue_light_color !important;
+}
+
+.go-blue-dark {
+	color: --blue_dark_color !important;
+	fill: --blue_dark_color !important;
+}
+
+	.go-blue-dark * {
+		fill: --blue_dark_color !important;
+	}
+
+.go-bkg-blue-dark {
+	background-color: --blue_dark_color !important;
+}
+
+/*Light blue*/
+.go-light-blue {
+	color: --light_blue_color !important;
+	fill: --light_blue_color !important;
+}
+
+	.go-light-blue * {
+		fill: --light_blue_color !important;
+	}
+
+.go-bkg-light-blue {
+	background-color: --light_blue_color !important;
+}
+
+.go-light-blue-light {
+	color: --light_blue_light_color !important;
+	fill: --light_blue_light_color !important;
+}
+
+	.go-light-blue-light * {
+		fill: --light_blue_light_color !important;
+	}
+
+.go-bkg-light-blue-light {
+	background-color: --light_blue_light_color !important;
+}
+
+.go-light-blue-dark {
+	color: --light_blue_dark_color !important;
+	fill: --light_blue_dark_color !important;
+}
+
+	.go-light-blue-dark * {
+		fill: --light_blue_dark_color !important;
+	}
+
+.go-bkg-light-blue-dark {
+	background-color: --light_blue_dark_color !important;
+}
+
+
+/*Cyan*/
+.go-cyan {
+	color: --cyan_color !important;
+	fill: --cyan_color !important;
+}
+
+	.go-cyan * {
+		fill: --cyan_color !important;
+	}
+
+.go-bkg-cyan {
+	background-color: --cyan_color !important;
+}
+
+.go-cyan-light {
+	color: --cyan_light_color !important;
+	fill: --cyan_light_color !important;
+}
+
+	.go-cyan-light * {
+		fill: --cyan_light_color !important;
+	}
+
+.go-bkg-cyan-light {
+	background-color: --cyan_light_color !important;
+}
+
+.go-cyan-dark {
+	color: --cyan_dark_color !important;
+	fill: --cyan_dark_color !important;
+}
+
+	.go-cyan-dark * {
+		fill: --cyan_dark_color !important;
+	}
+
+.go-bkg-cyan-dark {
+	background-color: --cyan_dark_color !important;
+}
+
+/*Teal*/
+.go-teal {
+	color: --teal_color !important;
+	fill: --teal_color !important;
+}
+
+	.go-teal * {
+		fill: --teal_color !important;
+	}
+
+.go-bkg-teal {
+	background-color: --teal_color !important;
+}
+
+.go-teal-light {
+	color: --teal_light_color !important;
+	fill: --teal_light_color !important;
+}
+
+	.go-teal-light * {
+		fill: --teal_light_color !important;
+	}
+
+.go-bkg-teal-light {
+	background-color: --teal_light_color !important;
+}
+
+.go-teal-dark {
+	color: --teal_dark_color !important;
+	fill: --teal_dark_color !important;
+}
+
+	.go-teal-dark * {
+		fill: --teal_dark_color !important;
+	}
+
+.go-bkg-teal-dark {
+	background-color: --teal_dark_color !important;
+}
+
+/*Green*/
+
+.go-green {
+	color: --green_color !important;
+	fill: --green_color !important;
+}
+
+	.go-green * {
+		fill: --green_color !important;
+	}
+
+.go-bkg-green {
+	background-color: --green_color !important;
+}
+
+
+.go-green-light {
+	color: --green_light_color !important;
+	fill: --green_light_color !important;
+}
+
+	.go-green-light * {
+		fill: --green_light_color !important;
+	}
+
+.go-bkg-green-light {
+	background-color: --green_light_color !important;
+}
+
+.go-green-dark {
+	color: --green_dark_color !important;
+	fill: --green_dark_color !important;
+}
+
+	.go-green-dark * {
+		fill: --green_dark_color !important;
+	}
+
+.go-bkg-green-dark {
+	background-color: --green_dark_color !important;
+}
+
+/*Light green*/
+
+.go-light-green {
+	color: --light_green_color !important;
+	fill: --light_green_color !important;
+}
+
+	.go-light-green * {
+		fill: --light_green_color !important;
+	}
+
+.go-bkg-light-green {
+	background-color: --light_green_color !important;
+}
+
+.go-light-green-light {
+	color: --light_green_light_color !important;
+	fill: --light_green_light_color !important;
+}
+
+	.go-light-green-light * {
+		fill: --light_green_light_color !important;
+	}
+
+.go-bkg-light-green-light {
+	background-color: --light_green_light_color !important;
+}
+
+.go-light-green-dark {
+	color: --light_green_dark_color !important;
+	fill: --light_green_dark_color !important;
+}
+
+	.go-light-green-dark * {
+		fill: --light_green_dark_color !important;
+	}
+
+.go-bkg-light-green-dark {
+	background-color: --light_green_dark_color !important;
+}
+
+
+/*Lime*/
+.go-lime {
+	color: --lime_color !important;
+	fill: --lime_color !important;
+}
+
+	.go-lime * {
+		fill: --lime_color !important;
+	}
+
+.go-bkg-lime {
+	background-color: --lime_color !important;
+}
+
+.go-lime-light {
+	color: --lime_light_color !important;
+	fill: --lime_light_color !important;
+}
+
+	.go-lime-light * {
+		fill: --lime_light_color !important;
+	}
+
+.go-bkg-lime-light {
+	background-color: --lime_light_color !important;
+}
+
+.go-lime-dark {
+	color: --lime_dark_color !important;
+	fill: --lime_dark_color !important;
+}
+
+	.go-lime-dark * {
+		fill: --lime_dark_color !important;
+	}
+
+.go-bkg-lime-dark {
+	background-color: --lime_dark_color !important;
+}
+
+/*Yellow*/
+
+.go-yellow {
+	color: --yellow_color !important;
+	fill: --yellow_color !important;
+}
+
+	.go-yellow * {
+		fill: --yellow_color !important;
+	}
+
+.go-bkg-yellow {
+	background-color: --yellow_color !important;
+}
+
+
+.go-yellow-light {
+	color: --yellow_light_color !important;
+	fill: --yellow_light_color !important;
+}
+
+	.go-yellow-light * {
+		fill: --yellow_light_color !important;
+	}
+
+.go-bkg-yellow-light {
+	background-color: --yellow_light_color !important;
+}
+
+.go-yellow-dark {
+	color: --yellow_dark_color !important;
+	fill: --yellow_dark_color !important;
+}
+
+	.go-yellow-dark * {
+		fill: --yellow_dark_color !important;
+	}
+
+.go-bkg-yellow-dark {
+	background-color: --yellow_dark_color !important;
+}
+
+
+/*Amber*/
+
+.go-amber {
+	color: --amber_color !important;
+	fill: --amber_color !important;
+}
+
+	.go-amber * {
+		fill: --amber_color !important;
+	}
+
+.go-bkg-amber {
+	background-color: --amber_color !important;
+}
+
+.go-amber-light {
+	color: --amber_light_color !important;
+	fill: --amber_light_color !important;
+}
+
+	.go-amber-light * {
+		fill: --amber_light_color !important;
+	}
+
+.go-bkg-amber-light {
+	background-color: --amber_light_color !important;
+}
+
+.go-amber-dark {
+	color: --amber_dark_color !important;
+	fill: --amber_dark_color !important;
+}
+
+	.go-amber-dark * {
+		fill: --amber_dark_color !important;
+	}
+
+.go-bkg-amber-dark {
+	background-color: --amber_dark_color !important;
+}
+
+
+/*Orange*/
+.go-orange {
+	color: --orange_color !important;
+	fill: --orange_color !important;
+}
+
+	.go-orange * {
+		color: --orange_color !important;
+		fill: --orange_color !important;
+	}
+
+.go-bkg-orange {
+	background-color: --orange_color !important;
+}
+
+.go-orange-light {
+	color: --orange_light_color !important;
+	fill: --orange_light_color !important;
+}
+
+	.go-orange-light * {
+		color: --orange_light_color !important;
+		fill: --orange_light_color !important;
+	}
+
+.go-bkg-orange-light {
+	background-color: --orange_light_color !important;
+}
+
+.go-orange-dark {
+	color: --orange_dark_color !important;
+	fill: --orange_dark_color !important;
+}
+
+	.go-orange-dark * {
+		color: --orange_dark_color !important;
+		fill: --orange_dark_color !important;
+	}
+
+.go-bkg-orange-dark {
+	background-color: --orange_dark_color !important;
+}
+
+
+/*Deep orange*/
+
+.go-deep-orange {
+	color: --deep_orange_color !important;
+	fill: --deep_orange_color !important;
+}
+
+	.go-deep-orange * {
+		fill: --deep_orange_color !important;
+	}
+
+.go-bkg-deep-orange {
+	background-color: --deep_orange_color !important;
+}
+
+.go-deep-orange-light {
+	color: --deep_orange_light_color !important;
+	fill: --deep_orange_light_color !important;
+}
+
+	.go-deep-orange-light * {
+		fill: --deep_orange_light_color !important;
+	}
+
+.go-bkg-deep-orange-light {
+	background-color: --deep_orange_light_color !important;
+}
+
+.go-deep-orange-dark {
+	color: --deep_orange_dark_color !important;
+	fill: --deep_orange_dark_color !important;
+}
+
+	.go-deep-orange-dark * {
+		fill: --deep_orange_dark_color !important;
+	}
+
+.go-bkg-deep-orange-dark {
+	background-color: --deep_orange_dark_color !important;
+}
+
+
+/*Brown*/
+.go-brown {
+	color: --brown_color !important;
+	fill: --brown_color !important;
+}
+
+	.go-brown * {
+		fill: --brown_color !important;
+	}
+
+.go-bkg-brown {
+	background-color: --brown_color !important;
+}
+
+.go-brown-light {
+	color: --brown_light_color !important;
+	fill: --brown_light_color !important;
+}
+
+	.go-brown-light * {
+		fill: --brown_light_color !important;
+	}
+
+.go-bkg-brown-light {
+	background-color: --brown_light_color !important;
+}
+
+.go-brown-dark {
+	color: --brown_dark_color !important;
+	fill: --brown_dark_color !important;
+}
+
+	.go-brown-dark * {
+		fill: --brown_dark_color !important;
+	}
+
+.go-bkg-brown-dark {
+	background-color: --brown_dark_color !important;
+}
+
+/*Gray*/
+
+.go-gray,
+.go-grey {
+	color: --gray_color !important;
+}
+
+	.go-gray *,
+	.go-grey * {
+		fill: --gray_color !important;
+	}
+
+.go-bkg-gray,
+.go-bkg-grey {
+	background-color: --gray_color !important;
+}
+
+.go-gray-light,
+.go-grey-light {
+	color: --gray_light_color !important;
+}
+
+	.go-gray-light *,
+	.go-grey-light * {
+		fill: --gray_light_color !important;
+	}
+
+.go-bkg-gray-light,
+.go-bkg-grey-light {
+	background-color: --gray_light_color !important;
+}
+
+.go-gray-dark,
+.go-grey-dark {
+	color: --gray_dark_color !important;
+}
+
+	.go-gray-dark *,
+	.go-grey-dark * {
+		fill: --gray_dark_color !important;
+	}
+
+.go-bkg-gray-dark,
+.go-bkg-grey-dark {
+	background-color: --gray_dark_color !important;
+}
+
+/*Blue Gray*/
+
+.go-blue-gray,
+.go-blue-grey {
+	color: --blue_gray_color !important;
+}
+
+	.go-blue-gray *,
+	.go-blue-grey * {
+		fill: --blue_gray_color !important;
+	}
+
+.go-bkg-blue-gray,
+.go-bkg-blue-grey {
+	background-color: --blue_gray_color !important;
+}
+
+.go-blue-gray-light,
+.go-blue-grey-light {
+	color: --blue_gray_light_color !important;
+}
+
+	.go-blue-gray-light *,
+	.go-blue-grey-light * {
+		fill: --blue_gray_light_color !important;
+	}
+
+.go-bkg-blue-gray-light,
+.go-bkg-blue-grey-light {
+	background-color: --blue_gray_light_color !important;
+}
+
+.go-blue-gray-dark,
+.go-blue-grey-dark {
+	color: --blue_gray_dark_color !important;
+}
+
+	.go-blue-gray-dark *,
+	.go-blue-grey-dark * {
+		fill: --blue_gray_dark_color !important;
+	}
+
+.go-bkg-blue-gray-dark,
+.go-bkg-blue-grey-dark {
+	background-color: --blue_gray_dark_color !important;
+}
+
+
+/*Black*/
+.go-black {
+	color: --black_color !important;
+	fill: --black_color !important;
+}
+
+	.go-black * {
+		fill: --black_color !important;
+	}
+
+.go-bkg-black {
+	background-color: --black_color !important;
+}
+
+
+/*White*/
+.go-white {
+	color: --white_color !important;
+	fill: --white_color !important;
+}
+
+	.go-white * {
+		fill: --white_color !important;
+	}
+
+.go-bkg-white {
+	background-color: --white_color !important;
+}
+
+
+/*#endregion*/

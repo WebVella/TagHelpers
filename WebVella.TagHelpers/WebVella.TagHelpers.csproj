@@ -1,36 +1,42 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
-  <PropertyGroup>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
-    <RazorLangVersion>3.0</RazorLangVersion>
+	<PropertyGroup>
+		<TargetFramework>netcoreapp3.0</TargetFramework>
+		<IsPackable>true</IsPackable>
+		<RazorLangVersion>3.0</RazorLangVersion>
 		<GenerateEmbeddedFilesManifest>true</GenerateEmbeddedFilesManifest>
 	</PropertyGroup>
 
-  <ItemGroup>
-    <Content Remove="wwwroot\background.png" />
-    <Content Remove="wwwroot\scripts.js" />
-    <Content Remove="wwwroot\styles.css" />
-  </ItemGroup>
 
-  <ItemGroup>
-    <None Remove="TagHelpers\WvFieldText\inline-edit.js" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="TagHelpers\WvFieldText\inline-edit.js" />
-  </ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Include="TagHelpers\WvFieldCheckboxGrid\form.js" />
+		<EmbeddedResource Include="TagHelpers\WvFieldCheckboxGrid\inline-edit.js" />
+		<EmbeddedResource Include="TagHelpers\WvFieldCheckboxList\inline-edit.js" />
+		<EmbeddedResource Include="TagHelpers\WvFieldCheckbox\form.js" />
+		<EmbeddedResource Include="TagHelpers\WvFieldCheckbox\inline-edit.js" />
+		<EmbeddedResource Include="TagHelpers\WvFieldCode\form.js" />
+		<EmbeddedResource Include="TagHelpers\WvFieldColor\form.js" />
+		<EmbeddedResource Include="TagHelpers\WvFieldColor\inline-edit.js" />
+		<EmbeddedResource Include="TagHelpers\WvFieldCurrency\inline-edit.js" />
+		<EmbeddedResource Include="TagHelpers\WvFieldText\inline-edit.js" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<EmbeddedResource Include="wwwroot\**\*" />
 	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="HtmlAgilityPack" Version="1.11.15" />
-    <PackageReference Include="Microsoft.AspNetCore.Components" Version="3.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="3.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.0.0" />
-    <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="3.0.0" />
-    <PackageReference Include="YUICompressor.NET" Version="3.0.0" />
-  </ItemGroup>
+	<ItemGroup>
+	  <None Remove="TagHelpers\WvFieldCurrency\inline-edit.js" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+		<PackageReference Include="HtmlAgilityPack" Version="1.11.15" />
+		<PackageReference Include="Microsoft.AspNetCore.Components" Version="3.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="3.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.0.0" />
+		<PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="3.0.0" />
+		<PackageReference Include="YUICompressor.NET" Version="3.0.0" />
+	</ItemGroup>
 
 </Project>

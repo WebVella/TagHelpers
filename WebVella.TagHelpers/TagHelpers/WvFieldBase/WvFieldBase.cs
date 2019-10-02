@@ -62,12 +62,6 @@ namespace WebVella.TagHelpers.TagHelpers
 		[HtmlAttributeName("validation-errors")]
 		public List<KeyValuePair<string,string>> ValidationErrors { get; set; } = new List<KeyValuePair<string,string>>();
 
-		[HtmlAttributeName("record-id")]
-		public Guid? RecordId { get; set; } = null;
-
-		[HtmlAttributeName("entity-name")]
-		public string EntityName { get; set; } = "";
-
 		[HtmlAttributeName("api-url")]
 		public string ApiUrl { get; set; } = "";
 
@@ -118,7 +112,7 @@ namespace WebVella.TagHelpers.TagHelpers
 				FieldId = Guid.NewGuid();
 			}
 
-			if (String.IsNullOrWhiteSpace(ApiUrl) && Mode == WvFieldRenderMode.InlineEdit && (RecordId == null || String.IsNullOrWhiteSpace(EntityName)))
+			if (String.IsNullOrWhiteSpace(ApiUrl) && Mode == WvFieldRenderMode.InlineEdit)
 			{
 				InitErrors.Add("In 'inlineEdit' when 'api-url' is not defined, entityName and recordId are required!");
 			}
@@ -288,10 +282,10 @@ namespace WebVella.TagHelpers.TagHelpers
 					break;
 			}
 			dynamic valueResult = null;
-			Utility.ValidateValueToFieldType(fieldType, Value, out valueResult, out errorList);
+			WvHelpers.ValidateValueToFieldType(fieldType, Value, out valueResult, out errorList);
 			Value = valueResult;
 			dynamic defaultValueResult = null;
-			Utility.ValidateValueToFieldType(fieldType, DefaultValue, out defaultValueResult, out errorList);
+			WvHelpers.ValidateValueToFieldType(fieldType, DefaultValue, out defaultValueResult, out errorList);
 			DefaultValue = defaultValueResult;
 
 			if (errorList.Count > 0)

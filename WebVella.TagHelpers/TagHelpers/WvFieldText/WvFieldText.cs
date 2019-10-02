@@ -233,7 +233,7 @@ namespace WebVella.TagHelpers.TagHelpers
 						{
 							viewInputActionEl.InnerHtml.AppendHtml(htmlString);
 						}
-						viewInputActionEl.InnerHtml.AppendHtml("<button type=\"button\" class='btn btn-outline-secondary action' title='edit'><i class='fa fa-fw fa-pencil-alt'></i></button>");
+						viewInputActionEl.InnerHtml.AppendHtml("<button type=\"button\" class='btn btn-white action' title='edit'><i class='fa fa-fw fa-pencil-alt'></i></button>");
 						viewWrapperEl.InnerHtml.AppendHtml(viewInputActionEl);
 
 						output.Content.AppendHtml(viewWrapperEl);
@@ -286,8 +286,8 @@ namespace WebVella.TagHelpers.TagHelpers
 						{
 							editInputGroupAppendEl.InnerHtml.AppendHtml(htmlString);
 						}
-						editInputGroupAppendEl.InnerHtml.AppendHtml("<button type=\"button\" class='btn btn-outline-secondary save' title='save'><i class='fa fa-fw fa-check go-green'></i></button>");
-						editInputGroupAppendEl.InnerHtml.AppendHtml("<button type=\"button\" class='btn btn-outline-secondary cancel' title='cancel'><i class='fa fa-fw fa-times go-gray'></i></button>");
+						editInputGroupAppendEl.InnerHtml.AppendHtml("<button type=\"button\" class='btn btn-white save' title='save'><i class='fa fa-fw fa-check go-green'></i></button>");
+						editInputGroupAppendEl.InnerHtml.AppendHtml("<button type=\"button\" class='btn btn-white cancel' title='cancel'><i class='fa fa-fw fa-times go-gray'></i></button>");
 
 						editInputGroupEl.InnerHtml.AppendHtml(editInputGroupAppendEl);
 						editWrapperEl.InnerHtml.AppendHtml(editInputGroupEl);
@@ -306,7 +306,7 @@ namespace WebVella.TagHelpers.TagHelpers
 					}
 					if (!tagHelperInitialized)
 					{
-						var scriptContent = Utility.GetEmbeddedTextResource("inline-edit.js", "WebVella.TagHelpers.TagHelpers.WvFieldText");
+						var scriptContent = WvHelpers.GetEmbeddedTextResource("inline-edit.js", "WebVella.TagHelpers.TagHelpers.WvFieldText");
 						var scriptEl = new TagBuilder("script");
 						scriptEl.Attributes.Add("type", "text/javascript");
 						scriptEl.InnerHtml.AppendHtml(jsCompressor.Compress(scriptContent));
@@ -325,12 +325,10 @@ namespace WebVella.TagHelpers.TagHelpers
 					initScript.Attributes.Add("type", "text/javascript");
 					var scriptTemplate = @"
 						$(function(){
-							TextInlineEditInit(""{{FieldId}}"",""{{Name}}"",""{{EntityName}}"",""{{RecordId}}"",{{ConfigJson}});
+							TextInlineEditInit(""{{FieldId}}"",""{{Name}}"",{{ConfigJson}});
 						});";
 					scriptTemplate = scriptTemplate.Replace("{{FieldId}}", (FieldId ?? null).ToString());
 					scriptTemplate = scriptTemplate.Replace("{{Name}}", Name);
-					scriptTemplate = scriptTemplate.Replace("{{EntityName}}", EntityName);
-					scriptTemplate = scriptTemplate.Replace("{{RecordId}}", (RecordId ?? null).ToString());
 
 					var fieldConfig = new WvFieldTextConfig()
 					{
