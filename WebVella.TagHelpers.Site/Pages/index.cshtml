@@ -1,0 +1,97 @@
+﻿@page
+@model WebVella.TagHelpers.Site.Pages.indexModel
+@addTagHelper *, WebVella.TagHelpers
+@{
+	Layout = null;
+	var apiUrl = "/";
+	var cb = DateTime.Now.ToString("yyyyMMddHHmmss");
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<title>TagHelpers Kitchen Sink</title>
+	<meta charset="utf-8">
+
+	@* CSS lib *@
+	<link href="/lib/twitter-bootstrap/css/bootstrap.css?cb=@cb" rel="stylesheet" type="text/css" />
+	<link href="/lib/flatpickr/flatpickr.min.css?cb=@cb" rel="stylesheet" type="text/css" />
+	<link href="/lib/select2/css/select2.min.css?cb=@cb" rel="stylesheet" type="text/css" />
+	<link href="/lib/font-awesome/css/all.min.css?cb=@cb" rel="stylesheet" type="text/css" />
+	<link href="/lib/toastr.js/toastr.min.css?cb=@cb" rel="stylesheet" type="text/css" />
+	<link href="/lib/spectrum/spectrum.min.css?cb=@cb" rel="stylesheet" type="text/css" />
+
+	@* JS lib *@
+	<script src="/lib/jquery/jquery.min.js?cb=@cb" type="text/javascript"></script>
+	<script src="/lib/twitter-bootstrap/js/bootstrap.bundle.min.js?cb=@cb" type="text/javascript"></script>
+	<script src="/lib/URI.js/URI.min.js?cb=@cb" type="text/javascript"></script>
+	<script src="/lib/moment.js/moment.min.js?cb=@cb" type="text/javascript"></script>
+	<script src="/lib/ckeditor/ckeditor.js?cb=@cb" type="text/javascript"></script>
+	<script src="/lib/lodash.js/lodash.min.js?cb=@cb" type="text/javascript"></script>
+	<script src="/lib/flatpickr/flatpickr.min.js?cb=@cb" type="text/javascript"></script>
+	<script src="/lib/select2/js/select2.min.js?cb=@cb" type="text/javascript"></script>
+	<script src="/lib/js-cookie/js.cookie.min.js?cb=@cb" type="text/javascript"></script>
+	<script src="/lib/decimal.js/decimal.min.js?cb=@cb" type="text/javascript"></script>
+	<script src="/lib/toastr.js/toastr.min.js?cb=@cb" type="text/javascript"></script>
+	<script src="/lib/spectrum/spectrum.min.js?cb=@cb" type="text/javascript"></script>
+
+
+	@* WebVella Taghelper includes *@
+	<link href="/css/styles.css?cb=@cb" rel="stylesheet" type="text/css" />
+	<script src="~/js/scripts.js?cb=@cb" type="text/javascript"></script>
+
+	@* Demo Only *@
+	<link href="/css/demo.css?cb=@cb" rel="stylesheet" type="text/css" />
+
+</head>
+<body>
+	<h2>Text Field</h2>
+	@{
+		var textFieldValue = "this is a test";
+	}
+	<div class="row">
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Text Form
+				</div>
+				<div class="card-body">
+					<wv-field-text value="@textFieldValue" label-text="FieldLabel" name="text" mode="Form"></wv-field-text>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Text InlineEdit
+				</div>
+				<div class="card-body">
+					<wv-field-text value="@textFieldValue" label-text="FieldLabel" name="text" mode="InlineEdit" api-url="@apiUrl"></wv-field-text>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Text Display
+				</div>
+				<div class="card-body">
+					<wv-field-text value="@textFieldValue" label-text="FieldLabel" name="text" mode="Display"></wv-field-text>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Text Display
+				</div>
+				<div class="card-body">
+					<wv-field-text value="@textFieldValue" label-text="FieldLabel" name="text" mode="Simple"></wv-field-text>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

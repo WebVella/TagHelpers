@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29326.143
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebVella.TagHelpers", "WebVella.TagHelpers\WebVella.TagHelpers.csproj", "{2E088412-7B55-44C1-BF9B-38DE238BBBCF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebVella.TagHelpers.Site", "WebVella.TagHelpers.Site\WebVella.TagHelpers.Site.csproj", "{2DE3EC26-DF95-41AF-959C-ABE818F8A724}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2E088412-7B55-44C1-BF9B-38DE238BBBCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E088412-7B55-44C1-BF9B-38DE238BBBCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E088412-7B55-44C1-BF9B-38DE238BBBCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E088412-7B55-44C1-BF9B-38DE238BBBCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DE3EC26-DF95-41AF-959C-ABE818F8A724}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DE3EC26-DF95-41AF-959C-ABE818F8A724}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DE3EC26-DF95-41AF-959C-ABE818F8A724}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DE3EC26-DF95-41AF-959C-ABE818F8A724}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C435291D-DDB2-4DB5-B428-DC21CFACB679}
+	EndGlobalSection
+EndGlobal

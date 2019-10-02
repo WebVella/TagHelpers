@@ -1,0 +1,8 @@
+﻿body {
+	padding:1rem;
+}
+
+.card-header,
+.card-body {
+	padding: 0.25rem 0.5rem;
+}
