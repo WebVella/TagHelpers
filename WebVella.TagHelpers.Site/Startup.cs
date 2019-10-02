@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Net.Http.Headers;
+using WebVella.TagHelpers;
 
 namespace WebVella.TagHelpers.Site
 {
@@ -17,6 +18,7 @@ namespace WebVella.TagHelpers.Site
 		// For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
 		public void ConfigureServices(IServiceCollection services)
 		{
+			services.AddWebVellaTagHelpers();
 			services.AddMvc();
 			services.AddControllersWithViews();
 			services.AddRazorPages();
