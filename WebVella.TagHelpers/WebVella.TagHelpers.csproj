@@ -9,6 +9,9 @@
 
 
 	<ItemGroup>
+		<EmbeddedResource Include="wwwroot\**\*" />
+		<None Remove="TagHelpers\WvGrid\sort-and-page.js" />
+		<None Remove="TagHelpers\WvSection\service.js" />
 		<EmbeddedResource Include="TagHelpers\WvFieldCheckboxGrid\form.js" />
 		<EmbeddedResource Include="TagHelpers\WvFieldCheckboxGrid\inline-edit.js" />
 		<EmbeddedResource Include="TagHelpers\WvFieldCheckboxList\inline-edit.js" />
@@ -18,17 +21,39 @@
 		<EmbeddedResource Include="TagHelpers\WvFieldColor\form.js" />
 		<EmbeddedResource Include="TagHelpers\WvFieldColor\inline-edit.js" />
 		<EmbeddedResource Include="TagHelpers\WvFieldCurrency\inline-edit.js" />
+		<EmbeddedResource Include="TagHelpers\WvFieldDateTime\form.js" />
+		<EmbeddedResource Include="TagHelpers\WvFieldDateTime\inline-edit.js" />
+		<EmbeddedResource Include="TagHelpers\WvFieldDate\form.js" />
+		<EmbeddedResource Include="TagHelpers\WvFieldDate\inline-edit.js" />
+		<EmbeddedResource Include="TagHelpers\WvFieldEmail\inline-edit.js" />
+		<EmbeddedResource Include="TagHelpers\WvFieldFileMultiple\form.js" />
+		<EmbeddedResource Include="TagHelpers\WvFieldFile\form.js" />
+		<EmbeddedResource Include="TagHelpers\WvFieldFile\inline-edit.js" />
+		<EmbeddedResource Include="TagHelpers\WvFieldGuid\inline-edit.js" />
+		<EmbeddedResource Include="TagHelpers\WvFieldHtml\form.js" />
+		<EmbeddedResource Include="TagHelpers\WvFieldHtml\inline-edit.js" />
+		<EmbeddedResource Include="TagHelpers\WvFieldIcon\form.js" />
+		<EmbeddedResource Include="TagHelpers\WvFieldIcon\inline-edit.js" />
+		<EmbeddedResource Include="TagHelpers\WvFieldImage\form.js" />
+		<EmbeddedResource Include="TagHelpers\WvFieldImage\inline-edit.js" />
+		<EmbeddedResource Include="TagHelpers\WvFieldMultiSelect\form.js" />
+		<EmbeddedResource Include="TagHelpers\WvFieldMultiSelect\inline-edit.js" />
+		<EmbeddedResource Include="TagHelpers\WvFieldNumber\inline-edit.js" />
+		<EmbeddedResource Include="TagHelpers\WvFieldPassword\inline-edit.js" />
+		<EmbeddedResource Include="TagHelpers\WvFieldPercent\form.js" />
+		<EmbeddedResource Include="TagHelpers\WvFieldPercent\inline-edit.js" />
+		<EmbeddedResource Include="TagHelpers\WvFieldPhone\inline-edit.js" />
+		<EmbeddedResource Include="TagHelpers\WvFieldRadioList\inline-edit.js" />
+		<EmbeddedResource Include="TagHelpers\WvFieldSelect\form.js" />
+		<EmbeddedResource Include="TagHelpers\WvFieldSelect\inline-edit.js" />
+		<EmbeddedResource Include="TagHelpers\WvFieldTextarea\inline-edit.js" />
 		<EmbeddedResource Include="TagHelpers\WvFieldText\inline-edit.js" />
+		<EmbeddedResource Include="TagHelpers\WvFieldTime\form.js" />
+		<EmbeddedResource Include="TagHelpers\WvFieldTime\inline-edit.js" />
+		<EmbeddedResource Include="TagHelpers\WvFieldUrl\inline-edit.js" />
+		<EmbeddedResource Include="TagHelpers\WvGrid\sort-and-page.js" />
+		<EmbeddedResource Include="TagHelpers\WvSection\service.js" />
 	</ItemGroup>
-
-	<ItemGroup>
-		<EmbeddedResource Include="wwwroot\**\*" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <None Remove="TagHelpers\WvFieldCurrency\inline-edit.js" />
-	</ItemGroup>
-
 
 	<ItemGroup>
 		<PackageReference Include="HtmlAgilityPack" Version="1.11.15" />

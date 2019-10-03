@@ -159,6 +159,7 @@ namespace WebVella.TagHelpers.Models
 			var baseConfig = new WvFieldBaseConfig();
 			CanAddValues = baseConfig.CanAddValues;
 			Accept = "";
+			FileUploadApi = "/fs/upload";
 		}
 
 		public WvFieldFileConfig(WvFieldBaseConfig baseConfig)
@@ -166,10 +167,14 @@ namespace WebVella.TagHelpers.Models
 			CanAddValues = baseConfig.CanAddValues;
 			Accept = "";
 			ApiUrl = baseConfig.ApiUrl;
+			FileUploadApi = "/fs/upload";
 		}
 
 		[JsonProperty(PropertyName = "accept")]
 		public string Accept { get; set; }
+
+		[JsonProperty(PropertyName = "file_upload_api")]
+		public string FileUploadApi { get; set; } = "/fs/upload";
 	}
 
 	public class WvFieldHtmlConfig : WvFieldBaseConfig
@@ -207,6 +212,7 @@ namespace WebVella.TagHelpers.Models
 			Width = null;
 			Height = null;
 			ResizeAction = null;
+			FileUploadApi = "/fs/upload";
 		}
 
 		public WvFieldImageConfig(WvFieldBaseConfig baseConfig)
@@ -217,6 +223,7 @@ namespace WebVella.TagHelpers.Models
 			Height = null;
 			ResizeAction = null;
 			ApiUrl = baseConfig.ApiUrl;
+			FileUploadApi = "/fs/upload";
 		}
 
 		[JsonProperty(PropertyName = "accept")]
@@ -230,6 +237,9 @@ namespace WebVella.TagHelpers.Models
 
 		[JsonProperty(PropertyName = "resize_action")]
 		public ImageResizeMode? ResizeAction { get; set; }
+
+		[JsonProperty(PropertyName = "file_upload_api")]
+		public string FileUploadApi { get; set; } = "/fs/upload";
 	}
 
 	public class WvFieldTextareaConfig : WvFieldBaseConfig
@@ -253,16 +263,21 @@ namespace WebVella.TagHelpers.Models
 		{
 			var baseConfig = new WvFieldBaseConfig();
 			CanAddValues = baseConfig.CanAddValues;
+			AjaxDatasourceApi = "/api/v3/en_US/eql-ds";
 		}
 
 		public WvFieldMultiSelectConfig(WvFieldBaseConfig baseConfig)
 		{
 			CanAddValues = baseConfig.CanAddValues;
 			ApiUrl = baseConfig.ApiUrl;
+			AjaxDatasourceApi = "/api/v3/en_US/eql-ds";
 		}
 
 		[JsonProperty(PropertyName = "ajax_datasource")]
 		public WvSelectOptionsAjaxDatasource AjaxDatasource { get; set; } = null;
+
+		[JsonProperty(PropertyName = "ajax_datasource_api")]
+		public string AjaxDatasourceApi { get; set; } = "/api/v3/en_US/eql-ds";
 
 		[JsonProperty(PropertyName = "select_match_type")]
 		public WvSelectMatchType SelectMatchType { get; set; } = WvSelectMatchType.Contains;
@@ -358,12 +373,14 @@ namespace WebVella.TagHelpers.Models
 		{
 			var baseConfig = new WvFieldBaseConfig();
 			CanAddValues = baseConfig.CanAddValues;
+			AjaxDatasourceApi = "/api/v3/en_US/eql-ds";
 		}
 
 		public WvFieldSelectConfig(WvFieldBaseConfig baseConfig)
 		{
 			CanAddValues = baseConfig.CanAddValues;
 			ApiUrl = baseConfig.ApiUrl;
+			AjaxDatasourceApi = "/api/v3/en_US/eql-ds";
 		}
 
 		[JsonProperty(PropertyName = "is_invalid")]
@@ -371,6 +388,9 @@ namespace WebVella.TagHelpers.Models
 
 		[JsonProperty(PropertyName = "ajax_datasource")]
 		public WvSelectOptionsAjaxDatasource AjaxDatasource { get; set; } = null;
+
+		[JsonProperty(PropertyName = "ajax_datasource_api")]
+		public string AjaxDatasourceApi { get; set; } = "/api/v3/en_US/eql-ds";
 
 		[JsonProperty(PropertyName = "select_match_type")]
 		public WvSelectMatchType SelectMatchType { get; set; } = WvSelectMatchType.Contains;

@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using WebVella.TagHelpers.Models;
-using WebVella.TagHelpers.Utils;
+using WebVella.TagHelpers.Utilities;
 using Yahoo.Yui.Compressor;
 
 namespace WebVella.TagHelpers.TagHelpers
@@ -66,6 +66,37 @@ namespace WebVella.TagHelpers.TagHelpers
 				output.Content.AppendHtml(wrapperEl);
 
 				var jsCompressor = new JavaScriptCompressor();
+
+				#region << Init Libraries >>
+				var wvLibraryInitialized = false;
+				var libraryItemsKey = "WebVella-" + "spectrum";
+				if (ViewContext.HttpContext.Items.ContainsKey(libraryItemsKey))
+				{
+					var tagHelperContext = (WvTagHelperContext)ViewContext.HttpContext.Items[libraryItemsKey];
+					wvLibraryInitialized = tagHelperContext.Initialized;
+				}
+
+				if(!wvLibraryInitialized){
+					var libCssEl = new TagBuilder("link");
+					libCssEl.Attributes.Add("href", "/webvella-taghelpers/lib/spectrum/spectrum.min.css");
+					libCssEl.Attributes.Add("type", "text/css");
+					libCssEl.Attributes.Add("rel", "stylesheet");
+					output.PostContent.AppendHtml(libCssEl);	
+					output.PostContent.AppendHtml("\r\n\t");
+
+					var libJsEl = new TagBuilder("script");
+					libJsEl.Attributes.Add("type", "text/javascript");
+					libJsEl.Attributes.Add("src", "/webvella-taghelpers/lib/spectrum/spectrum.min.js");
+					output.PostContent.AppendHtml(libJsEl);	
+					output.PostContent.AppendHtml("\r\n\t");			
+						
+					ViewContext.HttpContext.Items[libraryItemsKey] = new WvTagHelperContext()
+					{
+						Initialized = true
+					};
+				}
+				#endregion
+
 
 				#region << Init Scripts >>
 				var tagHelperInitialized = false;
@@ -146,8 +177,7 @@ namespace WebVella.TagHelpers.TagHelpers
 					viewInputPrepend.AddCssClass("input-group-prepend");
 					var viewInputPrependText = new TagBuilder("span");
 					viewInputPrependText.AddCssClass("input-group-text");
-					viewInputPrependText.Attributes.Add("style",$"background-color:{(Value ?? "").ToString()}; width: 31px;");
-					viewInputPrependText.InnerHtml.AppendHtml("&nbsp;");
+					viewInputPrependText.InnerHtml.AppendHtml($"<i class='fas fa-fw fa-square' style='color:{(Value ?? "#ffffff").ToString()}'></i>");
 					viewInputPrepend.InnerHtml.AppendHtml(viewInputPrependText);
 					viewWrapperEl.InnerHtml.AppendHtml(viewInputPrepend);
 
@@ -221,6 +251,37 @@ namespace WebVella.TagHelpers.TagHelpers
 					#endregion
 
 					var jsCompressor = new JavaScriptCompressor();
+
+					#region << Init Libraries >>
+					var wvLibraryInitialized = false;
+					var libraryItemsKey = "WebVella-" + "spectrum";
+					if (ViewContext.HttpContext.Items.ContainsKey(libraryItemsKey))
+					{
+						var tagHelperContext = (WvTagHelperContext)ViewContext.HttpContext.Items[libraryItemsKey];
+						wvLibraryInitialized = tagHelperContext.Initialized;
+					}
+
+					if(!wvLibraryInitialized){
+						var libCssEl = new TagBuilder("link");
+						libCssEl.Attributes.Add("href", "/webvella-taghelpers/lib/spectrum/spectrum.min.css");
+						libCssEl.Attributes.Add("type", "text/css");
+						libCssEl.Attributes.Add("rel", "stylesheet");
+						output.PostContent.AppendHtml(libCssEl);	
+						output.PostContent.AppendHtml("\r\n\t");
+
+						var libJsEl = new TagBuilder("script");
+						libJsEl.Attributes.Add("type", "text/javascript");
+						libJsEl.Attributes.Add("src", "/webvella-taghelpers/lib/spectrum/spectrum.min.js");
+						output.PostContent.AppendHtml(libJsEl);	
+						output.PostContent.AppendHtml("\r\n\t");			
+						
+						ViewContext.HttpContext.Items[libraryItemsKey] = new WvTagHelperContext()
+						{
+							Initialized = true
+						};
+					}
+					#endregion
+
 					#region << Init Scripts >>
 					var tagHelperInitialized = false;
 					if (ViewContext.HttpContext.Items.ContainsKey(typeof(WvFieldColor) + "-inline-edit"))

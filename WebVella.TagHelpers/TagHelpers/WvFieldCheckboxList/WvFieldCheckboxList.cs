@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebVella.TagHelpers.Models;
-using WebVella.TagHelpers.Utils;
+using WebVella.TagHelpers.Utilities;
 using Yahoo.Yui.Compressor;
 
 namespace WebVella.TagHelpers.TagHelpers

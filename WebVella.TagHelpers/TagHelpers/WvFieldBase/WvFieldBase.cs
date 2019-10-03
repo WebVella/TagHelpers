@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using WebVella.TagHelpers.Utils;
+using WebVella.TagHelpers.Utilities;
 using WebVella.TagHelpers.Models;
 
 namespace WebVella.TagHelpers.TagHelpers
@@ -342,6 +342,8 @@ namespace WebVella.TagHelpers.TagHelpers
 					CssClassList.Add("list");
 					break;
 			}
+
+			CssClassList.Add(context.TagName);
 
 			output.Attributes.SetAttribute("class", String.Join(' ', CssClassList));
 

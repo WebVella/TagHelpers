@@ -116,15 +116,6 @@
 		},
 		{
 			"provider": "cdnjs",
-			"library": "js-cookie@2.2.1",
-			"destination": "wwwroot/webvella-taghelpers/lib/js-cookie/",
-			"files": [
-				"js.cookie.min.js",
-				"js.cookie.min.js.map"
-			]
-		},
-		{
-			"provider": "cdnjs",
 			"library": "lodash.js@4.17.15",
 			"destination": "wwwroot/webvella-taghelpers/lib/lodash.js/",
 			"files": [

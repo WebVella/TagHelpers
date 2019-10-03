@@ -16,7 +16,7 @@
 	var chartDsList = new List<WvChartDataset>{ chartDs};
 
 	var htmlEncoded = HttpUtility.HtmlEncode("<div class=\"text\">text</div>");
-
+	var colorVal = "#FF9800";
 	var chGridRows = new List<WvSelectOption>(){
 		new WvSelectOption(){Label = "row 1", Value = "row1"},
 		new WvSelectOption(){Label = "row 2", Value = "row2"},
@@ -43,6 +43,23 @@
 	var chkBxListValues = new List<string>{"1"};
 
 	decimal decVal = (decimal)23.3434;
+
+	var emailVal = "test@domain.com";
+
+	var fileVal = "/webvella-taghelpers/assets/background.png";
+	var multiFilesVal = new List<string>{"/webvella-taghelpers/assets/background.png"};
+	var guidVal = Guid.NewGuid();
+
+	var iconVal = "fa fa-save";
+	var urlVal = "http://google.com";
+
+	var gridColumns = new List<WvGridColumnMeta>{
+		new WvGridColumnMeta{
+			Name = "col1",
+			Label = "column 1"
+		}
+	};
+	var gridRecords = new List<string>{"one","two"};
 }
 
 <!DOCTYPE html>
@@ -77,7 +94,7 @@
 		<div class="col-3">
 			<div class="card mt-3 mb-3">
 				<div class="card-header">
-					Text Form
+					Form
 				</div>
 				<div class="card-body">
 					<wv-button type="ButtonLink" color="Blue" text="This is a Button"></wv-button>
@@ -87,7 +104,7 @@
 		<div class="col-3">
 			<div class="card mt-3 mb-3">
 				<div class="card-header">
-					Text Form
+					Form
 				</div>
 				<div class="card-body">
 					<wv-button type="LinkAsButton" color="Blue" text="This is a Button"></wv-button>
@@ -97,7 +114,7 @@
 		<div class="col-3">
 			<div class="card mt-3 mb-3">
 				<div class="card-header">
-					Text Form
+					Form
 				</div>
 				<div class="card-body">
 					<wv-button type="Submit" color="Blue" text="This is a Button"></wv-button>
@@ -211,7 +228,7 @@
 		<div class="col-3">
 			<div class="card mt-3 mb-3">
 				<div class="card-header">
-					Text Form
+					Form
 				</div>
 				<div class="card-body">
 					<wv-field-checkbox value="@true" label-text="FieldLabel" name="text" mode="Form"></wv-field-checkbox>
@@ -221,7 +238,7 @@
 		<div class="col-3">
 			<div class="card mt-3 mb-3">
 				<div class="card-header">
-					Text InlineEdit
+					Inline Edit
 				</div>
 				<div class="card-body">
 					<wv-field-checkbox value="@true" label-text="FieldLabel" name="text" mode="InlineEdit" api-url="@apiUrl"></wv-field-checkbox>
@@ -231,7 +248,7 @@
 		<div class="col-3">
 			<div class="card mt-3 mb-3">
 				<div class="card-header">
-					Text Display
+					Display
 				</div>
 				<div class="card-body">
 					<wv-field-checkbox value="@true" label-text="FieldLabel" name="text" mode="Display"></wv-field-checkbox>
@@ -241,7 +258,7 @@
 		<div class="col-3">
 			<div class="card mt-3 mb-3">
 				<div class="card-header">
-					Text Display
+					Display
 				</div>
 				<div class="card-body">
 					<wv-field-checkbox value="@true" label-text="FieldLabel" name="text" mode="Simple"></wv-field-checkbox>
@@ -255,7 +272,7 @@
 		<div class="col-6">
 			<div class="card mt-3 mb-3">
 				<div class="card-header">
-					Text Form
+					Form
 				</div>
 				<div class="card-body">
 					<wv-field-checkbox-grid rows="chGridRows" columns="chGridColumns" name="Grid" value="@chGridValuesJson"></wv-field-checkbox-grid>
@@ -269,7 +286,7 @@
 		<div class="col-6">
 			<div class="card mt-3 mb-3">
 				<div class="card-header">
-					Text Form
+					Form
 				</div>
 				<div class="card-body">
 					<wv-field-checkbox-list options="chkBxList" value="@chkBxListValues" name="chkList"></wv-field-checkbox-list>
@@ -283,7 +300,7 @@
 		<div class="col-6">
 			<div class="card mt-3 mb-3">
 				<div class="card-header">
-					Text Form
+					Form
 				</div>
 				<div class="card-body">
 					<wv-field-code  value="@htmlEncoded" name="chkList" is-encoded="true" label-mode="Hidden"></wv-field-code>
@@ -297,40 +314,40 @@
 		<div class="col-3">
 			<div class="card mt-3 mb-3">
 				<div class="card-header">
-					Text Form
+					Form
 				</div>
 				<div class="card-body">
-					<wv-field-color value="@("#eeeeee")" label-text="FieldLabel" name="text" mode="Form"></wv-field-color>
+					<wv-field-color value="@colorVal" label-text="FieldLabel" name="text" mode="Form"></wv-field-color>
 				</div>
 			</div>
 		</div>
 		<div class="col-3">
 			<div class="card mt-3 mb-3">
 				<div class="card-header">
-					Text InlineEdit
+					Inline Edit
 				</div>
 				<div class="card-body">
-					<wv-field-color value="@("#eeeeee")" label-text="FieldLabel" name="text" mode="InlineEdit" api-url="@apiUrl"></wv-field-color>
+					<wv-field-color value="@colorVal" label-text="FieldLabel" name="text" mode="InlineEdit" api-url="@apiUrl"></wv-field-color>
 				</div>
 			</div>
 		</div>
 		<div class="col-3">
 			<div class="card mt-3 mb-3">
 				<div class="card-header">
-					Text Display
+					Display
 				</div>
 				<div class="card-body">
-					<wv-field-color value="@("#eeeeee")" label-text="FieldLabel" name="text" mode="Display"></wv-field-color>
+					<wv-field-color value="@colorVal" label-text="FieldLabel" name="text" mode="Display"></wv-field-color>
 				</div>
 			</div>
 		</div>
 		<div class="col-3">
 			<div class="card mt-3 mb-3">
 				<div class="card-header">
-					Text Display
+					Display
 				</div>
 				<div class="card-body">
-					<wv-field-color value="@("#eeeeee")" label-text="FieldLabel" name="text" mode="Simple"></wv-field-color>
+					<wv-field-color value="@colorVal" label-text="FieldLabel" name="text" mode="Simple"></wv-field-color>
 				</div>
 			</div>
 		</div>
@@ -341,7 +358,7 @@
 		<div class="col-3">
 			<div class="card mt-3 mb-3">
 				<div class="card-header">
-					Text Form
+					Form
 				</div>
 				<div class="card-body">
 					<wv-field-currency value="@decVal" label-text="FieldLabel" name="text" mode="Form"></wv-field-currency>
@@ -351,7 +368,7 @@
 		<div class="col-3">
 			<div class="card mt-3 mb-3">
 				<div class="card-header">
-					Text InlineEdit
+					Inline Edit
 				</div>
 				<div class="card-body">
 					<wv-field-currency value="@decVal" label-text="FieldLabel" name="text" mode="InlineEdit" api-url="@apiUrl"></wv-field-currency>
@@ -361,7 +378,7 @@
 		<div class="col-3">
 			<div class="card mt-3 mb-3">
 				<div class="card-header">
-					Text Display
+					Display
 				</div>
 				<div class="card-body">
 					<wv-field-currency value="@decVal" label-text="FieldLabel" name="text" mode="Display"></wv-field-currency>
@@ -371,10 +388,848 @@
 		<div class="col-3">
 			<div class="card mt-3 mb-3">
 				<div class="card-header">
-					Text Display
+					Display
 				</div>
 				<div class="card-body">
 					<wv-field-currency value="@decVal" label-text="FieldLabel" name="text" mode="Simple"></wv-field-currency>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<h2>wv-field-date</h2>
+	<div class="row">
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Form
+				</div>
+				<div class="card-body">
+					<wv-field-date value="@DateTime.Now" label-text="FieldLabel" name="text" mode="Form"></wv-field-date>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Inline Edit
+				</div>
+				<div class="card-body">
+					<wv-field-date value="@DateTime.Now" label-text="FieldLabel" name="text" mode="InlineEdit" api-url="@apiUrl"></wv-field-date>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Display
+				</div>
+				<div class="card-body">
+					<wv-field-date value="@DateTime.Now" label-text="FieldLabel" name="text" mode="Display"></wv-field-date>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Display
+				</div>
+				<div class="card-body">
+					<wv-field-date value="@DateTime.Now" label-text="FieldLabel" name="text" mode="Simple"></wv-field-date>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<h2>wv-field-datetime</h2>
+	<div class="row">
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Form
+				</div>
+				<div class="card-body">
+					<wv-field-datetime value="@DateTime.Now" label-text="FieldLabel" name="text" mode="Form"></wv-field-datetime>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Inline Edit
+				</div>
+				<div class="card-body">
+					<wv-field-datetime value="@DateTime.Now" label-text="FieldLabel" name="text" mode="InlineEdit" api-url="@apiUrl"></wv-field-datetime>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Display
+				</div>
+				<div class="card-body">
+					<wv-field-datetime value="@DateTime.Now" label-text="FieldLabel" name="text" mode="Display"></wv-field-datetime>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Display
+				</div>
+				<div class="card-body">
+					<wv-field-datetime value="@DateTime.Now" label-text="FieldLabel" name="text" mode="Simple"></wv-field-datetime>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<h2>wv-field-time</h2>
+	<div class="row">
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Form
+				</div>
+				<div class="card-body">
+					<wv-field-time value="@DateTime.Now" label-text="FieldLabel" name="text" mode="Form"></wv-field-time>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Inline Edit
+				</div>
+				<div class="card-body">
+					<wv-field-time value="@DateTime.Now" label-text="FieldLabel" name="text" mode="InlineEdit" api-url="@apiUrl"></wv-field-time>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Display
+				</div>
+				<div class="card-body">
+					<wv-field-time value="@DateTime.Now" label-text="FieldLabel" name="text" mode="Display"></wv-field-time>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Display
+				</div>
+				<div class="card-body">
+					<wv-field-time value="@DateTime.Now" label-text="FieldLabel" name="text" mode="Simple"></wv-field-time>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<h2>wv-field-email</h2>
+	<div class="row">
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Form
+				</div>
+				<div class="card-body">
+					<wv-field-email value="@emailVal" label-text="FieldLabel" name="text" mode="Form"></wv-field-email>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Inline Edit
+				</div>
+				<div class="card-body">
+					<wv-field-email value="@emailVal" label-text="FieldLabel" name="text" mode="InlineEdit" api-url="@apiUrl"></wv-field-email>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Display
+				</div>
+				<div class="card-body">
+					<wv-field-email value="@emailVal" label-text="FieldLabel" name="text" mode="Display"></wv-field-email>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Display
+				</div>
+				<div class="card-body">
+					<wv-field-email value="@emailVal" label-text="FieldLabel" name="text" mode="Simple"></wv-field-email>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<h2>wv-field-file</h2>
+	<div class="row">
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Form
+				</div>
+				<div class="card-body">
+					<wv-field-file value="@fileVal" label-text="FieldLabel" name="text" mode="Form"></wv-field-file>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Inline Edit
+				</div>
+				<div class="card-body">
+					<wv-field-file value="@fileVal" label-text="FieldLabel" name="text" mode="InlineEdit" api-url="@apiUrl"></wv-field-file>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Display
+				</div>
+				<div class="card-body">
+					<wv-field-file value="@fileVal" label-text="FieldLabel" name="text" mode="Display"></wv-field-file>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Display
+				</div>
+				<div class="card-body">
+					<wv-field-file value="@fileVal" label-text="FieldLabel" name="text" mode="Simple"></wv-field-file>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<h2>wv-field-file-multiple</h2>
+	<div class="row">
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Form
+				</div>
+				<div class="card-body">
+					<wv-field-file-multiple value="@multiFilesVal" label-text="FieldLabel" name="text" mode="Form"></wv-field-file-multiple>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Inline Edit
+				</div>
+				<div class="card-body">
+					<wv-field-file-multiple value="@multiFilesVal" label-text="FieldLabel" name="text" mode="InlineEdit" api-url="@apiUrl"></wv-field-file-multiple>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Display
+				</div>
+				<div class="card-body">
+					<wv-field-file-multiple value="@multiFilesVal" label-text="FieldLabel" name="text" mode="Display"></wv-field-file-multiple>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Display
+				</div>
+				<div class="card-body">
+					<wv-field-file-multiple value="@multiFilesVal" label-text="FieldLabel" name="text" mode="Simple"></wv-field-file-multiple>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<h2>wv-field-guid</h2>
+	<div class="row">
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Form
+				</div>
+				<div class="card-body">
+					<wv-field-guid value="@guidVal" label-text="FieldLabel" name="text" mode="Form"></wv-field-guid>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Inline Edit
+				</div>
+				<div class="card-body">
+					<wv-field-guid value="@guidVal" label-text="FieldLabel" name="text" mode="InlineEdit" api-url="@apiUrl"></wv-field-guid>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Display
+				</div>
+				<div class="card-body">
+					<wv-field-guid value="@guidVal" label-text="FieldLabel" name="text" mode="Display"></wv-field-guid>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Display
+				</div>
+				<div class="card-body">
+					<wv-field-guid value="@guidVal" label-text="FieldLabel" name="text" mode="Simple"></wv-field-guid>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<h2>wv-field-html</h2>
+	<div class="row">
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Form
+				</div>
+				<div class="card-body">
+					<wv-field-html value="@textFieldValue" label-text="FieldLabel" name="text" mode="Form"></wv-field-html>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Inline Edit
+				</div>
+				<div class="card-body">
+					<wv-field-html value="@textFieldValue" label-text="FieldLabel" name="text" mode="InlineEdit" api-url="@apiUrl"></wv-field-html>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Display
+				</div>
+				<div class="card-body">
+					<wv-field-html value="@textFieldValue" label-text="FieldLabel" name="text" mode="Display"></wv-field-html>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Display
+				</div>
+				<div class="card-body">
+					<wv-field-html value="@textFieldValue" label-text="FieldLabel" name="text" mode="Simple"></wv-field-html>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<h2>wv-field-icon</h2>
+	<div class="row">
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Form
+				</div>
+				<div class="card-body">
+					<wv-field-icon value="@iconVal" label-text="FieldLabel" name="text" mode="Form"></wv-field-icon>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Inline Edit
+				</div>
+				<div class="card-body">
+					<wv-field-icon value="@iconVal" label-text="FieldLabel" name="text" mode="InlineEdit" api-url="@apiUrl"></wv-field-icon>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Display
+				</div>
+				<div class="card-body">
+					<wv-field-icon value="@iconVal" label-text="FieldLabel" name="text" mode="Display"></wv-field-icon>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Display
+				</div>
+				<div class="card-body">
+					<wv-field-icon value="@iconVal" label-text="FieldLabel" name="text" mode="Simple"></wv-field-icon>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<h2>wv-field-image</h2>
+	<div class="row">
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Form
+				</div>
+				<div class="card-body">
+					<wv-field-image value="@fileVal" label-text="FieldLabel" name="text" mode="Form"></wv-field-image>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Inline Edit
+				</div>
+				<div class="card-body">
+					<wv-field-image value="@fileVal" label-text="FieldLabel" name="text" mode="InlineEdit" api-url="@apiUrl"></wv-field-image>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Display
+				</div>
+				<div class="card-body">
+					<wv-field-image value="@fileVal" label-text="FieldLabel" name="text" mode="Display"></wv-field-image>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Display
+				</div>
+				<div class="card-body">
+					<wv-field-image value="@fileVal" label-text="FieldLabel" name="text" mode="Simple"></wv-field-image>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<h2>wv-field-multiselect</h2>
+	<div class="row">
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Form
+				</div>
+				<div class="card-body">
+					<wv-field-multiselect value="@chkBxListValues" label-text="FieldLabel" name="text" mode="Form" options="@chkBxList"></wv-field-multiselect>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Inline Edit
+				</div>
+				<div class="card-body">
+					<wv-field-multiselect value="@chkBxListValues" label-text="FieldLabel" name="text" mode="InlineEdit" api-url="@apiUrl" options="@chkBxList"></wv-field-multiselect>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Display
+				</div>
+				<div class="card-body">
+					<wv-field-multiselect value="@chkBxListValues" label-text="FieldLabel" name="text" mode="Display" options="@chkBxList"></wv-field-multiselect>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Display
+				</div>
+				<div class="card-body">
+					<wv-field-multiselect value="@chkBxListValues" label-text="FieldLabel" name="text" mode="Simple" options="@chkBxList"></wv-field-multiselect>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<h2>wv-field-select</h2>
+	<div class="row">
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Form
+				</div>
+				<div class="card-body">
+					<wv-field-select value="@("1")" label-text="FieldLabel" name="text" mode="Form" options="@chkBxList"></wv-field-select>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Inline Edit
+				</div>
+				<div class="card-body">
+					<wv-field-select value="@("1")" label-text="FieldLabel" name="text" mode="InlineEdit" api-url="@apiUrl" options="@chkBxList"></wv-field-select>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Display
+				</div>
+				<div class="card-body">
+					<wv-field-select value="@("1")" label-text="FieldLabel" name="text" mode="Display" options="@chkBxList"></wv-field-select>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Display
+				</div>
+				<div class="card-body">
+					<wv-field-select value="@("1")" label-text="FieldLabel" name="text" mode="Simple" options="@chkBxList"></wv-field-select>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<h2>wv-field-number</h2>
+	<div class="row">
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Form
+				</div>
+				<div class="card-body">
+					<wv-field-number value="@decVal" label-text="FieldLabel" name="text" mode="Form"></wv-field-number>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Inline Edit
+				</div>
+				<div class="card-body">
+					<wv-field-number value="@decVal" label-text="FieldLabel" name="text" mode="InlineEdit" api-url="@apiUrl"></wv-field-number>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Display
+				</div>
+				<div class="card-body">
+					<wv-field-number value="@decVal" label-text="FieldLabel" name="text" mode="Display"></wv-field-number>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Display
+				</div>
+				<div class="card-body">
+					<wv-field-number value="@decVal" label-text="FieldLabel" name="text" mode="Simple"></wv-field-number>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<h2>wv-field-password</h2>
+	<div class="row">
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Form
+				</div>
+				<div class="card-body">
+					<wv-field-password value="@textFieldValue" label-text="FieldLabel" name="text" mode="Form"></wv-field-password>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Inline Edit
+				</div>
+				<div class="card-body">
+					<wv-field-password value="@textFieldValue" label-text="FieldLabel" name="text" mode="InlineEdit" api-url="@apiUrl"></wv-field-password>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Display
+				</div>
+				<div class="card-body">
+					<wv-field-password value="@textFieldValue" label-text="FieldLabel" name="text" mode="Display"></wv-field-password>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Display
+				</div>
+				<div class="card-body">
+					<wv-field-password value="@textFieldValue" label-text="FieldLabel" name="text" mode="Simple"></wv-field-password>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<h2>wv-field-percent</h2>
+	<div class="row">
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Form
+				</div>
+				<div class="card-body">
+					<wv-field-percent value="@decVal" label-text="FieldLabel" name="text" mode="Form"></wv-field-percent>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Inline Edit
+				</div>
+				<div class="card-body">
+					<wv-field-percent value="@decVal" label-text="FieldLabel" name="text" mode="InlineEdit" api-url="@apiUrl"></wv-field-percent>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Display
+				</div>
+				<div class="card-body">
+					<wv-field-percent value="@decVal" label-text="FieldLabel" name="text" mode="Display"></wv-field-percent>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Display
+				</div>
+				<div class="card-body">
+					<wv-field-percent value="@decVal" label-text="FieldLabel" name="text" mode="Simple"></wv-field-percent>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<h2>wv-field-phone</h2>
+	<div class="row">
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Form
+				</div>
+				<div class="card-body">
+					<wv-field-phone value="@decVal" label-text="FieldLabel" name="text" mode="Form"></wv-field-phone>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Inline Edit
+				</div>
+				<div class="card-body">
+					<wv-field-phone value="@decVal" label-text="FieldLabel" name="text" mode="InlineEdit" api-url="@apiUrl"></wv-field-phone>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Display
+				</div>
+				<div class="card-body">
+					<wv-field-phone value="@decVal" label-text="FieldLabel" name="text" mode="Display"></wv-field-phone>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Display
+				</div>
+				<div class="card-body">
+					<wv-field-phone value="@decVal" label-text="FieldLabel" name="text" mode="Simple"></wv-field-phone>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<h2>wv-field-radio-list</h2>
+	<div class="row">
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Form
+				</div>
+				<div class="card-body">
+					<wv-field-radio-list value="@("1")" label-text="FieldLabel" name="text1" mode="Form" options="@chkBxList"></wv-field-radio-list>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Inline Edit
+				</div>
+				<div class="card-body">
+					<wv-field-radio-list value="@("1")" label-text="FieldLabel" name="text2" mode="InlineEdit" api-url="@apiUrl" options="@chkBxList"></wv-field-radio-list>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Display
+				</div>
+				<div class="card-body">
+					<wv-field-radio-list value="@("1")" label-text="FieldLabel" name="text3" mode="Display" options="@chkBxList"></wv-field-radio-list>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Display
+				</div>
+				<div class="card-body">
+					<wv-field-radio-list value="@("1")" label-text="FieldLabel" name="text4" mode="Simple" options="@chkBxList"></wv-field-radio-list>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<h2>wv-field-textarea</h2>
+	<div class="row">
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Form
+				</div>
+				<div class="card-body">
+					<wv-field-textarea value="@textFieldValue" label-text="FieldLabel" name="text" mode="Form" autogrow="true"></wv-field-textarea>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Inline Edit
+				</div>
+				<div class="card-body">
+					<wv-field-textarea value="@textFieldValue" label-text="FieldLabel" name="text" mode="InlineEdit" api-url="@apiUrl"></wv-field-textarea>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Display
+				</div>
+				<div class="card-body">
+					<wv-field-textarea value="@textFieldValue" label-text="FieldLabel" name="text" mode="Display"></wv-field-textarea>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Display
+				</div>
+				<div class="card-body">
+					<wv-field-textarea value="@textFieldValue" label-text="FieldLabel" name="text" mode="Simple"></wv-field-textarea>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<h2>wv-field-url</h2>
+	<div class="row">
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Form
+				</div>
+				<div class="card-body">
+					<wv-field-url value="@urlVal" label-text="FieldLabel" name="text" mode="Form"></wv-field-url>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Inline Edit
+				</div>
+				<div class="card-body">
+					<wv-field-url value="@urlVal" label-text="FieldLabel" name="text" mode="InlineEdit" api-url="@apiUrl"></wv-field-url>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Display
+				</div>
+				<div class="card-body">
+					<wv-field-url value="@urlVal" label-text="FieldLabel" name="text" mode="Display"></wv-field-url>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Display
+				</div>
+				<div class="card-body">
+					<wv-field-url value="@urlVal" label-text="FieldLabel" name="text" mode="Simple"></wv-field-url>
 				</div>
 			</div>
 		</div>
@@ -386,7 +1241,7 @@
 		<div class="col-3">
 			<div class="card mt-3 mb-3">
 				<div class="card-header">
-					Text Form
+					Form
 				</div>
 				<div class="card-body">
 					<wv-field-text value="@textFieldValue" label-text="FieldLabel" name="text" mode="Form"></wv-field-text>
@@ -396,7 +1251,7 @@
 		<div class="col-3">
 			<div class="card mt-3 mb-3">
 				<div class="card-header">
-					Text InlineEdit
+					Inline Edit
 				</div>
 				<div class="card-body">
 					<wv-field-text value="@textFieldValue" label-text="FieldLabel" name="text" mode="InlineEdit" api-url="@apiUrl"></wv-field-text>
@@ -406,7 +1261,7 @@
 		<div class="col-3">
 			<div class="card mt-3 mb-3">
 				<div class="card-header">
-					Text Display
+					Display
 				</div>
 				<div class="card-body">
 					<wv-field-text value="@textFieldValue" label-text="FieldLabel" name="text" mode="Display"></wv-field-text>
@@ -416,7 +1271,7 @@
 		<div class="col-3">
 			<div class="card mt-3 mb-3">
 				<div class="card-header">
-					Text Display
+					Display
 				</div>
 				<div class="card-body">
 					<wv-field-text value="@textFieldValue" label-text="FieldLabel" name="text" mode="Simple"></wv-field-text>
@@ -425,6 +1280,72 @@
 		</div>
 	</div>
 
+	<h2>wv-form</h2>
+	<div class="row">
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Form
+				</div>
+				<div class="card-body">
+					<wv-form name="text"></wv-form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<h2>wv-grid</h2>
+	<div class="row">
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Form
+				</div>
+				<div class="card-body">
+					<wv-grid bordered="true" small="true" columns="@gridColumns" has-tfoot="false">
+						@foreach (var record in gridRecords)
+						{
+							<wv-grid-row>
+								<wv-grid-column>@Html.Raw(record)</wv-grid-column>
+							</wv-grid-row>
+						}
+
+					</wv-grid>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<h2>wv-icon-card</h2>
+	<div class="row">
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Form
+				</div>
+				<div class="card-body">
+					<wv-icon-card icon-color="Blue" icon-class="fa fa-cog" title="This is a title" description="this is a description"></wv-icon-card>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<h2>wv-section</h2>
+	<div class="row">
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Form
+				</div>
+				<div class="card-body">
+					<wv-section title="section title" is-collapsable="true" title-tag="div">
+						Some text
+					</wv-section>
+				</div>
+			</div>
+		</div>
+	</div>
 
 </body>
 </html>

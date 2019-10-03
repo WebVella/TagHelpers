@@ -1,12 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using WebVella.TagHelpers.Models;
-using WebVella.TagHelpers.Utils;
+using WebVella.TagHelpers.Utilities;
 using Yahoo.Yui.Compressor;
 
 namespace WebVella.TagHelpers.TagHelpers
@@ -43,13 +42,15 @@ namespace WebVella.TagHelpers.TagHelpers
 				return Task.CompletedTask;
 			}
 
-			if (Currency == null) {
+			if (Currency == null)
+			{
 				Currency = WvHelpers.GetCurrencyType(CurrencyCode);
 				if (Currency == null)
 					throw new Exception($"Currency with code '{CurrencyCode}' is not found.");
 			}
 			//Apply currency decimal places
-			if (Value != null) {
+			if (Value != null)
+			{
 				var decimalPlaces = Convert.ToInt32(Currency.DecimalDigits);
 				Value = Math.Round(Convert.ToDecimal(Value), decimalPlaces);
 			}
@@ -130,7 +131,8 @@ namespace WebVella.TagHelpers.TagHelpers
 					{
 						divEl.InnerHtml.Append($"{valueString} {Currency.SymbolNative}");
 					}
-					else {
+					else
+					{
 						divEl.InnerHtml.Append($"{Currency.SymbolNative} {valueString}");
 					}
 					output.Content.AppendHtml(divEl);
@@ -155,9 +157,10 @@ namespace WebVella.TagHelpers.TagHelpers
 						output.Content.AppendHtml($"{Currency.SymbolNative} {valueString}");
 					}
 				}
-				else {
-                    output.SuppressOutput();
-                    output.Content.AppendHtml("");
+				else
+				{
+					output.SuppressOutput();
+					output.Content.AppendHtml("");
 				}
 				return Task.CompletedTask;
 			}
