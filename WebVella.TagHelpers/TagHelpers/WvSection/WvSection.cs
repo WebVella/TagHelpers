@@ -47,6 +47,9 @@ namespace WebVella.TagHelpers.TagHelpers
 		[HtmlAttributeName("field-mode")]
 		public WvFieldRenderMode FieldMode { get; set; } = WvFieldRenderMode.Undefined; //To be inherited
 
+		[HtmlAttributeName("size")]
+		public WvCssSize Size { get; set; } = WvCssSize.Inherit;
+
 		[HtmlAttributeNotBound]
 		[ViewContext]
 		public ViewContext ViewContext { get; set; }
@@ -89,6 +92,19 @@ namespace WebVella.TagHelpers.TagHelpers
 				else
 				{
 					FieldMode = WvFieldRenderMode.Form;
+				}
+			}
+
+			if (Size == WvCssSize.Inherit)
+			{
+				//Check if it is defined in form group
+				if (context.Items.ContainsKey(typeof(WvCssSize)))
+				{
+					Size = (WvCssSize)context.Items[typeof(WvCssSize)];
+				}
+				else
+				{
+					Size = WvCssSize.Normal;
 				}
 			}
 			#endregion

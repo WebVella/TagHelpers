@@ -558,3 +558,59 @@ erp-field.inline-edit .select2-container--bootstrap4 .select2-search--inline .se
 }
 
 /*#endregion*/
+
+/*#region << wv-alert >>*/
+
+.wv-alert {
+	display: flex;
+	flex-flow: row;
+	align-items: center;
+	padding: 0.25rem;
+}
+
+.alert-icon {
+	padding: 0;
+}
+
+	.alert-icon .icon {
+		flex: 0 0 40px;
+		text-align: center;
+		font-size: 1.5rem;
+	}
+
+.wv-alert .content {
+	flex: 1 1 auto;
+	padding: 0.25rem;
+	font-size: 14px;
+}
+
+	.wv-alert .content .title {
+		font-weight: bold;
+		font-size: 1rem;
+	}
+
+
+.alert-light {
+	background: linear-gradient(115deg,rgba(236, 239, 241,1),rgba(236, 239, 241,0.05));
+	color: #263238;
+	border-color: #ddd;
+}
+
+/*#endregion*/
+
+/*#region << wv-echarts >>*/
+
+.wv-echarts.map {
+	height: 0;
+	padding-top: 55%;
+	position: relative;
+}
+
+	.wv-echarts.map .echart {
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+	}
+/*#endregion*/

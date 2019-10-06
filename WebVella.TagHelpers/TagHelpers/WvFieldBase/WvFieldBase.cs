@@ -60,7 +60,7 @@ namespace WebVella.TagHelpers.TagHelpers
 		public List<string> InitErrors { get; set; } = new List<string>();
 
 		[HtmlAttributeName("validation-errors")]
-		public List<KeyValuePair<string,string>> ValidationErrors { get; set; } = new List<KeyValuePair<string,string>>();
+		public List<KeyValuePair<string, string>> ValidationErrors { get; set; } = new List<KeyValuePair<string, string>>();
 
 		[HtmlAttributeName("api-url")]
 		public string ApiUrl { get; set; } = "";
@@ -73,6 +73,9 @@ namespace WebVella.TagHelpers.TagHelpers
 
 		[HtmlAttributeName("required")]
 		public bool Required { get; set; } = false;
+
+		[HtmlAttributeName("size")]
+		public WvCssSize Size { get; set; } = WvCssSize.Normal;
 
 		[HtmlAttributeName("placeholder")]
 		public string Placeholder { get; set; } = "";
@@ -163,7 +166,7 @@ namespace WebVella.TagHelpers.TagHelpers
 				//Check if it is defined in form group
 				if (context.Items.ContainsKey("WvTagHelperValidationErrors"))
 				{
-					var validationErrors = (List<KeyValuePair<string,string>>)context.Items["WvTagHelperValidationErrors"];
+					var validationErrors = (List<KeyValuePair<string, string>>)context.Items["WvTagHelperValidationErrors"];
 					if (validationErrors != null & validationErrors.Count > 0)
 					{
 						ValidationErrors = validationErrors.FindAll(x => x.Key.ToLowerInvariant() == Name.ToLowerInvariant());
@@ -367,15 +370,20 @@ namespace WebVella.TagHelpers.TagHelpers
 					labelEl.Attributes.Add("class", "control-label label-stacked");
 				}
 
+				if (Size == WvCssSize.Large)
+					labelEl.AddCssClass("control-label-lg");
+				if (Size == WvCssSize.Small)
+					labelEl.AddCssClass("control-label-sm");
+
 				//Set Required 
-				if (Required && Mode == WvFieldRenderMode.Form)
-				{
-					var requiredEl = new TagBuilder("abbr");
-					requiredEl.MergeAttribute("class", "go-red");
-					requiredEl.MergeAttribute("title", "required");
-					requiredEl.InnerHtml.Append("*");
-					labelEl.InnerHtml.AppendHtml(requiredEl);
-				}
+				//if (Required && Mode == WvFieldRenderMode.Form)
+				//{
+				//	var requiredEl = new TagBuilder("abbr");
+				//	requiredEl.MergeAttribute("class", "go-red");
+				//	requiredEl.MergeAttribute("title", "required");
+				//	requiredEl.InnerHtml.Append("*");
+				//	labelEl.InnerHtml.AppendHtml(requiredEl);
+				//}
 
 				//Set Label text
 				if (LabelMode != WvLabelRenderMode.Horizontal)

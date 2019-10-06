@@ -5,13 +5,21 @@
 		<IsPackable>true</IsPackable>
 		<RazorLangVersion>3.0</RazorLangVersion>
 		<GenerateEmbeddedFilesManifest>true</GenerateEmbeddedFilesManifest>
+		<Version>1.0.5</Version>
+		<Authors>WebVella</Authors>
+		<PackageProjectUrl>http://webvella.com/</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/WebVella/WebVella-ERP</RepositoryUrl>
+		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+		<PackageIconUrl>http://webvella.com/favicon.ico</PackageIconUrl>
+		<Description>A collection of razor TagHelpers for easy generation of bootstrap 4 styled UI components</Description>
+		<PackageTags>taghelper,razor,bootstrap</PackageTags>
+		<RepositoryType>public github</RepositoryType>
 	</PropertyGroup>
 
 
 	<ItemGroup>
 		<EmbeddedResource Include="wwwroot\**\*" />
-		<None Remove="TagHelpers\WvGrid\sort-and-page.js" />
-		<None Remove="TagHelpers\WvSection\service.js" />
+		<EmbeddedResource Include="TagHelpers\WvECharts\usa.json" />
 		<EmbeddedResource Include="TagHelpers\WvFieldCheckboxGrid\form.js" />
 		<EmbeddedResource Include="TagHelpers\WvFieldCheckboxGrid\inline-edit.js" />
 		<EmbeddedResource Include="TagHelpers\WvFieldCheckboxList\inline-edit.js" />

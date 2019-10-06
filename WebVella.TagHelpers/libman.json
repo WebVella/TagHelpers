@@ -270,6 +270,12 @@
 			"library": "font-awesome@5.11.2",
 			"destination": "wwwroot/webvella-taghelpers/lib/font-awesome/",
 			"files": []
+		},
+		{
+			"provider": "cdnjs",
+			"library": "echarts@4.3.0",
+			"destination": "wwwroot/webvella-taghelpers/lib/echarts/",
+			"files": []
 		}
 	]
 }

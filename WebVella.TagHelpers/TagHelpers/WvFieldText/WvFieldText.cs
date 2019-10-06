@@ -61,6 +61,12 @@ namespace WebVella.TagHelpers.TagHelpers
 
 				var inputGroupEl = new TagBuilder("div");
 				inputGroupEl.AddCssClass("input-group");
+
+				if (Size == WvCssSize.Large)
+					inputGroupEl.AddCssClass("input-group-lg");
+				if (Size == WvCssSize.Small)
+					inputGroupEl.AddCssClass("input-group-sm");
+
 				//Prepend
 				if (PrependHtml.Count > 0)
 				{
@@ -185,6 +191,11 @@ namespace WebVella.TagHelpers.TagHelpers
 					var divEl = new TagBuilder("div");
 					divEl.Attributes.Add("id", $"input-{FieldId}");
 					divEl.AddCssClass("form-control-plaintext erp-text");
+					if (Size == WvCssSize.Large)
+						divEl.AddCssClass("input-group-lg");
+					if (Size == WvCssSize.Small)
+						divEl.AddCssClass("input-group-sm");
+
 					divEl.InnerHtml.Append((Value ?? "").ToString());
 					output.Content.AppendHtml(divEl);
 				}
@@ -207,8 +218,15 @@ namespace WebVella.TagHelpers.TagHelpers
 					{
 						var viewWrapperEl = new TagBuilder("div");
 						viewWrapperEl.AddCssClass("input-group view-wrapper");
+						if (Size == WvCssSize.Large)
+							viewWrapperEl.AddCssClass("input-group-lg");
+						if (Size == WvCssSize.Small)
+							viewWrapperEl.AddCssClass("input-group-sm");
+
 						viewWrapperEl.Attributes.Add("title", "double click to edit");
 						viewWrapperEl.Attributes.Add("id", $"view-{FieldId}");
+
+
 						//Prepend
 						if (PrependHtml.Count > 0)
 						{
@@ -249,6 +267,11 @@ namespace WebVella.TagHelpers.TagHelpers
 
 						var editInputGroupEl = new TagBuilder("div");
 						editInputGroupEl.AddCssClass("input-group");
+						if (Size == WvCssSize.Large)
+							editInputGroupEl.AddCssClass("input-group-lg");
+						if (Size == WvCssSize.Small)
+							editInputGroupEl.AddCssClass("input-group-sm");
+
 						//Prepend
 						if (PrependHtml.Count > 0)
 						{
@@ -348,6 +371,10 @@ namespace WebVella.TagHelpers.TagHelpers
 
 					var divEl = new TagBuilder("div");
 					divEl.AddCssClass("input-group");
+					if (Size == WvCssSize.Large)
+						divEl.AddCssClass("input-group-lg");
+					if (Size == WvCssSize.Small)
+						divEl.AddCssClass("input-group-sm");
 					//Prepend
 					if (PrependHtml.Count > 0)
 					{
