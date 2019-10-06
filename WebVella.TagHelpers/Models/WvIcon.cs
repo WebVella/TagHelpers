@@ -5,7 +5,7 @@ using System.Text;
 
 namespace WebVella.TagHelpers.Models
 {
-	internal class WvIcon
+	public class WvIcon
 	{
 		[JsonProperty(PropertyName = "name")]
 		public string Name { get; set; } = "";	

@@ -91,6 +91,12 @@ namespace WebVella.TagHelpers.TagHelpers
 					{
 						inputEl.Attributes.Add("required", null);
 					}
+
+					if (!String.IsNullOrWhiteSpace(Placeholder))
+					{
+						inputEl.Attributes.Add("placeholder", Placeholder);
+					}
+
 					if (Min != null)
 					{
 						inputEl.Attributes.Add("min", Min.ToString());
@@ -233,6 +239,10 @@ namespace WebVella.TagHelpers.TagHelpers
 						if (Required)
 						{
 							editInputEl.Attributes.Add("required", null);
+						}
+						if (!String.IsNullOrWhiteSpace(Placeholder))
+						{
+							editInputEl.Attributes.Add("placeholder", Placeholder);
 						}
 						if (Min != null)
 						{

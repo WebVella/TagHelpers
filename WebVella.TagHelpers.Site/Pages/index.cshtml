@@ -60,6 +60,11 @@
 		}
 	};
 	var gridRecords = new List<string>{"one","two"};
+
+	var valErrors = new List<KeyValuePair<string,string>>{
+		new KeyValuePair<string, string>("name","Name is required"),
+		new KeyValuePair<string, string>("email","Email is required")
+	};
 }
 
 <!DOCTYPE html>
@@ -1445,6 +1450,51 @@
 				</div>
 				<div class="card-body">
 					<wv-alert title="" content="" icon-class="fas fa-fw fa-check" type="Success"></wv-alert>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<h2>wv-validation</h2>
+
+	<div class="row">
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Only errors
+				</div>
+				<div class="card-body">
+					<wv-validation errors="valErrors"></wv-validation>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Only message
+				</div>
+				<div class="card-body">
+					<wv-validation message="Validation Error!"></wv-validation>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Message and errors
+				</div>
+				<div class="card-body">
+					<wv-validation errors="valErrors" message="Validation Error!"></wv-validation>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					With icon and field names showing
+				</div>
+				<div class="card-body">
+					<wv-validation errors="valErrors" message="Validation Error!" show-icon="true" show-key="true"></wv-validation>
 				</div>
 			</div>
 		</div>

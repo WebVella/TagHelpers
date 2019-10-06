@@ -102,7 +102,7 @@ namespace WebVella.TagHelpers.TagHelpers
 				}
 				else
 				{
-					Size = WvCssSize.Small;
+					Size = WvCssSize.Normal;
 				}
 			}
 			#endregion
@@ -123,7 +123,7 @@ namespace WebVella.TagHelpers.TagHelpers
 				output.TagName = "button";
 				output.Attributes.SetAttribute("type", "button");
 			}
-			classList.Add("btn");
+			classList.Add("wv-button btn");
 			#endregion
 
 			#region << Color and Outline >>
