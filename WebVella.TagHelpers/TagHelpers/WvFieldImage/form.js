@@ -81,7 +81,7 @@ function ImageFormInit(fieldId, fieldName, config) {
 							err = JSON.parse(xhr.responseText).Message;
 						$(selectors.editWrapperText).first().html("<i class='fa fa-exclamation-circle go-red'></i> Error");
 						$(selectors.editWrapper).after("<div class='invalid-feedback'>" + response.message + "</div>");
-						$(selectors.editWrapper).closest(".erp-field").find(".invalid-feedback").first().show();
+						$(selectors.editWrapper).closest(".wv-field").find(".invalid-feedback").first().show();
 						toastr.error("An error occurred", 'Error!', { closeButton: true, tapToDismiss: true });
 						console.log(err);
 					}

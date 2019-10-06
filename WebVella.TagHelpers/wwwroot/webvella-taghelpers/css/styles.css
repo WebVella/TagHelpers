@@ -1,4 +1,11 @@
-﻿/*#region << wv-alert >>*/
+﻿/*#region << General >>*/
+.wv-field .invalid-feedback ul,
+.wv-field .invalid-feedback ol {
+	padding-left:1.25rem;
+}
+/*#endregion*/
+
+/*#region << wv-alert >>*/
 
 .wv-alert {
 	display: flex;

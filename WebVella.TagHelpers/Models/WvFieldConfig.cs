@@ -160,6 +160,7 @@ namespace WebVella.TagHelpers.Models
 			CanAddValues = baseConfig.CanAddValues;
 			Accept = "";
 			FileUploadApi = "/fs/upload";
+			SrcPrefix = "/fs";
 		}
 
 		public WvFieldFileConfig(WvFieldBaseConfig baseConfig)
@@ -168,6 +169,7 @@ namespace WebVella.TagHelpers.Models
 			Accept = "";
 			ApiUrl = baseConfig.ApiUrl;
 			FileUploadApi = "/fs/upload";
+			SrcPrefix = "/fs";
 		}
 
 		[JsonProperty(PropertyName = "accept")]
@@ -175,6 +177,9 @@ namespace WebVella.TagHelpers.Models
 
 		[JsonProperty(PropertyName = "file_upload_api")]
 		public string FileUploadApi { get; set; } = "/fs/upload";
+
+		[JsonProperty(PropertyName = "src_prefix")]
+		public string SrcPrefix { get; set; } = "/fs";
 	}
 
 	public class WvFieldHtmlConfig : WvFieldBaseConfig
@@ -213,6 +218,7 @@ namespace WebVella.TagHelpers.Models
 			Height = null;
 			ResizeAction = null;
 			FileUploadApi = "/fs/upload";
+			SrcPrefix = "/fs";
 		}
 
 		public WvFieldImageConfig(WvFieldBaseConfig baseConfig)
@@ -224,6 +230,7 @@ namespace WebVella.TagHelpers.Models
 			ResizeAction = null;
 			ApiUrl = baseConfig.ApiUrl;
 			FileUploadApi = "/fs/upload";
+			SrcPrefix = "/fs";
 		}
 
 		[JsonProperty(PropertyName = "accept")]
@@ -240,6 +247,9 @@ namespace WebVella.TagHelpers.Models
 
 		[JsonProperty(PropertyName = "file_upload_api")]
 		public string FileUploadApi { get; set; } = "/fs/upload";
+
+		[JsonProperty(PropertyName = "src_prefix")]
+		public string SrcPrefix { get; set; } = "/fs";
 	}
 
 	public class WvFieldTextareaConfig : WvFieldBaseConfig

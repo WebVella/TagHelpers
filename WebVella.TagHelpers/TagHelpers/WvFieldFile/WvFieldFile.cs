@@ -25,6 +25,9 @@ namespace WebVella.TagHelpers.TagHelpers
 		[HtmlAttributeName("file-upload-api")]
 		public string FileUploadApi { get; set; } = "/fs/upload";
 
+		[HtmlAttributeName("src-prefix")]
+		public string SrcPrefix { get; set; } = "/fs";
+
 		public override Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
 		{
 			if (!isVisible)
@@ -42,10 +45,6 @@ namespace WebVella.TagHelpers.TagHelpers
 
 			if (Value != null && !String.IsNullOrWhiteSpace((Value ?? "").ToString()))
 			{
-				if (Value.StartsWith("/fs"))
-				{
-					Value = Value.Substring(3);
-				}
 				PathTypeIcon = WvHelpers.GetPathTypeIcon(Value);
 				FileName = Path.GetFileName(Value);
 			}
@@ -61,7 +60,7 @@ namespace WebVella.TagHelpers.TagHelpers
 					inputGroupEl.AddCssClass("input-group");
 					var prependEl = new TagBuilder("span");
 					prependEl.AddCssClass($"input-group-prepend icon-addon {(ValidationErrors.Count > 0 ? "is-invalid" : "")}");
-					prependEl.Attributes.Add("title", $"/fs{Value}");
+					prependEl.Attributes.Add("title", $"{SrcPrefix}{Value}");
 					var prependText = new TagBuilder("span");
 					prependText.AddCssClass("input-group-text");
 					var prependIcon = new TagBuilder("span");
@@ -84,9 +83,9 @@ namespace WebVella.TagHelpers.TagHelpers
 					fakeInputEl.Attributes.Add("class", String.Join(' ', inputElCssClassList));
 
 					var fakeInputFileLinkEl = new TagBuilder("a");
-					fakeInputFileLinkEl.Attributes.Add("href", $"/fs{Value}");
+					fakeInputFileLinkEl.Attributes.Add("href", $"{SrcPrefix}{Value}");
 					fakeInputFileLinkEl.Attributes.Add("target", "_blank");
-					fakeInputFileLinkEl.Attributes.Add("title", $"/fs{Value}");
+					fakeInputFileLinkEl.Attributes.Add("title", $"{SrcPrefix}{Value}");
 					fakeInputFileLinkEl.InnerHtml.Append(FileName);
 					fakeInputEl.InnerHtml.AppendHtml(fakeInputFileLinkEl);
 					var fakeInputProgress = new TagBuilder("div");
@@ -176,7 +175,8 @@ namespace WebVella.TagHelpers.TagHelpers
 						ApiUrl = ApiUrl,
 						CanAddValues = Access == WvFieldAccess.FullAndCreate ? true : false,
 						Accept = Accept,
-						FileUploadApi = FileUploadApi
+						FileUploadApi = FileUploadApi,
+						SrcPrefix = SrcPrefix
 					};
 
 					scriptTemplate = scriptTemplate.Replace("{{ConfigJson}}", JsonConvert.SerializeObject(fieldConfig));
@@ -195,7 +195,7 @@ namespace WebVella.TagHelpers.TagHelpers
 						inputGroupEl.AddCssClass("input-group");
 						var prependEl = new TagBuilder("span");
 						prependEl.AddCssClass($"input-group-prepend icon-addon {(ValidationErrors.Count > 0 ? "is-invalid" : "")}");
-						prependEl.Attributes.Add("title", $"/fs{Value}");
+						prependEl.Attributes.Add("title", $"{SrcPrefix}{Value}");
 						var prependText = new TagBuilder("span");
 						prependText.AddCssClass("input-group-text");
 						var prependIcon = new TagBuilder("span");
@@ -207,9 +207,9 @@ namespace WebVella.TagHelpers.TagHelpers
 						var inputEl = new TagBuilder("div");
 						inputEl.AddCssClass("form-control erp-file disabled");
 						var inputElLink = new TagBuilder("a");
-						inputElLink.Attributes.Add("href", $"/fs{Value}");
+						inputElLink.Attributes.Add("href", $"{SrcPrefix}{Value}");
 						inputElLink.Attributes.Add("target", "_blank");
-						inputElLink.Attributes.Add("title", $"/fs{Value}");
+						inputElLink.Attributes.Add("title", $"{SrcPrefix}{Value}");
 						inputElLink.InnerHtml.Append(FileName);
 						inputEl.InnerHtml.AppendHtml(inputElLink);
 						inputGroupEl.InnerHtml.AppendHtml(inputEl);
@@ -245,7 +245,7 @@ namespace WebVella.TagHelpers.TagHelpers
 					iconEl.AddCssClass($"fa fa-fw {PathTypeIcon}");
 					divEl.InnerHtml.AppendHtml(iconEl);
 					var linkEl = new TagBuilder("a");
-					linkEl.Attributes.Add("href", $"/fs{Value}");
+					linkEl.Attributes.Add("href", $"{SrcPrefix}{Value}");
 					linkEl.Attributes.Add("target", $"_blank");
 					linkEl.InnerHtml.Append(FileName);
 					divEl.InnerHtml.AppendHtml(linkEl);
@@ -260,7 +260,7 @@ namespace WebVella.TagHelpers.TagHelpers
 			{
 				output.SuppressOutput();
 				var linkEl = new TagBuilder("a");
-				linkEl.Attributes.Add("href", $"/fs{Value}");
+				linkEl.Attributes.Add("href", $"{SrcPrefix}{Value}");
 				linkEl.Attributes.Add("target", $"_blank");
 				linkEl.InnerHtml.Append(FileName);
 				output.Content.AppendHtml(linkEl);
@@ -279,7 +279,7 @@ namespace WebVella.TagHelpers.TagHelpers
 
 						var viewInputPrepend = new TagBuilder("span");
 						viewInputPrepend.AddCssClass($"input-group-prepend icon-addon");
-						viewInputPrepend.Attributes.Add("title", $"/fs{Value}");
+						viewInputPrepend.Attributes.Add("title", $"{SrcPrefix}{Value}");
 						var viewInputPrependText = new TagBuilder("span");
 						viewInputPrependText.AddCssClass("input-group-text");
 						var prependIcon = new TagBuilder("span");
@@ -292,9 +292,9 @@ namespace WebVella.TagHelpers.TagHelpers
 						viewFormControlEl.AddCssClass("form-control erp-file");
 
 						var viewFormControlLinkEl = new TagBuilder("a");
-						viewFormControlLinkEl.Attributes.Add("href", $"/fs{Value}");
+						viewFormControlLinkEl.Attributes.Add("href", $"{SrcPrefix}{Value}");
 						viewFormControlLinkEl.Attributes.Add("target", "_blank");
-						viewFormControlLinkEl.Attributes.Add("title", $"/fs{Value}");
+						viewFormControlLinkEl.Attributes.Add("title", $"{SrcPrefix}{Value}");
 						viewFormControlLinkEl.InnerHtml.Append(FileName);
 						viewFormControlEl.InnerHtml.AppendHtml(viewFormControlLinkEl);
 
@@ -330,7 +330,7 @@ namespace WebVella.TagHelpers.TagHelpers
 
 						var editWrapperPrependEl = new TagBuilder("span");
 						editWrapperPrependEl.AddCssClass($"input-group-prepend icon-addon {(ValidationErrors.Count > 0 ? "is-invalid" : "")}");
-						editWrapperPrependEl.Attributes.Add("title", $"/fs{Value}");
+						editWrapperPrependEl.Attributes.Add("title", $"{SrcPrefix}{Value}");
 						var editWrapperPrependText = new TagBuilder("span");
 						editWrapperPrependText.AddCssClass("input-group-text");
 						var editWrapperPrependIcon = new TagBuilder("span");
@@ -354,9 +354,9 @@ namespace WebVella.TagHelpers.TagHelpers
 						fakeInputEl.Attributes.Add("class", String.Join(' ', inputElCssClassList));
 
 						var fakeInputFileLinkEl = new TagBuilder("a");
-						fakeInputFileLinkEl.Attributes.Add("href", $"/fs{Value}");
+						fakeInputFileLinkEl.Attributes.Add("href", $"{SrcPrefix}{Value}");
 						fakeInputFileLinkEl.Attributes.Add("target", "_blank");
-						fakeInputFileLinkEl.Attributes.Add("title", $"/fs{Value}");
+						fakeInputFileLinkEl.Attributes.Add("title", $"{SrcPrefix}{Value}");
 						fakeInputFileLinkEl.InnerHtml.Append(FileName);
 						fakeInputEl.InnerHtml.AppendHtml(fakeInputFileLinkEl);
 						var fakeInputProgress = new TagBuilder("div");
@@ -477,7 +477,8 @@ namespace WebVella.TagHelpers.TagHelpers
 						ApiUrl = ApiUrl,
 						CanAddValues = Access == WvFieldAccess.FullAndCreate ? true : false,
 						Accept = Accept,
-						FileUploadApi = FileUploadApi
+						FileUploadApi = FileUploadApi,
+						SrcPrefix = SrcPrefix
 					};
 
 					scriptTemplate = scriptTemplate.Replace("{{ConfigJson}}", JsonConvert.SerializeObject(fieldConfig));
@@ -495,7 +496,7 @@ namespace WebVella.TagHelpers.TagHelpers
 
 					var prependEl = new TagBuilder("span");
 					prependEl.AddCssClass($"input-group-prepend icon-addon {(ValidationErrors.Count > 0 ? "is-invalid" : "")}");
-					prependEl.Attributes.Add("title", $"/fs{Value}");
+					prependEl.Attributes.Add("title", $"{SrcPrefix}{Value}");
 					var prependText = new TagBuilder("span");
 					prependText.AddCssClass("input-group-text");
 					var prependIcon = new TagBuilder("span");
@@ -507,9 +508,9 @@ namespace WebVella.TagHelpers.TagHelpers
 					var inputEl = new TagBuilder("div");
 					inputEl.AddCssClass("form-control erp-file disabled");
 					var inputElLink = new TagBuilder("a");
-					inputElLink.Attributes.Add("href", $"/fs{Value}");
+					inputElLink.Attributes.Add("href", $"{SrcPrefix}{Value}");
 					inputElLink.Attributes.Add("target", "_blank");
-					inputElLink.Attributes.Add("title", $"/fs{Value}");
+					inputElLink.Attributes.Add("title", $"{SrcPrefix}{Value}");
 					inputElLink.InnerHtml.Append(FileName);
 					inputEl.InnerHtml.AppendHtml(inputElLink);
 					divEl.InnerHtml.AppendHtml(inputEl);

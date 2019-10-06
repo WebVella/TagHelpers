@@ -309,7 +309,7 @@ namespace WebVella.TagHelpers.TagHelpers
 				CssClassList.Add(Class);
 			}
 			CssClassList.Add("form-group");
-			CssClassList.Add("erp-field");
+			CssClassList.Add("wv-field");
 			if (LabelMode == WvLabelRenderMode.Horizontal)
 			{
 				CssClassList.Add("label-horizontal");

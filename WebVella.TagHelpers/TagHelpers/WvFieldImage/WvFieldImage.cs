@@ -45,6 +45,9 @@ namespace WebVella.TagHelpers.TagHelpers.WvFieldImage
 		[HtmlAttributeName("file-upload-api")]
 		public string FileUploadApi { get; set; } = "/fs/upload";
 
+		[HtmlAttributeName("src-prefix")]
+		public string SrcPrefix { get; set; } = "/fs";
+
 		public override Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
 		{
 			if (!isVisible)
@@ -108,7 +111,7 @@ namespace WebVella.TagHelpers.TagHelpers.WvFieldImage
 
 					var viewImage = new TagBuilder("img");
 					viewImage.AddCssClass("wrapper-image");
-					viewImage.Attributes.Add("src", $"{Value}{ImageQuery}");
+					viewImage.Attributes.Add("src", $"{SrcPrefix}{Value}{ImageQuery}");
 					viewImage.Attributes.Add("title", $"{FileName}");
 					viewWrapper.InnerHtml.AppendHtml(viewImage);
 
@@ -208,7 +211,9 @@ namespace WebVella.TagHelpers.TagHelpers.WvFieldImage
 						Accept = Accept,
 						Width = Width,
 						Height = Height,
-						ResizeAction = ResizeAction
+						ResizeAction = ResizeAction,
+						FileUploadApi = FileUploadApi,
+						SrcPrefix = SrcPrefix
 					};
 
 					scriptTemplate = scriptTemplate.Replace("{{ConfigJson}}", JsonConvert.SerializeObject(fieldConfig));
@@ -228,7 +233,7 @@ namespace WebVella.TagHelpers.TagHelpers.WvFieldImage
 
 					var viewImage = new TagBuilder("img");
 					viewImage.AddCssClass("wrapper-image");
-					viewImage.Attributes.Add("src", $"{Value}{ImageQuery}");
+					viewImage.Attributes.Add("src", $"{SrcPrefix}{Value}{ImageQuery}");
 					viewImage.Attributes.Add("title", $"{FileName}");
 					viewWrapper.InnerHtml.AppendHtml(viewImage);
 
@@ -259,7 +264,7 @@ namespace WebVella.TagHelpers.TagHelpers.WvFieldImage
 
 					var viewImage = new TagBuilder("img");
 					viewImage.AddCssClass("wrapper-image");
-					viewImage.Attributes.Add("src", $"{Value}{ImageQuery}");
+					viewImage.Attributes.Add("src", $"{SrcPrefix}{Value}{ImageQuery}");
 					viewImage.Attributes.Add("title", $"{FileName}");
 					viewWrapper.InnerHtml.AppendHtml(viewImage);
 
@@ -277,7 +282,7 @@ namespace WebVella.TagHelpers.TagHelpers.WvFieldImage
 				output.SuppressOutput();
 				var viewImage = new TagBuilder("img");
 				viewImage.AddCssClass("img-fluid");
-				viewImage.Attributes.Add("src", $"{Value}{ImageQuery}");
+				viewImage.Attributes.Add("src", $"{SrcPrefix}{Value}{ImageQuery}");
 				viewImage.Attributes.Add("title", $"{FileName}");
 				output.Content.AppendHtml(viewImage);
 				return Task.CompletedTask;
@@ -295,7 +300,7 @@ namespace WebVella.TagHelpers.TagHelpers.WvFieldImage
 
 					var viewImage = new TagBuilder("img");
 					viewImage.AddCssClass("wrapper-image");
-					viewImage.Attributes.Add("src", $"{Value}{ImageQuery}");
+					viewImage.Attributes.Add("src", $"{SrcPrefix}{Value}{ImageQuery}");
 					viewImage.Attributes.Add("title", $"{FileName}");
 					viewWrapper.InnerHtml.AppendHtml(viewImage);
 
@@ -395,7 +400,9 @@ namespace WebVella.TagHelpers.TagHelpers.WvFieldImage
 						Accept = Accept,
 						Width = Width,
 						Height = Height,
-						ResizeAction = ResizeAction
+						ResizeAction = ResizeAction,
+						FileUploadApi = FileUploadApi,
+						SrcPrefix = SrcPrefix
 					};
 
 					scriptTemplate = scriptTemplate.Replace("{{ConfigJson}}", JsonConvert.SerializeObject(fieldConfig));
@@ -415,7 +422,7 @@ namespace WebVella.TagHelpers.TagHelpers.WvFieldImage
 
 					var viewImage = new TagBuilder("img");
 					viewImage.AddCssClass("wrapper-image");
-					viewImage.Attributes.Add("src", $"{Value}{ImageQuery}");
+					viewImage.Attributes.Add("src", $"{SrcPrefix}{Value}{ImageQuery}");
 					viewImage.Attributes.Add("title", $"{FileName}");
 					viewWrapper.InnerHtml.AppendHtml(viewImage);
 

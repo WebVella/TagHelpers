@@ -72,7 +72,7 @@ function FileFormInit(fieldId, fieldName, config) {
 							err = JSON.parse(xhr.responseText).Message;
 						$(selectors.fakeInputEl).addClass("is-invalid");
 						$(selectors.fakeInputEl).closest(".input-group").after("<div class='invalid-feedback'>" + response.message + "</div>");
-						$(selectors.fakeInputEl).closest(".erp-field").find(".invalid-feedback").first().show();
+						$(selectors.fakeInputEl).closest(".wv-field").find(".invalid-feedback").first().show();
 						toastr.error("An error occurred", 'Error!', { closeButton: true, tapToDismiss: true });
 						console.log(err);
 					}
