@@ -4,12 +4,12 @@ namespace System
 	public  static class DateTimeExtensions
 	{
 
-		public static DateTime ClearKind(this DateTime datetime)
+		public static DateTime WvClearKind(this DateTime datetime)
 		{
-			return ((DateTime?)datetime).ClearKind().Value;
+			return ((DateTime?)datetime).WvClearKind().Value;
 		}
 
-		public static DateTime? ClearKind(this DateTime? datetime)
+		public static DateTime? WvClearKind(this DateTime? datetime)
 		{
 			if (datetime == null)
 				return null;
@@ -17,12 +17,12 @@ namespace System
 			return new DateTime(datetime.Value.Ticks, DateTimeKind.Unspecified);
 		}
 
-		public static DateTime ConvertToTZDate(this DateTime datetime, string timeZoneName)
+		public static DateTime WvConvertToTZDate(this DateTime datetime, string timeZoneName)
 		{
-			return ((DateTime?)datetime).ConvertToTZDate(timeZoneName).Value;
+			return ((DateTime?)datetime).WvConvertToTZDate(timeZoneName).Value;
 		}
 
-		public static DateTime? ConvertToTZDate(this DateTime? datetime, string timeZoneName )
+		public static DateTime? WvConvertToTZDate(this DateTime? datetime, string timeZoneName )
         {
 			if (datetime == null)
 				return null;
@@ -31,12 +31,12 @@ namespace System
 			return TimeZoneInfo.ConvertTimeBySystemTimeZoneId(datetime.Value, appTimeZone.Id);
 		}
 
-		public static DateTime ConvertTZDateToUtc(this DateTime datetime, string timeZoneName)
+		public static DateTime WvConvertTZDateToUtc(this DateTime datetime, string timeZoneName)
 		{
-			return ((DateTime?)datetime).ConvertTZDateToUtc(timeZoneName).Value;
+			return ((DateTime?)datetime).WvConvertTZDateToUtc(timeZoneName).Value;
 		}
 
-		public static DateTime? ConvertTZDateToUtc(this DateTime? inputDate, string timeZoneName)
+		public static DateTime? WvConvertTZDateToUtc(this DateTime? inputDate, string timeZoneName)
 		{
 			if (inputDate == null)
 				return null;

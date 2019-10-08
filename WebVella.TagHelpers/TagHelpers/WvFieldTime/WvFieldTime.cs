@@ -59,7 +59,7 @@ namespace WebVella.TagHelpers.TagHelpers
 				var inputEditValue = "";
 				if (Value != null)
 				{
-					inputReadOnlyValue = (Value as DateTime? ?? (DateTime?)DateTime.Now).ConvertToTZDate(TimezoneName).Value.ToString("HH:mm", Culture);
+					inputReadOnlyValue = (Value as DateTime? ?? (DateTime?)DateTime.Now).WvConvertToTZDate(TimezoneName).Value.ToString("HH:mm", Culture);
 					inputEditValue = (Value ?? DateTime.Now).ToString("yyyy-MM-ddTHH:mm:ss");
 				}
 
@@ -203,7 +203,7 @@ namespace WebVella.TagHelpers.TagHelpers
 			{
 				if (Value != null)
 				{
-					var inputReadOnlyValue = (Value as DateTime? ?? (DateTime?)DateTime.Now).ConvertToTZDate(TimezoneName).Value.ToString("HH:mm", Culture);
+					var inputReadOnlyValue = (Value as DateTime? ?? (DateTime?)DateTime.Now).WvConvertToTZDate(TimezoneName).Value.ToString("HH:mm", Culture);
 
 					var divEl = new TagBuilder("div");
 					divEl.Attributes.Add("id", $"input-{FieldId}");
@@ -222,7 +222,7 @@ namespace WebVella.TagHelpers.TagHelpers
 				if (Value != null)
 				{
 					output.SuppressOutput();
-					var inputReadOnlyValue = (Value as DateTime? ?? (DateTime?)DateTime.Now).ConvertToTZDate(TimezoneName).Value.ToString("HH:mm", Culture);
+					var inputReadOnlyValue = (Value as DateTime? ?? (DateTime?)DateTime.Now).WvConvertToTZDate(TimezoneName).Value.ToString("HH:mm", Culture);
 					output.Content.AppendHtml(inputReadOnlyValue);
 				}
 				else
@@ -241,7 +241,7 @@ namespace WebVella.TagHelpers.TagHelpers
 					var readOnlyInputValue = "";
 					if (Value != null)
 					{
-						readOnlyInputValue = (Value as DateTime? ?? (DateTime?)DateTime.Now).ConvertToTZDate(TimezoneName).Value.ToString("HH:mm", Culture);
+						readOnlyInputValue = (Value as DateTime? ?? (DateTime?)DateTime.Now).WvConvertToTZDate(TimezoneName).Value.ToString("HH:mm", Culture);
 						editInpuValue = (Value ?? DateTime.Now).ToString("yyyy-MM-ddTHH:mm:ss");
 					}
 
@@ -422,7 +422,7 @@ namespace WebVella.TagHelpers.TagHelpers
 					var readOnlyInputValue = "";
 					if (Value != null)
 					{
-						readOnlyInputValue = (Value as DateTime? ?? (DateTime?)DateTime.Now).ConvertToTZDate(TimezoneName).Value.ToString("HH:mm", Culture);
+						readOnlyInputValue = (Value as DateTime? ?? (DateTime?)DateTime.Now).WvConvertToTZDate(TimezoneName).Value.ToString("HH:mm", Culture);
 					}
 
 					var divEl = new TagBuilder("div");

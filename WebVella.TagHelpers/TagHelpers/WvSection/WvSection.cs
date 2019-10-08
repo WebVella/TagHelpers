@@ -23,6 +23,9 @@ namespace WebVella.TagHelpers.TagHelpers
 		[HtmlAttributeName("class")]
 		public string Class { get; set; } = "";
 
+		[HtmlAttributeName("title-class")]
+		public string TitleClass { get; set; } = "";
+
 		[HtmlAttributeName("body-class")]
 		public string BodyClass { get; set; } = "";
 
@@ -119,7 +122,7 @@ namespace WebVella.TagHelpers.TagHelpers
 				if (!String.IsNullOrWhiteSpace(Title))
 				{
 					var titleEl = new TagBuilder(TitleTag);
-					titleEl.AddCssClass("lns-header");
+					titleEl.AddCssClass($"lns-header");
 
 					if (!IsCollapsable)
 					{
@@ -179,7 +182,7 @@ namespace WebVella.TagHelpers.TagHelpers
 					{
 						output.AddCssClass("lns-nc");
 						var cardHeader = new TagBuilder("div");
-						cardHeader.AddCssClass("card-header");
+						cardHeader.AddCssClass($"card-header {TitleClass}");
 
 						//cardHeader.InnerHtml.AppendHtml("<div class='float-right'>test</div>");
 
@@ -193,7 +196,7 @@ namespace WebVella.TagHelpers.TagHelpers
 					{
 						output.AddCssClass("lns-c");
 						var cardHeader = new TagBuilder("a");
-						cardHeader.AddCssClass("card-header pl-1 lns-header");
+						cardHeader.AddCssClass($"card-header pl-1 lns-header {TitleClass}");
 						cardHeader.Attributes.Add("data-toggle", "collapse");
 						cardHeader.Attributes.Add("href", "#collapse-" + Id);
 						var iconEl = new TagBuilder("span");
