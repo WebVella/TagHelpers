@@ -1,8 +1,20 @@
 ﻿/*#region << General >>*/
+.wv-field .control-label {
+	font-weight:bold;
+}
+
+.wv-field.display .form-control-plaintext {
+	padding: 0.375rem;
+	background: #f5f5f5;
+	min-height:calc(1.5rem + 0.375rem + 0.375rem);
+}
+
 .wv-field .invalid-feedback ul,
 .wv-field .invalid-feedback ol {
-	padding-left:1.25rem;
+	padding-left: 1.25rem;
 }
+
+
 /*#endregion*/
 
 /*#region << wv-alert >>*/
@@ -157,16 +169,20 @@
 
 /*#region <<wv-field-color>>*/
 .sp-container {
-	background: #fff;
-	box-shadow: 1px 1px 5px rgba(0,0,0,0.25);
-	border: solid 1px #eee;
+	background: #fff !important;
+	box-shadow: 1px 1px 5px rgba(0,0,0,0.25) !important;
+	border: solid 1px #eee !important;
 }
 
-
+.sp-replacer {
+	background: #fafafa !important;
+	border: 1px solid #ced4da !important;
+	border-radius:0.25rem !important;
+}
 
 .sp-palette .sp-thumb-el {
-	margin: 3px 3px;
-	border: 1px solid #eee;
+	margin: 3px 3px !important;
+	border: 1px solid #eee !important;
 }
 
 .wv-field-color .display .form-control-plaintext.erp-color .color-box {
@@ -506,7 +522,7 @@
 	padding-left: 5px !important;
 }
 
-erp-field.inline-edit .select2-container--bootstrap4 .select2-search--inline .select2-search__field,
+.wv-field.inline-edit .select2-container--bootstrap4 .select2-search--inline .select2-search__field,
 .wv-field-multiselect.inline-edit.select2:not(.disabled) .select2-selection__choice {
 	margin-top: 3px !important;
 }
@@ -537,6 +553,25 @@ erp-field.inline-edit .select2-container--bootstrap4 .select2-search--inline .se
 	border-color: rgba(244, 67, 54,1) !important;
 }
 
+.wv-field-multiselect.display .select2-selection__rendered {
+	margin-bottom: 0;
+	min-height: calc(1.5rem + 0.375rem + 0.375rem);
+	width: 100%;
+	background: #f5f5f5;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+	.wv-field-multiselect.display .select2-selection__rendered .select2-selection__choice {
+		display: inline-block !important;
+		background: #fff !important;
+		padding: 0.15rem 0.25rem;
+		border-radius: .25rem;
+		border: 1px solid #ccc;
+		margin: 0.25rem;
+	}
+
 /*#endregion*/
 
 /*#endregion*/
@@ -562,18 +597,19 @@ erp-field.inline-edit .select2-container--bootstrap4 .select2-search--inline .se
 	}
 
 
-.erp-field .select2-selection {
+.wv-field .select2-selection {
 	border: none !important;
 	background: transparent !important;
 }
 
-.erp-field.form .select2-selection {
+.wv-field.form .select2-selection {
 	border: 1px solid #ced4da !important;
 }
 
-.erp-field.display .select2-selection ul {
+.wv-field.display .select2-selection ul {
 	padding: 0;
 }
+
 
 /*#endregion*/
 

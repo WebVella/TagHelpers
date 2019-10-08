@@ -28,6 +28,9 @@ namespace WebVella.TagHelpers.Utilities
 				assembly = Assembly.GetExecutingAssembly();
 			}
 			Stream resource = assembly.GetManifestResourceStream(resourceName);
+			if(resource == null)
+				throw new Exception($"file: {name} in resource: {resourceName} not found as embedded resource");
+
 			StreamReader reader = new StreamReader(resource);
 			return reader.ReadToEnd();
 		}

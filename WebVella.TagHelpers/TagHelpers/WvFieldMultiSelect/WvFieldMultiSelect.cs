@@ -234,7 +234,7 @@ namespace WebVella.TagHelpers.TagHelpers
 					}
 					if (!tagHelperInitialized)
 					{
-						var scriptContent = WvHelpers.GetEmbeddedTextResource("form.js", "WebVella.TagHelpers.TagHelpers.WvFieldMultiSelect");
+						var scriptContent = WvHelpers.GetEmbeddedTextResource("form.js", "WebVella.TagHelpers.TagHelpers.WvFieldMultiSelect","WebVella.TagHelpers");
 						var scriptEl = new TagBuilder("script");
 						scriptEl.Attributes.Add("type", "text/javascript");
 						scriptEl.InnerHtml.AppendHtml(jsCompressor.Compress(scriptContent));
@@ -393,7 +393,7 @@ namespace WebVella.TagHelpers.TagHelpers
 
 					var select2ContainerEl = new TagBuilder("span");
 					select2ContainerEl.Attributes.Add("id", $"input-{FieldId}");
-					select2ContainerEl.AddCssClass("select2 select2-container select2-container--default d-block disabled clean");
+					select2ContainerEl.AddCssClass("select2 select2-container select2-container--bootstrap4 d-block disabled clean");
 
 					var select2SelectionEl = new TagBuilder("span");
 					select2SelectionEl.AddCssClass("selection");
@@ -513,7 +513,7 @@ namespace WebVella.TagHelpers.TagHelpers
 						viewFormControlEl.AddCssClass("form-control erp-multiselect");
 
 						var select2ContainerEl = new TagBuilder("span");
-						select2ContainerEl.AddCssClass("select2 select2-container select2-container--default d-block disabled");
+						select2ContainerEl.AddCssClass("select2 select2-container select2-container--bootstrap4 d-block disabled");
 
 						var select2SelectionEl = new TagBuilder("span");
 						select2SelectionEl.AddCssClass("selection");
@@ -713,7 +713,7 @@ namespace WebVella.TagHelpers.TagHelpers
 					}
 					if (!tagHelperInitialized)
 					{
-						var scriptContent = WvHelpers.GetEmbeddedTextResource("inline-edit.js", "WebVella.TagHelpers.TagHelpers.WvFieldMultiSelect");
+						var scriptContent = WvHelpers.GetEmbeddedTextResource("inline-edit.js", "WebVella.TagHelpers.TagHelpers.WvFieldMultiSelect","WebVella.TagHelpers");
 						var scriptEl = new TagBuilder("script");
 						scriptEl.Attributes.Add("type", "text/javascript");
 						scriptEl.InnerHtml.AppendHtml(jsCompressor.Compress(scriptContent));
@@ -775,7 +775,7 @@ namespace WebVella.TagHelpers.TagHelpers
 					viewFormControlEl.AddCssClass("form-control erp-multiselect");
 
 					var select2ContainerEl = new TagBuilder("span");
-					select2ContainerEl.AddCssClass("select2 select2-container select2-container--default d-block disabled");
+					select2ContainerEl.AddCssClass("select2 select2-container select2-container--bootstrap4 d-block disabled");
 
 					var select2SelectionEl = new TagBuilder("span");
 					select2SelectionEl.AddCssClass("selection");

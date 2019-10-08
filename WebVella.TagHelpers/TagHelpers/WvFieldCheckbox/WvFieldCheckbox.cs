@@ -100,7 +100,7 @@ namespace WebVella.TagHelpers.TagHelpers
 				}
 				if (!tagHelperInitialized)
 				{
-					var scriptContent = WvHelpers.GetEmbeddedTextResource("form.js", "WebVella.TagHelpers.TagHelpers.WvFieldCheckbox");
+					var scriptContent = WvHelpers.GetEmbeddedTextResource("form.js", "WebVella.TagHelpers.TagHelpers.WvFieldCheckbox","WebVella.TagHelpers");
 					var scriptEl = new TagBuilder("script");
 					scriptEl.Attributes.Add("type", "text/javascript");
 					scriptEl.InnerHtml.AppendHtml(jsCompressor.Compress(scriptContent));
@@ -278,7 +278,7 @@ namespace WebVella.TagHelpers.TagHelpers
 						}
 						if (!tagHelperInitialized)
 						{
-							var scriptContent = WvHelpers.GetEmbeddedTextResource("inline-edit.js", "WebVella.TagHelpers.TagHelpers.WvFieldCheckbox");
+							var scriptContent = WvHelpers.GetEmbeddedTextResource("inline-edit.js", "WebVella.TagHelpers.TagHelpers.WvFieldCheckbox","WebVella.TagHelpers");
 							var scriptEl = new TagBuilder("script");
 							scriptEl.Attributes.Add("type", "text/javascript");
 							scriptEl.InnerHtml.AppendHtml(jsCompressor.Compress(scriptContent));

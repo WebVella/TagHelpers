@@ -191,7 +191,7 @@ namespace WebVella.TagHelpers.TagHelpers
 				}
 				if (!tagHelperInitialized)
 				{
-					var scriptContent = WvHelpers.GetEmbeddedTextResource(fileName, "WebVella.TagHelpers.TagHelpers.WvFieldCheckboxGrid");
+					var scriptContent = WvHelpers.GetEmbeddedTextResource(fileName, "WebVella.TagHelpers.TagHelpers.WvFieldCheckboxGrid","WebVella.TagHelpers");
 					var scriptEl = new TagBuilder("script");
 					scriptEl.Attributes.Add("type", "text/javascript");
 					scriptEl.InnerHtml.AppendHtml(jsCompressor.Compress(scriptContent));

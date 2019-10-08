@@ -117,7 +117,7 @@ namespace WebVella.TagHelpers.TagHelpers
 				}
 				if (!tagHelperInitialized)
 				{
-					var scriptContent = WvHelpers.GetEmbeddedTextResource(fileName, "WebVella.TagHelpers.TagHelpers.WvFieldCode");
+					var scriptContent = WvHelpers.GetEmbeddedTextResource(fileName, "WebVella.TagHelpers.TagHelpers.WvFieldCode","WebVella.TagHelpers");
 					var scriptEl = new TagBuilder("script");
 					scriptEl.Attributes.Add("type", "text/javascript");
 					scriptEl.InnerHtml.AppendHtml(jsCompressor.Compress(scriptContent));

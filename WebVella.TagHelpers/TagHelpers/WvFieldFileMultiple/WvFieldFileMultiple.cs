@@ -165,7 +165,7 @@ namespace WebVella.TagHelpers.TagHelpers
 						}
 						if (!tagHelperInitialized)
 						{
-							var scriptContent = WvHelpers.GetEmbeddedTextResource("form.js", "WebVella.TagHelpers.TagHelpers.WvFieldFileMultiple");
+							var scriptContent = WvHelpers.GetEmbeddedTextResource("form.js", "WebVella.TagHelpers.TagHelpers.WvFieldFileMultiple","WebVella.TagHelpers");
 							var scriptEl = new TagBuilder("script");
 							scriptEl.Attributes.Add("type", "text/javascript");
 							//scriptEl.InnerHtml.AppendHtml(scriptContent);

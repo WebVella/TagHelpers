@@ -266,7 +266,7 @@ namespace WebVella.TagHelpers.TagHelpers
 					}
 					if (!tagHelperInitialized)
 					{
-						var scriptContent = WvHelpers.GetEmbeddedTextResource("inline-edit.js", "WebVella.TagHelpers.TagHelpers.WvFieldEmail");
+						var scriptContent = WvHelpers.GetEmbeddedTextResource("inline-edit.js", "WebVella.TagHelpers.TagHelpers.WvFieldEmail","WebVella.TagHelpers");
 						var scriptEl = new TagBuilder("script");
 						scriptEl.Attributes.Add("type", "text/javascript");
 						scriptEl.InnerHtml.AppendHtml(jsCompressor.Compress(scriptContent));

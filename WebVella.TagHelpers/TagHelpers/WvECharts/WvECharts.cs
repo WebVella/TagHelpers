@@ -473,7 +473,7 @@ myChart.on('click', function (params) {
 			var fieldConfig = new WvFieldSelectConfig()
 			{
 			};
-			var usaJson = WvHelpers.GetEmbeddedTextResource("usa.json", "WebVella.TagHelpers.TagHelpers.WvECharts");
+			var usaJson = WvHelpers.GetEmbeddedTextResource("usa.json", "WebVella.TagHelpers.TagHelpers.WvECharts","WebVella.TagHelpers");
 			scriptTemplate = scriptTemplate.Replace("{{OPTIONS}}", JsonConvert.SerializeObject(options));
 			scriptTemplate = scriptTemplate.Replace("{{USAJSON}}", usaJson);
 			scriptTemplate = scriptTemplate.Replace("{{ELEMENTID}}", ElementId.ToString());

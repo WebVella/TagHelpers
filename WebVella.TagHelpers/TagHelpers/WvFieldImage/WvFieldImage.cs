@@ -111,7 +111,13 @@ namespace WebVella.TagHelpers.TagHelpers.WvFieldImage
 
 					var viewImage = new TagBuilder("img");
 					viewImage.AddCssClass("wrapper-image");
-					viewImage.Attributes.Add("src", $"{SrcPrefix}{Value}{ImageQuery}");
+					if(!String.IsNullOrWhiteSpace(Value)){
+						viewImage.Attributes.Add("src", $"{SrcPrefix}{Value}{ImageQuery}");
+					}
+					else{
+						viewImage.Attributes.Add("src", $"");
+					}
+					
 					viewImage.Attributes.Add("title", $"{FileName}");
 					viewWrapper.InnerHtml.AppendHtml(viewImage);
 
@@ -180,7 +186,7 @@ namespace WebVella.TagHelpers.TagHelpers.WvFieldImage
 					}
 					if (!tagHelperInitialized)
 					{
-						var scriptContent = WvHelpers.GetEmbeddedTextResource("form.js", "WebVella.TagHelpers.TagHelpers.WvFieldImage");
+						var scriptContent = WvHelpers.GetEmbeddedTextResource("form.js", "WebVella.TagHelpers.TagHelpers.WvFieldImage","WebVella.TagHelpers");
 						var scriptEl = new TagBuilder("script");
 						scriptEl.Attributes.Add("type", "text/javascript");
 						scriptEl.InnerHtml.AppendHtml(jsCompressor.Compress(scriptContent));
@@ -369,7 +375,7 @@ namespace WebVella.TagHelpers.TagHelpers.WvFieldImage
 					}
 					if (!tagHelperInitialized)
 					{
-						var scriptContent = WvHelpers.GetEmbeddedTextResource("inline-edit.js", "WebVella.TagHelpers.TagHelpers.WvFieldImage");
+						var scriptContent = WvHelpers.GetEmbeddedTextResource("inline-edit.js", "WebVella.TagHelpers.TagHelpers.WvFieldImage","WebVella.TagHelpers");
 						var scriptEl = new TagBuilder("script");
 						scriptEl.Attributes.Add("type", "text/javascript");
 						scriptEl.InnerHtml.AppendHtml(jsCompressor.Compress(scriptContent));

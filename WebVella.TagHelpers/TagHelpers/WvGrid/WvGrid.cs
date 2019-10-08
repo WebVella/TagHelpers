@@ -373,7 +373,7 @@ namespace WebVella.TagHelpers.TagHelpers
 			}
 			if (!tagHelperInitialized)
 			{
-				var scriptContent = WvHelpers.GetEmbeddedTextResource("sort-and-page.js", "WebVella.TagHelpers.TagHelpers.WvGrid");
+				var scriptContent = WvHelpers.GetEmbeddedTextResource("sort-and-page.js", "WebVella.TagHelpers.TagHelpers.WvGrid","WebVella.TagHelpers");
 				var scriptEl = new TagBuilder("script");
 				scriptEl.Attributes.Add("type", "text/javascript");
 				scriptEl.InnerHtml.AppendHtml(jsCompressor.Compress(scriptContent));
