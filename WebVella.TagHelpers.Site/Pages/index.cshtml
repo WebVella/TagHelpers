@@ -478,7 +478,7 @@
 					Form
 				</div>
 				<div class="card-body">
-					<wv-field-date value="@DateTime.Now" label-text="FieldLabel" name="text" mode="Form"></wv-field-date>
+					<wv-field-date value="@DateTime.Now" label-text="FieldLabel" name="text" mode="Form" required="true"></wv-field-date>
 				</div>
 			</div>
 		</div>
@@ -488,7 +488,7 @@
 					Inline Edit
 				</div>
 				<div class="card-body">
-					<wv-field-date value="@DateTime.Now" label-text="FieldLabel" name="text" mode="InlineEdit" api-url="@apiUrl"></wv-field-date>
+					<wv-field-date value="@DateTime.Now" label-text="FieldLabel" name="text" mode="InlineEdit" api-url="@apiUrl"  required="true"></wv-field-date>
 				</div>
 			</div>
 		</div>
@@ -498,7 +498,7 @@
 					Display
 				</div>
 				<div class="card-body">
-					<wv-field-date value="@DateTime.Now" label-text="FieldLabel" name="text" mode="Display"></wv-field-date>
+					<wv-field-date value="@DateTime.Now" label-text="FieldLabel" name="text" mode="Display"  required="true"></wv-field-date>
 				</div>
 			</div>
 		</div>
@@ -874,7 +874,7 @@
 					Form
 				</div>
 				<div class="card-body">
-					<wv-field-image value="@fileVal" label-text="FieldLabel" name="text" mode="Form"></wv-field-image>
+					<wv-field-image value="@fileVal" label-text="FieldLabel" name="text" mode="Form" src-prefix="@null"></wv-field-image>
 				</div>
 			</div>
 		</div>
@@ -884,7 +884,7 @@
 					Inline Edit
 				</div>
 				<div class="card-body">
-					<wv-field-image value="@fileVal" label-text="FieldLabel" name="text" mode="InlineEdit" api-url="@apiUrl"></wv-field-image>
+					<wv-field-image value="@fileVal" label-text="FieldLabel" name="text" mode="InlineEdit" api-url="@apiUrl"  src-prefix="@null"></wv-field-image>
 				</div>
 			</div>
 		</div>
@@ -894,7 +894,7 @@
 					Display
 				</div>
 				<div class="card-body">
-					<wv-field-image value="@fileVal" label-text="FieldLabel" name="text" mode="Display"></wv-field-image>
+					<wv-field-image value="@fileVal" label-text="FieldLabel" name="text" mode="Display" src-prefix="@null"></wv-field-image>
 				</div>
 			</div>
 		</div>
@@ -904,7 +904,7 @@
 					Display
 				</div>
 				<div class="card-body">
-					<wv-field-image value="@fileVal" label-text="FieldLabel" name="text" mode="Simple"></wv-field-image>
+					<wv-field-image value="@fileVal" label-text="FieldLabel" name="text" mode="Simple" src-prefix="@null"></wv-field-image>
 				</div>
 			</div>
 		</div>

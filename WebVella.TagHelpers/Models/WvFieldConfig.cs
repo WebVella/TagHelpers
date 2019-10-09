@@ -8,6 +8,7 @@ namespace WebVella.TagHelpers.Models
 		{
 			CanAddValues = null;
 			ApiUrl = "";
+			IsRequired = false;
 		}
 
 		[JsonProperty(PropertyName = "can_add_values")]
@@ -15,6 +16,9 @@ namespace WebVella.TagHelpers.Models
 
 		[JsonProperty(PropertyName = "api_url")]
 		public string ApiUrl { get; set; }
+
+		[JsonProperty(PropertyName = "is_required")]
+		public bool IsRequired { get; set; }
 	}
 
 	public enum HtmlUploadMode

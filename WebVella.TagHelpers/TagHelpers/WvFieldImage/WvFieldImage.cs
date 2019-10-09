@@ -50,6 +50,7 @@ namespace WebVella.TagHelpers.TagHelpers.WvFieldImage
 
 		public override Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
 		{
+
 			if (!isVisible)
 			{
 				output.SuppressOutput();
@@ -93,7 +94,10 @@ namespace WebVella.TagHelpers.TagHelpers.WvFieldImage
 			}
 
 			WrapperStyle = String.Join(";", StylesList);
-			ImageQuery = "?" + String.Join("&", QueryCommandsList);
+			ImageQuery = "";
+			if(QueryCommandsList.Count > 0){
+				ImageQuery = "?" + String.Join("&", QueryCommandsList);
+			}
 			#endregion
 
 			#region << Render >>

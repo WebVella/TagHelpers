@@ -189,9 +189,15 @@ namespace WebVella.TagHelpers.TagHelpers
 					initScript.Attributes.Add("type", "text/javascript");
 					var scriptTemplate = @"
 						$(function(){
-							InitFlatPickrTime(""#input-{{FieldId}}"");
+							InitFlatPickrTime(""#input-{{FieldId}}"",{{ConfigJson}});
 						});";
 					scriptTemplate = scriptTemplate.Replace("{{FieldId}}", (FieldId ?? null).ToString());
+
+					var fieldConfig = new WvFieldDateConfig()
+					{
+						IsRequired = Required
+					};
+					scriptTemplate = scriptTemplate.Replace("{{ConfigJson}}", JsonConvert.SerializeObject(fieldConfig));
 
 					initScript.InnerHtml.AppendHtml(jsCompressor.Compress(scriptTemplate));
 
@@ -407,7 +413,8 @@ namespace WebVella.TagHelpers.TagHelpers
 					var fieldConfig = new WvFieldDateTimeConfig()
 					{
 						ApiUrl = ApiUrl,
-						CanAddValues = Access == WvFieldAccess.FullAndCreate ? true : false
+						CanAddValues = Access == WvFieldAccess.FullAndCreate ? true : false,
+						IsRequired = Required
 					};
 
 					scriptTemplate = scriptTemplate.Replace("{{ConfigJson}}", JsonConvert.SerializeObject(fieldConfig));

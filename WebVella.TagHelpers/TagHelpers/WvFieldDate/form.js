@@ -3,31 +3,34 @@ var datePickerDictionary = {};
 var flatPickrServerDateFormat = "Y-m-dTH:i:S";
 var flatPickrUiDateFormat = "d M Y";
 //From the server dates will be received yyyy-MM-ddTHH:mm:ss.fff
-function InitFlatPickrDate(fieldId) {
+function InitFlatPickrDate(fieldId, config) {
+	config = ProcessConfig(config);
 	var selector = "#input-" + fieldId;
 	if (document.querySelector(selector)) {
 		var inputGroulEl = $(selector).closest(".input-group");
-		//Inject clear link
-		inputGroulEl.append("<a href='#' class='clear-link d-none'><i class='fa fa-times'><i></a>");
 
-		var clearLink = inputGroulEl.find(".clear-link");
-		//Show clear link if value not null or empty
-		if ($(selector).val()) {
-			clearLink.removeClass("d-none");
+		if(!config.is_required){
+			//Inject clear link
+			inputGroulEl.append("<a href='#' class='clear-link d-none'><i class='fa fa-times'><i></a>");
+
+			var clearLink = inputGroulEl.find(".clear-link");
+			//Show clear link if value not null or empty
+			if ($(selector).val()) {
+				clearLink.removeClass("d-none");
+			}
+
+			clearLink.click(function (event) {
+				event.preventDefault();
+				var fp = document.querySelector(selector)._flatpickr;
+				if (fp) {
+					fp.clear();
+				}
+				else {
+					$(selector).val(null);
+				}
+				clearLink.addClass("d-none");
+			});
 		}
-
-		clearLink.click(function (event) {
-			event.preventDefault();
-			var fp = document.querySelector(selector)._flatpickr;
-			if (fp) {
-				fp.clear();
-			}
-			else {
-				$(selector).val(null);
-			}
-			clearLink.addClass("d-none");
-		});
-
 
 		var fp = document.querySelector(selector)._flatpickr;
 		if (!fp) {
@@ -40,7 +43,7 @@ function InitFlatPickrDate(fieldId) {
 				altInput: true, 
 				altFormat: flatPickrUiDateFormat,
 				onChange: function (selectedDates) {
-					if (selectedDates && selectedDates.length > 0) {
+					if (!config.is_required && selectedDates && selectedDates.length > 0) {
 						clearLink.removeClass("d-none");
 					}
 				}
