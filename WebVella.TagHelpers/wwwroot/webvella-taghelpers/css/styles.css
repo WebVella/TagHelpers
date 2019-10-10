@@ -576,8 +576,12 @@
 
 /*#endregion*/
 
+/*#region <<.>>*/
+.wv-field-checkbox-grid.display .form-control {
+	padding:0;
+}
+/*#endregion*/
 /*#region <<wv-field-select>>*/
-
 .wv-field-select .edit-wrapper .form-control.erp-select {
 	padding: 0;
 }

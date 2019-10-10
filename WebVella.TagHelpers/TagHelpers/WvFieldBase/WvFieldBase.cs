@@ -164,7 +164,7 @@ namespace WebVella.TagHelpers.TagHelpers
 			if (ValidationErrors.Count == 0)
 			{
 				//Check if it is defined in form group
-				if (context.Items.ContainsKey("WvTagHelperValidationErrors"))
+				if (context.Items.ContainsKey("WvTagHelperValidationErrors") && context.Items["WvTagHelperValidationErrors"] != null)
 				{
 					var validationErrors = (List<KeyValuePair<string, string>>)context.Items["WvTagHelperValidationErrors"];
 					if (validationErrors != null & validationErrors.Count > 0)
