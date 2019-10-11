@@ -158,7 +158,7 @@ namespace WebVella.TagHelpers.TagHelpers
 			}
 			if (ValidationErrors.Count > 0)
 			{
-				ValidationErrors = ValidationErrors.FindAll(x => x.Key.ToLowerInvariant() == Name.ToLowerInvariant()).ToList();
+				ValidationErrors = ValidationErrors.FindAll(x => (x.Key ?? "").ToLowerInvariant() == (Name ?? "").ToLowerInvariant()).ToList();
 			}
 
 			if (ValidationErrors.Count == 0)
@@ -169,7 +169,7 @@ namespace WebVella.TagHelpers.TagHelpers
 					var validationErrors = (List<KeyValuePair<string, string>>)context.Items["WvTagHelperValidationErrors"];
 					if (validationErrors != null & validationErrors.Count > 0)
 					{
-						ValidationErrors = validationErrors.FindAll(x => x.Key.ToLowerInvariant() == Name.ToLowerInvariant());
+						ValidationErrors = validationErrors.FindAll(x => (x.Key ?? "").ToLowerInvariant() == (Name ?? "").ToLowerInvariant());
 					}
 				}
 			}
@@ -453,6 +453,15 @@ namespace WebVella.TagHelpers.TagHelpers
 
 			#endregion
 
+			#region << Render description >>
+			if (!String.IsNullOrWhiteSpace(Description))
+			{
+				var descriptionEl = new TagBuilder("div");
+				descriptionEl.AddCssClass("field-description post-label");
+				descriptionEl.InnerHtml.AppendHtml(Description);
+				output.PreContent.AppendHtml(descriptionEl);
+			}
+			#endregion
 
 			#region << Field Outer Wrapper tag - StartTag >>
 			var fieldWrapper = new TagBuilder("div");
@@ -560,12 +569,12 @@ namespace WebVella.TagHelpers.TagHelpers
 				}
 				SubInputEl.InnerHtml.AppendHtml(errorListEl);
 			}
-			else if (!String.IsNullOrWhiteSpace(Description))
-			{
-				SubInputEl = new TagBuilder("div");
-				SubInputEl.AddCssClass("field-description form-text text-muted");
-				SubInputEl.InnerHtml.AppendHtml(Description);
-			}
+			//else if (!String.IsNullOrWhiteSpace(Description))
+			//{
+			//	SubInputEl = new TagBuilder("div");
+			//	SubInputEl.AddCssClass("field-description form-text text-muted");
+			//	SubInputEl.InnerHtml.AppendHtml(Description);
+			//}
 			#endregion
 
 			#region << Init  EmptyValEl>>

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using HtmlAgilityPack;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using Newtonsoft.Json;
 using System;
@@ -27,19 +28,19 @@ namespace WebVella.TagHelpers.TagHelpers
 
 		private WvCurrencyType Currency { get; set; } = null;
 
-		public override Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
+		public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
 		{
 			if (!isVisible)
 			{
 				output.SuppressOutput();
-				return Task.CompletedTask;
+				return;
 			}
 			#region << Init >>
 			var initSuccess = InitField(context, output);
 
 			if (!initSuccess)
 			{
-				return Task.CompletedTask;
+				return;
 			}
 
 			if (Currency == null)
@@ -57,18 +58,41 @@ namespace WebVella.TagHelpers.TagHelpers
 
 			#endregion
 
+			#region << Init Prepend and Append >>
+			var content = await output.GetChildContentAsync();
+			var htmlDoc = new HtmlDocument();
+			htmlDoc.LoadHtml(content.GetContent());
+			var prependTaghelper = htmlDoc.DocumentNode.Descendants("wv-field-prepend");
+			var appendTagHelper = htmlDoc.DocumentNode.Descendants("wv-field-append");
+
+			foreach (var node in prependTaghelper)
+			{
+				PrependHtml.Add(node.InnerHtml.ToString());
+			}
+
+			foreach (var node in appendTagHelper)
+			{
+				AppendHtml.Add(node.InnerHtml.ToString());
+			}
+
+			#endregion
+
 			#region << Render >>
 			if (Mode == WvFieldRenderMode.Form)
 			{
 				var inputGroupEl = new TagBuilder("div");
 				inputGroupEl.AddCssClass("input-group");
-				var prependEl = new TagBuilder("span");
-				prependEl.AddCssClass($"input-group-prepend {(ValidationErrors.Count > 0 ? "is-invalid" : "")}");
-				var prependText = new TagBuilder("span");
-				prependText.AddCssClass("input-group-text");
-				prependText.InnerHtml.Append(Currency.Code);
-				prependEl.InnerHtml.AppendHtml(prependText);
-				inputGroupEl.InnerHtml.AppendHtml(prependEl);
+				//Prepend
+				if (PrependHtml.Count > 0)
+				{
+					var prependEl = new TagBuilder("span");
+					prependEl.AddCssClass($"input-group-prepend {(ValidationErrors.Count > 0 ? "is-invalid" : "")}");
+					foreach (var htmlString in PrependHtml)
+					{
+						prependEl.InnerHtml.AppendHtml(htmlString);
+					}
+					inputGroupEl.InnerHtml.AppendHtml(prependEl);
+				}
 
 				var inputEl = new TagBuilder("input");
 				var inputElCssClassList = new List<string>();
@@ -116,6 +140,19 @@ namespace WebVella.TagHelpers.TagHelpers
 
 				inputGroupEl.InnerHtml.AppendHtml(inputEl);
 
+				//Append
+				if (AppendHtml.Count > 0)
+				{
+					var appendEl = new TagBuilder("span");
+					appendEl.AddCssClass($"input-group-append {(ValidationErrors.Count > 0 ? "is-invalid" : "")}");
+
+					foreach (var htmlString in AppendHtml)
+					{
+						appendEl.InnerHtml.AppendHtml(htmlString);
+					}
+					inputGroupEl.InnerHtml.AppendHtml(appendEl);
+				}
+
 				output.Content.AppendHtml(inputGroupEl);
 			}
 			else if (Mode == WvFieldRenderMode.Display)
@@ -162,7 +199,7 @@ namespace WebVella.TagHelpers.TagHelpers
 					output.SuppressOutput();
 					output.Content.AppendHtml("");
 				}
-				return Task.CompletedTask;
+				return;
 			}
 			else if (Mode == WvFieldRenderMode.InlineEdit)
 			{
@@ -175,13 +212,17 @@ namespace WebVella.TagHelpers.TagHelpers
 						viewWrapperEl.Attributes.Add("title", "double click to edit");
 						viewWrapperEl.Attributes.Add("id", $"view-{FieldId}");
 
-						var viewInputPrepend = new TagBuilder("span");
-						viewInputPrepend.AddCssClass("input-group-prepend");
-						var viewInputPrependText = new TagBuilder("span");
-						viewInputPrependText.AddCssClass("input-group-text");
-						viewInputPrependText.InnerHtml.Append(Currency.Code);
-						viewInputPrepend.InnerHtml.AppendHtml(viewInputPrependText);
-						viewWrapperEl.InnerHtml.AppendHtml(viewInputPrepend);
+						//Prepend
+						if (PrependHtml.Count > 0)
+						{
+							var viewInputPrepend = new TagBuilder("span");
+							viewInputPrepend.AddCssClass("input-group-prepend");
+							foreach (var htmlString in PrependHtml)
+							{
+								viewInputPrepend.InnerHtml.AppendHtml(htmlString);
+							}
+							viewWrapperEl.InnerHtml.AppendHtml(viewInputPrepend);
+						}
 
 						var viewFormControlEl = new TagBuilder("div");
 						viewFormControlEl.AddCssClass("form-control erp-currency");
@@ -216,13 +257,17 @@ namespace WebVella.TagHelpers.TagHelpers
 						var editInputGroupEl = new TagBuilder("div");
 						editInputGroupEl.AddCssClass("input-group");
 
-						var editInputPrepend = new TagBuilder("span");
-						editInputPrepend.AddCssClass("input-group-prepend");
-						var editInputPrependText = new TagBuilder("span");
-						editInputPrependText.AddCssClass("input-group-text");
-						editInputPrependText.InnerHtml.Append(Currency.Code);
-						editInputPrepend.InnerHtml.AppendHtml(editInputPrependText);
-						editInputGroupEl.InnerHtml.AppendHtml(editInputPrepend);
+						//Prepend
+						if (PrependHtml.Count > 0)
+						{
+							var editInputPrepend = new TagBuilder("span");
+							editInputPrepend.AddCssClass("input-group-prepend");
+							foreach (var htmlString in PrependHtml)
+							{
+								editInputPrepend.InnerHtml.AppendHtml(htmlString);
+							}
+							editInputGroupEl.InnerHtml.AppendHtml(editInputPrepend);
+						}
 
 
 						var editInputEl = new TagBuilder("input");
@@ -335,13 +380,17 @@ namespace WebVella.TagHelpers.TagHelpers
 					var divEl = new TagBuilder("div");
 					divEl.AddCssClass("input-group");
 
-					var viewInputPrepend = new TagBuilder("span");
-					viewInputPrepend.AddCssClass("input-group-prepend");
-					var viewInputPrependText = new TagBuilder("span");
-					viewInputPrependText.AddCssClass("input-group-text");
-					viewInputPrependText.InnerHtml.Append(Currency.Code);
-					viewInputPrepend.InnerHtml.AppendHtml(viewInputPrependText);
-					divEl.InnerHtml.AppendHtml(viewInputPrepend);
+					//Prepend
+					if (PrependHtml.Count > 0)
+					{
+						var viewInputPrepend = new TagBuilder("span");
+						viewInputPrepend.AddCssClass("input-group-prepend");
+						foreach (var htmlString in PrependHtml)
+						{
+							viewInputPrepend.InnerHtml.AppendHtml(htmlString);
+						}
+						divEl.InnerHtml.AppendHtml(viewInputPrepend);
+					}
 
 
 					var inputEl = new TagBuilder("input");
@@ -350,19 +399,19 @@ namespace WebVella.TagHelpers.TagHelpers
 					inputEl.Attributes.Add("value", (Value ?? "").ToString());
 					inputEl.Attributes.Add("readonly", null);
 
+					//Append
 					var appendActionSpan = new TagBuilder("span");
-					appendActionSpan.AddCssClass("input-group-append");
-					appendActionSpan.AddCssClass("action");
-
-					var appendTextSpan = new TagBuilder("span");
-					appendTextSpan.AddCssClass("input-group-text");
+					appendActionSpan.AddCssClass("input-group-append action");
+					foreach (var htmlString in AppendHtml)
+					{
+						appendActionSpan.InnerHtml.AppendHtml(htmlString);
+					}
 
 					var appendIconSpan = new TagBuilder("span");
 					appendIconSpan.AddCssClass("fa fa-fw fa-lock");
 
-					appendTextSpan.InnerHtml.AppendHtml(appendIconSpan);
+					appendActionSpan.InnerHtml.AppendHtml(appendIconSpan);
 
-					appendActionSpan.InnerHtml.AppendHtml(appendTextSpan);
 
 					divEl.InnerHtml.AppendHtml(inputEl);
 					divEl.InnerHtml.AppendHtml(appendActionSpan);
@@ -378,7 +427,7 @@ namespace WebVella.TagHelpers.TagHelpers
 				output.PostContent.AppendHtml(SubInputEl);
 			}
 
-			return Task.CompletedTask;
+			return;
 		}
 
 	}
