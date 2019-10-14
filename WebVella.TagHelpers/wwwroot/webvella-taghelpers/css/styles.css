@@ -172,7 +172,7 @@
 /*#endregion*/
 
 /*#region <<wv-field-code>>*/
-.wv-field-code ace_editor {
+.wv-field ace_editor {
 	font-size: 16px;
 }
 /*#endregion*/
@@ -507,6 +507,7 @@
 
 
 /*#endregion*/
+
 /*#region <<wv-field-multiselect>>*/
 .wv-field-multiselect .erp-multiselect.form-control,
 .wv-field-multiselect .edit-wrapper .form-control.erp-select {

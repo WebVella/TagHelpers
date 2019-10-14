@@ -236,7 +236,7 @@ namespace WebVella.TagHelpers.TagHelpers
 						editFormLabelEl.InnerHtml.AppendHtml(editInputEl);
 						if (Value != null)
 						{
-							editFormLabelEl.InnerHtml.AppendHtml(Value ? TextTrue : TextFalse);
+							editFormLabelEl.InnerHtml.AppendHtml(TextTrue);
 						}
 						editFormCheckEl.InnerHtml.AppendHtml(editFormLabelEl);
 						editFormControlEl.InnerHtml.AppendHtml(editFormCheckEl);
