@@ -246,12 +246,12 @@ namespace WebVella.TagHelpers.TagHelpers
 
 						//Append
 						var viewInputActionEl = new TagBuilder("span");
-						viewInputActionEl.AddCssClass("input-group-append");
+						viewInputActionEl.AddCssClass("input-group-append action");
 						foreach (var htmlString in AppendHtml)
 						{
 							viewInputActionEl.InnerHtml.AppendHtml(htmlString);
 						}
-						viewInputActionEl.InnerHtml.AppendHtml("<button type=\"button\" class='btn btn-white action' title='edit'><i class='fa fa-fw fa-pencil-alt'></i></button>");
+						viewInputActionEl.InnerHtml.AppendHtml("<button type=\"button\" class='btn btn-white' title='edit'><i class='fa fa-fw fa-pencil-alt'></i></button>");
 						viewWrapperEl.InnerHtml.AppendHtml(viewInputActionEl);
 
 						output.Content.AppendHtml(viewWrapperEl);
@@ -400,7 +400,7 @@ namespace WebVella.TagHelpers.TagHelpers
 					{
 						appendActionSpan.InnerHtml.AppendHtml(htmlString);
 					}
-					appendActionSpan.InnerHtml.AppendHtml("<button type=\"button\" disabled class='btn btn-white action' title='locked'><i class='fa fa-fw fa-lock'></i></button>");
+					appendActionSpan.InnerHtml.AppendHtml("<button type=\"button\" disabled class='btn btn-white' title='locked'><i class='fa fa-fw fa-lock'></i></button>");
 					divEl.InnerHtml.AppendHtml(appendActionSpan);
 
 					output.Content.AppendHtml(divEl);

@@ -309,7 +309,7 @@ namespace WebVella.TagHelpers.TagHelpers
 					{
 						appendActionSpan.InnerHtml.AppendHtml(htmlString);
 					}
-					appendActionSpan.InnerHtml.AppendHtml("<button type=\"button\" disabled class='btn btn-white action' title='locked'><i class='fa fa-fw fa-lock'></i></button>");
+					appendActionSpan.InnerHtml.AppendHtml("<button type=\"button\" disabled class='btn btn-white' title='locked'><i class='fa fa-fw fa-lock'></i></button>");
 					divEl.InnerHtml.AppendHtml(appendActionSpan);
 
 					output.Content.AppendHtml(divEl);
