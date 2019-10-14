@@ -498,9 +498,16 @@
 }
 /*#endregion*/
 
+/*#region << wv-field-textarea >>*/
+
+.wv-field-textarea .view-wrapper .form-control:disabled, 
+.wv-field-textarea .view-wrapper .form-control[readonly] {
+	background:#fff;
+}
+
+
+/*#endregion*/
 /*#region <<wv-field-multiselect>>*/
-
-
 .wv-field-multiselect .erp-multiselect.form-control,
 .wv-field-multiselect .edit-wrapper .form-control.erp-select {
 	padding: 0;
@@ -591,6 +598,7 @@
 	padding:0;
 }
 /*#endregion*/
+
 /*#region <<wv-field-select>>*/
 .wv-field-select .edit-wrapper .form-control.erp-select {
 	padding: 0;
