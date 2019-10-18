@@ -114,23 +114,28 @@ function InitHtmlFieldCKEditor(fieldId, fieldConfig) { //modes are -> none, one-
 		editor.updateElement();
 		var customEvent = new Event('WvFieldHtml_Change');
 		var inputElement = document.getElementById('input-' + fieldId);
-		customEvent.payload = {
-			value: editor.getData(),
-			fieldId: fieldId,
-			fieldName:inputElement.name
-		};
-		document.dispatchEvent(customEvent);
+		//If the element still exists
+		if(inputElement){
+			customEvent.payload = {
+				value: editor.getData(),
+				fieldId: fieldId,
+				fieldName:inputElement.name
+			};
+			document.dispatchEvent(customEvent);
+		}
 	});
 	editor.on('blur', function () {
 		editor.updateElement();
 		var customEvent = new Event('WvFieldHtml_Blur');
 		var inputElement = document.getElementById('input-' + fieldId);
-		customEvent.payload = {
-			value: editor.getData(),
-			fieldId: fieldId,
-			fieldName:inputElement.name
-		};
-		document.dispatchEvent(customEvent);
-
+		//If the element still exists
+		if(inputElement){
+			customEvent.payload = {
+				value: editor.getData(),
+				fieldId: fieldId,
+				fieldName:inputElement.name
+			};
+			document.dispatchEvent(customEvent);
+		}
 	});
 }
