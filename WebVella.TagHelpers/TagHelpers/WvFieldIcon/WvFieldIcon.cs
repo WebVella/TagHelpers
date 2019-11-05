@@ -403,7 +403,7 @@ namespace WebVella.TagHelpers.TagHelpers
 							var libJsEl = new TagBuilder("script");
 							libJsEl.Attributes.Add("type", "text/javascript");
 							var scriptIconTemplate = @"
-								WvFontAwesomeIcons = {{FAIcons}}
+								var WvFontAwesomeIcons = {{FAIcons}}
 							";
 							scriptIconTemplate = scriptIconTemplate.Replace("{{FAIcons}}", JsonConvert.SerializeObject(WvHelpers.GetAllFontAwesomeIcons()));
 							libJsEl.InnerHtml.AppendHtml(jsCompressor.Compress(scriptIconTemplate));

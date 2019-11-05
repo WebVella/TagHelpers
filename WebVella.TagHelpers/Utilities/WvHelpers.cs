@@ -3016,7 +3016,7 @@ namespace WebVella.TagHelpers.Utilities
 			}
 		}
 
-		internal static List<WvIcon> GetAllFontAwesomeIcons()
+		public static List<WvIcon> GetAllFontAwesomeIcons()
 		{
 
 			var icons = new List<WvIcon>();
