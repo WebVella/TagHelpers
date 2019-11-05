@@ -16,10 +16,10 @@ namespace WebVella.TagHelpers.TagHelpers
 	public class WvFieldCheckbox : WvFieldBase
 	{
 		[HtmlAttributeName("text-true")]
-		public string TextTrue { get; set; } = "";
+		public string TextTrue { get; set; } = "<i class='fa fa-check go-green'></i>";
 
 		[HtmlAttributeName("text-false")]
-		public string TextFalse { get; set; } = "";
+		public string TextFalse { get; set; } = "<i class='fa fa-times go-red'></i>";
 
 		public override Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
 		{
@@ -156,8 +156,7 @@ namespace WebVella.TagHelpers.TagHelpers
 				{
                     output.SuppressOutput();
                     var iconEl = new TagBuilder("span");
-					iconEl.AddCssClass($"{(Value ? "fa fa-check" : "go-gray")}");
-					iconEl.InnerHtml.Append($"{(Value ? "" : "-")}");
+					iconEl.InnerHtml.AppendHtml($"{(Value ? TextTrue : TextFalse)}");
 					output.Content.AppendHtml(iconEl);
 				}
 			}

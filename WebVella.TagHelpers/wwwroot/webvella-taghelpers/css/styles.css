@@ -625,7 +625,8 @@
 	background: transparent !important;
 }
 
-.wv-field.form .select2-selection {
+.wv-field.form .select2-selection,
+.wv-field.inline-edit .select2-selection {
 	border: 1px solid #ced4da !important;
 }
 
