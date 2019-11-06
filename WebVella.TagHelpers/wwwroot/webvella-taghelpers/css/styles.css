@@ -218,9 +218,20 @@
 	border-color: #aaa;
 }
 
+.wv-field.form .sp-replacer {
+	padding: 5px;
+	width: 100%;
+	display: flex;
+}
+
+.wv-field.form .sp-preview {
+	height: 26px;
+	border-color: #ccc;
+	flex: 1 1 auto;
+}
+
 
 /*#endregion*/
-
 /*#region << wv-field-date >> */
 .wv-field-date .flatpickr-wrapper {
 	flex: 1 1 0;

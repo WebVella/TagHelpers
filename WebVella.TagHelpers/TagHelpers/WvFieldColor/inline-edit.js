@@ -7,13 +7,14 @@
 	return selectors;
 }
 
-function ColorFormInit(fieldId) {
+function ColorInlineEditInputInit(fieldId) {
 	var selectors = ColorInlineEditGenerateSelectors(fieldId);
 
 	$(selectors.inputControl).spectrum({
 		showPaletteOnly: true,
 		showPalette:true,
 		allowEmpty: true,
+		hideAfterPaletteSelect:true,
 		preferredFormat: "hex",
 		palette: [
 			['#B71C1C', '#F44336', '#FFEBEE', '#880E4F','#E91E63','#FCE4EC','#4A148C','#9C27B0','#F3E5F5'],
@@ -22,14 +23,19 @@ function ColorFormInit(fieldId) {
 			['#1B5E20', '#4CAF50', '#E8F5E9', '#33691E','#8BC34A','#F1F8E9','#827717','#CDDC39','#F9FBE7'],
 			['#F57F17', '#FFEB3B', '#FFFDE7', '#FF6F00','#FFC107','#FFF8E1','#E65100','#FF9800','#FFF3E0'],
 			['#BF360C', '#FF5722', '#FBE9E7', '#3E2723','#795548','#EFEBE9','#212121','#9E9E9E','#FAFAFA'],
-			['#CCCCCC', '#263238', '#607D8B', '#ECEFF1','#FFFFFF','#000000']
-		]
+			['#CCCCCC', '#263238', '#607D8B', '#ECEFF1','#FFFFFF','#000000','transparent']
+		],
+		change: function(color) {
+			if(color.getAlpha() === 0){
+				$(selectors.inputControl).val(null).trigger("change");
+			}
+		}
 	});
 }
 
 function ColorInlineEditPreEnableCallback(fieldId, fieldName, config) {
 	var selectors = ColorInlineEditGenerateSelectors(fieldId, fieldName, config);
-	ColorFormInit(fieldId);
+	ColorInlineEditInputInit(fieldId);
 	$(selectors.viewWrapper).hide();
 	$(selectors.editWrapper).show();
 	$(selectors.editWrapper + " .form-control").focus();
@@ -124,6 +130,12 @@ function ColorInlineEditInitSuccessCallback(response, fieldId, fieldName, config
 	$(selectors.viewWrapper + " .form-control").html(newValue);
 	$(selectors.editWrapper + " .form-control").val(newValue);
 	ColorInlineEditPreDisableCallback(fieldId, fieldName, config);
+	if(newValue){
+		$(selectors.viewWrapper + " .fa-square").css("color",newValue);
+	}
+	else{
+		$(selectors.viewWrapper + " .fa-square").css("color",null);
+	}
 	toastr.success("The new value is successfully saved", 'Success!', { closeButton: true, tapToDismiss: true });
 }
 

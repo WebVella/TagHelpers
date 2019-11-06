@@ -36,7 +36,7 @@ namespace WebVella.TagHelpers.TagHelpers
 			if (Mode == WvFieldRenderMode.Form)
 			{
 				var wrapperEl = new TagBuilder("div");
-				wrapperEl.AddCssClass("form-control-plaintext erp-color");
+				wrapperEl.AddCssClass("erp-color");
 				var inputEl = new TagBuilder("input");
 				var inputElCssClassList = new List<string>();
 				inputElCssClassList.Add("d-none");
@@ -111,7 +111,8 @@ namespace WebVella.TagHelpers.TagHelpers
 					var scriptContent = WvHelpers.GetEmbeddedTextResource(fileName, "WebVella.TagHelpers.TagHelpers.WvFieldColor","WebVella.TagHelpers");
 					var scriptEl = new TagBuilder("script");
 					scriptEl.Attributes.Add("type", "text/javascript");
-					scriptEl.InnerHtml.AppendHtml(jsCompressor.Compress(scriptContent));
+					//scriptEl.InnerHtml.AppendHtml(jsCompressor.Compress(scriptContent));
+					scriptEl.InnerHtml.AppendHtml(scriptContent);
 					output.PostContent.AppendHtml(scriptEl);
 
 					ViewContext.HttpContext.Items[typeof(WvFieldColor) + fileName] = new WvTagHelperContext()
