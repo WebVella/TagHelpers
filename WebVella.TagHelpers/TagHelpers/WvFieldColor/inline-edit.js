@@ -8,7 +8,7 @@
 }
 
 function ColorFormInit(fieldId) {
-	var selectors = ColorFormGenerateSelectors(fieldId);
+	var selectors = ColorInlineEditGenerateSelectors(fieldId);
 
 	$(selectors.inputControl).spectrum({
 		showPaletteOnly: true,
