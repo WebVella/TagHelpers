@@ -216,7 +216,8 @@ namespace WebVella.TagHelpers.TagHelpers
 
 						var editInputEl = new TagBuilder("input");
 						editInputEl.AddCssClass("form-control erp-color");
-						editInputEl.Attributes.Add("type", "color");
+						editInputEl.Attributes.Add("id", $"input-{FieldId}");
+						editInputEl.Attributes.Add("type", "text");
 						editInputEl.Attributes.Add("value", (Value ?? "").ToString());
 						editInputGroupEl.InnerHtml.AppendHtml(editInputEl);
 

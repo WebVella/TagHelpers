@@ -205,6 +205,20 @@
 	vertical-align: middle;
 }
 
+.wv-field-color .edit-wrapper .sp-replacer {
+	flex: 1 1 auto;
+	border-radius: 0.25rem 0 0 0.25rem !important;
+	display:flex;
+	align-items:center;
+}
+
+.wv-field-color .edit-wrapper .sp-preview {
+	flex: 1 1 auto;
+	height: 100%;
+	border-color: #aaa;
+}
+
+
 /*#endregion*/
 
 /*#region << wv-field-date >> */
