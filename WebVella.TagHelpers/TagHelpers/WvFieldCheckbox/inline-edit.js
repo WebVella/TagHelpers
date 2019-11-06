@@ -103,12 +103,12 @@ function CheckboxInlineEditInitSuccessCallback(response, fieldId, fieldName, con
 	}
 	else if (newValue) {
 		$(selectors.viewWrapper + " .input-group-prepend .fa").removeClass("fa-check fa-question fa-times").addClass("fa-check");
-		$(selectors.viewWrapper + " .form-control").html(config.checkbox_true_label);
+		$(selectors.viewWrapper + " .form-control").html(config.true_label);
 		$(selectors.editWrapper + " .form-check-input").prop('checked', true);
 	}
 	else {
 		$(selectors.viewWrapper + " .input-group-prepend .fa").removeClass("fa-check fa-question fa-times").addClass("fa-times");
-		$(selectors.viewWrapper + " .form-control").html(config.checkbox_false_label);
+		$(selectors.viewWrapper + " .form-control").html(config.false_label);
 		$(selectors.editWrapper + " .form-check-input").prop('checked', false);
 	}
 	CheckboxInlineEditPreDisableCallback(fieldId, fieldName, config);

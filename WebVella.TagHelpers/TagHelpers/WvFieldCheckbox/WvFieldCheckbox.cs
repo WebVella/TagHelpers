@@ -16,10 +16,10 @@ namespace WebVella.TagHelpers.TagHelpers
 	public class WvFieldCheckbox : WvFieldBase
 	{
 		[HtmlAttributeName("text-true")]
-		public string TextTrue { get; set; } = "<i class='fa fa-check go-green'></i>";
+		public string TextTrue { get; set; } = "";
 
 		[HtmlAttributeName("text-false")]
-		public string TextFalse { get; set; } = "<i class='fa fa-times go-red'></i>";
+		public string TextFalse { get; set; } = "";
 
 		public override Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
 		{

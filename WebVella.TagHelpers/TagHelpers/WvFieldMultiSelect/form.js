@@ -132,6 +132,24 @@ function MultiSelectFormInit(fieldId, fieldName, config) {
 			}
 		};
 	}
+	//Only API url is provided
+	else if(config.ajax_datasource_api){
+		selectInitObject.ajax = {
+			type: 'POST',
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json'
+			},
+			url: config.ajax_datasource_api,
+			data: function (params) {
+				var query = {
+					term: params.term || "",
+					page: params.page || 1
+				};
+				return JSON.stringify(query);
+			}
+		}
+	}
 
 	$(selectors.inputEl).select2(selectInitObject);
 	//Stops remove selection click opening the dropdown

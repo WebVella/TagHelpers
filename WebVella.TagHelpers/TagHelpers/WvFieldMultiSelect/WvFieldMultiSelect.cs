@@ -23,7 +23,7 @@ namespace WebVella.TagHelpers.TagHelpers
 		public WvSelectOptionsAjaxDatasource AjaxDatasource { get; set; } = null;
 		
 		[HtmlAttributeName("ajax-datasource-api")]
-		public string AjaxDatasourceApi { get; set; } = "/api/v3/en_US/eql-ds";
+		public string AjaxDatasourceApi { get; set; } = "";
 
 		[HtmlAttributeName("select-match-type")]
 		public WvSelectMatchType SelectMatchType { get; set; } = WvSelectMatchType.Contains;
@@ -43,8 +43,14 @@ namespace WebVella.TagHelpers.TagHelpers
 				return;
 			}
 
+			if(Options == null)
+				Options = new List<WvSelectOption>();
+
 			if (Options.Count == 0 && AjaxDatasource != null && AjaxDatasource.InitOptions.Count > 0)
 				Options = AjaxDatasource.InitOptions;
+
+			if(AjaxDatasource != null && String.IsNullOrWhiteSpace(AjaxDatasourceApi))
+				AjaxDatasourceApi = "/api/v3/en_US/eql-ds";
 
 			#region << Init Prepend and Append >>
 			var content = await output.GetChildContentAsync();

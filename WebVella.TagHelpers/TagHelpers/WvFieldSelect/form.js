@@ -78,6 +78,7 @@ function SelectFormInit(fieldId, fieldName, config) {
 		selectInitObject.matcher = SelectFormMatchStartsWith;
 	}
 
+	//Datasource is provided
 	if (config.ajax_datasource) {
 		var currentPage = 1;
 		selectInitObject.ajax = {
@@ -127,7 +128,24 @@ function SelectFormInit(fieldId, fieldName, config) {
 			}
 		};
 	}
-
+	//Only API url is provided
+	else if(config.ajax_datasource_api){
+		selectInitObject.ajax = {
+			type: 'POST',
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json'
+			},
+			url: config.ajax_datasource_api,
+			data: function (params) {
+				var query = {
+					term: params.term || "",
+					page: params.page || 1
+				};
+				return JSON.stringify(query);
+			}
+		}
+	}
 
 	$(selectors.inputEl).select2(selectInitObject).on("select2:unselecting", function (e) {
 		$(this).data('state', 'unselected');
