@@ -141,7 +141,7 @@ function IconFieldInlineEditInit(fieldId, fieldName,config) {
 			data: JSON.stringify(submitObj),
 			success: function (response) {
 				if (response.success) {
-					IconFieldInlineEditInitSuccessCallback(response, fieldId, fieldName, entityName, recordId,inputValue, config);
+					IconFieldInlineEditInitSuccessCallback(response, fieldId, fieldName, inputValue, config);
 				}
 				else {
 					IconFieldInlineEditInitErrorCallback(response, fieldId, fieldName,config);
@@ -159,7 +159,7 @@ function IconFieldInlineEditInit(fieldId, fieldName,config) {
 	});
 }
 
-function IconFieldInlineEditInitSuccessCallback(response, fieldId, fieldName, entityName, recordId,inputValue, config) {
+function IconFieldInlineEditInitSuccessCallback(response, fieldId, fieldName, inputValue, config) {
 	var selectors = IconFieldInlineEditGenerateSelectors(fieldId, fieldName,config);
 	var newValue = inputValue;
 

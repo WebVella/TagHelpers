@@ -5,7 +5,7 @@
 		<IsPackable>true</IsPackable>
 		<RazorLangVersion>3.0</RazorLangVersion>
 		<GenerateEmbeddedFilesManifest>true</GenerateEmbeddedFilesManifest>
-		<Version>1.0.43</Version>
+		<Version>1.0.44</Version>
 		<Authors>WebVella</Authors>
 		<PackageProjectUrl>http://webvella.com/</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/WebVella/WebVella-ERP</RepositoryUrl>
@@ -22,7 +22,6 @@
 		<Content Remove="TagHelpers\WvECharts\usa.json" />
 		<EmbeddedResource Include="TagHelpers\WvECharts\usa.json" />
 		<EmbeddedResource Include="TagHelpers\WvFieldCheckboxGrid\form.js" />
-		<EmbeddedResource Include="TagHelpers\WvFieldCheckboxGrid\inline-edit.js" />
 		<EmbeddedResource Include="TagHelpers\WvFieldCheckboxList\inline-edit.js" />
 		<EmbeddedResource Include="TagHelpers\WvFieldCheckbox\form.js" />
 		<EmbeddedResource Include="TagHelpers\WvFieldCheckbox\inline-edit.js" />

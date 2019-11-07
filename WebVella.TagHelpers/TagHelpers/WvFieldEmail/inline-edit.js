@@ -1,5 +1,5 @@
 ﻿
-function EmailInlineEditGenerateSelectors(fieldId, fieldName, entityName, recordId, config) {
+function EmailInlineEditGenerateSelectors(fieldId, fieldName, config) {
 	//Method for generating selector strings of some of the presentation elements
 	var selectors = {};
 	selectors.viewWrapper = "#view-" + fieldId;
@@ -7,15 +7,15 @@ function EmailInlineEditGenerateSelectors(fieldId, fieldName, entityName, record
 	return selectors;
 }
 
-function EmailInlineEditPreEnableCallback(fieldId, fieldName, entityName, recordId, config) {
-	var selectors = EmailInlineEditGenerateSelectors(fieldId, fieldName, entityName, recordId, config);
+function EmailInlineEditPreEnableCallback(fieldId, fieldName, config) {
+	var selectors = EmailInlineEditGenerateSelectors(fieldId, fieldName, config);
 	$(selectors.viewWrapper).hide();
 	$(selectors.editWrapper).show();
 	$(selectors.editWrapper + " .form-control").focus();
 }
 
-function EmailInlineEditPreDisableCallback(fieldId, fieldName, entityName, recordId, config) {
-	var selectors = EmailInlineEditGenerateSelectors(fieldId, fieldName, entityName, recordId, config);
+function EmailInlineEditPreDisableCallback(fieldId, fieldName, config) {
+	var selectors = EmailInlineEditGenerateSelectors(fieldId, fieldName, config);
 	$(selectors.editWrapper + " .invalid-feedback").remove();
 	$(selectors.editWrapper + " .form-control").removeClass("is-invalid");
 	$(selectors.editWrapper + " .save .fa").addClass("fa-check").removeClass("fa-spin fa-spinner");
@@ -24,20 +24,20 @@ function EmailInlineEditPreDisableCallback(fieldId, fieldName, entityName, recor
 	$(selectors.editWrapper).hide();
 }
 
-function EmailInlineEditInit(fieldId, fieldName, entityName, recordId, config) {
+function EmailInlineEditInit(fieldId, fieldName, config) {
 	config = ProcessConfig(config);
-	var selectors = EmailInlineEditGenerateSelectors(fieldId, fieldName, entityName, recordId, config);
+	var selectors = EmailInlineEditGenerateSelectors(fieldId, fieldName, config);
 	//Init enable action click
 	$(selectors.viewWrapper + " .action .btn").on("click", function (event) {
 		event.stopPropagation();
 		event.preventDefault();
-		EmailInlineEditPreEnableCallback(fieldId, fieldName, entityName, recordId, config);
+		EmailInlineEditPreEnableCallback(fieldId, fieldName, config);
 	});
 	//Init enable action dblclick
 	$(selectors.viewWrapper + " .form-control").on("dblclick", function (event) {
 		event.stopPropagation();
 		event.preventDefault();
-		EmailInlineEditPreEnableCallback(fieldId, fieldName, entityName, recordId, config);
+		EmailInlineEditPreEnableCallback(fieldId, fieldName, config);
 		//clearSelection();//double click causes text to be selected.
 		setTimeout(function () {
 			$(selectors.editWrapper + " .form-control").get(0).focus();
@@ -52,7 +52,7 @@ function EmailInlineEditInit(fieldId, fieldName, entityName, recordId, config) {
 	$(selectors.editWrapper + " .cancel").on("click", function (event) {
 		event.stopPropagation();
 		event.preventDefault();
-		EmailInlineEditPreDisableCallback(fieldId, fieldName, entityName, recordId, config);
+		EmailInlineEditPreDisableCallback(fieldId, fieldName, config);
 	});
 	//Save inline changes
 	$(selectors.editWrapper + " .save").on("click", function (event) {
@@ -61,20 +61,16 @@ function EmailInlineEditInit(fieldId, fieldName, entityName, recordId, config) {
 		var inputValue = $(selectors.editWrapper + " .form-control").val();
 		var validation = checkEmail(inputValue);
 		if (!validation.success) {
-			EmailInlineEditInitErrorCallback(validation, fieldId, fieldName, entityName, recordId, config);
+			EmailInlineEditInitErrorCallback(validation, fieldId, fieldName, config);
 			return;
 		}
 		var submitObj = {};
-		submitObj.id = recordId;
 		submitObj[fieldName] = inputValue;
 		$(selectors.editWrapper + " .save .fa").removeClass("fa-check").addClass("fa-spin fa-spinner");
 		$(selectors.editWrapper + " .save").attr("disabled", true);
 		$(selectors.editWrapper + " .invalid-feedback").remove();
 		$(selectors.editWrapper + " .form-control").removeClass("is-invalid");
-		var apiUrl = ApiBaseUrl + "/record/" + entityName + "/" + recordId;
-		if (config.api_url) {
-			apiUrl = config.api_url;
-		}
+		var apiUrl = config.api_url;
 		$.ajax({
 			headers: {
 				'Accept': 'application/json',
@@ -85,10 +81,10 @@ function EmailInlineEditInit(fieldId, fieldName, entityName, recordId, config) {
 			data: JSON.stringify(submitObj),
 			success: function (response) {
 				if (response.success) {
-					EmailInlineEditInitSuccessCallback(response, fieldId, fieldName, entityName, recordId, config);
+					EmailInlineEditInitSuccessCallback(response, fieldId, fieldName, config);
 				}
 				else {
-					EmailInlineEditInitErrorCallback(response, fieldId, fieldName, entityName, recordId, config);
+					EmailInlineEditInitErrorCallback(response, fieldId, fieldName, config);
 				}
 			},
 			error: function (jqXHR, textStatus, errorThrown) {
@@ -97,23 +93,23 @@ function EmailInlineEditInit(fieldId, fieldName, entityName, recordId, config) {
 				if (jqXHR && jqXHR.responseJSON) {
 					response = jqXHR.responseJSON;
 				}
-				EmailInlineEditInitErrorCallback(response, fieldId, fieldName, entityName, recordId, config);
+				EmailInlineEditInitErrorCallback(response, fieldId, fieldName, config);
 			}
 		});
 	});
 }
 
-function EmailInlineEditInitSuccessCallback(response, fieldId, fieldName, entityName, recordId, config) {
-	var selectors = EmailInlineEditGenerateSelectors(fieldId, fieldName, entityName, recordId, config);
+function EmailInlineEditInitSuccessCallback(response, fieldId, fieldName, config) {
+	var selectors = EmailInlineEditGenerateSelectors(fieldId, fieldName, config);
 	var newValue = ProcessNewValue(response, fieldName);
 	$(selectors.viewWrapper + " .form-control").html(newValue);
 	$(selectors.editWrapper + " .form-control").val(newValue);
-	EmailInlineEditPreDisableCallback(fieldId, fieldName, entityName, recordId, config);
+	EmailInlineEditPreDisableCallback(fieldId, fieldName, config);
 	toastr.success("The new value is successfull saved", 'Success!', { closeButton: true, tapToDismiss: true });
 }
 
-function EmailInlineEditInitErrorCallback(response, fieldId, fieldName, entityName, recordId, config) {
-	var selectors = EmailInlineEditGenerateSelectors(fieldId, fieldName, entityName, recordId, config);
+function EmailInlineEditInitErrorCallback(response, fieldId, fieldName, config) {
+	var selectors = EmailInlineEditGenerateSelectors(fieldId, fieldName, config);
 	$(selectors.editWrapper + " .form-control").addClass("is-invalid");
 	var errorMessage = response.message;
 	if (!errorMessage && response.errors && response.errors.length > 0) {

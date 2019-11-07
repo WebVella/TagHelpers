@@ -232,6 +232,7 @@
 
 
 /*#endregion*/
+
 /*#region << wv-field-date >> */
 .wv-field-date .flatpickr-wrapper {
 	flex: 1 1 0;
@@ -660,8 +661,12 @@
 }
 
 
-/*#endregion*/
+.wv-field .input-group .select2-selection {
+	border-radius: 0;
+	height: 100% !important;
+}
 
+/*#endregion*/
 /*#region << typeahead related >> */
 .erp-ta-result {
 	position: relative;
