@@ -167,28 +167,7 @@ function IconFieldInlineEditInitSuccessCallback(response, fieldId, fieldName, in
 		newValue = ProcessNewValue(response, fieldName);
 	}
 
-	var selectOptions = $(selectors.inputEl + ' option');
-	var matchedOption = _.find(selectOptions, function (record) {
-		if (!newValue && !record.attributes["value"].value) {
-			return true;
-		}
-		else {
-			return newValue === record.attributes["value"].value;
-		}
-	});
-	var optionLabel = matchedOption.text;
-
-	var iconClass = $(matchedOption).data('icon');
-	var color = $(matchedOption).data('color');
-	if (!color) {
-		color = "#999";
-	}
-	if (!iconClass) {
-		$(selectors.viewWrapper + " .form-control").html(optionLabel);
-	}
-	else {
-		$(selectors.viewWrapper + " .form-control").html('<i class="fa ' + iconClass + '" style="color:' + color + '"></i>  ' + optionLabel);
-	}
+	$(selectors.viewWrapper + " .form-control").html('<i class="fa ' + newValue + '"></i>  ' + newValue);
 
 	$(selectors.inputEl).val(newValue).attr("data-original-value", JSON.stringify(newValue));
 	IconFieldInlineEditPreDisableCallback(fieldId, fieldName,config);
