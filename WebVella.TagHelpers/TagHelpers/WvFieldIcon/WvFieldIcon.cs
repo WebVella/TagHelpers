@@ -63,6 +63,11 @@ namespace WebVella.TagHelpers.TagHelpers
 					{
 						selectEl.Attributes.Add("required", null);
 					}
+					else
+					{
+						var optionEl = new TagBuilder("option");
+						selectEl.InnerHtml.AppendHtml(optionEl);
+					}
 
 					if (!String.IsNullOrWhiteSpace((string)Value))
 					{
@@ -72,6 +77,7 @@ namespace WebVella.TagHelpers.TagHelpers
 						optionEl.InnerHtml.Append(Value.ToString());
 						selectEl.InnerHtml.AppendHtml(optionEl);
 					}
+
 					inputGroupEl.InnerHtml.AppendHtml(selectEl);
 
 					output.Content.AppendHtml(inputGroupEl);

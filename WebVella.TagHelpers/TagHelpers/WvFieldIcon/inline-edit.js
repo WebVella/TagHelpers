@@ -56,6 +56,25 @@ function IconFieldInlineEditPreEnableCallback(fieldId, fieldName,config) {
 	if (config.is_invalid) {
 		$(selectors.inputEl).closest(".input-group").find(".select2-selection").addClass("is-invalid");
 	}
+
+	$(selectors.inputEl).on('select2:select', function (e) {
+		
+		$(selectors.inputEl).closest(".input-group").find(".input-group-prepend .fa-fw").attr("class","fa-fw " + e.target.value);
+	});
+
+	$(selectors.inputEl).on("select2:unselecting", function (e) {
+		$(this).data('state', 'unselected');
+	}).on("select2:open", function (e) {
+		if ($(this).data('state') === 'unselected') {
+			$(this).removeData('state');
+			$(selectors.inputEl).closest(".input-group").find(".input-group-prepend .fa-fw").attr("class","fa-fw ");
+			var self = $(this);
+			setTimeout(function () {
+				self.select2('close');
+			}, 0);
+		}
+	});
+
 	$(selectors.viewWrapper).hide();
 	$(selectors.editWrapper).show();
 	$(selectors.inputEl).focus();

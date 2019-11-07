@@ -42,10 +42,11 @@ function IconFieldFormInit(fieldId) {
 	}).on("select2:open", function (e) {
 		if ($(this).data('state') === 'unselected') {
 			$(this).removeData('state');
+			$(selectors.inputControl).closest(".input-group").find(".input-group-prepend .fa-fw").attr("class","fa-fw ");
 			var self = $(this);
 			setTimeout(function () {
 				self.select2('close');
-			}, 1);
+			}, 0);
 		}
 	});
 
