@@ -108,17 +108,22 @@ function SelectFormInit(fieldId, fieldName, config) {
 			processResults: function (data) {
 				var results = [];
 				var hasMore = false;
-				var totalRecords = data.object.total_count;
-				var displayedCount = data.object.list.length + currentPage * config.ajax_datasource.page_size;
-				if (displayedCount < totalRecords) {
-					hasMore = true;
-				}
-				_.forEach(data.object.list, function (record) {
-					results.push({
-						id: record[config.ajax_datasource.value],
-						text: record[config.ajax_datasource.label]
+				if (data !== null && data.object !== null) {
+					var totalRecords = data.object.total_count;
+					var displayedCount = data.object.list.length + currentPage * config.ajax_datasource.page_size;
+					if (displayedCount < totalRecords) {
+						hasMore = true;
+					}
+					_.forEach(data.object.list, function (record) {
+						results.push({
+							id: record[config.ajax_datasource.value],
+							text: record[config.ajax_datasource.label]
+						});
 					});
-				});
+				}
+
+
+
 				return {
 					results: results, //id,text
 					pagination: {
@@ -144,7 +149,7 @@ function SelectFormInit(fieldId, fieldName, config) {
 				};
 				return JSON.stringify(query);
 			}
-		}
+		};
 	}
 
 	$(selectors.inputEl).select2(selectInitObject).on("select2:unselecting", function (e) {
