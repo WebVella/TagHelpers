@@ -376,14 +376,14 @@ namespace WebVella.TagHelpers.TagHelpers
 					labelEl.AddCssClass("control-label-sm");
 
 				//Set Required 
-				//if (Required && Mode == WvFieldRenderMode.Form)
-				//{
-				//	var requiredEl = new TagBuilder("abbr");
-				//	requiredEl.MergeAttribute("class", "go-red");
-				//	requiredEl.MergeAttribute("title", "required");
-				//	requiredEl.InnerHtml.Append("*");
-				//	labelEl.InnerHtml.AppendHtml(requiredEl);
-				//}
+				if (Required && Mode == WvFieldRenderMode.Form)
+				{
+					var requiredEl = new TagBuilder("abbr");
+					requiredEl.MergeAttribute("class", "go-red");
+					requiredEl.MergeAttribute("title", "required");
+					requiredEl.InnerHtml.Append("*");
+					labelEl.InnerHtml.AppendHtml(requiredEl);
+				}
 
 				//Set Label text
 				if (LabelMode != WvLabelRenderMode.Horizontal)

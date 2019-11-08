@@ -142,6 +142,7 @@ namespace WebVella.TagHelpers.TagHelpers
 						inputElCssClassList.Add("is-invalid");
 					}
 					selectEl.Attributes.Add("class", String.Join(' ', inputElCssClassList));
+					var emptyOptionAdded = false;
 					if (Required)
 					{
 						selectEl.Attributes.Add("required", null);
@@ -160,13 +161,8 @@ namespace WebVella.TagHelpers.TagHelpers
 					{
 						var optionEl = new TagBuilder("option");
 						// Should work only with <option></option> and the select2 placeholder to be presented
-						//optionEl.Attributes.Add("value", "");
-						//if (String.IsNullOrWhiteSpace(Value))
-						//{
-						//    optionEl.Attributes.Add("selected", null);
-						//}
-						//optionEl.InnerHtml.Append("not selected");
 						selectEl.InnerHtml.AppendHtml(optionEl);
+						emptyOptionAdded = true;
 					}
 
 					foreach (var option in Options)
@@ -182,6 +178,14 @@ namespace WebVella.TagHelpers.TagHelpers
 						optionEl.InnerHtml.Append(option.Label);
 						selectEl.InnerHtml.AppendHtml(optionEl);
 					}
+
+					//At least one option should be in the select so it can submit
+					if(!emptyOptionAdded && Options.Count == 0){
+						var optionEl = new TagBuilder("option");
+						// Should work only with <option></option> and the select2 placeholder to be presented
+						selectEl.InnerHtml.AppendHtml(optionEl);
+					}
+
 					inputGroupEl.InnerHtml.AppendHtml(selectEl);
 					//Append
 					if (AppendHtml.Count > 0)
@@ -621,10 +625,18 @@ namespace WebVella.TagHelpers.TagHelpers
 						var selectEl = new TagBuilder("select");
 						selectEl.Attributes.Add("id", $"input-{FieldId}");
 						selectEl.Attributes.Add("name", $"{Name}");
-
+						
+						var emptyOptionAdded = false;
 						if (Required)
 						{
 							selectEl.Attributes.Add("required", null);
+						}
+						else
+						{
+							var optionEl = new TagBuilder("option");
+							// Should work only with <option></option> and the select2 placeholder to be presented
+							selectEl.InnerHtml.AppendHtml(optionEl);
+							emptyOptionAdded = true;
 						}
 
 						selectEl.Attributes.Add("data-original-value", JsonConvert.SerializeObject((Value ?? "").ToString()));
@@ -640,6 +652,13 @@ namespace WebVella.TagHelpers.TagHelpers
 								optionEl.Attributes.Add("selected", null);
 							}
 							optionEl.InnerHtml.Append(option.Label);
+							selectEl.InnerHtml.AppendHtml(optionEl);
+						}
+
+						//At least one option should be in the select so it can submit
+						if(!emptyOptionAdded && Options.Count == 0){
+							var optionEl = new TagBuilder("option");
+							// Should work only with <option></option> and the select2 placeholder to be presented
 							selectEl.InnerHtml.AppendHtml(optionEl);
 						}
 

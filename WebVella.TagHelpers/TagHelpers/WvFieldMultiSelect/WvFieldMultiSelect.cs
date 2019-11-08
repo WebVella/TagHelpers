@@ -21,7 +21,7 @@ namespace WebVella.TagHelpers.TagHelpers
 
 		[HtmlAttributeName("ajax-datasource")]
 		public WvSelectOptionsAjaxDatasource AjaxDatasource { get; set; } = null;
-		
+
 		[HtmlAttributeName("ajax-datasource-api")]
 		public string AjaxDatasourceApi { get; set; } = "";
 
@@ -43,13 +43,13 @@ namespace WebVella.TagHelpers.TagHelpers
 				return;
 			}
 
-			if(Options == null)
+			if (Options == null)
 				Options = new List<WvSelectOption>();
 
 			if (Options.Count == 0 && AjaxDatasource != null && AjaxDatasource.InitOptions.Count > 0)
 				Options = AjaxDatasource.InitOptions;
 
-			if(AjaxDatasource != null && String.IsNullOrWhiteSpace(AjaxDatasourceApi))
+			if (AjaxDatasource != null && String.IsNullOrWhiteSpace(AjaxDatasourceApi))
 				AjaxDatasourceApi = "/api/v3/en_US/eql-ds";
 
 			#region << Init Prepend and Append >>
@@ -149,9 +149,18 @@ namespace WebVella.TagHelpers.TagHelpers
 						inputElCssClassList.Add("is-invalid");
 					}
 					selectEl.Attributes.Add("class", String.Join(' ', inputElCssClassList));
+
+					var emptyOptionAdded = false;
 					if (Required)
 					{
 						selectEl.Attributes.Add("required", null);
+					}
+					else
+					{
+						var optionEl = new TagBuilder("option");
+						// Should work only with <option></option> and the select2 placeholder to be presented
+						selectEl.InnerHtml.AppendHtml(optionEl);
+						emptyOptionAdded = true;
 					}
 
 					selectEl.Attributes.Add("multiple", "multiple");
@@ -167,6 +176,14 @@ namespace WebVella.TagHelpers.TagHelpers
 						optionEl.Attributes.Add("data-icon", option.IconClass);
 						optionEl.Attributes.Add("data-color", option.Color);
 						optionEl.InnerHtml.Append(option.Label);
+						selectEl.InnerHtml.AppendHtml(optionEl);
+					}
+
+					//At least one option should be in the select so it can submit
+					if (!emptyOptionAdded && Options.Count == 0)
+					{
+						var optionEl = new TagBuilder("option");
+						// Should work only with <option></option> and the select2 placeholder to be presented
 						selectEl.InnerHtml.AppendHtml(optionEl);
 					}
 
@@ -240,7 +257,7 @@ namespace WebVella.TagHelpers.TagHelpers
 					}
 					if (!tagHelperInitialized)
 					{
-						var scriptContent = WvHelpers.GetEmbeddedTextResource("form.js", "WebVella.TagHelpers.TagHelpers.WvFieldMultiSelect","WebVella.TagHelpers");
+						var scriptContent = WvHelpers.GetEmbeddedTextResource("form.js", "WebVella.TagHelpers.TagHelpers.WvFieldMultiSelect", "WebVella.TagHelpers");
 						var scriptEl = new TagBuilder("script");
 						scriptEl.Attributes.Add("type", "text/javascript");
 						scriptEl.InnerHtml.AppendHtml(jsCompressor.Compress(scriptContent));
@@ -270,7 +287,7 @@ namespace WebVella.TagHelpers.TagHelpers
 						ApiUrl = ApiUrl,
 						CanAddValues = Access == WvFieldAccess.FullAndCreate ? true : false,
 						AjaxDatasource = AjaxDatasource,
-						AjaxDatasourceApi =AjaxDatasourceApi,
+						AjaxDatasourceApi = AjaxDatasourceApi,
 						SelectMatchType = SelectMatchType,
 						Placeholder = Placeholder
 					};
@@ -621,10 +638,17 @@ namespace WebVella.TagHelpers.TagHelpers
 						var selectEl = new TagBuilder("select");
 						selectEl.Attributes.Add("id", $"input-{FieldId}");
 						selectEl.Attributes.Add("name", $"{Name}");
-
+						var emptyOptionAdded = false;
 						if (Required)
 						{
 							selectEl.Attributes.Add("required", null);
+						}
+						else
+						{
+							var optionEl = new TagBuilder("option");
+							// Should work only with <option></option> and the select2 placeholder to be presented
+							selectEl.InnerHtml.AppendHtml(optionEl);
+							emptyOptionAdded = true;
 						}
 						selectEl.Attributes.Add("multiple", "multiple");
 						selectEl.Attributes.Add("data-original-value", JsonConvert.SerializeObject((Value ?? "").ToString()));
@@ -644,6 +668,13 @@ namespace WebVella.TagHelpers.TagHelpers
 							selectEl.InnerHtml.AppendHtml(optionEl);
 						}
 
+						//At least one option should be in the select so it can submit
+						if (!emptyOptionAdded && Options.Count == 0)
+						{
+							var optionEl = new TagBuilder("option");
+							// Should work only with <option></option> and the select2 placeholder to be presented
+							selectEl.InnerHtml.AppendHtml(optionEl);
+						}
 						formControl.InnerHtml.AppendHtml(selectEl);
 						editInputGroupEl.InnerHtml.AppendHtml(formControl);
 
@@ -719,7 +750,7 @@ namespace WebVella.TagHelpers.TagHelpers
 					}
 					if (!tagHelperInitialized)
 					{
-						var scriptContent = WvHelpers.GetEmbeddedTextResource("inline-edit.js", "WebVella.TagHelpers.TagHelpers.WvFieldMultiSelect","WebVella.TagHelpers");
+						var scriptContent = WvHelpers.GetEmbeddedTextResource("inline-edit.js", "WebVella.TagHelpers.TagHelpers.WvFieldMultiSelect", "WebVella.TagHelpers");
 						var scriptEl = new TagBuilder("script");
 						scriptEl.Attributes.Add("type", "text/javascript");
 						scriptEl.InnerHtml.AppendHtml(jsCompressor.Compress(scriptContent));
@@ -748,7 +779,7 @@ namespace WebVella.TagHelpers.TagHelpers
 						ApiUrl = ApiUrl,
 						CanAddValues = Access == WvFieldAccess.FullAndCreate ? true : false,
 						AjaxDatasource = AjaxDatasource,
-						AjaxDatasourceApi =AjaxDatasourceApi,
+						AjaxDatasourceApi = AjaxDatasourceApi,
 						SelectMatchType = SelectMatchType,
 						Placeholder = Placeholder
 					};

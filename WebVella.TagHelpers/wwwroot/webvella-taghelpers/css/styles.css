@@ -1,11 +1,11 @@
 ﻿/*#region << General >>*/
 .wv-field .control-label {
-	font-weight:bold;
+	font-weight: bold;
 }
 
 .wv-field .field-description {
-	color:#999;
-	font-size:0.85rem;
+	color: #999;
+	font-size: 0.85rem;
 }
 
 	.wv-field .field-description.post-label {
@@ -73,13 +73,13 @@
 
 /*#region <<wv-button>> */
 .wv-button .icon {
-	margin-right:0.25rem;
+	margin-right: 0.25rem;
 }
 
-.wv-button .icon.right {
-	margin-left: 0.25rem;
-	margin-right:0;
-}
+	.wv-button .icon.right {
+		margin-left: 0.25rem;
+		margin-right: 0;
+	}
 
 /*#endregion*/
 
@@ -187,7 +187,7 @@
 .sp-replacer {
 	background: #fafafa !important;
 	border: 1px solid #ced4da !important;
-	border-radius:0.25rem !important;
+	border-radius: 0.25rem !important;
 }
 
 .sp-palette .sp-thumb-el {
@@ -208,8 +208,8 @@
 .wv-field-color .edit-wrapper .sp-replacer {
 	flex: 1 1 auto;
 	border-radius: 0.25rem 0 0 0.25rem !important;
-	display:flex;
-	align-items:center;
+	display: flex;
+	align-items: center;
 }
 
 .wv-field-color .edit-wrapper .sp-preview {
@@ -242,6 +242,10 @@
 		background: #fff;
 	}
 
+.wv-field-date .input-group .flatpickr-wrapper .form-control[readonly] {
+	border-radius: 0;
+}
+
 .wv-field-date .input-group .clear-link {
 	position: absolute;
 	right: 0;
@@ -271,6 +275,10 @@
 		background: #fff;
 	}
 
+.wv-field-datetime .input-group .flatpickr-wrapper .form-control[readonly] {
+	border-radius: 0;
+}
+
 .wv-field-datetime .input-group .clear-link {
 	position: absolute;
 	right: 0;
@@ -296,9 +304,9 @@
 	flex: 1 1 0;
 }
 
-	.wv-field-time .form-control[readonly] {
-		background: #fff;
-	}
+.wv-field-time .form-control[readonly] {
+	background: #fff;
+}
 
 .wv-field-time .input-group .clear-link {
 	position: absolute;
@@ -389,9 +397,9 @@
 	/*overflow-y: auto;*/
 }
 
-	.wv-field-html .erp-html.is-invalid .cke {
-		border-color: rgba(220, 53, 69, 1);
-	}
+.wv-field-html .erp-html.is-invalid .cke {
+	border-color: rgba(220, 53, 69, 1);
+}
 /*#endregion*/
 
 /*#region <<wv-field-image>>*/
@@ -526,9 +534,9 @@
 
 /*#region << wv-field-textarea >>*/
 
-.wv-field-textarea .view-wrapper .form-control:disabled, 
+.wv-field-textarea .view-wrapper .form-control:disabled,
 .wv-field-textarea .view-wrapper .form-control[readonly] {
-	background:#fff;
+	background: #fff;
 }
 
 
@@ -622,7 +630,7 @@
 
 /*#region <<wv-field-checkbox-grid>>*/
 .wv-field-checkbox-grid.display .form-control-plaintext {
-	padding:0;
+	padding: 0;
 }
 /*#endregion*/
 
@@ -651,8 +659,8 @@
 	background: transparent !important;
 }
 
-.wv-field.form .select2-selection,
-.wv-field.inline-edit .select2-selection {
+.wv-field.form .select2-selection--single,
+.wv-field.inline-edit .select2-selection--single {
 	border: 1px solid #ced4da !important;
 }
 
@@ -666,7 +674,31 @@
 	height: 100% !important;
 }
 
+.wv-field.form .select2-selection--single,
+.wv-field.inline-edit .select2-selection--single {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	flex: 1 1 auto;
+}
+
+.wv-field.inline-edit .select2-selection--single {
+	border: none !important;
+	height: calc(1.5em + 0.75rem) !important;
+}
+
+	.wv-field.form .select2-selection--single .select2-selection__rendered,
+	.wv-field.inline-edit .select2-selection--single .select2-selection__rendered {
+		width: 100%;
+	}
+
+.wv-field-date .input-group .flatpickr-wrapper .form-control[readonly] {
+	border-radius: 0;
+}
+
 /*#endregion*/
+
 /*#region << typeahead related >> */
 .erp-ta-result {
 	position: relative;
