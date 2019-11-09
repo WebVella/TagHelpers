@@ -284,8 +284,8 @@ namespace WebVella.TagHelpers.TagHelpers
 						{
 							var scriptContent = WvHelpers.GetEmbeddedTextResource("form.js", "WebVella.TagHelpers.TagHelpers.WvFieldFileMultiple", "WebVella.TagHelpers");
 							var scriptEl = new TagBuilder("script");
-							scriptEl.Attributes.Add("type", "text/javascript");
-							//scriptEl.InnerHtml.AppendHtml(scriptContent);
+							//scriptEl.Attributes.Add("type", "text/javascript");
+							scriptEl.InnerHtml.AppendHtml(scriptContent);
 							scriptEl.InnerHtml.AppendHtml(jsCompressor.Compress(scriptContent));
 							output.PostContent.AppendHtml(scriptEl);
 
@@ -404,19 +404,22 @@ namespace WebVella.TagHelpers.TagHelpers
 				return resultEl;
 			}
 
-			resultEl.AddCssClass("wv-field-file-multiple");
+			resultEl.AddCssClass("wv-field-file-multiple form-control-plaintext");
 
 			foreach (var fileObject in fileObjects)
 			{
-				var fileRowEl = new TagBuilder("div");
+				var fileRowEl = new TagBuilder("a");
 				fileRowEl.AddCssClass("filerow");
+				fileRowEl.Attributes.Add("href",fileObject.path);
+				fileRowEl.Attributes.Add("target","_blank");
+				fileRowEl.Attributes.Add("title",fileObject.path);
 				if(!String.IsNullOrWhiteSpace(fileObject.icon)){
 					fileRowEl.InnerHtml.AppendHtml($"<div class='icon'><i class='{fileObject.icon}'></i></div>");
 				}
 
 				var fileRowMetaEl = new TagBuilder("div");
 				fileRowMetaEl.AddCssClass("meta");
-				fileRowMetaEl.InnerHtml.AppendHtml($"<a class='link' href='{fileObject.path}' target='_blank' title='{fileObject.path}'>{(String.IsNullOrWhiteSpace(fileObject.name) ? "unknown name" : fileObject.name)}</a>");
+				fileRowMetaEl.InnerHtml.AppendHtml($"<span class='link go-blue'>{(String.IsNullOrWhiteSpace(fileObject.name) ? "unknown name" : fileObject.name)}</span>");
 				if(((int)fileObject.size) > 0){
 					var sizeString = WvHelpers.GetSizeStringFromSize((int)fileObject.size);
 					fileRowMetaEl.InnerHtml.AppendHtml($"<div class='size'>{sizeString}</div>");

@@ -12,13 +12,15 @@ function FieldMultiFileFormGenerateSelectors(fieldId, config) {
 	selectors.removeFileLink = selectors.fileListEl + " .filerow .action.remove .link";
 	return selectors;
 }
-
-document.onpaste = function (event) {
+document.addEventListener("paste", function (event) {
 	if (FieldMultiFileFormGlobalPasteActiveFieldId) {
+		event.preventDefault();
+		event.stopPropagation();
 		var selectors = FieldMultiFileFormGenerateSelectors(FieldMultiFileFormGlobalPasteActiveFieldId, null);
 		var items = (event.clipboardData || event.originalEvent.clipboardData).items;
 		//console.log(JSON.stringify(items)); // will give you the mime types
 		if (items.length > 0) {
+
 			for (index in items) {
 				var item = items[index];
 				if (item.kind === 'file') {
@@ -43,7 +45,7 @@ document.onpaste = function (event) {
 			}
 		}
 	}
-};
+});
 
 function FieldMultiFileFormInsertFile(fieldId, file){
 	var selectors = FieldMultiFileFormGenerateSelectors(fieldId, null);
@@ -156,7 +158,7 @@ function FieldMultiFileFormSubmit(fieldId, files) {
 					data.append('files', currentFile);
 				}
 			}
-			var uploadApiUrl = $(fakeInputEl).attr("data-file-upload-api");
+			var uploadApiUrl = $(selectors.fakeInputEl).attr("data-file-upload-api");
 
 
 			$.ajax({

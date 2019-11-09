@@ -350,12 +350,20 @@
 		margin-top: 5px;
 	}
 
+	.wv-field-file-multiple.form-control-plaintext {
+		padding:0;
+	}
+
 	.wv-field-file-multiple .filerow {
 		display: flex;
 		flex-flow: row;
 		align-items: center;
 		padding: 10px 0;
 		border-bottom: 1px solid #e1e4e8;
+	}
+
+	.wv-field-file-multiple.form-control-plaintext .filerow {
+		padding: 10px;
 	}
 
 		.wv-field-file-multiple .filerow:first-child {
