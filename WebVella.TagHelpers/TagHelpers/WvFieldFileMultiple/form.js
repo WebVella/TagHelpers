@@ -1,4 +1,7 @@
-﻿function FieldMultiFileFormGenerateSelectors(fieldId, config) {
+﻿
+var FieldMultiFileFormGlobalPasteActiveFieldId = null;
+
+function FieldMultiFileFormGenerateSelectors(fieldId, config) {
 	//Method for generating selector strings of some of the presentation elements
 	var selectors = {};
 	selectors.inputEl = "#input-" + fieldId;
@@ -6,60 +9,159 @@
 	selectors.fakeInputEl = "#fake-" + fieldId;
 	selectors.fakeInputProgressEl = selectors.fakeInputEl + " .form-control-progress";
 	selectors.fileListEl = "#fake-list-" + fieldId;
-	selectors.removeFileLink = selectors.fileListEl + " .filerow .action .link";
+	selectors.removeFileLink = selectors.fileListEl + " .filerow .action.remove .link";
 	return selectors;
 }
 
-function FieldMultiFileRemoveFileRow(e) {
-	e.preventDefault();
-    e.stopPropagation();
-    var clickedBtn = event.target;
-	var filePath = $(clickedBtn).closest(".filerow").attr("data-file-path");
+document.onpaste = function (event) {
+	if (FieldMultiFileFormGlobalPasteActiveFieldId) {
+		var selectors = FieldMultiFileFormGenerateSelectors(FieldMultiFileFormGlobalPasteActiveFieldId, null);
+		var items = (event.clipboardData || event.originalEvent.clipboardData).items;
+		//console.log(JSON.stringify(items)); // will give you the mime types
+		if (items.length > 0) {
+			for (index in items) {
+				var item = items[index];
+				if (item.kind === 'file') {
+					event.preventDefault();
+					var blob = item.getAsFile();
+					var reader = new FileReader();
+					reader.onload = function (event) {
+						//console.log("dataUrl", event.target.result);
+						//console.log("event", event);
+						//console.log("file", blob);
+						//console.log("fileName", blob.name);
+						var nameArray = blob.name.split(".");
+						blob.newFilename = "clipboard-" + moment().format("YYYY-MM-DD-HH-MM") + "." + nameArray[nameArray.length - 1];
+						var files = [];
+						files.push(blob);
+						FieldMultiFileFormSubmit(FieldMultiFileFormGlobalPasteActiveFieldId, files);
 
-    var fileRow = $(clickedBtn).closest(".filerow");
-    var selectors = FieldMultiFileFormGenerateSelectors(fieldId, {});
-    var inputValue = $(selectors.inputEl).val();
-    if (inputValue && inputValue.indexOf(filePath) > -1) {
-        var pathArray = [];
-        if (inputValue) {
-            pathArray = inputValue.toLowerCase().split(',');
-        }
-        var filteredArray = _.filter(pathArray, function (recordPath) { return recordPath !== filePath; });
-        $(selectors.inputEl).val(filteredArray.join(','));
-        $(fileRow).remove();
-        if (filteredArray.length === 0) {
-            $(selectors.fileListEl).addClass("d-none");
-        }
-    }
-    else {
-        console.error("File Id: " + fileId + " not found in the hidden input value");
-    }
+						return;
+					}; // data url!
+					reader.readAsDataURL(blob);
+				}
+			}
+		}
+	}
+};
+
+function FieldMultiFileFormInsertFile(fieldId, file){
+	var selectors = FieldMultiFileFormGenerateSelectors(fieldId, null);
+	//Add file id to hidden input
+	var inputValue = $(selectors.inputEl).val();
+	var pathArray = [];
+	if (inputValue) {
+		pathArray = inputValue.toLowerCase().split(',');
+	}
+	pathArray.push(file.path);
+	$(selectors.inputEl).val(pathArray.join(','));
+
+	var handlerPrefix = $(selectors.fakeInputEl).attr("data-handler-prefix");
+	var propPathName = $(selectors.fakeInputEl).attr("data-path-name");
+	var propSizeName = $(selectors.fakeInputEl).attr("data-size-name");
+	var propNameName = $(selectors.fakeInputEl).attr("data-name-name");
+	var propIconName = $(selectors.fakeInputEl).attr("data-icon-name");
+
+	//Path
+	var filePath = "";
+	if(propPathName && file[propPathName]){
+		filePath = handlerPrefix + file[propPathName];
+	}
+	//Size
+	var fileSize = 0;
+	var fileSizeString = "";
+	if(propSizeName && file[propSizeName]){
+		var stringValue = JSON.stringify(file[propSizeName]);
+		if(stringValue.length > 0 && !isNaN(stringValue)){
+			fileSize = parseInt(stringValue, 10);
+		}
+	}
+	if(fileSize > 0){
+		if (fileSize < 1024) {
+			fileSizeString = fileSize + " KB";
+		}
+		else if (fileSize >= 1024 && fileSize < 1024 * 1024) {
+			fileSizeString = Math.round(fileSize / 1024) + " MB";
+		}
+		else {
+			fileSizeString = Math.round(fileSize / (1024 * 1024)) + " GB";
+		}
+	}
+
+
+	//file Name
+	var fileName = "";
+	if(propNameName && file[propNameName]){
+		fileName = file[propNameName];
+	}
+
+	//Icon Class
+	var fileIcon = "";
+	if(propIconName && file[propIconName]){
+		fileIcon = file[propIconName];
+	}
+	if(fileName && !fileIcon){
+		fileIcon = "fa " + GetPathTypeIcon(file.name);
+	}
+
+	var fileRowEl = document.createElement("div");
+	fileRowEl.className = "filerow";
+	fileRowEl.dataset["filePath"] = file.path;
+	fileRowEl.innerHTML = '<div class="icon"><i class="' + fileIcon +'"></i></div><div class="meta"><a class="link" href="' + filePath +'" target="_blank" title="'+ filePath + '">'+ fileName +'<em></em></a><div class="size">' + fileSizeString + '</div></div>';
+									
+	var fileRowAction = document.createElement("div");
+	fileRowAction.className = "action remove";
+									
+	var fileRowActionLink = document.createElement("a");
+	fileRowActionLink.className = "link";
+	fileRowActionLink.href = "#";
+	fileRowActionLink.innerHTML = '<i class="fa fa-times-circle"></i>';
+	fileRowActionLink.onclick = FieldMultiFileRemoveFileRow;
+	fileRowAction.appendChild(fileRowActionLink);
+	fileRowEl.appendChild(fileRowAction);
+									
+	$(selectors.fileListEl).prepend(fileRowEl);
 }
 
-function FieldMultiFileFormInit(fieldId, config) {
-	config = ProcessConfig(config);
-    var selectors = FieldMultiFileFormGenerateSelectors(fieldId, config);
-	//Remove value
-	$(selectors.removeFileLink).on('click', FieldMultiFileRemoveFileRow);
+function FieldMultiFileFormSubmit(fieldId, files) {
+	var selectors = FieldMultiFileFormGenerateSelectors(fieldId, null);
+	if (files.length > 0) {
+		if (window.FormData !== undefined) {
+			var inputEl = $(selectors.inputEl);
+			$(selectors.fakeInputEl).html("<div class='form-control-progress'></div>");
+			$(selectors.fakeInputEl).removeClass("is-invalid");
 
-    $(selectors.fileUploadEl).first().on('change', function (e) {
-        var files = e.target.files;
-		if (files.length > 0) {
-			if (window.FormData !== undefined) {
-				var inputEl = $(selectors.inputEl);
-				$(selectors.fakeInputEl).html("<div class='form-control-progress'></div>");
-				$(selectors.fakeInputEl).removeClass("is-invalid");
-
-				var data = new FormData();
-				//support only single file upload
-				for (var i = 0; i < files.length; ++i) {
-					data.append('files', files[i]);
+			var data = new FormData();
+			//support only single file upload
+			var totalSize = 0;
+			for (var g = 0; g < files.length; ++g) {
+				totalSize += files[g].size;
+			}
+			if (totalSize >= 10485760) {
+				if (files.length === 1) {
+					toastr.error(files[0].name + " е с размер по-голям от 10 МВ и няма да бъде обработен", 'Грешка!', { closeButton: true, tapToDismiss: true });
 				}
-				//data.append("files", files);
+				else {
+					toastr.error("Общият размер е по-голям от 10 МВ и няма да бъде обработен", 'Грешка!', { closeButton: true, tapToDismiss: true });
+				}
+				return;
+			}
 
-				$.ajax({
+			for (var i = 0; i < files.length; ++i) {
+				var currentFile = files[i];
+				if (currentFile.newFilename && currentFile.newFilename !== "") {
+					data.append('files', currentFile, currentFile.newFilename);
+				}
+				else {
+					data.append('files', currentFile);
+				}
+			}
+			var uploadApiUrl = $(fakeInputEl).attr("data-file-upload-api");
+
+
+			$.ajax({
 					type: "POST",
-					url: config.file_upload_api,
+					url: uploadApiUrl,
 					contentType: false,
 					processData: false,
 					data: data,
@@ -85,36 +187,7 @@ function FieldMultiFileFormInit(fieldId, config) {
 						if (result.success) {
 							if (result.object && result.object.length > 0) {
 								_.forEach(result.object, function(file) {
-
-									//Add file id to hidden input
-									var inputValue = $(selectors.inputEl).val();
-									var pathArray = [];
-									if (inputValue) {
-										pathArray = inputValue.toLowerCase().split(',');
-									}
-									pathArray.push(file.path);
-									$(selectors.inputEl).val(pathArray.join(','));
-
-									//Add filerow above
-									var iconClass = GetPathTypeIcon(file.name);
-
-									var fileRowEl = document.createElement("div");
-									fileRowEl.className = "filerow";
-									fileRowEl.dataset["filePath"] = file.path;
-									fileRowEl.innerHTML = '<div class="icon"><i class="fa ' + iconClass +'"></i></div><div class="meta"><a class="link" href="' + file.path +'" target="_blank" title="'+ file.path + '">'+ file.name +'<em></em></a></div>';
-									
-									var fileRowAction = document.createElement("div");
-									fileRowAction.className = "action remove";
-									
-									var fileRowActionLink = document.createElement("a");
-									fileRowActionLink.className = "link";
-									fileRowActionLink.href = "#";
-									fileRowActionLink.innerHTML = '<i class="fa fa-times-circle"></i>';
-									fileRowActionLink.onclick = FieldMultiFileRemoveFileRow;
-									fileRowAction.appendChild(fileRowActionLink);
-									fileRowEl.appendChild(fileRowAction);
-									
-									$(selectors.fileListEl).prepend(fileRowEl);
+									FieldMultiFileFormInsertFile(fieldId,file);
 								});			
 								
 								$(selectors.fileListEl).removeClass("d-none");
@@ -150,9 +223,61 @@ function FieldMultiFileFormInit(fieldId, config) {
 						console.log(err);
 					}
 				});
-			} else {
-				alert("This browser doesn't support HTML5 file uploads!");
-			}
+		} else {
+			alert("This browser doesn't support HTML5 file uploads!");
+		}
+	}
+}
+
+
+function FieldMultiFileRemoveFileRow(e,fieldId) {
+	e.preventDefault();
+    e.stopPropagation();
+    var clickedBtn = event.target;
+	var filePath = $(clickedBtn).closest(".filerow").attr("data-file-path");
+
+    var fileRow = $(clickedBtn).closest(".filerow");
+    var selectors = FieldMultiFileFormGenerateSelectors(fieldId, {});
+    var inputValue = $(selectors.inputEl).val();
+    if (inputValue && inputValue.indexOf(filePath) > -1) {
+        var pathArray = [];
+        if (inputValue) {
+            pathArray = inputValue.toLowerCase().split(',');
+        }
+        var filteredArray = _.filter(pathArray, function (recordPath) { return recordPath !== filePath; });
+        $(selectors.inputEl).val(filteredArray.join(','));
+        $(fileRow).remove();
+        if (filteredArray.length === 0) {
+            $(selectors.fileListEl).addClass("d-none");
+        }
+    }
+    else {
+        console.error("File Id: " + fileId + " not found in the hidden input value");
+    }
+}
+
+function FieldMultiFileFormInit(fieldId, config) {
+	config = ProcessConfig(config);
+    var selectors = FieldMultiFileFormGenerateSelectors(fieldId, config);
+	//Remove value
+	$(selectors.removeFileLink).on('click', function(e){ FieldMultiFileRemoveFileRow(e,fieldId);});
+
+    $(selectors.fileUploadEl).first().on('change', function (e) {
+        var files = e.target.files;
+		FieldMultiFileFormSubmit(fieldId,files);
+	});
+
+	$(selectors.fakeInputEl).click(function (event) {
+		if (FieldMultiFileFormGlobalPasteActiveFieldId === fieldId) {
+			$(selectors.fakeInputEl).text("Activate 'Paste Image' from clipboard");
+			$(selectors.fakeInputEl).removeClass("go-teal go-bkg-teal-light").addClass("go-gray");
+			FieldMultiFileFormGlobalPasteActiveFieldId = null;
+		}
+		else {
+			$(selectors.fakeInputEl).text("listening for image paste...");
+			$(selectors.fakeInputEl).addClass("go-teal go-bkg-teal-light").removeClass("go-gray");
+			FieldMultiFileFormGlobalPasteActiveFieldId = fieldId;
 		}
 	});
+
 }

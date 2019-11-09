@@ -4090,7 +4090,7 @@ namespace WebVella.TagHelpers.Utilities
 			return icons;
 		}
 
-		internal static string GetPathTypeIcon(string filePath)
+		public static string GetPathTypeIcon(string filePath)
 		{
 			var fontAwesomeIconName = "fa-file";
 			if (filePath.EndsWith(".txt"))
@@ -4194,7 +4194,7 @@ namespace WebVella.TagHelpers.Utilities
 			return fontAwesomeIconName;
 		}
 
-		internal static string GetFileNameFromPath(string hreflink){
+		public static string GetFileNameFromPath(string hreflink){
 			if(!hreflink.StartsWith("http")){
 				hreflink = "http://domain.com" + hreflink;
 			}
@@ -4205,6 +4205,24 @@ namespace WebVella.TagHelpers.Utilities
 			catch (Exception ex){
 				return "unknown name";
 			}
+		}
+
+		public static string GetSizeStringFromSize(int sizeKBInt){
+				var sizeString = "";
+				if (sizeKBInt < 1024)
+				{
+					sizeString = sizeKBInt + " KB";
+				}
+				else if (sizeKBInt >= 1024 && sizeKBInt < Math.Pow(1024, 2))
+				{
+					sizeString = Math.Round((decimal)(sizeKBInt / 1024), 1) + " MB";
+				}
+				else
+				{
+					sizeString = Math.Round((decimal)(sizeKBInt / Math.Pow(1024, 2)), 1) + " GB";
+				}
+
+				return sizeString;
 		}
 
 		#endregion

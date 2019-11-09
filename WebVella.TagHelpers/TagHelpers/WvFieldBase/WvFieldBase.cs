@@ -381,7 +381,7 @@ namespace WebVella.TagHelpers.TagHelpers
 					var requiredEl = new TagBuilder("abbr");
 					requiredEl.MergeAttribute("class", "go-red");
 					requiredEl.MergeAttribute("title", "required");
-					requiredEl.InnerHtml.Append("<i class='fas fa-asterisk'></i>");
+					requiredEl.InnerHtml.AppendHtml("<i class='fas fa-asterisk'></i>");
 					labelEl.InnerHtml.AppendHtml(requiredEl);
 				}
 

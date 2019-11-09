@@ -47,7 +47,22 @@
 	var emailVal = "test@domain.com";
 
 	var fileVal = "/webvella-taghelpers/assets/background.png";
-	var multiFilesVal = new List<string>{"/webvella-taghelpers/assets/background.png"};
+	var multiFilesVal = new List<string>{"/webvella-taghelpers/assets/background1.png","/webvella-taghelpers/assets/background2.png"};
+	var multiFilesValRecords = new List<dynamic>{
+		new {
+			path = "/webvella-taghelpers/assets/background1.png",
+			name = "FileName1",
+			icon = "",
+			size = 345
+		},
+		new {
+			path = "/webvella-taghelpers/assets/background2.png",
+			name = "FileName2",
+			icon = "",
+			size = 58888
+		}
+	};
+
 	var guidVal = Guid.NewGuid();
 
 	var iconVal = "fa fa-save";
@@ -698,7 +713,7 @@
 					Form
 				</div>
 				<div class="card-body">
-					<wv-field-file-multiple value="@multiFilesVal" label-text="FieldLabel" name="text" mode="Form"></wv-field-file-multiple>
+					<wv-field-file-multiple value="@multiFilesValRecords" label-text="FieldLabel" name="text" mode="Form" handler-prefix="/fs"></wv-field-file-multiple>
 				</div>
 			</div>
 		</div>
@@ -718,7 +733,7 @@
 					Display
 				</div>
 				<div class="card-body">
-					<wv-field-file-multiple value="@multiFilesVal" label-text="FieldLabel" name="text" mode="Display"></wv-field-file-multiple>
+					<wv-field-file-multiple value="@multiFilesValRecords" label-text="FieldLabel" name="text" mode="Display"></wv-field-file-multiple>
 				</div>
 			</div>
 		</div>
@@ -728,7 +743,7 @@
 					Display
 				</div>
 				<div class="card-body">
-					<wv-field-file-multiple value="@multiFilesVal" label-text="FieldLabel" name="text" mode="Simple"></wv-field-file-multiple>
+					<wv-field-file-multiple value="@multiFilesValRecords" label-text="FieldLabel" name="text" mode="Simple"></wv-field-file-multiple>
 				</div>
 			</div>
 		</div>

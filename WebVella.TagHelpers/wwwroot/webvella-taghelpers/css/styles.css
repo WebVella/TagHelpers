@@ -6,6 +6,8 @@
 	.wv-field .control-label abbr {
 		text-decoration: none;
 		cursor: inherit;
+		position: relative;
+		top: -1px;
 	}
 
 	.wv-field .control-label abbr i{
