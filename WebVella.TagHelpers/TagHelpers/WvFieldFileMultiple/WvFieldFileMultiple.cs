@@ -264,7 +264,6 @@ namespace WebVella.TagHelpers.TagHelpers
 
 
 					//Generate the files list
-					fileObjects = fileObjects.OrderByDescending(x=> (DateTime?)x.timestamp).ToList();
 					foreach (var fileObject in fileObjects)
 					{
 						var fileRow = new TagBuilder("div");
@@ -461,7 +460,6 @@ namespace WebVella.TagHelpers.TagHelpers
 			}
 
 			resultEl.AddCssClass("wv-field-file-multiple form-control-plaintext");
-			fileObjects = fileObjects.OrderByDescending(x=> (DateTime?)x.timestamp).ToList();
 			foreach (var fileObject in fileObjects)
 			{
 				var fileRowEl = new TagBuilder("a");
