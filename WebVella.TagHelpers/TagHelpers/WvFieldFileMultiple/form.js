@@ -13,7 +13,7 @@ function FieldMultiFileFormGenerateSelectors(fieldId, config) {
 	return selectors;
 }
 
-function AttachEventListener(event){
+function FieldMultiFileFormAttachEventListener(event){
 	if (FieldMultiFileFormGlobalPasteActiveFieldId) {
 		event.preventDefault();
 		event.stopPropagation();
@@ -275,13 +275,13 @@ function FieldMultiFileFormInit(fieldId, config) {
 			$(selectors.fakeInputEl).text("Activate 'Paste Image' from clipboard");
 			$(selectors.fakeInputEl).removeClass("go-teal go-bkg-teal-light").addClass("go-gray");
 			FieldMultiFileFormGlobalPasteActiveFieldId = null;
-			document.removeEventListener("paste",AttachEventListener);
+			document.removeEventListener("paste",FieldMultiFileFormAttachEventListener);
 		}
 		else {
 			$(selectors.fakeInputEl).text("listening for image paste...");
 			$(selectors.fakeInputEl).addClass("go-teal go-bkg-teal-light").removeClass("go-gray");
 			FieldMultiFileFormGlobalPasteActiveFieldId = fieldId;
-			document.addEventListener("paste",AttachEventListener);
+			document.addEventListener("paste",FieldMultiFileFormAttachEventListener);
 		}
 	});
 

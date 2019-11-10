@@ -17,7 +17,7 @@ namespace WebVella.TagHelpers.TagHelpers
 		[HtmlAttributeName("accept")]
 		public string Accept { get; set; } = "";
 
-		[HtmlAttributeName("handler-prefix")]
+		[HtmlAttributeName("get-handler-prefix")]
 		public string GetHandlerPrefix { get; set; } = "/fs";
 
 		[HtmlAttributeName("file-upload-api")]
