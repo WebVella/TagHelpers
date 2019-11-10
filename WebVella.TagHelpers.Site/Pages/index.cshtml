@@ -13,6 +13,8 @@
 		BorderColor = "#FF9800",
 		Data = new List<decimal>{5,15,25}
 	};
+	var autoNumberValue = (decimal)1.00;
+	var autonumberTemplate = "boz-{0}";
 	var chartDsList = new List<WvChartDataset>{ chartDs};
 
 	var htmlEncoded = HttpUtility.HtmlEncode("<div class=\"text\">text</div>");
@@ -312,6 +314,51 @@
 			</div>
 		</div>
 	</div>
+
+	<h2>wv-field-autonumber</h2>
+	<div class="row">
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Form
+				</div>
+				<div class="card-body">
+					<wv-field-autonumber value="@autoNumberValue" label-text="FieldLabel" name="text" mode="Form" template="@autonumberTemplate"></wv-field-autonumber>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Inline Edit
+				</div>
+				<div class="card-body">
+					<wv-field-autonumber value="@autoNumberValue" label-text="FieldLabel" name="text" mode="InlineEdit" api-url="@apiUrl" template="@autonumberTemplate"></wv-field-autonumber>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Display
+				</div>
+				<div class="card-body">
+					<wv-field-autonumber value="@autoNumberValue" label-text="FieldLabel" name="text" mode="Display" template="@autonumberTemplate"></wv-field-autonumber>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Display
+				</div>
+				<div class="card-body">
+					<wv-field-autonumber value="@autoNumberValue" label-text="FieldLabel" name="text" mode="Simple" template="@autonumberTemplate"></wv-field-autonumber>
+				</div>
+			</div>
+		</div>
+	</div>
+
 
 	<h2>wv-field-checkbox</h2>
 	<div class="row">
