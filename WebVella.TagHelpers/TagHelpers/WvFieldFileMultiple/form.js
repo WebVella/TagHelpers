@@ -111,7 +111,7 @@ function FieldMultiFileFormInsertFile(fieldId, file){
 	fileRowEl.className = "filerow";
 	fileRowEl.dataset["filePath"] = file.path;
 	fileRowEl.dataset["fieldId"] = fieldId;
-	fileRowEl.innerHTML = '<div class="icon"><i class="' + fileIcon +'"></i></div><div class="meta"><a class="link" href="' + filePath +'" target="_blank" title="'+ filePath + '">'+ fileName +'<em></em></a><div class="size">' + fileSizeString + '</div></div>';
+	fileRowEl.innerHTML = '<div class="icon"><i class="' + fileIcon +'"></i></div><div class="meta"><a class="link" href="' + filePath +'" target="_blank" title="'+ filePath + '">'+ fileName +'<em></em></a><div class="details"><div class="size">' + fileSizeString + '</div></div></div>';
 									
 	var fileRowAction = document.createElement("div");
 	fileRowAction.className = "action remove";

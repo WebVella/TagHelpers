@@ -12,10 +12,10 @@ using WebVella.TagHelpers.Models;
 
 namespace WebVella.TagHelpers.Utilities
 {
-	internal static class WvHelpers
+	public static class WvHelpers
 	{
 		#region << Embedded resources >>
-		internal static string GetEmbeddedTextResource(string name, string nameSpace, string assemblyName = null)
+		public static string GetEmbeddedTextResource(string name, string nameSpace, string assemblyName = null)
 		{
 			string resourceName = $"{nameSpace}.{name}";
 			Assembly assembly = null;
@@ -35,14 +35,14 @@ namespace WebVella.TagHelpers.Utilities
 			return reader.ReadToEnd();
 		}
 
-		internal static string GetEmbeddedTextResource(string name, string nameSpace, Assembly assembly)
+		public static string GetEmbeddedTextResource(string name, string nameSpace, Assembly assembly)
 		{
 			string resourceName = $"{nameSpace}.{name}";
 			Stream resource = assembly.GetManifestResourceStream(resourceName);
 			StreamReader reader = new StreamReader(resource);
 			return reader.ReadToEnd();
 		}
-		internal static bool EmbeddedResourceExists(string name, string nameSpace, string assemblyName = null)
+		public static bool EmbeddedResourceExists(string name, string nameSpace, string assemblyName = null)
 		{
 			string resourceName = $"{nameSpace}.{name}";
 			Assembly assembly = null;
@@ -57,13 +57,13 @@ namespace WebVella.TagHelpers.Utilities
 			var resources = assembly.GetManifestResourceNames();
 			return resources.Contains(resourceName);
 		}
-		internal static bool EmbeddedResourceExists(string name, string nameSpace, Assembly assembly)
+		public static bool EmbeddedResourceExists(string name, string nameSpace, Assembly assembly)
 		{
 			string resourceName = $"{nameSpace}.{name}";
 			var resources = assembly.GetManifestResourceNames();
 			return resources.Contains(resourceName);
 		}
-		internal static Assembly GetTypeAssembly(string typeName)
+		public static Assembly GetTypeAssembly(string typeName)
 		{
 			var assemblies = AppDomain.CurrentDomain.GetAssemblies()
 						.Where(a => !(a.FullName.ToLowerInvariant().StartsWith("microsoft.")
@@ -79,7 +79,7 @@ namespace WebVella.TagHelpers.Utilities
 			}
 			return null;
 		}
-		internal static Type GetType(string typeName)
+		public static Type GetType(string typeName)
 		{
 			var assemblies = AppDomain.CurrentDomain.GetAssemblies()
 						.Where(a => !(a.FullName.ToLowerInvariant().StartsWith("microsoft.")
@@ -99,7 +99,7 @@ namespace WebVella.TagHelpers.Utilities
 		#endregion
 
 		#region << Fields >>
-		internal static void ValidateValueToFieldType(WvFieldType? fieldType, dynamic InValue, out dynamic OutValue, out List<string> errorList)
+		public static void ValidateValueToFieldType(WvFieldType? fieldType, dynamic InValue, out dynamic OutValue, out List<string> errorList)
 		{
 			OutValue = null;
 			errorList = new List<string>();
@@ -302,7 +302,7 @@ namespace WebVella.TagHelpers.Utilities
 					break;
 			}
 		}
-		internal static List<WvFilterType> GetFilterTypesForFieldType(WvFieldType fieldType)
+		public static List<WvFilterType> GetFilterTypesForFieldType(WvFieldType fieldType)
 		{
 			var result = new List<WvFilterType>();
 
@@ -3004,8 +3004,8 @@ namespace WebVella.TagHelpers.Utilities
 			return result;
 		}
 
-		internal static List<WvIcon> fontAwesomeIcons = null;
-		internal static List<WvIcon> FontAwesomeIcons
+		public static List<WvIcon> fontAwesomeIcons = null;
+		public static List<WvIcon> FontAwesomeIcons
 		{
 			get
 			{
