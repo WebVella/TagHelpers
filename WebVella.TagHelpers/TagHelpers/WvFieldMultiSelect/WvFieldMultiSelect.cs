@@ -279,7 +279,7 @@ namespace WebVella.TagHelpers.TagHelpers
 						$(function(){
 							MultiSelectFormInit(""{{FieldId}}"",""{{Name}}"",{{ConfigJson}});
 						});";
-					scriptTemplate = scriptTemplate.Replace("{{FieldId}}", (FieldId ?? null).ToString());
+					scriptTemplate = scriptTemplate.Replace("{{FieldId}}", (FieldId != null ? FieldId.Value.ToString() : ""));
 					scriptTemplate = scriptTemplate.Replace("{{Name}}", Name);
 
 					var fieldConfig = new WvFieldMultiSelectConfig()
@@ -771,7 +771,7 @@ namespace WebVella.TagHelpers.TagHelpers
 						$(function(){
 							MultiSelectInlineEditInit(""{{FieldId}}"",""{{Name}}"",{{ConfigJson}});
 						});";
-					scriptTemplate = scriptTemplate.Replace("{{FieldId}}", (FieldId ?? null).ToString());
+					scriptTemplate = scriptTemplate.Replace("{{FieldId}}", (FieldId != null ? FieldId.Value.ToString() : ""));
 					scriptTemplate = scriptTemplate.Replace("{{Name}}", Name);
 
 					var fieldConfig = new WvFieldMultiSelectConfig()

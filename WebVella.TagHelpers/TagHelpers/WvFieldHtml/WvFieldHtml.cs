@@ -142,7 +142,7 @@ namespace WebVella.TagHelpers.TagHelpers
 						$(function(){
 							InitHtmlFieldCKEditor(""{{FieldId}}"",{{ConfigJson}});
 						});";
-					scriptTemplate = scriptTemplate.Replace("{{FieldId}}", (FieldId ?? null).ToString());
+					scriptTemplate = scriptTemplate.Replace("{{FieldId}}", (FieldId != null ? FieldId.Value.ToString() : ""));
 
 					var fieldConfig = new WvFieldHtmlConfig()
 					{
@@ -391,7 +391,7 @@ namespace WebVella.TagHelpers.TagHelpers
 						$(function(){
 							HtmlInlineEditInit(""{{FieldId}}"",""{{Name}}"",{{ConfigJson}});
 						});";
-					scriptTemplate = scriptTemplate.Replace("{{FieldId}}", (FieldId ?? null).ToString());
+					scriptTemplate = scriptTemplate.Replace("{{FieldId}}", (FieldId != null ? FieldId.Value.ToString() : ""));
 					scriptTemplate = scriptTemplate.Replace("{{Name}}", Name);
 
 					var fieldConfig = new WvFieldHtmlConfig()

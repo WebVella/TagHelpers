@@ -135,7 +135,7 @@ namespace WebVella.TagHelpers.TagHelpers
 						$(function(){
 							new Autogrow(document.getElementById('textarea-{{FieldId}}'));
 						});";
-					scriptTemplate = scriptTemplate.Replace("{{FieldId}}", (FieldId ?? null).ToString());
+					scriptTemplate = scriptTemplate.Replace("{{FieldId}}", (FieldId != null ? FieldId.Value.ToString() : ""));
 
 					initScript.InnerHtml.AppendHtml(jsCompressor.Compress(scriptTemplate));
 					output.PostContent.AppendHtml(initScript);
@@ -311,7 +311,7 @@ namespace WebVella.TagHelpers.TagHelpers
 						$(function(){
 							MultiLineTextInlineEditInit(""{{FieldId}}"",""{{Name}}"",{{ConfigJson}});
 						});";
-					scriptTemplate = scriptTemplate.Replace("{{FieldId}}", (FieldId ?? null).ToString());
+					scriptTemplate = scriptTemplate.Replace("{{FieldId}}", (FieldId != null ? FieldId.Value.ToString() : ""));
 					scriptTemplate = scriptTemplate.Replace("{{Name}}", Name);
 
 

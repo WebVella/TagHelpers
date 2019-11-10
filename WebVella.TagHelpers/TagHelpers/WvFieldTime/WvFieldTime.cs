@@ -191,7 +191,7 @@ namespace WebVella.TagHelpers.TagHelpers
 						$(function(){
 							InitFlatPickrTime(""#input-{{FieldId}}"",{{ConfigJson}});
 						});";
-					scriptTemplate = scriptTemplate.Replace("{{FieldId}}", (FieldId ?? null).ToString());
+					scriptTemplate = scriptTemplate.Replace("{{FieldId}}", (FieldId != null ? FieldId.Value.ToString() : ""));
 
 					var fieldConfig = new WvFieldDateConfig()
 					{
@@ -407,7 +407,7 @@ namespace WebVella.TagHelpers.TagHelpers
 						$(function(){
 							TimeInlineEditInit(""{{FieldId}}"",""{{Name}}"",{{ConfigJson}});
 						});";
-					scriptTemplate = scriptTemplate.Replace("{{FieldId}}", (FieldId ?? null).ToString());
+					scriptTemplate = scriptTemplate.Replace("{{FieldId}}", (FieldId != null ? FieldId.Value.ToString() : ""));
 					scriptTemplate = scriptTemplate.Replace("{{Name}}", Name);
 
 					var fieldConfig = new WvFieldDateTimeConfig()

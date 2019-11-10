@@ -130,7 +130,7 @@ namespace WebVella.TagHelpers.TagHelpers
 						$(function(){
 							ColorFormInit(""{{FieldId}}"");
 						});";
-				scriptTemplate = scriptTemplate.Replace("{{FieldId}}", (FieldId ?? null).ToString());
+				scriptTemplate = scriptTemplate.Replace("{{FieldId}}", (FieldId != null ? FieldId.Value.ToString() : ""));
 
 				initScript.InnerHtml.AppendHtml(jsCompressor.Compress(scriptTemplate));
 
@@ -314,7 +314,7 @@ namespace WebVella.TagHelpers.TagHelpers
 						$(function(){
 							ColorInlineEditInit(""{{FieldId}}"",""{{Name}}"",{{ConfigJson}});
 						});";
-					scriptTemplate = scriptTemplate.Replace("{{FieldId}}", (FieldId ?? null).ToString());
+					scriptTemplate = scriptTemplate.Replace("{{FieldId}}", (FieldId != null ? FieldId.Value.ToString() : ""));
 					scriptTemplate = scriptTemplate.Replace("{{Name}}", Name);
 
 					var fieldConfig = new WvFieldColorConfig() {

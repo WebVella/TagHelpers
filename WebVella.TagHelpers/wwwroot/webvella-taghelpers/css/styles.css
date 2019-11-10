@@ -362,9 +362,13 @@
 		border-bottom: 1px solid #e1e4e8;
 	}
 
-	.wv-field-file-multiple.form-control-plaintext .filerow {
-		padding: 10px;
+	.wv-field-file-multiple a.filerow:hover {
+		text-decoration:none;
 	}
+
+		.wv-field-file-multiple.form-control-plaintext .filerow {
+			padding: 10px;
+		}
 
 		.wv-field-file-multiple .filerow:first-child {
 			padding-top: 5px;
@@ -386,10 +390,14 @@
 			width: 24px;
 		}
 
-		.wv-field-file-multiple .filerow .meta {
-			flex-grow: 1;
-			flex-shrink: 0;
-		}
+	.wv-field-file-multiple a.filerow .icon {
+		color:#333;
+	}
+
+	.wv-field-file-multiple .filerow .meta {
+		flex-grow: 1;
+		flex-shrink: 0;
+	}
 
 			.wv-field-file-multiple .filerow .meta .size {
 				color: #999;

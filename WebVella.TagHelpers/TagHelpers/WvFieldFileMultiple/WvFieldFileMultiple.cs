@@ -18,22 +18,22 @@ namespace WebVella.TagHelpers.TagHelpers
 		public string Accept { get; set; } = "";
 
 		[HtmlAttributeName("handler-prefix")]
-		public string HandlerPrefix { get; set; } = "/fs";
+		public string GetHandlerPrefix { get; set; } = "/fs";
 
 		[HtmlAttributeName("file-upload-api")]
 		public string FileUploadApi { get; set; } = "/fs/upload-file-multiple";
 
-		[HtmlAttributeName("path-name")]
-		public string PathName { get; set; } = "path";
+		[HtmlAttributeName("path-prop-name")]
+		public string PathPropName { get; set; } = "path";
 
-		[HtmlAttributeName("size-name")]
-		public string SizeName { get; set; } = "size";
+		[HtmlAttributeName("size-prop-name")]
+		public string SizePropName { get; set; } = "size";
 
-		[HtmlAttributeName("name-name")]
-		public string NameName { get; set; } = "name";
+		[HtmlAttributeName("name-prop-name")]
+		public string NamePropName { get; set; } = "name";
 
-		[HtmlAttributeName("icon-name")]
-		public string IconName { get; set; } = "icon";
+		[HtmlAttributeName("icon-prop-name")]
+		public string IconPropName { get; set; } = "icon";
 
 		public override Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
 		{
@@ -64,18 +64,18 @@ namespace WebVella.TagHelpers.TagHelpers
 				else if (stringValue.Contains(","))
 				{
 					var filePaths = stringValue.Split(",", StringSplitOptions.RemoveEmptyEntries).ToList();
-					Value = GetFileObjectsFromStringList(filePaths, HandlerPrefix);
+					Value = GetFileObjectsFromStringList(filePaths);
 				}
 				else{
 					var filePaths = new List<string>{stringValue};
-					Value = GetFileObjectsFromStringList(filePaths, HandlerPrefix);
+					Value = GetFileObjectsFromStringList(filePaths);
 				}
 			}
 
 			else if (Value is List<string>)
 			{
 				var filePaths = (List<string>)Value;
-				Value = GetFileObjectsFromStringList(filePaths, HandlerPrefix);
+				Value = GetFileObjectsFromStringList(filePaths);
 			}
 			else if (Value is List<object>)
 			{
@@ -89,27 +89,27 @@ namespace WebVella.TagHelpers.TagHelpers
 					var fileIcon = "";
 					var fileName = "";
 
-					if (!String.IsNullOrWhiteSpace(PathName) && type.GetProperty(PathName) != null && type.GetProperty(PathName).GetValue(fileObject) != null)
+					if (!String.IsNullOrWhiteSpace(PathPropName) && type.GetProperty(PathPropName) != null && type.GetProperty(PathPropName).GetValue(fileObject) != null)
 					{
-						var propValue = type.GetProperty(PathName).GetValue(fileObject);
+						var propValue = type.GetProperty(PathPropName).GetValue(fileObject);
 						if (propValue is string)
 						{
-							filePath = HandlerPrefix + propValue.ToString();
+							filePath = propValue.ToString();
 						}
 					}
 
-					if (!String.IsNullOrWhiteSpace(SizeName) && type.GetProperty(SizeName) != null && type.GetProperty(SizeName).GetValue(fileObject) != null)
+					if (!String.IsNullOrWhiteSpace(SizePropName) && type.GetProperty(SizePropName) != null && type.GetProperty(SizePropName).GetValue(fileObject) != null)
 					{
-						var propValue = type.GetProperty(SizeName).GetValue(fileObject);
+						var propValue = type.GetProperty(SizePropName).GetValue(fileObject);
 						if (propValue is int || propValue is decimal || propValue is double)
 						{
 							fileSize = (int)propValue;
 						}
 					}
 
-					if (!String.IsNullOrWhiteSpace(IconName) && type.GetProperty(IconName) != null && type.GetProperty(IconName).GetValue(fileObject) != null)
+					if (!String.IsNullOrWhiteSpace(IconPropName) && type.GetProperty(IconPropName) != null && type.GetProperty(IconPropName).GetValue(fileObject) != null)
 					{
-						var propValue = type.GetProperty(IconName).GetValue(fileObject);
+						var propValue = type.GetProperty(IconPropName).GetValue(fileObject);
 						if (propValue is string)
 						{
 							fileIcon = propValue.ToString();
@@ -120,9 +120,9 @@ namespace WebVella.TagHelpers.TagHelpers
 						fileIcon = "fa " + WvHelpers.GetPathTypeIcon(filePath);
 					}
 
-					if (!String.IsNullOrWhiteSpace(NameName) && type.GetProperty(NameName) != null && type.GetProperty(NameName).GetValue(fileObject) != null)
+					if (!String.IsNullOrWhiteSpace(NamePropName) && type.GetProperty(NamePropName) != null && type.GetProperty(NamePropName).GetValue(fileObject) != null)
 					{
-						var propValue = type.GetProperty(NameName).GetValue(fileObject);
+						var propValue = type.GetProperty(NamePropName).GetValue(fileObject);
 						if (propValue is string)
 						{
 							fileName = propValue.ToString();
@@ -186,12 +186,13 @@ namespace WebVella.TagHelpers.TagHelpers
 					fakeInputProgress.AddCssClass("form-control-progress");
 					fakeInputEl.InnerHtml.AppendHtml(fakeInputProgress);
 
-					fakeInputEl.Attributes.Add("data-handler-prefix",HandlerPrefix);
+					fakeInputEl.Attributes.Add("data-handler-prefix",GetHandlerPrefix);
 					fakeInputEl.Attributes.Add("data-file-upload-api",FileUploadApi);
-					fakeInputEl.Attributes.Add("data-path-name",PathName);
-					fakeInputEl.Attributes.Add("data-size-name",SizeName);
-					fakeInputEl.Attributes.Add("data-name-name",NameName);
-					fakeInputEl.Attributes.Add("data-icon-name",IconName);
+					fakeInputEl.Attributes.Add("data-path-name",PathPropName);
+					fakeInputEl.Attributes.Add("data-size-name",SizePropName);
+					fakeInputEl.Attributes.Add("data-name-name",NamePropName);
+					fakeInputEl.Attributes.Add("data-icon-name",IconPropName);
+					fakeInputEl.Attributes.Add("data-field-id",(FieldId != null ? FieldId.Value.ToString() : ""));
 
 
 					inputGroupEl.InnerHtml.AppendHtml(fakeInputEl);
@@ -237,6 +238,7 @@ namespace WebVella.TagHelpers.TagHelpers
 						var fileRow = new TagBuilder("div");
 						fileRow.AddCssClass("filerow");
 						fileRow.Attributes.Add("data-file-path", fileObject.path);
+						fileRow.Attributes.Add("data-field-id",(FieldId != null ? FieldId.Value.ToString() : ""));
 
 						//Append icon
 						fileRow.InnerHtml.AppendHtml($"<div class='icon'><i class='fa {fileObject.icon}'></i></div>");
@@ -246,7 +248,7 @@ namespace WebVella.TagHelpers.TagHelpers
 						rowMeta.AddCssClass("meta");
 
 						//Append file 
-						rowMeta.InnerHtml.AppendHtml($"<a class='link' href='{HandlerPrefix}{fileObject.path}' target='_blank' title='{HandlerPrefix}{fileObject.path}'>{fileObject.name}<em></em></a>");
+						rowMeta.InnerHtml.AppendHtml($"<a class='link' href='{GetHandlerPrefix}{fileObject.path}' target='_blank' title='{GetHandlerPrefix}{fileObject.path}'>{fileObject.name}<em></em></a>");
 
 						if (((int)fileObject.size) > 0 ){
 							var sizeString = WvHelpers.GetSizeStringFromSize(fileObject.size);
@@ -284,8 +286,8 @@ namespace WebVella.TagHelpers.TagHelpers
 						{
 							var scriptContent = WvHelpers.GetEmbeddedTextResource("form.js", "WebVella.TagHelpers.TagHelpers.WvFieldFileMultiple", "WebVella.TagHelpers");
 							var scriptEl = new TagBuilder("script");
-							//scriptEl.Attributes.Add("type", "text/javascript");
-							scriptEl.InnerHtml.AppendHtml(scriptContent);
+							scriptEl.Attributes.Add("type", "text/javascript");
+							//scriptEl.InnerHtml.AppendHtml(scriptContent);
 							scriptEl.InnerHtml.AppendHtml(jsCompressor.Compress(scriptContent));
 							output.PostContent.AppendHtml(scriptEl);
 
@@ -305,7 +307,7 @@ namespace WebVella.TagHelpers.TagHelpers
 						$(function(){
 							FieldMultiFileFormInit(""{{FieldId}}"",{{ConfigJson}});
 						});";
-					scriptTemplate = scriptTemplate.Replace("{{FieldId}}", (FieldId ?? null).ToString());
+					scriptTemplate = scriptTemplate.Replace("{{FieldId}}", (FieldId != null ? FieldId.Value.ToString() : ""));
 
 					var fieldConfig = new WvFieldFileConfig()
 					{
@@ -325,13 +327,13 @@ namespace WebVella.TagHelpers.TagHelpers
 				}
 				else if (Access == WvFieldAccess.ReadOnly)
 				{
-					output.Content.AppendHtml(GenerateDisplayHtml(fileObjects));
+					output.Content.AppendHtml(GenerateDisplayHtml(fileObjects, GetHandlerPrefix));
 
 				}
 			}
 			else if (Mode == WvFieldRenderMode.Display)
 			{
-				output.Content.AppendHtml(GenerateDisplayHtml(fileObjects));
+				output.Content.AppendHtml(GenerateDisplayHtml(fileObjects, GetHandlerPrefix));
 			}
 			else if (Mode == WvFieldRenderMode.Simple)
 			{
@@ -344,7 +346,8 @@ namespace WebVella.TagHelpers.TagHelpers
 						fileSpan.InnerHtml.AppendHtml($"<i class='{fileObject.icon}'></i> ");
 					}
 					var fileLink = new TagBuilder("a");
-					fileLink.Attributes.Add("href",fileObject.path);
+					fileLink.Attributes.Add("href", GetHandlerPrefix + fileObject.path);
+					fileLink.Attributes.Add("title", GetHandlerPrefix + fileObject.path);
 					fileLink.Attributes.Add("target","_blank");
 
 					fileLink.InnerHtml.Append(fileObject.name);
@@ -371,15 +374,11 @@ namespace WebVella.TagHelpers.TagHelpers
 			return Task.CompletedTask;
 		}
 
-		private List<dynamic> GetFileObjectsFromStringList(List<string> filePaths, string handlerPrefix)
+		private List<dynamic> GetFileObjectsFromStringList(List<string> filePaths)
 		{
 			var resultFiles = new List<dynamic>();
-			foreach (var path in filePaths)
+			foreach (var filePath in filePaths)
 			{
-				var filePath = path;
-				if(!filePath.StartsWith(handlerPrefix)){
-					filePath = handlerPrefix + filePath;
-				}
 				var iconClass = "fa " + WvHelpers.GetPathTypeIcon(filePath);
 				var fileName = WvHelpers.GetFileNameFromPath(filePath);
 				dynamic file = new
@@ -395,7 +394,7 @@ namespace WebVella.TagHelpers.TagHelpers
 			return resultFiles;
 		}
 
-		public TagBuilder GenerateDisplayHtml(List<dynamic> fileObjects){
+		public TagBuilder GenerateDisplayHtml(List<dynamic> fileObjects, string getHandlerPrefix){
 			var resultEl = new TagBuilder("div");
 			if(fileObjects.Count == 0){
 				resultEl.AddCssClass("form-control-plaintext");
@@ -410,9 +409,9 @@ namespace WebVella.TagHelpers.TagHelpers
 			{
 				var fileRowEl = new TagBuilder("a");
 				fileRowEl.AddCssClass("filerow");
-				fileRowEl.Attributes.Add("href",fileObject.path);
+				fileRowEl.Attributes.Add("href",getHandlerPrefix + fileObject.path);
 				fileRowEl.Attributes.Add("target","_blank");
-				fileRowEl.Attributes.Add("title",fileObject.path);
+				fileRowEl.Attributes.Add("title",getHandlerPrefix + fileObject.path);
 				if(!String.IsNullOrWhiteSpace(fileObject.icon)){
 					fileRowEl.InnerHtml.AppendHtml($"<div class='icon'><i class='{fileObject.icon}'></i></div>");
 				}

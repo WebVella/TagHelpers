@@ -12,7 +12,8 @@ function FieldMultiFileFormGenerateSelectors(fieldId, config) {
 	selectors.removeFileLink = selectors.fileListEl + " .filerow .action.remove .link";
 	return selectors;
 }
-document.addEventListener("paste", function (event) {
+
+function AttachEventListener(event){
 	if (FieldMultiFileFormGlobalPasteActiveFieldId) {
 		event.preventDefault();
 		event.stopPropagation();
@@ -45,7 +46,7 @@ document.addEventListener("paste", function (event) {
 			}
 		}
 	}
-});
+}
 
 function FieldMultiFileFormInsertFile(fieldId, file){
 	var selectors = FieldMultiFileFormGenerateSelectors(fieldId, null);
@@ -232,13 +233,13 @@ function FieldMultiFileFormSubmit(fieldId, files) {
 }
 
 
-function FieldMultiFileRemoveFileRow(e,fieldId) {
+function FieldMultiFileRemoveFileRow(e) {
 	e.preventDefault();
     e.stopPropagation();
     var clickedBtn = event.target;
-	var filePath = $(clickedBtn).closest(".filerow").attr("data-file-path");
-
     var fileRow = $(clickedBtn).closest(".filerow");
+	var filePath = $(fileRow).attr("data-file-path");
+	var fieldId = $(fileRow).attr("data-field-id");
     var selectors = FieldMultiFileFormGenerateSelectors(fieldId, {});
     var inputValue = $(selectors.inputEl).val();
     if (inputValue && inputValue.indexOf(filePath) > -1) {
@@ -262,7 +263,7 @@ function FieldMultiFileFormInit(fieldId, config) {
 	config = ProcessConfig(config);
     var selectors = FieldMultiFileFormGenerateSelectors(fieldId, config);
 	//Remove value
-	$(selectors.removeFileLink).on('click', function(e){ FieldMultiFileRemoveFileRow(e,fieldId);});
+	$(selectors.removeFileLink).on('click', function(e){ FieldMultiFileRemoveFileRow(e);});
 
     $(selectors.fileUploadEl).first().on('change', function (e) {
         var files = e.target.files;
@@ -274,11 +275,13 @@ function FieldMultiFileFormInit(fieldId, config) {
 			$(selectors.fakeInputEl).text("Activate 'Paste Image' from clipboard");
 			$(selectors.fakeInputEl).removeClass("go-teal go-bkg-teal-light").addClass("go-gray");
 			FieldMultiFileFormGlobalPasteActiveFieldId = null;
+			document.removeEventListener("paste",AttachEventListener);
 		}
 		else {
 			$(selectors.fakeInputEl).text("listening for image paste...");
 			$(selectors.fakeInputEl).addClass("go-teal go-bkg-teal-light").removeClass("go-gray");
 			FieldMultiFileFormGlobalPasteActiveFieldId = fieldId;
+			document.addEventListener("paste",AttachEventListener);
 		}
 	});
 

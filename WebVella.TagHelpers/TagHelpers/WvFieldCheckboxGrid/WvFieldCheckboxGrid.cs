@@ -212,7 +212,7 @@ namespace WebVella.TagHelpers.TagHelpers
 						$(function(){
 							CheckboxGridFormInit(""{{FieldId}}"");
 						});";
-				scriptTemplate = scriptTemplate.Replace("{{FieldId}}", (FieldId ?? null).ToString());
+				scriptTemplate = scriptTemplate.Replace("{{FieldId}}", (FieldId != null ? FieldId.Value.ToString() : ""));
 
 				initScript.InnerHtml.AppendHtml(jsCompressor.Compress(scriptTemplate));
 
