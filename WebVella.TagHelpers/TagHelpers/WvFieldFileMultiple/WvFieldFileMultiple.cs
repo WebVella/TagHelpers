@@ -35,6 +35,12 @@ namespace WebVella.TagHelpers.TagHelpers
 		[HtmlAttributeName("icon-prop-name")]
 		public string IconPropName { get; set; } = "icon";
 
+		[HtmlAttributeName("timestamp-prop-name")]
+		public string TimestampPropName { get; set; } = "timestamp";
+
+		[HtmlAttributeName("author-prop-name")]
+		public string AuthorPropName { get; set; } = "author";
+
 		public override Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
 		{
 			if (!isVisible)
@@ -66,8 +72,9 @@ namespace WebVella.TagHelpers.TagHelpers
 					var filePaths = stringValue.Split(",", StringSplitOptions.RemoveEmptyEntries).ToList();
 					Value = GetFileObjectsFromStringList(filePaths);
 				}
-				else{
-					var filePaths = new List<string>{stringValue};
+				else
+				{
+					var filePaths = new List<string> { stringValue };
 					Value = GetFileObjectsFromStringList(filePaths);
 				}
 			}
@@ -88,6 +95,8 @@ namespace WebVella.TagHelpers.TagHelpers
 					var fileSize = 0;
 					var fileIcon = "";
 					var fileName = "";
+					DateTime? fileTimestamp = null;
+					var fileAuthor = "";
 
 					if (!String.IsNullOrWhiteSpace(PathPropName) && type.GetProperty(PathPropName) != null && type.GetProperty(PathPropName).GetValue(fileObject) != null)
 					{
@@ -133,12 +142,32 @@ namespace WebVella.TagHelpers.TagHelpers
 						fileName = WvHelpers.GetFileNameFromPath(filePath);
 					}
 
+					if (!String.IsNullOrWhiteSpace(TimestampPropName) && type.GetProperty(TimestampPropName) != null && type.GetProperty(TimestampPropName).GetValue(fileObject) != null)
+					{
+						var propValue = type.GetProperty(TimestampPropName).GetValue(fileObject);
+						if (propValue is DateTime)
+						{
+							fileTimestamp = (DateTime)propValue;
+						}
+					}
+
+					if (!String.IsNullOrWhiteSpace(AuthorPropName) && type.GetProperty(AuthorPropName) != null && type.GetProperty(AuthorPropName).GetValue(fileObject) != null)
+					{
+						var propValue = type.GetProperty(AuthorPropName).GetValue(fileObject);
+						if (propValue is string)
+						{
+							fileAuthor = propValue.ToString();
+						}
+					}
+
 					dynamic file = new
 					{
 						path = filePath,
 						size = fileSize,
 						name = fileName,
-						icon = fileIcon
+						icon = fileIcon,
+						timestamp = fileTimestamp,
+						author = fileAuthor
 					};
 					resultFiles.Add(file);
 				}
@@ -160,7 +189,7 @@ namespace WebVella.TagHelpers.TagHelpers
 				{
 
 					#region << Hidden input for posting >>
-					output.Content.AppendHtml($"<input type='hidden' id='input-{FieldId}' name='{Name}' value='{String.Join(',', fileObjects.Select(x=> x.path).ToList())}'/>");
+					output.Content.AppendHtml($"<input type='hidden' id='input-{FieldId}' name='{Name}' value='{String.Join(',', fileObjects.Select(x => x.path).ToList())}'/>");
 					#endregion
 
 					#region << fake upload >>
@@ -186,13 +215,15 @@ namespace WebVella.TagHelpers.TagHelpers
 					fakeInputProgress.AddCssClass("form-control-progress");
 					fakeInputEl.InnerHtml.AppendHtml(fakeInputProgress);
 
-					fakeInputEl.Attributes.Add("data-handler-prefix",GetHandlerPrefix);
-					fakeInputEl.Attributes.Add("data-file-upload-api",FileUploadApi);
-					fakeInputEl.Attributes.Add("data-path-name",PathPropName);
-					fakeInputEl.Attributes.Add("data-size-name",SizePropName);
-					fakeInputEl.Attributes.Add("data-name-name",NamePropName);
-					fakeInputEl.Attributes.Add("data-icon-name",IconPropName);
-					fakeInputEl.Attributes.Add("data-field-id",(FieldId != null ? FieldId.Value.ToString() : ""));
+					fakeInputEl.Attributes.Add("data-handler-prefix", GetHandlerPrefix);
+					fakeInputEl.Attributes.Add("data-file-upload-api", FileUploadApi);
+					fakeInputEl.Attributes.Add("data-path-name", PathPropName);
+					fakeInputEl.Attributes.Add("data-size-name", SizePropName);
+					fakeInputEl.Attributes.Add("data-name-name", NamePropName);
+					fakeInputEl.Attributes.Add("data-icon-name", IconPropName);
+					fakeInputEl.Attributes.Add("data-timestamp-name", TimestampPropName);
+					fakeInputEl.Attributes.Add("data-author-name", AuthorPropName);
+					fakeInputEl.Attributes.Add("data-field-id", (FieldId != null ? FieldId.Value.ToString() : ""));
 
 
 					inputGroupEl.InnerHtml.AppendHtml(fakeInputEl);
@@ -233,12 +264,13 @@ namespace WebVella.TagHelpers.TagHelpers
 
 
 					//Generate the files list
+					fileObjects = fileObjects.OrderByDescending(x=> (DateTime?)x.timestamp).ToList();
 					foreach (var fileObject in fileObjects)
 					{
 						var fileRow = new TagBuilder("div");
 						fileRow.AddCssClass("filerow");
 						fileRow.Attributes.Add("data-file-path", fileObject.path);
-						fileRow.Attributes.Add("data-field-id",(FieldId != null ? FieldId.Value.ToString() : ""));
+						fileRow.Attributes.Add("data-field-id", (FieldId != null ? FieldId.Value.ToString() : ""));
 
 						//Append icon
 						fileRow.InnerHtml.AppendHtml($"<div class='icon'><i class='fa {fileObject.icon}'></i></div>");
@@ -250,9 +282,29 @@ namespace WebVella.TagHelpers.TagHelpers
 						//Append file 
 						rowMeta.InnerHtml.AppendHtml($"<a class='link' href='{GetHandlerPrefix}{fileObject.path}' target='_blank' title='{GetHandlerPrefix}{fileObject.path}'>{fileObject.name}<em></em></a>");
 
-						if (((int)fileObject.size) > 0 ){
-							var sizeString = WvHelpers.GetSizeStringFromSize(fileObject.size);
-							rowMeta.InnerHtml.AppendHtml($"<div class='size'>{sizeString}</div>");
+						if (((int)fileObject.size) > 0 || ((DateTime?)fileObject.timestamp) != null || String.IsNullOrWhiteSpace((string)fileObject.author))
+						{
+
+							var fileRowMetaDetailsEl = new TagBuilder("div");
+							fileRowMetaDetailsEl.AddCssClass("details");
+
+							if (((int)fileObject.size) > 0)
+							{
+								var sizeString = WvHelpers.GetSizeStringFromSize((int)fileObject.size);
+								fileRowMetaDetailsEl.InnerHtml.AppendHtml($"<span class='size'>{sizeString}</span>");
+							}
+							if (((DateTime?)fileObject.timestamp) != null)
+							{
+								var timestampString = ((DateTime)fileObject.timestamp).ToString("dd MMM yyyy HH:mm", Culture);
+								fileRowMetaDetailsEl.InnerHtml.AppendHtml($"<span class='timestamp'>{timestampString}</span>");
+							}
+							if (!String.IsNullOrWhiteSpace((string)fileObject.author))
+							{
+								fileRowMetaDetailsEl.InnerHtml.AppendHtml($"<span class='author'>{(string)fileObject.author}</span>");
+							}
+
+							rowMeta.InnerHtml.AppendHtml(fileRowMetaDetailsEl);
+
 						}
 
 						fileRow.InnerHtml.AppendHtml(rowMeta);
@@ -342,13 +394,14 @@ namespace WebVella.TagHelpers.TagHelpers
 				{
 					var fileSpan = new TagBuilder("span");
 					fileSpan.AddCssClass("mr-2");
-					if(!String.IsNullOrWhiteSpace(fileObject.icon)){
+					if (!String.IsNullOrWhiteSpace(fileObject.icon))
+					{
 						fileSpan.InnerHtml.AppendHtml($"<i class='{fileObject.icon}'></i> ");
 					}
 					var fileLink = new TagBuilder("a");
 					fileLink.Attributes.Add("href", GetHandlerPrefix + fileObject.path);
 					fileLink.Attributes.Add("title", GetHandlerPrefix + fileObject.path);
-					fileLink.Attributes.Add("target","_blank");
+					fileLink.Attributes.Add("target", "_blank");
 
 					fileLink.InnerHtml.Append(fileObject.name);
 
@@ -386,7 +439,9 @@ namespace WebVella.TagHelpers.TagHelpers
 					path = filePath,
 					size = 0,
 					name = fileName,
-					icon = iconClass
+					icon = iconClass,
+					timestamp = (DateTime?)null,
+					author = ""
 				};
 				resultFiles.Add(file);
 			}
@@ -394,9 +449,11 @@ namespace WebVella.TagHelpers.TagHelpers
 			return resultFiles;
 		}
 
-		public TagBuilder GenerateDisplayHtml(List<dynamic> fileObjects, string getHandlerPrefix){
+		public TagBuilder GenerateDisplayHtml(List<dynamic> fileObjects, string getHandlerPrefix)
+		{
 			var resultEl = new TagBuilder("div");
-			if(fileObjects.Count == 0){
+			if (fileObjects.Count == 0)
+			{
 				resultEl.AddCssClass("form-control-plaintext");
 				resultEl.AddCssClass("go-gray");
 				resultEl.InnerHtml.AppendHtml("No data");
@@ -404,26 +461,45 @@ namespace WebVella.TagHelpers.TagHelpers
 			}
 
 			resultEl.AddCssClass("wv-field-file-multiple form-control-plaintext");
-
+			fileObjects = fileObjects.OrderByDescending(x=> (DateTime?)x.timestamp).ToList();
 			foreach (var fileObject in fileObjects)
 			{
 				var fileRowEl = new TagBuilder("a");
 				fileRowEl.AddCssClass("filerow");
-				fileRowEl.Attributes.Add("href",getHandlerPrefix + fileObject.path);
-				fileRowEl.Attributes.Add("target","_blank");
-				fileRowEl.Attributes.Add("title",getHandlerPrefix + fileObject.path);
-				if(!String.IsNullOrWhiteSpace(fileObject.icon)){
+				fileRowEl.Attributes.Add("href", getHandlerPrefix + fileObject.path);
+				fileRowEl.Attributes.Add("target", "_blank");
+				fileRowEl.Attributes.Add("title", getHandlerPrefix + fileObject.path);
+				if (!String.IsNullOrWhiteSpace(fileObject.icon))
+				{
 					fileRowEl.InnerHtml.AppendHtml($"<div class='icon'><i class='{fileObject.icon}'></i></div>");
 				}
 
 				var fileRowMetaEl = new TagBuilder("div");
 				fileRowMetaEl.AddCssClass("meta");
 				fileRowMetaEl.InnerHtml.AppendHtml($"<span class='link go-blue'>{(String.IsNullOrWhiteSpace(fileObject.name) ? "unknown name" : fileObject.name)}</span>");
-				if(((int)fileObject.size) > 0){
-					var sizeString = WvHelpers.GetSizeStringFromSize((int)fileObject.size);
-					fileRowMetaEl.InnerHtml.AppendHtml($"<div class='size'>{sizeString}</div>");
-				}
 
+				if (((int)fileObject.size) > 0 || ((DateTime?)fileObject.timestamp) != null || String.IsNullOrWhiteSpace((string)fileObject.author))
+				{
+					var fileRowMetaDetailsEl = new TagBuilder("div");
+					fileRowMetaDetailsEl.AddCssClass("details");
+
+					if (((int)fileObject.size) > 0)
+					{
+						var sizeString = WvHelpers.GetSizeStringFromSize((int)fileObject.size);
+						fileRowMetaDetailsEl.InnerHtml.AppendHtml($"<span class='size'>{sizeString}</span>");
+					}
+					if (((DateTime?)fileObject.timestamp) != null)
+					{
+						var timestampString = ((DateTime)fileObject.timestamp).ToString("dd MMM yyyy HH:mm", Culture);
+						fileRowMetaDetailsEl.InnerHtml.AppendHtml($"<span class='timestamp'>{timestampString}</span>");
+					}
+					if (!String.IsNullOrWhiteSpace((string)fileObject.author))
+					{
+						fileRowMetaDetailsEl.InnerHtml.AppendHtml($"<span class='author'>{(string)fileObject.author}</span>");
+					}
+
+					fileRowMetaEl.InnerHtml.AppendHtml(fileRowMetaDetailsEl);
+				}
 
 				fileRowEl.InnerHtml.AppendHtml(fileRowMetaEl);
 				resultEl.InnerHtml.AppendHtml(fileRowEl);
