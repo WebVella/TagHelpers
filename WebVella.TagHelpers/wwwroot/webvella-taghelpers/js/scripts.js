@@ -28,7 +28,14 @@ function ProcessNewValue(response, fieldName) {
 	return newValue;
 }
 
-
+//Fix for modal in modal scroll problem
+function WvFixModalInModalClose() {
+	var bodyEl = document.querySelector("body");
+	var openModalsCount = $('.modal:visible').length;
+	if (!bodyEl.classList.contains("modal-open") && openModalsCount > 0) {
+		bodyEl.classList.add("modal-open");
+	}
+}
 
 function isStringNullOrEmptyOrWhiteSpace(str) {
     return (!str || str.length === 0 || /^\s*$/.test(str));

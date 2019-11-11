@@ -100,7 +100,7 @@ namespace WebVella.TagHelpers.TagHelpers
 					if(!wvLibraryInitialized){
 						var libJsEl = new TagBuilder("script");
 						libJsEl.Attributes.Add("type", "text/javascript");
-						libJsEl.Attributes.Add("src", "/webvella-taghelpers/lib/ckeditor/ckeditor.js");
+						libJsEl.Attributes.Add("src", "/webvella-taghelpers/lib/ckeditor5/ckeditor.js");
 						output.PostContent.AppendHtml(libJsEl);	
 						output.PostContent.AppendHtml("\r\n\t");			
 						
@@ -123,8 +123,8 @@ namespace WebVella.TagHelpers.TagHelpers
 						var scriptContent = WvHelpers.GetEmbeddedTextResource("form.js", "WebVella.TagHelpers.TagHelpers.WvFieldHtml","WebVella.TagHelpers");
 						var scriptEl = new TagBuilder("script");
 						scriptEl.Attributes.Add("type", "text/javascript");
-						scriptEl.InnerHtml.AppendHtml(jsCompressor.Compress(scriptContent));
-						//scriptEl.InnerHtml.AppendHtml(scriptContent);
+						//scriptEl.InnerHtml.AppendHtml(jsCompressor.Compress(scriptContent));
+						scriptEl.InnerHtml.AppendHtml(scriptContent);
 						output.PostContent.AppendHtml(scriptEl);
 
 						ViewContext.HttpContext.Items[typeof(WvFieldHtml) + "-form"] = new WvTagHelperContext()
@@ -349,7 +349,7 @@ namespace WebVella.TagHelpers.TagHelpers
 					if(!wvLibraryInitialized){
 						var libJsEl = new TagBuilder("script");
 						libJsEl.Attributes.Add("type", "text/javascript");
-						libJsEl.Attributes.Add("src", "/webvella-taghelpers/lib/ckeditor/ckeditor.js");
+						libJsEl.Attributes.Add("src", "/webvella-taghelpers/lib/ckeditor5/ckeditor.js");
 						output.PostContent.AppendHtml(libJsEl);	
 						output.PostContent.AppendHtml("\r\n\t");			
 						
@@ -373,7 +373,8 @@ namespace WebVella.TagHelpers.TagHelpers
 						var scriptContent = WvHelpers.GetEmbeddedTextResource("inline-edit.js", "WebVella.TagHelpers.TagHelpers.WvFieldHtml","WebVella.TagHelpers");
 						var scriptEl = new TagBuilder("script");
 						scriptEl.Attributes.Add("type", "text/javascript");
-						scriptEl.InnerHtml.AppendHtml(jsCompressor.Compress(scriptContent));
+						//scriptEl.InnerHtml.AppendHtml(jsCompressor.Compress(scriptContent));
+						scriptEl.InnerHtml.AppendHtml(scriptContent);
 						output.PostContent.AppendHtml(scriptEl);
 
 						ViewContext.HttpContext.Items[typeof(WvFieldHtml) + "-inline-edit"] = new WvTagHelperContext()
