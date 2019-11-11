@@ -1,11 +1,11 @@
 ﻿var htmlFieldModalOptions = {
 	backdrop: "static"
 };
-
+var HtmlFieldEditors = {};
 
 function InitHtmlFieldCKEditor(fieldId, fieldConfig) { //modes are -> none, one-repository,user-repository
 	fieldConfig = ProcessConfig(fieldConfig);
-	if (!htmlFieldEditors[fieldId]) {
+	if (!HtmlFieldEditors[fieldId]) {
 		var config = {};
 		config.language = 'en';
 		//switch (fieldConfig.toolbar_mode) {

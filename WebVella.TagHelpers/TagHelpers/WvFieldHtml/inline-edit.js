@@ -2,12 +2,12 @@
 	backdrop: "static"
 };
 
-var htmlFieldEditors = {};
+var HtmlFieldEditors = {};
 
 function InitHtmlFieldCKEditor(fieldId, fieldConfig) { //modes are -> none, one-repository,user-repository
 	fieldConfig = ProcessConfig(fieldConfig);
 
-	if(!htmlFieldEditors[fieldId]){
+	if(!HtmlFieldEditors[fieldId]){
 
 		var config = {};
 		config.language = 'en';
@@ -104,7 +104,7 @@ function InitHtmlFieldCKEditor(fieldId, fieldConfig) { //modes are -> none, one-
 		ClassicEditor
 			.create(document.querySelector('#input-' + fieldId),config)
 			.then( function(editor) {
-				htmlFieldEditors[fieldId] = editor;
+				HtmlFieldEditors[fieldId] = editor;
 				editor.model.document.on('change:data', function () {
 					editor.updateSourceElement();
 				});
@@ -149,9 +149,9 @@ function HtmlInlineEditPreDisableCallback(fieldId, fieldName,config) {
 	//$(selectors.viewWrapper).show();
 	$(selectors.editWrapper).modal('hide');
 	//Destroy ckeditor
-	if (htmlFieldEditors[fieldId]) {
-		htmlFieldEditors[fieldId].destroy();
-		delete htmlFieldEditors[fieldId];
+	if (HtmlFieldEditors[fieldId]) {
+		HtmlFieldEditors[fieldId].destroy();
+		delete HtmlFieldEditors[fieldId];
 	}
 }
 
