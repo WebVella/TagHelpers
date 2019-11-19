@@ -263,8 +263,8 @@ namespace WebVella.TagHelpers.TagHelpers
 				var scriptContent = WvHelpers.GetEmbeddedTextResource(fileName, "WebVella.TagHelpers.TagHelpers.WvSection","WebVella.TagHelpers");
 				var scriptEl = new TagBuilder("script");
 				scriptEl.Attributes.Add("type", "text/javascript");
-				scriptEl.InnerHtml.AppendHtml(jsCompressor.Compress(scriptContent));
-				//scriptEl.InnerHtml.AppendHtml(scriptContent);
+				//scriptEl.InnerHtml.AppendHtml(jsCompressor.Compress(scriptContent));
+				scriptEl.InnerHtml.AppendHtml(scriptContent);
 				output.PostContent.AppendHtml(scriptEl);
 
 				ViewContext.HttpContext.Items[typeof(WvSection) + fileName] = new WvTagHelperContext()

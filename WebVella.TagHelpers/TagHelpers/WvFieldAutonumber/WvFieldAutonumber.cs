@@ -42,27 +42,29 @@ namespace WebVella.TagHelpers.TagHelpers
 				Value = "";
 			
 			//Apply Value string
+			var templateValue = (Value ?? "").ToString();
 			if (!String.IsNullOrWhiteSpace(Template))
 			{
-				Value = String.Format(Template, (Value ?? "").ToString());
-			}
-			else
-			{
-				Value = (Value ?? "").ToString();
+				templateValue = String.Format(Template, (Value ?? "").ToString());
 			}
 
 			if (Mode == WvFieldRenderMode.Form || Mode == WvFieldRenderMode.InlineEdit)
 			{
+				//Hidden -> with the real value
+				var hiddenInputEl = new TagBuilder("input");
+				hiddenInputEl.Attributes.Add("type", "hidden");
+				hiddenInputEl.Attributes.Add("value", (Value ?? "").ToString());
+				hiddenInputEl.Attributes.Add("id", $"input-{FieldId}");
+				hiddenInputEl.Attributes.Add("name", Name);
+				output.Content.AppendHtml(hiddenInputEl);
+
 				var inputEl = new TagBuilder("input");
 				var inputElCssClassList = new List<string>();
 				inputElCssClassList.Add("form-control erp-autonumber");
 				inputEl.Attributes.Add("type", "text");
-				inputEl.Attributes.Add("value", Value);
-
-
-
-				inputEl.Attributes.Add("id", $"input-{FieldId}");
-				inputEl.Attributes.Add("name", Name);
+				inputEl.Attributes.Add("value", templateValue);
+				inputEl.Attributes.Add("id", $"fake-{FieldId}");
+				
 				if (Required)
 				{
 					inputEl.Attributes.Add("required", null);
@@ -88,13 +90,13 @@ namespace WebVella.TagHelpers.TagHelpers
 				var divEl = new TagBuilder("div");
 				divEl.Attributes.Add("id", $"input-{FieldId}");
 				divEl.AddCssClass("form-control-plaintext erp-autonumber");
-				divEl.InnerHtml.Append(Value);
+				divEl.InnerHtml.Append(templateValue);
 				output.Content.AppendHtml(divEl);
 			}
 			else if (Mode == WvFieldRenderMode.Simple)
 			{
 				output.SuppressOutput();
-				output.Content.AppendHtml(Value);
+				output.Content.AppendHtml(templateValue);
 				return Task.CompletedTask;
 			}
 			#endregion

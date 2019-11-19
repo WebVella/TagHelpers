@@ -435,8 +435,8 @@ namespace WebVella.TagHelpers.TagHelpers
 			}
 			else if (Mode == WvFieldRenderMode.Display)
 			{
-
-				if (Value != null)
+				var valueString = (Value ?? "").ToString();
+				if (!String.IsNullOrWhiteSpace(valueString))
 				{
 
 					var formControlEl = new TagBuilder("div");
@@ -444,11 +444,11 @@ namespace WebVella.TagHelpers.TagHelpers
 					formControlEl.AddCssClass("form-control-plaintext erp-select");
 
 					var optionEl = new TagBuilder("span");
-					var selectedOption = Options.FirstOrDefault(x => x.Value == (Value ?? "").ToString());
+					var selectedOption = Options.FirstOrDefault(x => x.Value == valueString);
 					if (selectedOption == null)
 					{
-						optionEl.InnerHtml.Append((Value ?? "").ToString());
-						if (Value != null && (Value.ToString() != ""))
+						optionEl.InnerHtml.Append(valueString);
+						if (Value != null && valueString)
 						{
 							var optionElIcon = new TagBuilder("span");
 							optionElIcon.AddCssClass("fa fa-fw fa-exclamation-circle go-red");
@@ -459,7 +459,7 @@ namespace WebVella.TagHelpers.TagHelpers
 					else
 					{
 						optionEl.Attributes.Add("title", selectedOption.Label);
-						optionEl.Attributes.Add("data-key", (Value ?? "").ToString());
+						optionEl.Attributes.Add("data-key", valueString);
 						if (String.IsNullOrWhiteSpace(selectedOption.IconClass))
 						{
 							optionEl.InnerHtml.Append(selectedOption.Label);
@@ -486,15 +486,17 @@ namespace WebVella.TagHelpers.TagHelpers
 			else if (Mode == WvFieldRenderMode.Simple)
 			{
 				output.SuppressOutput();
-				if (Value == null)
+				var valueString = (Value ?? "").ToString();
+
+				if (String.IsNullOrWhiteSpace(valueString))
 				{
 					output.Content.AppendHtml("");
 				}
 				else {
-					var selectedOption = Options.FirstOrDefault(x => x.Value == (Value ?? "").ToString());
+					var selectedOption = Options.FirstOrDefault(x => x.Value == valueString);
 					if (selectedOption == null)
 					{
-						output.Content.Append((Value ?? "").ToString());
+						output.Content.Append(valueString);
 						// in simple mode exclamation mark should not be rendered
 						//if (Value != null && (Value.ToString() != ""))
 						//{

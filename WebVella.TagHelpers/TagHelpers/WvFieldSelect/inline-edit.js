@@ -10,17 +10,27 @@ function SelectInlineEditGenerateSelectors(fieldId, fieldName,  config) {
 	return selectors;
 }
 
-function SelectInlineEditFormat(icon) {
-	var originalOption = icon.element;
-	var iconClass = $(originalOption).data('icon');
-	var color = $(originalOption).data('color');
-	if (!color) {
-		color = "#999";
+function SelectInlineEditFormat(record) {
+	var originalOption = record.element;
+	//Non API
+	if(originalOption){
+		var iconClass = $(originalOption).data('icon');
+		var color = $(originalOption).data('color');
+		if (!color) {
+			color = "#999";
+		}
+		if (!iconClass) {
+			return record.text;
+		}
+		return '<i class="fa fa-fw ' + iconClass + '" style="color:' + color + '"></i> ' + record.text;
 	}
-	if (!iconClass) {
-		return icon.text;
+	//API
+	else if(record.icon_class){
+		return '<i class="fa fa-fw ' + record.icon_class + '" style="color:' + record.color + '"></i> ' + record.text;
 	}
-	return '<i class="fa fa-fw ' + iconClass + '" style="color:' + color + '"></i> ' + icon.text;
+	else{
+		return record.text;
+	}
 }
 
 function SelectInlineEditMatchStartsWith(params, data) {
@@ -100,7 +110,7 @@ function SelectInlineEditPreEnableCallback(fieldId, fieldName,  config) {
 						}
 					]
 				};
-				currentPage = params.page;
+				currentPage = params.page || 1;
 				return JSON.stringify(query);
 			},
 			processResults: function (data) {
@@ -108,15 +118,39 @@ function SelectInlineEditPreEnableCallback(fieldId, fieldName,  config) {
 				var hasMore = false;
 				if (data !== null && data.object !== null) {
 					var totalRecords = data.object.total_count;
-					var displayedCount = data.object.list.length + currentPage * config.ajax_datasource.page_size;
+					var displayedCount = data.object.list.length + (currentPage - 1) * config.ajax_datasource.page_size;
 					if (displayedCount < totalRecords) {
 						hasMore = true;
 					}
 					_.forEach(data.object.list, function (record) {
-						results.push({
-							id: record[config.ajax_datasource.value],
-							text: record[config.ajax_datasource.label]
-						});
+						var result = {};
+						if(record[config.ajax_datasource.value])
+						{
+							result.id = record[config.ajax_datasource.value];
+						}
+						else{
+							result.id = null;
+						}
+						if(record[config.ajax_datasource.label])
+						{
+							result.text = record[config.ajax_datasource.label];
+						}
+						else{
+							result.text = "!undefined!";
+						}
+						if(record["icon_class"]){
+							result.icon_class = record["icon_class"];
+						}
+						else{
+							result.icon_class = "";
+						}
+						if(record["color"]){
+							result.color = record["color"];
+						}
+						else{
+							result.color = "";
+						}
+						results.push(result);
 					});
 				}
 				return {
