@@ -98,6 +98,10 @@ function InitHtmlFieldCKEditor(fieldId, fieldConfig) { //modes are -> none, one-
 		ClassicEditor
 			.create(document.querySelector('#input-' + fieldId), config)
 			.then(function (editor) {
+				if(!HtmlFieldEditors){
+					HtmlFieldEditors = {};
+				}
+				HtmlFieldEditors[fieldId] = editor;
 				editor.model.document.on('change:data', function () {
 					editor.updateSourceElement();
 					var customEvent = new Event('WvFieldHtml_Change');

@@ -6,6 +6,9 @@ var HtmlFieldEditors = {};
 
 function InitHtmlFieldCKEditor(fieldId, fieldConfig) { //modes are -> none, one-repository,user-repository
 	fieldConfig = ProcessConfig(fieldConfig);
+	if(!HtmlFieldEditors){
+		HtmlFieldEditors = {};
+	}
 
 	if(!HtmlFieldEditors[fieldId]){
 
@@ -148,6 +151,9 @@ function HtmlInlineEditPreDisableCallback(fieldId, fieldName,config) {
 	$(selectors.editWrapper + " .save").attr("disabled", false);
 	//$(selectors.viewWrapper).show();
 	$(selectors.editWrapper).modal('hide');
+	if(!HtmlFieldEditors){
+		HtmlFieldEditors = {};
+	}
 	//Destroy ckeditor
 	if (HtmlFieldEditors[fieldId]) {
 		HtmlFieldEditors[fieldId].destroy();

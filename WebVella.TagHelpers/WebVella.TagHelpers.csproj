@@ -5,7 +5,7 @@
 		<IsPackable>true</IsPackable>
 		<RazorLangVersion>3.0</RazorLangVersion>
 		<GenerateEmbeddedFilesManifest>true</GenerateEmbeddedFilesManifest>
-		<Version>1.0.63</Version>
+		<Version>1.0.63</Version> 
 		<Authors>WebVella</Authors>
 		<PackageProjectUrl>http://webvella.com/</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/WebVella/WebVella-ERP</RepositoryUrl>
