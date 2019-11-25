@@ -704,7 +704,7 @@
 
 
 .wv-field .select2-selection {
-	border: none !important;
+	/*border: none !important;*/
 	background: transparent !important;
 }
 
@@ -724,12 +724,12 @@
 
 .wv-field.form .select2-selection--single,
 .wv-field.inline-edit .select2-selection--single {
-	display: flex;
+	/*display: flex;
 	align-items: center;
 	justify-content: space-between;
 	width: 100%;
-	flex: 1 1 auto;
-	height:calc(1.5em + 0.75rem + 5px) !important;
+	flex: 1 1 auto;*/
+	/*height:calc(1.5em + 0.75rem + 5px) !important;*/
 }
 
 .wv-field.form .input-group-sm .select2-selection--single,
@@ -816,4 +816,10 @@
 			font-size: 14px;
 			line-height: 16px;
 		}
+/*#endregion*/
+
+/*#region << wv-modal >>*/
+.modal-dialog.modal-full {
+	max-width:98%;
+}
 /*#endregion*/
