@@ -24,7 +24,8 @@
 		margin-bottom: 0.5rem;
 	}
 
-.wv-field.display .form-control-plaintext {
+.wv-field.display .form-control-plaintext,
+.wv-field .display.form-control-plaintext {
 	padding: 0.375rem;
 	background: #f5f5f5;
 	min-height: calc(1.5rem + 0.375rem + 0.375rem);
@@ -148,7 +149,7 @@
 	flex-grow: 0;
 	flex-shrink: 0;
 	align-self: center;
-	color: --blue_color;
+	color: #2196F3;
 }
 
 .icon-card-body .meta {
@@ -188,6 +189,73 @@
 }
 
 /*#endregion*/
+
+/*#region << wv-image-card >>*/
+
+.image-card.clickable:hover {
+	border-color: #aaa;
+	cursor: pointer;
+}
+
+.image-card.active {
+	border-color: #4CAF50;
+	background: #F1F8E9;
+}
+
+.image-card-body {
+	display: flex;
+	flex-direction: row;
+	min-height: 50px;
+	padding: 5px 0;
+}
+
+.image-card-body .image {
+	font-size: 32px;
+	width: 50px;
+	text-align: center;
+	flex-grow: 0;
+	flex-shrink: 0;
+	align-self: center;
+}
+
+.image-card-body .meta {
+	align-self: center;
+	min-width: 0;
+	padding-left: 10px;
+}
+
+.image-card-body .title {
+	font-weight: bold;
+	line-height: 1;
+	font-size: 13px;
+	margin-bottom: 5px;
+}
+
+.image-card-body .description {
+	font-size: 13px;
+	line-height: 1.25em;
+	height: 32px;
+	/*white-space: nowrap;*/
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.image-card-body .library {
+	font-size: 13px;
+	color: #999;
+	height: 19px;
+}
+
+.image-card-body .link em {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+/*#endregion*/
+
 
 /*#region <<wv-field-code>>*/
 .wv-field ace_editor {
@@ -561,7 +629,7 @@
 	bottom: 0;
 	left: 0;
 	font-size: 0.85rem;
-	color: --red_color;
+	color: #F44336;
 	background: rgba(244, 67, 54, 0.25);
 	line-height: 1;
 	padding: 2px 5px;
@@ -735,7 +803,7 @@
 .wv-field.form .input-group-sm .select2-selection--single,
 .wv-field.form .form-control-sm .select2-selection--single,
 .wv-field.inline-edit .input-group-sm .select2-selection--single {
-	height: calc(1.5em + 0.5rem + 2px) !important;
+	height: calc(1.5em + 0.5rem + 3px) !important;
 }
 
 .wv-field.inline-edit .select2-selection--single {
