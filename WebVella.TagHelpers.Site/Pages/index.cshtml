@@ -3,7 +3,9 @@
 @addTagHelper *, WebVella.TagHelpers
 @using WebVella.TagHelpers.Models;
 @using System.Web;
+@using System.Web.Mvc;
 @using Newtonsoft.Json;
+@using Microsoft.AspNetCore.Html;
 @{
 	Layout = null;
 	var apiUrl = "/";
@@ -84,6 +86,7 @@
 		new KeyValuePair<string, string>("name","Name is required"),
 		new KeyValuePair<string, string>("email","Email is required")
 	};
+
 }
 
 <!DOCTYPE html>
@@ -1443,7 +1446,7 @@
 						@foreach (var record in gridRecords)
 						{
 							<wv-grid-row>
-								<wv-grid-column>@Html.Raw(record)</wv-grid-column>
+								<wv-grid-column>@Html.WvRaw(record)</wv-grid-column>
 							</wv-grid-row>
 						}
 
