@@ -150,7 +150,7 @@ namespace WebVella.TagHelpers.TagHelpers
 					colorDiv.AddCssClass("color-box");
 					colorDiv.Attributes.Add("style",$"background-color:{(Value ?? "").ToString()}");
 					divEl.InnerHtml.AppendHtml(colorDiv);
-					divEl.InnerHtml.AppendHtml((Value ?? "").ToString());
+					divEl.InnerHtml.Append((Value ?? "").ToString());
 					output.Content.AppendHtml(divEl);
 				}
 				else
@@ -161,7 +161,7 @@ namespace WebVella.TagHelpers.TagHelpers
 			else if (Mode == WvFieldRenderMode.Simple)
 			{
 				output.SuppressOutput();
-				output.Content.AppendHtml((Value ?? "").ToString());
+				output.Content.Append((Value ?? "").ToString());
 				return Task.CompletedTask;
 			}
 			else if (Mode == WvFieldRenderMode.InlineEdit) {

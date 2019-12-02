@@ -239,6 +239,7 @@ namespace WebVella.TagHelpers.Utilities
 						else
 						{
 							InValue = InValue.ToString();
+							InValue = InValue.Replace("<script>","&lt;script&gt;").Replace("</script>","&lt;/script&gt;");
 							//Check if Html value is valid
 							HtmlDocument doc = new HtmlDocument();
 							doc.LoadHtml(InValue);

@@ -207,7 +207,7 @@ namespace WebVella.TagHelpers.TagHelpers
 			else if (Mode == WvFieldRenderMode.Simple)
 			{
 				output.SuppressOutput();
-				output.Content.AppendHtml((Value ?? "").ToString());
+				output.Content.Append((Value ?? "").ToString());
 				return;
 			}
 			else if (Mode == WvFieldRenderMode.InlineEdit)

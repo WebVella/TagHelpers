@@ -28,6 +28,8 @@ namespace WebVella.TagHelpers.TagHelpers
 				output.SuppressOutput();
 				return;
 			}
+			var processedValue = "";
+
 			#region << Init >>
 			var initSuccess = InitField(context, output);
 
@@ -55,6 +57,12 @@ namespace WebVella.TagHelpers.TagHelpers
 
 			#endregion
 
+			#region << Init Value >>
+			if(Value != null){
+				processedValue = Value.ToString();
+			}
+			#endregion
+
 			#endregion
 
 
@@ -80,7 +88,7 @@ namespace WebVella.TagHelpers.TagHelpers
 						inputElCssClassList.Add("is-invalid");
 					}
 
-					inputEl.InnerHtml.Append((Value ?? "").ToString());
+					inputEl.InnerHtml.Append(processedValue);
 
 					inputEl.Attributes.Add("class", String.Join(' ', inputElCssClassList));
 
@@ -180,7 +188,7 @@ namespace WebVella.TagHelpers.TagHelpers
 					inputEl.Attributes.Add("id", $"plaintext-{FieldId}");
 					inputEl.AddCssClass("form-control erp-html disabled");
 					inputEl.Attributes.Add("style", "height:auto;");
-					inputEl.InnerHtml.AppendHtml((Value ?? "").ToString());
+					inputEl.InnerHtml.AppendHtml(processedValue);
 					inputGroupEl.InnerHtml.AppendHtml(inputEl);
 					//Append
 					if (AppendHtml.Count > 0)
@@ -199,7 +207,7 @@ namespace WebVella.TagHelpers.TagHelpers
 					hiddenInput.Attributes.Add("type", "hidden");
 					hiddenInput.Attributes.Add("id", $"input-{FieldId}");
 					hiddenInput.Attributes.Add("name", Name);
-					hiddenInput.Attributes.Add("value", (Value ?? "").ToString());
+					hiddenInput.Attributes.Add("value", processedValue);
 					output.Content.AppendHtml(hiddenInput);
 
 					output.Content.AppendHtml(inputGroupEl);
@@ -208,12 +216,12 @@ namespace WebVella.TagHelpers.TagHelpers
 			else if (Mode == WvFieldRenderMode.Display)
 			{
 
-				if (!String.IsNullOrWhiteSpace(Value))
+				if (!String.IsNullOrWhiteSpace(processedValue))
 				{
 					var divEl = new TagBuilder("div");
 					divEl.Attributes.Add("id", $"input-{FieldId}");
 					divEl.AddCssClass("form-control-plaintext erp-html");
-					divEl.InnerHtml.AppendHtml((Value ?? "").ToString());
+					divEl.InnerHtml.AppendHtml(processedValue);
 					output.Content.AppendHtml(divEl);
 				}
 				else
@@ -224,7 +232,7 @@ namespace WebVella.TagHelpers.TagHelpers
 			else if (Mode == WvFieldRenderMode.Simple)
 			{
 				output.SuppressOutput();
-				output.Content.AppendHtml((Value ?? "").ToString());
+				output.Content.AppendHtml(processedValue);
 				return;
 			}
 			else if (Mode == WvFieldRenderMode.InlineEdit)
@@ -253,7 +261,7 @@ namespace WebVella.TagHelpers.TagHelpers
 						var viewFormControlEl = new TagBuilder("div");
 						viewFormControlEl.AddCssClass("form-control erp-html");
 						viewFormControlEl.Attributes.Add("style", "height:auto;");
-						viewFormControlEl.InnerHtml.AppendHtml((Value ?? "").ToString());
+						viewFormControlEl.InnerHtml.AppendHtml(processedValue);
 						viewWrapperEl.InnerHtml.AppendHtml(viewFormControlEl);
 
 						//Append
@@ -307,7 +315,7 @@ namespace WebVella.TagHelpers.TagHelpers
 						{
 							editModalBodyTextArea.Attributes.Add("required", null);
 						}
-						editModalBodyTextArea.InnerHtml.AppendHtml((Value ?? "").ToString());
+						editModalBodyTextArea.InnerHtml.AppendHtml(processedValue);
 						editModalBody.InnerHtml.AppendHtml(editModalBodyTextArea);
 						editModalContent.InnerHtml.AppendHtml(editModalBody);
 
@@ -429,7 +437,7 @@ namespace WebVella.TagHelpers.TagHelpers
 					//Control
 					var inputEl = new TagBuilder("div");
 					inputEl.AddCssClass("form-control erp-html disabled");
-					inputEl.InnerHtml.AppendHtml((Value ?? "").ToString());
+					inputEl.InnerHtml.AppendHtml(processedValue);
 					divEl.InnerHtml.AppendHtml(inputEl);
 					//Append
 					var appendActionSpan = new TagBuilder("span");

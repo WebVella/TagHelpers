@@ -10,7 +10,8 @@
 	Layout = null;
 	var apiUrl = "/";
 	var cb = DateTime.Now.ToString("yyyyMMddHHmmss");
-	var textFieldValue = "this is a test";
+	var textFieldValue = "this is a test <script></script>";
+	var htmlValue = "<p>&lt;script&gt;</p>";
 	var chartDs = new WvChartDataset(){
 		BorderColor = "#FF9800",
 		Data = new List<decimal>{5,15,25}
@@ -19,7 +20,7 @@
 	var autonumberTemplate = "boz-{0}";
 	var chartDsList = new List<WvChartDataset>{ chartDs};
 
-	var htmlEncoded = HttpUtility.HtmlEncode("<div class=\"text\">text</div>");
+	var htmlEncoded = HttpUtility.HtmlEncode("<div class=\"text\">text<script></div>");
 	var colorVal = "#FF9800";
 	var chGridRows = new List<WvSelectOption>(){
 		new WvSelectOption(){Label = "row 1", Value = "row1"},
@@ -48,7 +49,7 @@
 
 	decimal decVal = (decimal)23.3434;
 
-	var emailVal = "test@domain.com";
+	var emailVal = "test@domain.com ";
 
 	var fileVal = "/webvella-taghelpers/assets/background.png";
 	var multiFilesVal = new List<string>{"/webvella-taghelpers/assets/background1.png","/webvella-taghelpers/assets/background2.png"};
@@ -1446,7 +1447,7 @@
 						@foreach (var record in gridRecords)
 						{
 							<wv-grid-row>
-								<wv-grid-column>@Html.WvRaw(record)</wv-grid-column>
+								<wv-grid-column>@Html.Raw(record)</wv-grid-column>
 							</wv-grid-row>
 						}
 
