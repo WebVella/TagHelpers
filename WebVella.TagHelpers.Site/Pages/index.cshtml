@@ -102,16 +102,27 @@
 
 	@* Demo Only *@
 	<link href="/css/demo.css?cb=@cb" rel="stylesheet" type="text/css" />
-
+	<style>		svg.fa {
+	height:1em;
+	}
+	</style>
 </head>
 <body>
-
 	<h2>wv-button</h2>
 	<div class="row">
 		<div class="col-3">
 			<div class="card mt-3 mb-3">
 				<div class="card-header">
 					Button
+	   @*<svg class="fa fa-fw">
+		  <use xlink:href="/webvella-taghelpers/lib/font-awesome/sprites/brands.svg#facebook"></use>
+		</svg>
+	   <svg class="fa fa-fw">
+		  <use xlink:href="/webvella-taghelpers/lib/font-awesome/sprites/brands.svg#twitter"></use>
+		</svg>
+	   <svg class="fa fa-fw">
+		  <use xlink:href="/webvella-taghelpers/lib/font-awesome/sprites/brands.svg#linkedin"></use>
+		</svg>*@
 				</div>
 				<div class="card-body">
 					<wv-button type="Button" color="Blue" text="This is a Button"></wv-button>

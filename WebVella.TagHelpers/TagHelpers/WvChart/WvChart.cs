@@ -63,7 +63,7 @@ namespace WebVella.TagHelpers.TagHelpers
 			#region << Add Chart lib >>
 			{
 				var tagHelperInitialized = false;
-				var fileName = "chart.js";
+				var fileName = "chart.bundle.min.js";
 				if (ViewContext.HttpContext.Items.ContainsKey(typeof(WvChart) + fileName))
 				{
 					var tagHelperContext = (WvTagHelperContext)ViewContext.HttpContext.Items[typeof(WvChart) + fileName];

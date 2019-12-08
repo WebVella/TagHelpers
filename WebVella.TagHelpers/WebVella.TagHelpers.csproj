@@ -5,7 +5,7 @@
 		<IsPackable>true</IsPackable>
 		<RazorLangVersion>3.0</RazorLangVersion>
 		<GenerateEmbeddedFilesManifest>true</GenerateEmbeddedFilesManifest>
-		<Version>1.0.69</Version> 
+		<Version>1.0.70</Version> 
 		<Authors>WebVella</Authors>
 		<PackageProjectUrl>http://webvella.com/</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/WebVella/WebVella-ERP</RepositoryUrl>
@@ -20,6 +20,16 @@
 	<ItemGroup>
 		<EmbeddedResource Include="wwwroot\**\*" />
 		<Content Remove="TagHelpers\WvECharts\usa.json" />
+		<Content Remove="wwwroot\webvella-taghelpers\lib\ace\ace.js" />
+		<Content Remove="wwwroot\webvella-taghelpers\lib\ace\ext-beautify.js" />
+		<Content Remove="wwwroot\webvella-taghelpers\lib\ace\ext-elastic_tabstops_lite.js" />
+		<Content Remove="wwwroot\webvella-taghelpers\lib\ace\ext-emmet.js" />
+		<Content Remove="wwwroot\webvella-taghelpers\lib\ace\ext-error_marker.js" />
+		<Content Remove="wwwroot\webvella-taghelpers\lib\ace\ext-keybinding_menu.js" />
+		<Content Remove="wwwroot\webvella-taghelpers\lib\ace\ext-language_tools.js" />
+		<Content Remove="wwwroot\webvella-taghelpers\lib\ace\ext-linking.js" />
+		<Content Remove="wwwroot\webvella-taghelpers\lib\ace\ext-modelist.js" />
+		<Content Remove="wwwroot\webvella-taghelpers\lib\URI.js\URI.min.js" />
 		<EmbeddedResource Include="TagHelpers\WvECharts\usa.json" />
 		<EmbeddedResource Include="TagHelpers\WvFieldCheckboxGrid\form.js" />
 		<EmbeddedResource Include="TagHelpers\WvFieldCheckboxList\inline-edit.js" />
@@ -70,6 +80,11 @@
 		<PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.0" />
 		<PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="3.1.0" />
 		<PackageReference Include="YUICompressor.NET" Version="3.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="wwwroot\webvella-taghelpers\lib\select2\" />
+	  <Folder Include="wwwroot\webvella-taghelpers\lib\twitter-bootstrap\" />
 	</ItemGroup>
 
 </Project>

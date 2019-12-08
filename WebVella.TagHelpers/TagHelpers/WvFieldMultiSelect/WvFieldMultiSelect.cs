@@ -422,7 +422,7 @@ namespace WebVella.TagHelpers.TagHelpers
 					select2SelectionEl.AddCssClass("selection");
 
 					var select2SelectionInnerEl = new TagBuilder("span");
-					select2SelectionInnerEl.AddCssClass("select2-selection select2-selection--multiple");
+					select2SelectionInnerEl.AddCssClass("select2-selection select2-selection--multiple d-flex");
 
 					var select2SelectionUlEl = new TagBuilder("ul");
 					select2SelectionUlEl.AddCssClass("select2-selection__rendered");

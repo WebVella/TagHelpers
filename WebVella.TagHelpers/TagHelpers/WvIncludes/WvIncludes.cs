@@ -11,6 +11,11 @@ namespace WebVella.TagHelpers.TagHelpers
 	{
 		[HtmlAttributeName("exclude-regex")]
 		public string ExcludeRegex { get; set; } = "";
+
+		[HtmlAttributeName("include-regex")]
+		public string IncludeRegex { get; set; } = "";
+
+
 		public override Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
 		{
 			//Excluded CSS
@@ -51,12 +56,22 @@ namespace WebVella.TagHelpers.TagHelpers
 			foreach (var filePath in CssFilesToImport)
 			{
 				var isExluded = false;
+
+				if(!string.IsNullOrWhiteSpace(IncludeRegex)){
+					Regex rgx = new Regex(IncludeRegex);
+					if(!rgx.IsMatch(filePath)){
+						isExluded = true;
+					}
+				}
+
 				if(!string.IsNullOrWhiteSpace(ExcludeRegex)){
 					Regex rgx = new Regex(ExcludeRegex);
 					if(rgx.IsMatch(filePath)){
 						isExluded = true;
 					}
 				}
+
+
 
 				if(!isExluded){
 					var linkEl = new TagBuilder("link");

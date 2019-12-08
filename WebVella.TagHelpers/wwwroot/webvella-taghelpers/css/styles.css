@@ -774,6 +774,7 @@
 .wv-field .select2-selection {
 	/*border: none !important;*/
 	background: transparent !important;
+	
 }
 
 .wv-field.form .select2-selection--single,
@@ -788,6 +789,10 @@
 
 .wv-field .input-group .select2-selection {
 	border-radius: 0;
+}
+
+.wv-field.inline-edit .input-group .select2-selection {
+	border:none !important;
 }
 
 .wv-field.form .select2-selection--single,
