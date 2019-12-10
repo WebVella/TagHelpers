@@ -363,7 +363,7 @@ namespace WebVella.TagHelpers.TagHelpers
 					{
 						var libJsEl = new TagBuilder("script");
 						libJsEl.Attributes.Add("type", "text/javascript");
-						libJsEl.Attributes.Add("src", "/webvella-taghelpers/lib/echarts/echarts-en.js");
+						libJsEl.Attributes.Add("src", "/webvella-taghelpers/lib/echarts/echarts-en.min.js");
 						output.PostContent.AppendHtml(libJsEl);
 						output.PostContent.AppendHtml("\r\n\t");
 					}
