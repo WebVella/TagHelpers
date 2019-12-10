@@ -716,6 +716,8 @@
 	color: #333 !important;
 	background: #f5f5f5 !important;
 	border-color: #ccc !important;
+	padding-right: 5px;
+	padding-left: 5px;
 	/*color: rgba(0, 150, 136,1) !important;
 	background: rgba(0, 150, 136,0.25) !important;
 	border-color: rgba(0, 150, 136,1) !important;*/

@@ -753,7 +753,8 @@ namespace WebVella.TagHelpers.TagHelpers
 						var scriptContent = WvHelpers.GetEmbeddedTextResource("inline-edit.js", "WebVella.TagHelpers.TagHelpers.WvFieldMultiSelect", "WebVella.TagHelpers");
 						var scriptEl = new TagBuilder("script");
 						scriptEl.Attributes.Add("type", "text/javascript");
-						scriptEl.InnerHtml.AppendHtml(jsCompressor.Compress(scriptContent));
+						//scriptEl.InnerHtml.AppendHtml(jsCompressor.Compress(scriptContent));
+						scriptEl.InnerHtml.AppendHtml(scriptContent);
 						output.PostContent.AppendHtml(scriptEl);
 
 						ViewContext.HttpContext.Items[typeof(WvFieldMultiSelect) + "-inline-edit"] = new WvTagHelperContext()

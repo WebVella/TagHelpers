@@ -279,17 +279,17 @@ function MultiSelectInlineEditInit(fieldId, fieldName,  config) {
 function MultiSelectInlineEditInitSuccessCallback(response, fieldId, fieldName,  config) {
 	var selectors = MultiSelectInlineEditGenerateSelectors(fieldId, fieldName,  config);
 	var newValue = ProcessNewValue(response, fieldName);
-
 	$(selectors.viewOptionsListUl).html("");
 	var selectOptions = $(selectors.inputEl + ' option');
 	_.forEach(newValue, function (optionKey) {
 		var matchedOption = _.find(selectOptions, function (record) {
-			if (!optionKey && !record.attributes["value"].value) {
+			if (!optionKey && (!record.attributes["value"] || !record.attributes["value"].value)) {
 				return true;
 			}
-			else {
+			else if(record.attributes["value"] && record.attributes["value"].value) {
 				return optionKey === record.attributes["value"].value;
 			}
+			return false;
 		});
 		var optionLabel = matchedOption.text;
 		$(selectors.viewOptionsListUl).append('<li class="select2-selection__choice" title="' + optionLabel + '" data-key="' + optionKey + '">' + optionLabel + '</li>');

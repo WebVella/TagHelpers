@@ -280,12 +280,13 @@ function SelectInlineEditInitSuccessCallback(response, fieldId, fieldName, input
 	if(newValue){
 		var selectOptions = $(selectors.inputEl + ' option');
 		var matchedOption = _.find(selectOptions, function (record) {
-			if (!newValue && !record.attributes["value"].value) {
+			if (!newValue  && (!record.attributes["value"] || !record.attributes["value"].value)) {
 				return true;
 			}
-			else {
+			else if(record.attributes["value"] && record.attributes["value"].value){
 				return newValue === record.attributes["value"].value;
 			}
+			return false;
 		});
 		var optionLabel = matchedOption.text;
 
