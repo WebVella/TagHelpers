@@ -1,0 +1,33 @@
+﻿@page "/HalloBoz"
+@using System.Net.Http
+@using Microsoft.AspNetCore.Components.Forms
+@using Microsoft.AspNetCore.Components.Routing
+@using Microsoft.JSInterop
+@using Microsoft.AspNetCore.Components
+@using Microsoft.AspNetCore.Components.Web;
+@inject IJSRuntime JSRuntime;
+<h3>HelloBoz</h3>
+
+Test Name switch @Name
+
+<button @onclick="Toggle">Toggle</button>
+
+
+@code {
+    [Parameter]
+    public string Name { get; set; } = "NoName";
+
+    private async Task Toggle()
+    {
+
+        JSRuntime.InvokeVoidAsync("handleTickerChanged");
+        if (!Name.Contains("2"))
+        {
+            Name =  Name + "2";
+        }
+        else
+        {
+            Name = Name.Replace("2","");
+        }
+    }
+}

@@ -9,9 +9,9 @@ namespace WebVella.TagHelpers
 {
 	internal class WebVellaTagHelpersConfigurationOptions : IPostConfigureOptions<StaticFileOptions>
 	{
-		private readonly IHostingEnvironment _environment;
+		private readonly IWebHostEnvironment _environment;
 
-		public WebVellaTagHelpersConfigurationOptions(IHostingEnvironment environment)
+		public WebVellaTagHelpersConfigurationOptions(IWebHostEnvironment environment)
 		{
 			_environment = environment;
 		}

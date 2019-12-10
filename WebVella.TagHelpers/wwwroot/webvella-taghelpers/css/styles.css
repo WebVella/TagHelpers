@@ -55,6 +55,48 @@
 	padding: 0.25rem;
 }
 
+.alert.wv-alert {
+	border-radius: 0;
+	border: none;
+}
+
+.alert-primary.wv-alert {
+	border-left: 3px solid #004085;
+}
+
+.alert-secondary.wv-alert {
+	border-left: 3px solid #383d41;
+}
+
+
+.alert-success.wv-alert {
+	border-left: 3px solid #155724;
+}
+
+.alert-danger.wv-alert {
+	border-left: 3px solid #721c24;
+}
+
+.alert-warning.wv-alert {
+	border-left: 3px solid #856404;
+}
+
+.alert-info.wv-alert {
+	border-left: 3px solid #0c5460;
+}
+
+.alert-light.wv-alert {
+	border-left: 3px solid #818182;
+}
+
+.alert-dark.wv-alert {
+	border-left: 3px solid #1b1e21;
+}
+
+.alert.wv-alert .text p:last-child {
+	margin-bottom: 0;
+}
+
 .alert-icon {
 	padding: 0;
 }
