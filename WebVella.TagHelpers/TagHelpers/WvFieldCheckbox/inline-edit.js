@@ -26,13 +26,13 @@ function CheckboxInlineEditInit(fieldId, fieldName, config) {
 	config = ProcessConfig(config);
 	var selectors = CheckboxInlineEditGenerateSelectors(fieldId, fieldName, config);
 	//Init enable action click
-	$(selectors.viewWrapper + " .action .btn").on("click", function (event) {
+	document.querySelector(selectors.viewWrapper + " .action .btn").addEventListener("click", function (event) {
 		event.stopPropagation();
 		event.preventDefault();
 		CheckboxInlineEditPreEnableCallback(fieldId, fieldName, config);
 	});
 	//Init enable action dblclick
-	$(selectors.viewWrapper + " .form-control").on("dblclick", function (event) {
+	document.querySelector(selectors.viewWrapper + " .form-control").addEventListener("dblclick", function (event) {
 		event.stopPropagation();
 		event.preventDefault();
 		CheckboxInlineEditPreEnableCallback(fieldId, fieldName, config);
@@ -42,14 +42,14 @@ function CheckboxInlineEditInit(fieldId, fieldName, config) {
 		//}, 200);
 	});
 	//Disable inline edit action
-	$(selectors.editWrapper + " .cancel").on("click", function (event) {
+	document.querySelector(selectors.editWrapper + " .cancel").addEventListener("click", function (event) {
 		event.stopPropagation();
 		event.preventDefault();
 		CheckboxInlineEditPreDisableCallback(fieldId, fieldName, config);
 	});
 
 	//Save inline changes
-	$(selectors.editWrapper + " .save").on("click", function (event) {
+	document.querySelector(selectors.editWrapper + " .save").addEventListener("click", function (event) {
 		event.stopPropagation();
 		event.preventDefault();
 		var inputValue = false;

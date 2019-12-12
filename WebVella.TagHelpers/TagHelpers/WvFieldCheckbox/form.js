@@ -9,8 +9,8 @@
 function CheckboxFormInit(fieldId) {
 	var selectors = CheckboxFormGenerateSelectors(fieldId);
 	//Remove value
-	$(selectors.inputEl).first().on('change', function (e) {
-		if ($(this).prop('checked')) {
+	document.querySelector(selectors.inputEl).addEventListener('change', function(e) {
+		if (e.target.checked) {
 			$(selectors.submittedInput).val("true");
 			$(selectors.submittedInput).trigger("change");
 		}

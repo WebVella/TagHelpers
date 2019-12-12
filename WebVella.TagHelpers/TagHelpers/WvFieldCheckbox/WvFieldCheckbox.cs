@@ -118,7 +118,7 @@ namespace WebVella.TagHelpers.TagHelpers
 				var initScript = new TagBuilder("script");
 				initScript.Attributes.Add("type", "text/javascript");
 				var scriptTemplate = @"
-						$(function(){
+						document.addEventListener('DOMContentLoaded', function () {
 							CheckboxFormInit(""{{FieldId}}"");
 						});";
 				scriptTemplate = scriptTemplate.Replace("{{FieldId}}", (FieldId != null ? FieldId.Value.ToString() : ""));
@@ -295,7 +295,7 @@ namespace WebVella.TagHelpers.TagHelpers
 						var initScript = new TagBuilder("script");
 						initScript.Attributes.Add("type", "text/javascript");
 						var scriptTemplate = @"
-						$(function(){
+						document.addEventListener('DOMContentLoaded', function () {
 							CheckboxInlineEditInit(""{{FieldId}}"",""{{Name}}"",{{ConfigJson}});
 						});";
 						scriptTemplate = scriptTemplate.Replace("{{FieldId}}", (FieldId != null ? FieldId.Value.ToString() : ""));
