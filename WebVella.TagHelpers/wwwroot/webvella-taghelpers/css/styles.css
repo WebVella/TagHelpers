@@ -550,6 +550,10 @@
 
 /*#region <<wv-field-html>>*/
 
+.wv-field .ck.ck-editor {
+	width: 100% !important;
+}
+
 .wv-field-html .cke_editable {
 	min-height: 150px;
 	max-height: 300px;
