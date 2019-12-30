@@ -94,7 +94,7 @@ namespace WebVella.TagHelpers.TagHelpers
 				{
 					var scriptEl = new TagBuilder("script");
 					scriptEl.Attributes.Add("type", "text/javascript");
-					scriptEl.Attributes.Add("src", "/webvella-taghelpers/lib/ace/ace.js");
+					scriptEl.Attributes.Add("src", "/_content/WebVella.TagHelpers/lib/ace/ace.js");
 					output.PostContent.AppendHtml(scriptEl);
 
 					ViewContext.HttpContext.Items[typeof(WvFieldCode) + fileName] = new WvTagHelperContext()

@@ -19,37 +19,37 @@ namespace WebVella.TagHelpers.TagHelpers
 		public override Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
 		{
 			//Excluded CSS
-			//"/webvella-taghelpers/lib/flatpickr/flatpickr.min.css",
-			//"/webvella-taghelpers/lib/spectrum/spectrum.min.css",
-			//"/webvella-taghelpers/lib/select2/css/select2.min.css",
+			//"/_content/WebVella.TagHelpers/lib/flatpickr/flatpickr.min.css",
+			//"/_content/WebVella.TagHelpers/lib/spectrum/spectrum.min.css",
+			//"/_content/WebVella.TagHelpers/lib/select2/css/select2.min.css",
 
 			List<string> CssFilesToImport = new List<string>{
-				"/webvella-taghelpers/lib/twitter-bootstrap/css/bootstrap.css",
+				"/_content/WebVella.TagHelpers/lib/twitter-bootstrap/css/bootstrap.css",
 				
-				"/webvella-taghelpers/lib/font-awesome/css/all.min.css",
-				"/webvella-taghelpers/lib/toastr.js/toastr.min.css",
+				"/_content/WebVella.TagHelpers/lib/font-awesome/css/all.min.css",
+				"/_content/WebVella.TagHelpers/lib/toastr.js/toastr.min.css",
 				
-				"/webvella-taghelpers/css/button-colors.css",
-				"/webvella-taghelpers/css/colors.css",
-				"/webvella-taghelpers/css/styles.css"
+				"/_content/WebVella.TagHelpers/css/button-colors.css",
+				"/_content/WebVella.TagHelpers/css/colors.css",
+				"/_content/WebVella.TagHelpers/css/styles.css"
 			};
 
 
 			//Excluded JS
-			//"/webvella-taghelpers/lib/flatpickr/flatpickr.min.js",
-			//"/webvella-taghelpers/lib/spectrum/spectrum.min.js",
-			//"/webvella-taghelpers/lib/select2/js/select2.min.js",
-			//"/webvella-taghelpers/lib/ckeditor/ckeditor.js",
+			//"/_content/WebVella.TagHelpers/lib/flatpickr/flatpickr.min.js",
+			//"/_content/WebVella.TagHelpers/lib/spectrum/spectrum.min.js",
+			//"/_content/WebVella.TagHelpers/lib/select2/js/select2.min.js",
+			//"/_content/WebVella.TagHelpers/lib/ckeditor/ckeditor.js",
 			
 			List<string> JsFilesToImport = new List<string>{
-				"/webvella-taghelpers/lib/jquery/jquery.min.js",
-				"/webvella-taghelpers/lib/twitter-bootstrap/js/bootstrap.bundle.min.js",
-				"/webvella-taghelpers/lib/URI.js/URI.min.js",
-				"/webvella-taghelpers/lib/moment.js/moment.min.js",
-				"/webvella-taghelpers/lib/lodash.js/lodash.min.js",
-				"/webvella-taghelpers/lib/decimal.js/decimal.min.js",
-				"/webvella-taghelpers/lib/toastr.js/toastr.min.js",
-				"/webvella-taghelpers/js/scripts.js"
+				"/_content/WebVella.TagHelpers/lib/jquery/jquery.min.js",
+				"/_content/WebVella.TagHelpers/lib/twitter-bootstrap/js/bootstrap.bundle.min.js",
+				"/_content/WebVella.TagHelpers/lib/URI.js/URI.min.js",
+				"/_content/WebVella.TagHelpers/lib/moment.js/moment.min.js",
+				"/_content/WebVella.TagHelpers/lib/lodash.js/lodash.min.js",
+				"/_content/WebVella.TagHelpers/lib/decimal.js/decimal.min.js",
+				"/_content/WebVella.TagHelpers/lib/toastr.js/toastr.min.js",
+				"/_content/WebVella.TagHelpers/js/scripts.js"
 			};
 
 

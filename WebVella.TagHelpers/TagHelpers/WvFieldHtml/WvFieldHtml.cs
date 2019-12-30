@@ -108,7 +108,7 @@ namespace WebVella.TagHelpers.TagHelpers
 					if(!wvLibraryInitialized){
 						var libJsEl = new TagBuilder("script");
 						libJsEl.Attributes.Add("type", "text/javascript");
-						libJsEl.Attributes.Add("src", "/webvella-taghelpers/lib/ckeditor5/ckeditor.js");
+						libJsEl.Attributes.Add("src", "/_content/WebVella.TagHelpers/lib/ckeditor5/ckeditor.js");
 						output.PostContent.AppendHtml(libJsEl);	
 						output.PostContent.AppendHtml("\r\n\t");			
 						
@@ -357,7 +357,7 @@ namespace WebVella.TagHelpers.TagHelpers
 					if(!wvLibraryInitialized){
 						var libJsEl = new TagBuilder("script");
 						libJsEl.Attributes.Add("type", "text/javascript");
-						libJsEl.Attributes.Add("src", "/webvella-taghelpers/lib/ckeditor5/ckeditor.js");
+						libJsEl.Attributes.Add("src", "/_content/WebVella.TagHelpers/lib/ckeditor5/ckeditor.js");
 						output.PostContent.AppendHtml(libJsEl);	
 						output.PostContent.AppendHtml("\r\n\t");			
 						

@@ -69,12 +69,12 @@ namespace WebVella.TagHelpers.TagHelpers
 			if (!moduleAdded)
 			{
 				var scriptEl = new TagBuilder("script");
-				scriptEl.Attributes.Add("src", "/webvella-taghelpers/lib/prism/prism.js");
+				scriptEl.Attributes.Add("src", "/_content/WebVella.TagHelpers/lib/prism/prism.js");
 				scriptEl.Attributes.Add("type", "text/javascript");
 				output.PostContent.AppendHtml(scriptEl);
 
 				var linkEl = new TagBuilder("link");
-				linkEl.Attributes.Add("href", "/webvella-taghelpers/lib/prism/prism.css");
+				linkEl.Attributes.Add("href", "/_content/WebVella.TagHelpers/lib/prism/prism.css");
 				linkEl.Attributes.Add("rel", "stylesheet");
 				linkEl.Attributes.Add("type", "text/css");
 				output.PostContent.AppendHtml(linkEl);

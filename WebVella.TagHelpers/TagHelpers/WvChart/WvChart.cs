@@ -73,7 +73,7 @@ namespace WebVella.TagHelpers.TagHelpers
 				{
 					var scriptEl = new TagBuilder("script");
 					scriptEl.Attributes.Add("type", "text/javascript");
-					scriptEl.Attributes.Add("src", "/webvella-taghelpers/lib/Chart.js/Chart.bundle.min.js");
+					scriptEl.Attributes.Add("src", "/_content/WebVella.TagHelpers/lib/Chart.js/Chart.bundle.min.js");
 					output.PreElement.AppendHtml(scriptEl);
 
 					ViewContext.HttpContext.Items[typeof(WvChart) + fileName] = new WvTagHelperContext()

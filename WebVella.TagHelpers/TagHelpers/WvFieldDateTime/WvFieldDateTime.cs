@@ -144,7 +144,7 @@ namespace WebVella.TagHelpers.TagHelpers
 
 					if(!wvLibraryInitialized){
 						var libCssEl = new TagBuilder("link");
-						libCssEl.Attributes.Add("href", "/webvella-taghelpers/lib/flatpickr/flatpickr.min.css");
+						libCssEl.Attributes.Add("href", "/_content/WebVella.TagHelpers/lib/flatpickr/flatpickr.min.css");
 						libCssEl.Attributes.Add("type", "text/css");
 						libCssEl.Attributes.Add("rel", "stylesheet");
 						output.PostContent.AppendHtml(libCssEl);	
@@ -152,7 +152,7 @@ namespace WebVella.TagHelpers.TagHelpers
 
 						var libJsEl = new TagBuilder("script");
 						libJsEl.Attributes.Add("type", "text/javascript");
-						libJsEl.Attributes.Add("src", "/webvella-taghelpers/lib/flatpickr/flatpickr.min.js");
+						libJsEl.Attributes.Add("src", "/_content/WebVella.TagHelpers/lib/flatpickr/flatpickr.min.js");
 						output.PostContent.AppendHtml(libJsEl);	
 						output.PostContent.AppendHtml("\r\n\t");			
 						
@@ -359,7 +359,7 @@ namespace WebVella.TagHelpers.TagHelpers
 
 					if(!wvLibraryInitialized){
 						var libCssEl = new TagBuilder("link");
-						libCssEl.Attributes.Add("href", "/webvella-taghelpers/lib/flatpickr/flatpickr.min.css");
+						libCssEl.Attributes.Add("href", "/_content/WebVella.TagHelpers/lib/flatpickr/flatpickr.min.css");
 						libCssEl.Attributes.Add("type", "text/css");
 						libCssEl.Attributes.Add("rel", "stylesheet");
 						output.PostContent.AppendHtml(libCssEl);	
@@ -367,7 +367,7 @@ namespace WebVella.TagHelpers.TagHelpers
 
 						var libJsEl = new TagBuilder("script");
 						libJsEl.Attributes.Add("type", "text/javascript");
-						libJsEl.Attributes.Add("src", "/webvella-taghelpers/lib/flatpickr/flatpickr.min.js");
+						libJsEl.Attributes.Add("src", "/_content/WebVella.TagHelpers/lib/flatpickr/flatpickr.min.js");
 						output.PostContent.AppendHtml(libJsEl);	
 						output.PostContent.AppendHtml("\r\n\t");			
 						

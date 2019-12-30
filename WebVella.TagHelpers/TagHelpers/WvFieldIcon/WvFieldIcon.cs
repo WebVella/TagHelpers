@@ -127,7 +127,7 @@ namespace WebVella.TagHelpers.TagHelpers
 						if(!wvLibraryInitialized){
 							{
 							var libCssEl = new TagBuilder("link");
-							libCssEl.Attributes.Add("href", "/webvella-taghelpers/lib/select2/css/select2.min.css");
+							libCssEl.Attributes.Add("href", "/_content/WebVella.TagHelpers/lib/select2/css/select2.min.css");
 							libCssEl.Attributes.Add("type", "text/css");
 							libCssEl.Attributes.Add("rel", "stylesheet");
 							output.PostContent.AppendHtml(libCssEl);	
@@ -135,7 +135,7 @@ namespace WebVella.TagHelpers.TagHelpers
 							}
 							{
 							var libCssEl = new TagBuilder("link");
-							libCssEl.Attributes.Add("href", "/webvella-taghelpers/lib/select2-bootstrap-theme/select2-bootstrap4.css");
+							libCssEl.Attributes.Add("href", "/_content/WebVella.TagHelpers/lib/select2-bootstrap-theme/select2-bootstrap4.css");
 							libCssEl.Attributes.Add("type", "text/css");
 							libCssEl.Attributes.Add("rel", "stylesheet");
 							output.PostContent.AppendHtml(libCssEl);	
@@ -144,7 +144,7 @@ namespace WebVella.TagHelpers.TagHelpers
 
 							var libJsEl = new TagBuilder("script");
 							libJsEl.Attributes.Add("type", "text/javascript");
-							libJsEl.Attributes.Add("src", "/webvella-taghelpers/lib/select2/js/select2.min.js");
+							libJsEl.Attributes.Add("src", "/_content/WebVella.TagHelpers/lib/select2/js/select2.min.js");
 							output.PostContent.AppendHtml(libJsEl);	
 							output.PostContent.AppendHtml("\r\n\t");			
 						
@@ -438,7 +438,7 @@ namespace WebVella.TagHelpers.TagHelpers
 						if(!wvLibraryInitialized){
 							{
 							var libCssEl = new TagBuilder("link");
-							libCssEl.Attributes.Add("href", "/webvella-taghelpers/lib/select2/css/select2.min.css");
+							libCssEl.Attributes.Add("href", "/_content/WebVella.TagHelpers/lib/select2/css/select2.min.css");
 							libCssEl.Attributes.Add("type", "text/css");
 							libCssEl.Attributes.Add("rel", "stylesheet");
 							output.PostContent.AppendHtml(libCssEl);	
@@ -446,7 +446,7 @@ namespace WebVella.TagHelpers.TagHelpers
 							}
 							{
 							var libCssEl = new TagBuilder("link");
-							libCssEl.Attributes.Add("href", "/webvella-taghelpers/lib/select2-bootstrap-theme/select2-bootstrap4.css");
+							libCssEl.Attributes.Add("href", "/_content/WebVella.TagHelpers/lib/select2-bootstrap-theme/select2-bootstrap4.css");
 							libCssEl.Attributes.Add("type", "text/css");
 							libCssEl.Attributes.Add("rel", "stylesheet");
 							output.PostContent.AppendHtml(libCssEl);	
@@ -454,7 +454,7 @@ namespace WebVella.TagHelpers.TagHelpers
 							}
 							var libJsEl = new TagBuilder("script");
 							libJsEl.Attributes.Add("type", "text/javascript");
-							libJsEl.Attributes.Add("src", "/webvella-taghelpers/lib/select2/js/select2.min.js");
+							libJsEl.Attributes.Add("src", "/_content/WebVella.TagHelpers/lib/select2/js/select2.min.js");
 							output.PostContent.AppendHtml(libJsEl);	
 							output.PostContent.AppendHtml("\r\n\t");			
 						

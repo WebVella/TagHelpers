@@ -11,7 +11,7 @@ function InitHtmlFieldCKEditor(fieldId, fieldConfig) { //modes are -> none, one-
 	var config = {};
 	config.language = 'en';
 	config.skin = 'moono-lisa';
-	config.contentsCss = '/webvella-taghelpers/css/editor.css';
+	config.contentsCss = '/_content/WebVella.TagHelpers/css/editor.css';
 	config.autoGrow_minHeight = 160;
 	config.autoGrow_maxHeight = 600;
 	config.autoGrow_bottomSpace = 10;
