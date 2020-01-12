@@ -2,7 +2,9 @@
 	backdrop: "static"
 };
 
-var HtmlFieldEditors = {};
+if(!window.HtmlFieldEditors){
+	window.HtmlFieldEditors = {};
+}
 
 function InitHtmlFieldCKEditor(fieldId, fieldConfig) { //modes are -> none, one-repository,user-repository
 	fieldConfig = ProcessConfig(fieldConfig);

@@ -1,10 +1,19 @@
 ﻿var htmlFieldModalOptions = {
 	backdrop: "static"
 };
-var HtmlFieldEditors = {};
+if(!window.HtmlFieldEditors){
+	window.HtmlFieldEditors = {};
+}
 
 function InitHtmlFieldCKEditor(fieldId, fieldConfig) { //modes are -> none, one-repository,user-repository
 	fieldConfig = ProcessConfig(fieldConfig);
+	//Fix for a case when used in page body node options and the init is called multiple times and results in error: Some CKEditor 5 modules are duplicated
+	//Destroy ckeditor
+	//if (HtmlFieldEditors[fieldId]) {
+	//	HtmlFieldEditors[fieldId].destroy();
+	//	delete HtmlFieldEditors[fieldId];
+	//};
+
 	if (!HtmlFieldEditors[fieldId]) {
 		var config = {};
 		config.language = 'en';

@@ -131,8 +131,8 @@ namespace WebVella.TagHelpers.TagHelpers
 						var scriptContent = WvHelpers.GetEmbeddedTextResource("form.js", "WebVella.TagHelpers.TagHelpers.WvFieldHtml","WebVella.TagHelpers");
 						var scriptEl = new TagBuilder("script");
 						scriptEl.Attributes.Add("type", "text/javascript");
-						//scriptEl.InnerHtml.AppendHtml(jsCompressor.Compress(scriptContent));
-						scriptEl.InnerHtml.AppendHtml(scriptContent);
+						scriptEl.InnerHtml.AppendHtml(jsCompressor.Compress(scriptContent));
+						//scriptEl.InnerHtml.AppendHtml(scriptContent);
 						output.PostContent.AppendHtml(scriptEl);
 
 						ViewContext.HttpContext.Items[typeof(WvFieldHtml) + "-form"] = new WvTagHelperContext()

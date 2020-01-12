@@ -713,7 +713,9 @@
 
 
 /*#region <<Selection choice >>*/
-
+.wv-field-multiselect .select2-container--bootstrap4 {
+	font-size:16px;
+}
 
 .wv-field-multiselect .select2:not(.disabled) .select2-selection__choice,
 .select2-container--bootstrap4 .select2-selection--multiple .select2-selection__choice {
@@ -807,6 +809,10 @@
 /*#endregion*/
 
 /*#region << select 2 >>*/
+
+.wv-field-select .select2-container--bootstrap4 {
+	font-size:16px;
+}
 
 .select2-container--bootstrap4 .select2-selection__clear {
 	background: none !important;
