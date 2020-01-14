@@ -42,6 +42,7 @@ namespace WebVella.TagHelpers.TagHelpers
 			//"/_content/WebVella.TagHelpers/lib/ckeditor/ckeditor.js",
 			
 			List<string> JsFilesToImport = new List<string>{
+				"/_content/WebVella.TagHelpers/lib/ckeditor5/ckeditor.js",
 				"/_content/WebVella.TagHelpers/lib/jquery/jquery.min.js",
 				"/_content/WebVella.TagHelpers/lib/twitter-bootstrap/js/bootstrap.bundle.min.js",
 				"/_content/WebVella.TagHelpers/lib/URI.js/URI.min.js",

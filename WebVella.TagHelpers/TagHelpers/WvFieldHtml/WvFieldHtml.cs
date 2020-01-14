@@ -97,26 +97,27 @@ namespace WebVella.TagHelpers.TagHelpers
 					var jsCompressor = new JavaScriptCompressor();
 
 					#region << Init Libraries >>
-					var wvLibraryInitialized = false;
-					var libraryItemsKey = "WebVella-" + "ckeditor";
-					if (ViewContext.HttpContext.Items.ContainsKey(libraryItemsKey))
-					{
-						var tagHelperContext = (WvTagHelperContext)ViewContext.HttpContext.Items[libraryItemsKey];
-						wvLibraryInitialized = tagHelperContext.Initialized;
-					}
+					//Due to many problems is included in the head not module by module
+					//var wvLibraryInitialized = false;
+					//var libraryItemsKey = "WebVella-" + "ckeditor";
+					//if (ViewContext.HttpContext.Items.ContainsKey(libraryItemsKey))
+					//{
+					//	var tagHelperContext = (WvTagHelperContext)ViewContext.HttpContext.Items[libraryItemsKey];
+					//	wvLibraryInitialized = tagHelperContext.Initialized;
+					//}
 
-					if(!wvLibraryInitialized){
-						var libJsEl = new TagBuilder("script");
-						libJsEl.Attributes.Add("type", "text/javascript");
-						libJsEl.Attributes.Add("src", "/_content/WebVella.TagHelpers/lib/ckeditor5/ckeditor.js");
-						output.PostContent.AppendHtml(libJsEl);	
-						output.PostContent.AppendHtml("\r\n\t");			
+					//if(!wvLibraryInitialized){
+					//	var libJsEl = new TagBuilder("script");
+					//	libJsEl.Attributes.Add("type", "text/javascript");
+					//	libJsEl.Attributes.Add("src", "/_content/WebVella.TagHelpers/lib/ckeditor5/ckeditor.js");
+					//	output.PostContent.AppendHtml(libJsEl);	
+					//	output.PostContent.AppendHtml("\r\n\t");			
 						
-						ViewContext.HttpContext.Items[libraryItemsKey] = new WvTagHelperContext()
-						{
-							Initialized = true
-						};
-					}
+					//	ViewContext.HttpContext.Items[libraryItemsKey] = new WvTagHelperContext()
+					//	{
+					//		Initialized = true
+					//	};
+					//}
 					#endregion
 
 					#region << Init Scripts >>
