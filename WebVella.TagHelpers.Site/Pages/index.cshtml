@@ -86,7 +86,7 @@
 		new KeyValuePair<string, string>("name","Name is required"),
 		new KeyValuePair<string, string>("email","Email is required")
 	};
-
+	var csvFieldValue = "1,2,3\r\njohn,eve,jim";
 }
 
 <!DOCTYPE html>
@@ -1426,6 +1426,54 @@
 				</div>
 				<div class="card-body">
 					<wv-field-text value="@textFieldValue" label-text="FieldLabel" name="text" mode="Simple"></wv-field-text>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<h2>wv-field-data-csv</h2>
+	<div class="row">
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Form
+				</div>
+				<div class="card-body">
+					<wv-field-data-csv size="Small" value="@csvFieldValue" label-text="FieldLabel" name="text" mode="Form"
+						delimiter-value="COMMA" has-header-value="true"></wv-field-data-csv>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Inline Edit
+				</div>
+				<div class="card-body">
+					<wv-field-data-csv value="@csvFieldValue" label-text="FieldLabel" name="text" mode="InlineEdit" api-url="@apiUrl"
+					delimiter-value="COMMA" has-header-value="true"></wv-field-data-csv>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Display
+				</div>
+				<div class="card-body">
+					<wv-field-data-csv value="@csvFieldValue" label-text="FieldLabel" name="text" mode="Display"
+					delimiter-value="COMMA" has-header-value="true"></wv-field-data-csv>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card mt-3 mb-3">
+				<div class="card-header">
+					Simple
+				</div>
+				<div class="card-body">
+					<wv-field-data-csv value="@csvFieldValue" label-text="FieldLabel" name="text" mode="Simple"
+					delimiter-value="COMMA" has-header-value="true"></wv-field-data-csv>
 				</div>
 			</div>
 		</div>

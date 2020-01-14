@@ -5,7 +5,7 @@
 		<IsPackable>true</IsPackable>
 		<RazorLangVersion>3.0</RazorLangVersion>
 		<GenerateEmbeddedFilesManifest>true</GenerateEmbeddedFilesManifest>
-		<Version>1.0.78</Version> 
+		<Version>1.0.81</Version> 
 		<Authors>WebVella</Authors>
 		<PackageProjectUrl>http://webvella.com/</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/WebVella/WebVella-ERP</RepositoryUrl>
@@ -15,6 +15,12 @@
 		<PackageTags>taghelper,razor,bootstrap</PackageTags>
 		<RepositoryType>public github</RepositoryType>
 	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Remove="TagHelpers\WvFieldDataCsv\display.js" />
+	  <None Remove="TagHelpers\WvFieldDataCsv\form.js" />
+	  <None Remove="TagHelpers\WvFieldDataCsv\inline-edit.js" />
+	</ItemGroup>
 
 
 	<ItemGroup>
@@ -27,6 +33,9 @@
 		<EmbeddedResource Include="TagHelpers\WvFieldColor\form.js" />
 		<EmbeddedResource Include="TagHelpers\WvFieldColor\inline-edit.js" />
 		<EmbeddedResource Include="TagHelpers\WvFieldCurrency\inline-edit.js" />
+		<EmbeddedResource Include="TagHelpers\WvFieldDataCsv\display.js" />
+		<EmbeddedResource Include="TagHelpers\WvFieldDataCsv\form.js" />
+		<EmbeddedResource Include="TagHelpers\WvFieldDataCsv\inline-edit.js" />
 		<EmbeddedResource Include="TagHelpers\WvFieldDateTime\form.js" />
 		<EmbeddedResource Include="TagHelpers\WvFieldDateTime\inline-edit.js" />
 		<EmbeddedResource Include="TagHelpers\WvFieldDate\form.js" />
@@ -62,6 +71,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="CsvHelper" Version="12.3.2" />
 		<PackageReference Include="HtmlAgilityPack" Version="1.11.17" />
 		<PackageReference Include="Microsoft.AspNetCore.Components" Version="3.1.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="3.1.0" />

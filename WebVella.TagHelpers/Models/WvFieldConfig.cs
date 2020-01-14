@@ -489,5 +489,23 @@ namespace WebVella.TagHelpers.Models
 		}
 	}
 
+	public class WvFieldDataCsvConfig : WvFieldBaseConfig
+	{
+		public WvFieldDataCsvConfig()
+		{
+			var baseConfig = new WvFieldBaseConfig();
+			CanAddValues = baseConfig.CanAddValues;
+			PreviewApiUrl = "/api/v3.0/en/p/core/ui/field-table-data/generate/preview";
+		}
 
+		public WvFieldDataCsvConfig(WvFieldBaseConfig baseConfig)
+		{
+			CanAddValues = baseConfig.CanAddValues;
+			ApiUrl = baseConfig.ApiUrl;
+			PreviewApiUrl = "/api/v3.0/en/p/core/ui/field-table-data/generate/preview";
+		}
+
+		[JsonProperty(PropertyName = "preview_api_url")]
+		public string PreviewApiUrl { get; set; } = "/api/v3.0/en/p/core/ui/field-table-data/generate/preview";
+	}
 }

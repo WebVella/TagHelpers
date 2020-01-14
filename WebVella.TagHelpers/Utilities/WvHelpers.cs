@@ -1,4 +1,5 @@
-﻿using HtmlAgilityPack;
+﻿using CsvHelper;
+using HtmlAgilityPack;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -6,6 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using System.Text.RegularExpressions;
 using WebVella.TagHelpers.Models;
 
@@ -28,7 +30,7 @@ namespace WebVella.TagHelpers.Utilities
 				assembly = Assembly.GetExecutingAssembly();
 			}
 			Stream resource = assembly.GetManifestResourceStream(resourceName);
-			if(resource == null)
+			if (resource == null)
 				throw new Exception($"file: {name} in resource: {resourceName} not found as embedded resource");
 
 			StreamReader reader = new StreamReader(resource);
@@ -239,7 +241,7 @@ namespace WebVella.TagHelpers.Utilities
 						else
 						{
 							InValue = InValue.ToString();
-							InValue = InValue.Replace("<script>","&lt;script&gt;").Replace("</script>","&lt;/script&gt;");
+							InValue = InValue.Replace("<script>", "&lt;script&gt;").Replace("</script>", "&lt;/script&gt;");
 							//Check if Html value is valid
 							HtmlDocument doc = new HtmlDocument();
 							doc.LoadHtml(InValue);
@@ -4071,7 +4073,7 @@ namespace WebVella.TagHelpers.Utilities
 }";
 			#endregion
 
-			var iconsDict = JsonConvert.DeserializeObject<Dictionary<string,string>>(json);
+			var iconsDict = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
 
 			foreach (var key in iconsDict.Keys)
 			{
@@ -4123,22 +4125,22 @@ namespace WebVella.TagHelpers.Utilities
 			else if (filePath.EndsWith(".zip") || filePath.EndsWith(".zipx")
 				 || filePath.EndsWith(".rar") || filePath.EndsWith(".tar")
 				  || filePath.EndsWith(".gz") || filePath.EndsWith(".dmg")
-				   || filePath.EndsWith(".iso"))
+					|| filePath.EndsWith(".iso"))
 			{
 				fontAwesomeIconName = "fa-file-archive";
 			}
 			else if (filePath.EndsWith(".wav") || filePath.EndsWith(".mp3")
 				 || filePath.EndsWith(".fla") || filePath.EndsWith(".flac")
 				  || filePath.EndsWith(".ra") || filePath.EndsWith(".rma")
-				   || filePath.EndsWith(".aif") || filePath.EndsWith(".aiff")
+					|| filePath.EndsWith(".aif") || filePath.EndsWith(".aiff")
 					|| filePath.EndsWith(".aa") || filePath.EndsWith(".aac")
 					 || filePath.EndsWith(".aax") || filePath.EndsWith(".ac3")
 					  || filePath.EndsWith(".au") || filePath.EndsWith(".ogg")
-					   || filePath.EndsWith(".avr") || filePath.EndsWith(".3ga")
+						|| filePath.EndsWith(".avr") || filePath.EndsWith(".3ga")
 						|| filePath.EndsWith(".mid") || filePath.EndsWith(".midi")
 						 || filePath.EndsWith(".m4a") || filePath.EndsWith(".mp4a")
 						  || filePath.EndsWith(".amz") || filePath.EndsWith(".mka")
-						   || filePath.EndsWith(".asx") || filePath.EndsWith(".pcm")
+							|| filePath.EndsWith(".asx") || filePath.EndsWith(".pcm")
 							|| filePath.EndsWith(".m3u") || filePath.EndsWith(".wma")
 							 || filePath.EndsWith(".xwma"))
 			{
@@ -4147,11 +4149,11 @@ namespace WebVella.TagHelpers.Utilities
 			else if (filePath.EndsWith(".avi") || filePath.EndsWith(".mpg")
 				 || filePath.EndsWith(".mp4") || filePath.EndsWith(".mkv")
 				  || filePath.EndsWith(".mov") || filePath.EndsWith(".wmv")
-				   || filePath.EndsWith(".vp6") || filePath.EndsWith(".264")
+					|| filePath.EndsWith(".vp6") || filePath.EndsWith(".264")
 					|| filePath.EndsWith(".vid") || filePath.EndsWith(".rv")
 					 || filePath.EndsWith(".webm") || filePath.EndsWith(".swf")
 					  || filePath.EndsWith(".h264") || filePath.EndsWith(".flv")
-					   || filePath.EndsWith(".mk3d") || filePath.EndsWith(".gifv")
+						|| filePath.EndsWith(".mk3d") || filePath.EndsWith(".gifv")
 						|| filePath.EndsWith(".oggv") || filePath.EndsWith(".3gp")
 						 || filePath.EndsWith(".m4v") || filePath.EndsWith(".movie")
 						  || filePath.EndsWith(".divx"))
@@ -4163,7 +4165,7 @@ namespace WebVella.TagHelpers.Utilities
 				 || filePath.EndsWith(".py") || filePath.EndsWith(".git")
 				  || filePath.EndsWith(".cs") || filePath.EndsWith(".cshtml")
 				  || filePath.EndsWith(".xml") || filePath.EndsWith(".html")
-				   || filePath.EndsWith(".ini") || filePath.EndsWith(".config")
+					|| filePath.EndsWith(".ini") || filePath.EndsWith(".config")
 					|| filePath.EndsWith(".json") || filePath.EndsWith(".h"))
 			{
 				fontAwesomeIconName = "fa-file-code";
@@ -4173,7 +4175,7 @@ namespace WebVella.TagHelpers.Utilities
 				 || filePath.EndsWith(".pl") || filePath.EndsWith(".scr")
 				  || filePath.EndsWith(".msi") || filePath.EndsWith(".app")
 				  || filePath.EndsWith(".deb") || filePath.EndsWith(".apk")
-				   || filePath.EndsWith(".jar") || filePath.EndsWith(".vb")
+					|| filePath.EndsWith(".jar") || filePath.EndsWith(".vb")
 					|| filePath.EndsWith(".prg") || filePath.EndsWith(".sh"))
 			{
 				fontAwesomeIconName = "fa-cogs";
@@ -4183,48 +4185,147 @@ namespace WebVella.TagHelpers.Utilities
 				 || filePath.EndsWith(".gov") || filePath.EndsWith(".mil")
 				  || filePath.EndsWith("/") || filePath.EndsWith(".html")
 				  || filePath.EndsWith(".htm") || filePath.EndsWith(".xhtml")
-				   || filePath.EndsWith(".jhtml") || filePath.EndsWith(".php")
+					|| filePath.EndsWith(".jhtml") || filePath.EndsWith(".php")
 					|| filePath.EndsWith(".php3") || filePath.EndsWith(".php4")
-				   || filePath.EndsWith(".php5") || filePath.EndsWith(".phtml")
-				   || filePath.EndsWith(".asp") || filePath.EndsWith(".aspx")
-				   || filePath.EndsWith(".aspx") || filePath.EndsWith("?")
-				   || filePath.EndsWith("#"))
+					|| filePath.EndsWith(".php5") || filePath.EndsWith(".phtml")
+					|| filePath.EndsWith(".asp") || filePath.EndsWith(".aspx")
+					|| filePath.EndsWith(".aspx") || filePath.EndsWith("?")
+					|| filePath.EndsWith("#"))
 			{
 				fontAwesomeIconName = "fa-globe";
 			}
 			return fontAwesomeIconName;
 		}
 
-		public static string GetFileNameFromPath(string hreflink){
-			if(!hreflink.StartsWith("http")){
+		public static string GetFileNameFromPath(string hreflink)
+		{
+			if (!hreflink.StartsWith("http"))
+			{
 				hreflink = "http://domain.com" + hreflink;
 			}
-			try{
+			try
+			{
 				Uri uri = new Uri(hreflink);
 				return Path.GetFileName(uri.LocalPath);
 			}
-			catch (Exception ex){
+			catch (Exception ex)
+			{
 				return "unknown name";
 			}
 		}
 
-		public static string GetSizeStringFromSize(int sizeKBInt){
-				var sizeString = "";
-				if (sizeKBInt < 1024)
-				{
-					sizeString = sizeKBInt + " KB";
-				}
-				else if (sizeKBInt >= 1024 && sizeKBInt < Math.Pow(1024, 2))
-				{
-					sizeString = Math.Round((decimal)(sizeKBInt / 1024), 1) + " MB";
-				}
-				else
-				{
-					sizeString = Math.Round((decimal)(sizeKBInt / Math.Pow(1024, 2)), 1) + " GB";
-				}
+		public static string GetSizeStringFromSize(int sizeKBInt)
+		{
+			var sizeString = "";
+			if (sizeKBInt < 1024)
+			{
+				sizeString = sizeKBInt + " KB";
+			}
+			else if (sizeKBInt >= 1024 && sizeKBInt < Math.Pow(1024, 2))
+			{
+				sizeString = Math.Round((decimal)(sizeKBInt / 1024), 1) + " MB";
+			}
+			else
+			{
+				sizeString = Math.Round((decimal)(sizeKBInt / Math.Pow(1024, 2)), 1) + " GB";
+			}
 
-				return sizeString;
+			return sizeString;
 		}
+
+		public static List<dynamic> GetCsvData(string csvData, bool hasHeader = true, string delimiterName = "")
+		{
+			var records = new List<dynamic>();
+			using (TextReader reader = new StringReader(csvData))
+			{
+				using (var csvReader = new CsvReader(reader))
+				{
+					switch (delimiterName)
+					{
+						case "tab":
+							csvReader.Configuration.Delimiter = "\t";
+							break;
+						default:
+							break;
+					}
+
+					csvReader.Configuration.Encoding = Encoding.UTF8;
+					csvReader.Configuration.IgnoreBlankLines = true;
+					csvReader.Configuration.BadDataFound = null;
+					csvReader.Configuration.TrimOptions = CsvHelper.Configuration.TrimOptions.Trim;
+					csvReader.Configuration.HasHeaderRecord = hasHeader;
+					if (hasHeader)
+					{
+						var headerList = GetCsvHeader(csvData, delimiterName);
+						csvReader.Configuration.PrepareHeaderForMatch = (string header, int index) => headerList[index];
+					}
+
+					records = csvReader.GetRecords<dynamic>().ToList();
+				}
+			}
+			return records;
+		}
+
+		public static List<string> GetCsvHeader(string csvData, string delimiterName = "")
+		{
+			var records = new List<dynamic>();
+			var headerList = new List<string>();
+			using (TextReader reader = new StringReader(csvData))
+			{
+				using (var csvReader = new CsvReader(reader))
+				{
+					switch (delimiterName)
+					{
+						case "tab":
+							csvReader.Configuration.Delimiter = "\t";
+							break;
+						default:
+							break;
+					}
+
+					csvReader.Configuration.Encoding = Encoding.UTF8;
+					csvReader.Configuration.IgnoreBlankLines = true;
+					csvReader.Configuration.BadDataFound = null;
+					csvReader.Configuration.TrimOptions = CsvHelper.Configuration.TrimOptions.Trim;
+
+					csvReader.Configuration.HasHeaderRecord = false;
+
+					records = csvReader.GetRecords<dynamic>().ToList();
+
+					if (records.Count > 0)
+					{
+						//First row is headers -> we are getting them this way to bypass duplicate headers name problem
+						foreach (KeyValuePair<string, object> prop in records[0])
+						{
+							string header = prop.Value.ToString().Trim();
+							if (headerList.Contains(header))
+							{
+								var g = 2;
+								var newHeader = header;
+								while (true)
+								{
+									newHeader = header + g;
+									if (!headerList.Contains(newHeader))
+									{
+										headerList.Add(newHeader);
+										break;
+									}
+									g++;
+								}
+							}
+							else
+							{
+								headerList.Add(header);
+							}
+						}
+					}
+
+				}
+			}
+			return headerList;
+
+		}
+
 
 		#endregion
 

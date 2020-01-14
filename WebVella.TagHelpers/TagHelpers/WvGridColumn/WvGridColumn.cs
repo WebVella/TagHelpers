@@ -30,13 +30,16 @@ namespace WebVella.TagHelpers.TagHelpers
 		[HtmlAttributeName("text-nowrap")]
 		public bool TextNoWrap { get; set; } = false;
 
+		[HtmlAttributeName("is-header")]
+		public bool IsHeader { get; set; } = false;
+
 		[HtmlAttributeName("class")]
 		public string Class { get; set; } = null;
 
-        [HtmlAttributeName("colspan")]
-        public int? Colspan { get; set; } = null;
+		[HtmlAttributeName("colspan")]
+		public int? Colspan { get; set; } = null;
 
-        [HtmlAttributeName("width")]
+		[HtmlAttributeName("width")]
 		public string Width { get; set; } = "";
 
 		public override Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
@@ -48,7 +51,8 @@ namespace WebVella.TagHelpers.TagHelpers
 			}
 
 			#region << Init >>
-			if (VerticalAlign == WvVerticalAlignmentType.None && context.Items.ContainsKey(typeof(WvVerticalAlignmentType))) {
+			if (VerticalAlign == WvVerticalAlignmentType.None && context.Items.ContainsKey(typeof(WvVerticalAlignmentType)))
+			{
 				VerticalAlign = (WvVerticalAlignmentType)context.Items[typeof(WvVerticalAlignmentType)];
 			}
 			#endregion
@@ -57,12 +61,17 @@ namespace WebVella.TagHelpers.TagHelpers
 
 			output.TagName = "td";
 
-			if (!String.IsNullOrWhiteSpace(Class)) {
+			if(IsHeader)
+				output.TagName = "th";	
+
+			if (!String.IsNullOrWhiteSpace(Class))
+			{
 				output.AddCssClass(Class);
 			}
 
 			var styleList = new List<string>();
-			switch (VerticalAlign) {
+			switch (VerticalAlign)
+			{
 				case WvVerticalAlignmentType.Top:
 					styleList.Add("vertical-align:top");
 					break;
@@ -76,7 +85,8 @@ namespace WebVella.TagHelpers.TagHelpers
 					break;
 			}
 
-			if(TextNoWrap){
+			if (TextNoWrap)
+			{
 				styleList.Add("white-space:nowrap");
 			}
 
@@ -100,13 +110,15 @@ namespace WebVella.TagHelpers.TagHelpers
 				styleList.Add($"width:{Width}");
 			}
 
-			if (styleList.Count > 0) {
-				output.Attributes.Add("style", String.Join("; ",styleList));
+			if (styleList.Count > 0)
+			{
+				output.Attributes.Add("style", String.Join("; ", styleList));
 			}
 
-            if (Colspan != null) {
-                output.Attributes.Add("colspan", Colspan);
-            }
+			if (Colspan != null)
+			{
+				output.Attributes.Add("colspan", Colspan);
+			}
 
 			#endregion
 
