@@ -20,7 +20,7 @@
 	<meta charset="utf-8">
 
 	<wv-includes></wv-includes>
-
+	<script src="/_content/WebVella.TagHelpers/lib/ckeditor5/ckeditor.js"></script>
 
 	@* Demo Only *@
 	<link href="/css/demo.css" rel="stylesheet" type="text/css" />
@@ -35,7 +35,8 @@
 					Form
 				</div>
 				<div class="card-body">
-					<wv-field-html value="@html" label-text="FieldLabel" name="text" mode="Form"></wv-field-html>
+					@*<wv-field-html value="@html" label-text="FieldLabel" name="text" mode="Form"></wv-field-html>*@
+					<textarea id="editor"></textarea>
 				</div>
 			</div>
 		</div>
@@ -45,11 +46,41 @@
 					Form
 				</div>
 				<div class="card-body">
-					<wv-field-html value="@html" label-text="FieldLabel" name="text" mode="InlineEdit" api-url="/"></wv-field-html>
+					@*<wv-field-html value="@html" label-text="FieldLabel" name="text" mode="InlineEdit" api-url="/"></wv-field-html>*@
 				</div>
 			</div>
 		</div>
 	</div>
+	<script>
+			var config = {};
+			config.language = 'en';
 
+			ClassicEditor
+			.create(document.querySelector('#editor'), config)
+			.then(function (editor) {
+				if(!HtmlFieldEditors){
+					HtmlFieldEditors = {};
+				}
+				HtmlFieldEditors[fieldId] = editor;
+				editor.model.document.on('change:data', function () {
+					editor.updateSourceElement();
+					var customEvent = new Event('WvFieldHtml_Change');
+					var inputElement = document.getElementById('editor');
+					//If the element still exists
+					if (inputElement) {
+						customEvent.payload = {
+							value: editor.getData(),
+							fieldId: fieldId,
+							fieldName: inputElement.name
+						};
+						document.dispatchEvent(customEvent);
+						console.log(customEvent);
+					}
+				});
+			})
+			.catch(function (error) {
+				console.error(error);
+			});
+	</script>
 </body>
 </html>
