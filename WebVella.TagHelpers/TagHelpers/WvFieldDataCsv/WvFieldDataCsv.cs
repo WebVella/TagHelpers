@@ -29,13 +29,13 @@ namespace WebVella.Erp.Web.TagHelpers
         public string HasHeaderFieldName { get; set; } = "";
 
         [HtmlAttributeName("has-header-value")]
-        public bool HasHeaderValue { get; set; } = true;
+        public bool? HasHeaderValue { get; set; } = true;
 
         [HtmlAttributeName("has-header-column-field-name")]
         public string HasHeaderColumnFieldName { get; set; } = "";
 
         [HtmlAttributeName("has-header-column-value")]
-        public bool HasHeaderColumnValue { get; set; } = false;
+        public bool? HasHeaderColumnValue { get; set; } = false;
 
         [HtmlAttributeName("lang")]
         public string Lang { get; set; } = "en";
@@ -73,7 +73,12 @@ namespace WebVella.Erp.Web.TagHelpers
                 HasHeaderColumnFieldName = Name + "_has_header_column";
             }
 
-
+            if(HasHeaderValue == null){
+               HasHeaderValue = true;
+            }
+            if(HasHeaderColumnValue == null){
+               HasHeaderColumnValue = false;
+            }
             #endregion
 
             #region << Render >>
@@ -190,8 +195,9 @@ namespace WebVella.Erp.Web.TagHelpers
 
                 var hasHeaderCheck = new TagBuilder("input");
                 hasHeaderCheck.Attributes.Add("name", HasHeaderFieldName);
+                hasHeaderCheck.Attributes.Add("data-source-id", $"input-hasheader-fake-{FieldId}");
                 hasHeaderCheck.Attributes.Add("type", "hidden");
-                if (HasHeaderValue)
+                if (HasHeaderValue.Value)
                 {
                     hasHeaderCheck.Attributes.Add("value", "true");
                 }
@@ -207,7 +213,7 @@ namespace WebVella.Erp.Web.TagHelpers
                 inputFake.Attributes.Add("type", "checkbox");
                 inputFake.Attributes.Add("value", "true");
                 inputFake.Attributes.Add("data-field-name", HasHeaderFieldName);
-                if (HasHeaderValue)
+                if (HasHeaderValue.Value)
                 {
                     inputFake.Attributes.Add("checked", "checked");
                 }
@@ -234,8 +240,9 @@ namespace WebVella.Erp.Web.TagHelpers
 
                 var hasHeaderColumnCheck = new TagBuilder("input");
                 hasHeaderColumnCheck.Attributes.Add("name", HasHeaderColumnFieldName);
+                hasHeaderColumnCheck.Attributes.Add("data-source-id", $"input-hasheader-column-fake-{FieldId}");
                 hasHeaderColumnCheck.Attributes.Add("type", "hidden");
-                if (HasHeaderColumnValue)
+                if (HasHeaderColumnValue.Value)
                 {
                     hasHeaderColumnCheck.Attributes.Add("value", "true");
                 }
@@ -251,7 +258,7 @@ namespace WebVella.Erp.Web.TagHelpers
                 inputColumnFake.Attributes.Add("type", "checkbox");
                 inputColumnFake.Attributes.Add("value", "true");
                 inputColumnFake.Attributes.Add("data-field-name", HasHeaderColumnFieldName);
-                if (HasHeaderColumnValue)
+                if (HasHeaderColumnValue.Value)
                 {
                     inputColumnFake.Attributes.Add("checked", "checked");
                 }
@@ -573,7 +580,7 @@ namespace WebVella.Erp.Web.TagHelpers
                     if (DelimiterValue == WvCsvDelimiterType.TAB)
                         delimiterName = "tab";
 
-                    records = WvHelpers.GetCsvData(Value, HasHeaderValue, delimiterName);
+                    records = WvHelpers.GetCsvData(Value, HasHeaderValue.Value, delimiterName);
 
                     if (records.Count > 0)
                     {
@@ -588,12 +595,12 @@ namespace WebVella.Erp.Web.TagHelpers
                         {
                             columns.Add(new WvGridColumnMeta()
                             {
-                                Label = HasHeaderValue ? prop : "Field" + index
+                                Label = HasHeaderValue.Value ? prop : "Field" + index
                             });
                             index++;
                         }
 
-                        if (HasHeaderValue)
+                        if (HasHeaderValue.Value)
                         {
                             //>> table > thead
                             var theadEl = new TagBuilder("thead");
@@ -621,7 +628,7 @@ namespace WebVella.Erp.Web.TagHelpers
                             foreach (var column in columns)
                             {
                                 var tbodyTdEl = new TagBuilder("td");
-                                if(firstColumn && HasHeaderColumnValue){
+                                if(firstColumn && HasHeaderColumnValue.Value){
                                  tbodyTdEl = new TagBuilder("th");
                                  firstColumn = false;
                                 }
@@ -782,7 +789,7 @@ namespace WebVella.Erp.Web.TagHelpers
                     if (DelimiterValue == WvCsvDelimiterType.TAB)
                         delimiterName = "tab";
 
-                    records = WvHelpers.GetCsvData(Value, HasHeaderValue, delimiterName);
+                    records = WvHelpers.GetCsvData(Value, HasHeaderValue.Value, delimiterName);
 
                     if (records.Count > 0)
                     {
@@ -797,12 +804,12 @@ namespace WebVella.Erp.Web.TagHelpers
                         {
                             columns.Add(new WvGridColumnMeta()
                             {
-                                Label = HasHeaderValue ? prop : "Field" + index
+                                Label = HasHeaderValue.Value ? prop : "Field" + index
                             });
                             index++;
                         }
 
-                        if (HasHeaderValue)
+                        if (HasHeaderValue.Value)
                         {
                             //>> table > thead
                             var theadEl = new TagBuilder("thead");
@@ -830,7 +837,7 @@ namespace WebVella.Erp.Web.TagHelpers
                             foreach (var column in columns)
                             {
                                 var tbodyTdEl = new TagBuilder("td");
-                                if(firstColumn && HasHeaderColumnValue){
+                                if(firstColumn && HasHeaderColumnValue.Value){
                                  tbodyTdEl = new TagBuilder("th");
                                  firstColumn = false;
                                 }
@@ -1081,7 +1088,7 @@ namespace WebVella.Erp.Web.TagHelpers
                     if (DelimiterValue == WvCsvDelimiterType.TAB)
                         delimiterName = "tab";
 
-                    records = WvHelpers.GetCsvData(Value, HasHeaderValue, delimiterName);
+                    records = WvHelpers.GetCsvData(Value, HasHeaderValue.Value, delimiterName);
 
                     if (records.Count > 0)
                     {
@@ -1096,12 +1103,12 @@ namespace WebVella.Erp.Web.TagHelpers
                         {
                             columns.Add(new WvGridColumnMeta()
                             {
-                                Label = HasHeaderValue ? prop : "Field" + index
+                                Label = HasHeaderValue.Value ? prop : "Field" + index
                             });
                             index++;
                         }
 
-                        if (HasHeaderValue)
+                        if (HasHeaderValue.Value)
                         {
                             //>> table > thead
                             var theadEl = new TagBuilder("thead");
@@ -1129,7 +1136,7 @@ namespace WebVella.Erp.Web.TagHelpers
                             foreach (var column in columns)
                             {
                                 var tbodyTdEl = new TagBuilder("td");
-                                if(firstColumn && HasHeaderColumnValue){
+                                if(firstColumn && HasHeaderColumnValue.Value){
                                  tbodyTdEl = new TagBuilder("th");
                                  firstColumn = false;
                                 }
@@ -1260,8 +1267,9 @@ namespace WebVella.Erp.Web.TagHelpers
 
                     var hasHeaderCheck = new TagBuilder("input");
                     hasHeaderCheck.Attributes.Add("name", HasHeaderFieldName);
+                    hasHeaderCheck.Attributes.Add("data-source-id", $"input-hasheader-fake-{FieldId}");
                     hasHeaderCheck.Attributes.Add("type", "hidden");
-                    if (HasHeaderValue)
+                    if (HasHeaderValue.Value)
                     {
                         hasHeaderCheck.Attributes.Add("value", "true");
                     }
@@ -1277,7 +1285,7 @@ namespace WebVella.Erp.Web.TagHelpers
                     inputFake.Attributes.Add("type", "checkbox");
                     inputFake.Attributes.Add("value", "true");
                     inputFake.Attributes.Add("data-field-name", HasHeaderFieldName);
-                    if (HasHeaderValue)
+                    if (HasHeaderValue.Value)
                     {
                         inputFake.Attributes.Add("checked", "checked");
                     }
@@ -1304,8 +1312,9 @@ namespace WebVella.Erp.Web.TagHelpers
 
                     var hasHeaderColumnCheck = new TagBuilder("input");
                     hasHeaderColumnCheck.Attributes.Add("name", HasHeaderColumnFieldName);
+                    hasHeaderColumnCheck.Attributes.Add("data-source-id", $"input-hasheader-column-fake-{FieldId}");
                     hasHeaderColumnCheck.Attributes.Add("type", "hidden");
-                    if (HasHeaderColumnValue)
+                    if (HasHeaderColumnValue.Value)
                     {
                         hasHeaderColumnCheck.Attributes.Add("value", "true");
                     }
@@ -1321,7 +1330,7 @@ namespace WebVella.Erp.Web.TagHelpers
                     inputColumnFake.Attributes.Add("type", "checkbox");
                     inputColumnFake.Attributes.Add("value", "true");
                     inputColumnFake.Attributes.Add("data-field-name", HasHeaderColumnFieldName);
-                    if (HasHeaderColumnValue)
+                    if (HasHeaderColumnValue.Value)
                     {
                         inputColumnFake.Attributes.Add("checked", "checked");
                     }
