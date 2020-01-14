@@ -950,3 +950,20 @@
 	max-width:98%;
 }
 /*#endregion*/
+
+/*#region << Doublescroll >>*/
+.doublescroll-wrapper1, .doublescroll-wrapper2 {
+	width: 100%;
+	overflow-x: auto;
+	overflow-y: hidden;
+}
+
+.doublescroll-wrapper1 {
+	height: 20px;
+}
+
+.doublescroll-inner1 {
+	height: 20px;
+}
+
+/*#endregion*/
