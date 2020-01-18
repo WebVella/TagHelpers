@@ -19,6 +19,15 @@ namespace WebVella.TagHelpers.TagHelpers
 		[HtmlAttributeName("options")]
 		public List<WvSelectOption> Options { get; set; } = new List<WvSelectOption>();
 
+		[HtmlAttributeName("is-button-group")]
+		public bool IsButtonGroup { get; set; } = false;
+
+		[HtmlAttributeName("button-class-unchecked")]
+		public string ButtonClassUnchecked { get; set; } = "btn-secondary";
+
+		[HtmlAttributeName("button-class-checked")]
+		public string ButtonClassChecked { get; set; } = "btn-secondary";
+
 		public override Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
 		{
 			if (!isVisible)
@@ -39,40 +48,127 @@ namespace WebVella.TagHelpers.TagHelpers
 			#region << Render >>
 			if (Mode == WvFieldRenderMode.Form)
 			{
-				var wrapper1 = new TagBuilder("div");
-				wrapper1.AddCssClass("form-control-plaintext erp-radio-list");
-
-				foreach (var selectOption in Options)
+				if (!IsButtonGroup)
 				{
+					var wrapper1 = new TagBuilder("div");
+					wrapper1.AddCssClass("form-control-plaintext erp-radio-list");
+					wrapper1.Attributes.Add("id",$"input-" + FieldId);
+					foreach (var selectOption in Options)
+					{
+						var wrapper2 = new TagBuilder("div");
+						wrapper2.AddCssClass("form-check form-check-inline ml-1");
+						var labelWrapper = new TagBuilder("label");
+						labelWrapper.AddCssClass("form-check-label");
+
+						var inputChkb = new TagBuilder("input");
+						inputChkb.Attributes.Add("type", "radio");
+						inputChkb.Attributes.Add("value", selectOption.Value);
+						inputChkb.Attributes.Add("name", Name);
+						if (Access == WvFieldAccess.ReadOnly)
+						{
+							inputChkb.Attributes.Add("readonly", null);
+						}
+
+						inputChkb.AddCssClass($"form-check-input {(ValidationErrors.Count > 0 ? "is-invalid" : "")}");
+
+						if (Value != null && Value == selectOption.Value)
+						{
+							inputChkb.Attributes.Add("checked", "checked");
+						}
+						labelWrapper.InnerHtml.AppendHtml(inputChkb);
+
+						labelWrapper.InnerHtml.AppendHtml(selectOption.Label);
+						wrapper2.InnerHtml.AppendHtml(labelWrapper);
+						wrapper1.InnerHtml.AppendHtml(wrapper2);
+
+					}
+
+					output.Content.AppendHtml(wrapper1);
+				}
+				else{
+					var wrapper1 = new TagBuilder("div");
+					wrapper1.AddCssClass("form-control-plaintext erp-radio-list is-buttons");
+					wrapper1.Attributes.Add("id",$"input-" + FieldId);
 					var wrapper2 = new TagBuilder("div");
-					wrapper2.AddCssClass("form-check form-check-inline ml-1");
-					var labelWrapper = new TagBuilder("label");
-					labelWrapper.AddCssClass("form-check-label");
-
-					var inputChkb = new TagBuilder("input");
-					inputChkb.Attributes.Add("type", "radio");
-					inputChkb.Attributes.Add("value", selectOption.Value);
-					inputChkb.Attributes.Add("name", Name);
-					if (Access == WvFieldAccess.ReadOnly)
+					wrapper2.AddCssClass("btn-group btn-group-toggle");
+					foreach (var selectOption in Options)
 					{
-						inputChkb.Attributes.Add("readonly", null);
+						var labelWrapper = new TagBuilder("label");
+						if (Value != null && Value == selectOption.Value)
+						{
+							labelWrapper.AddCssClass($"btn {ButtonClassChecked}");
+						}
+						else{
+							labelWrapper.AddCssClass($"btn {ButtonClassUnchecked}");
+						}
+						var inputChkb = new TagBuilder("input");
+						inputChkb.Attributes.Add("type", "radio");
+						inputChkb.Attributes.Add("value", selectOption.Value);
+						inputChkb.Attributes.Add("name", Name);
+						if (Access == WvFieldAccess.ReadOnly)
+						{
+							inputChkb.Attributes.Add("readonly", null);
+						}
+						inputChkb.Attributes.Add("autocomplete", "off");
+						inputChkb.AddCssClass($"form-check-input {(ValidationErrors.Count > 0 ? "is-invalid" : "")}");
+
+						if (Value != null && Value == selectOption.Value)
+						{
+							inputChkb.Attributes.Add("checked", "checked");
+						}
+						labelWrapper.InnerHtml.AppendHtml(inputChkb);
+
+						labelWrapper.InnerHtml.AppendHtml(selectOption.Label);
+						wrapper2.InnerHtml.AppendHtml(labelWrapper);
+
 					}
-
-					inputChkb.AddCssClass($"form-check-input {(ValidationErrors.Count > 0 ? "is-invalid" : "")}");
-
-					if (Value != null && Value == selectOption.Value)
-					{
-						inputChkb.Attributes.Add("checked", "checked");
-					}
-					labelWrapper.InnerHtml.AppendHtml(inputChkb);
-
-					labelWrapper.InnerHtml.AppendHtml(selectOption.Label);
-					wrapper2.InnerHtml.AppendHtml(labelWrapper);
 					wrapper1.InnerHtml.AppendHtml(wrapper2);
-
+					output.Content.AppendHtml(wrapper1);					
 				}
 
-				output.Content.AppendHtml(wrapper1);
+				var jsCompressor = new JavaScriptCompressor();
+				
+				#region << Init Scripts >>
+				var tagHelperInitialized = false;
+				var fileName = "form.js";
+				if (ViewContext.HttpContext.Items.ContainsKey(typeof(WvFieldRadioList) + fileName))
+				{
+					var tagHelperContext = (WvTagHelperContext)ViewContext.HttpContext.Items[typeof(WvFieldRadioList) + fileName];
+					tagHelperInitialized = tagHelperContext.Initialized;
+				}
+				if (!tagHelperInitialized)
+				{
+					var scriptContent = WvHelpers.GetEmbeddedTextResource(fileName, "WebVella.TagHelpers.TagHelpers.WvFieldRadioList","WebVella.TagHelpers");
+					var scriptEl = new TagBuilder("script");
+					scriptEl.Attributes.Add("type", "text/javascript");
+					//scriptEl.InnerHtml.AppendHtml(jsCompressor.Compress(scriptContent));
+					scriptEl.InnerHtml.AppendHtml(scriptContent);
+					output.PostContent.AppendHtml(scriptEl);
+
+					ViewContext.HttpContext.Items[typeof(WvFieldRadioList) + fileName] = new WvTagHelperContext()
+					{
+						Initialized = true
+					};
+
+				}
+				#endregion
+
+				#region << Add Inline Init Script for this instance >>
+				var initScript = new TagBuilder("script");
+				initScript.Attributes.Add("type", "text/javascript");
+				var scriptTemplate = @"
+						$(function(){
+							RadioListFormInit(""{{FieldId}}"",{{IsButtonGroup}},""{{ButtonClassUnchecked}}"",""{{ButtonClassChecked}}"");
+						});";
+				scriptTemplate = scriptTemplate.Replace("{{FieldId}}", (FieldId != null ? FieldId.Value.ToString() : ""));
+				scriptTemplate = scriptTemplate.Replace("{{IsButtonGroup}}", IsButtonGroup.ToString().ToLowerInvariant());
+				scriptTemplate = scriptTemplate.Replace("{{ButtonClassUnchecked}}", ButtonClassUnchecked);
+				scriptTemplate = scriptTemplate.Replace("{{ButtonClassChecked}}", ButtonClassChecked);
+
+				initScript.InnerHtml.AppendHtml(jsCompressor.Compress(scriptTemplate));
+
+				output.PostContent.AppendHtml(initScript);
+				#endregion
 
 			}
 			else if (Mode == WvFieldRenderMode.Display)
@@ -86,9 +182,9 @@ namespace WebVella.TagHelpers.TagHelpers
 				}
 				wrapper.Attributes.Add("data-field-value", (Value ?? "").ToString().ToLowerInvariant());
 
-				var selectedOption = Options.FirstOrDefault(x=> x.Value == Value);
+				var selectedOption = Options.FirstOrDefault(x => x.Value == Value);
 				var renderedValue = Value;
-				if(selectedOption != null)
+				if (selectedOption != null)
 					renderedValue = selectedOption.Label;
 
 				wrapper.InnerHtml.AppendHtml(renderedValue);
@@ -97,13 +193,13 @@ namespace WebVella.TagHelpers.TagHelpers
 			}
 			else if (Mode == WvFieldRenderMode.Simple)
 			{
-                output.SuppressOutput();
-				var selectedOption = Options.FirstOrDefault(x=> x.Value == Value);
+				output.SuppressOutput();
+				var selectedOption = Options.FirstOrDefault(x => x.Value == Value);
 				var renderedValue = Value;
-				if(selectedOption != null)
+				if (selectedOption != null)
 					renderedValue = selectedOption.Label;
 
-                output.Content.AppendHtml(renderedValue);
+				output.Content.AppendHtml(renderedValue);
 			}
 			else if (Mode == WvFieldRenderMode.InlineEdit)
 			{
@@ -120,9 +216,9 @@ namespace WebVella.TagHelpers.TagHelpers
 						viewFormControlEl.AddCssClass($"form-control erp-radio-list {(ValidationErrors.Count > 0 ? "is-invalid" : "")}");
 						viewFormControlEl.Attributes.Add("title", "double click to edit");
 
-						var selectedOption = Options.FirstOrDefault(x=> x.Value == Value);
+						var selectedOption = Options.FirstOrDefault(x => x.Value == Value);
 						var renderedValue = Value;
-						if(selectedOption != null)
+						if (selectedOption != null)
 							renderedValue = selectedOption.Label;
 
 						viewFormControlEl.InnerHtml.AppendHtml(renderedValue);
@@ -215,7 +311,7 @@ namespace WebVella.TagHelpers.TagHelpers
 						}
 						if (!tagHelperInitialized)
 						{
-							var scriptContent = WvHelpers.GetEmbeddedTextResource("inline-edit.js", "WebVella.TagHelpers.TagHelpers.WvFieldRadioList","WebVella.TagHelpers");
+							var scriptContent = WvHelpers.GetEmbeddedTextResource("inline-edit.js", "WebVella.TagHelpers.TagHelpers.WvFieldRadioList", "WebVella.TagHelpers");
 							var scriptEl = new TagBuilder("script");
 							scriptEl.Attributes.Add("type", "text/javascript");
 							scriptEl.InnerHtml.AppendHtml(jsCompressor.Compress(scriptContent));
@@ -271,9 +367,9 @@ namespace WebVella.TagHelpers.TagHelpers
 					prependWrapper.InnerHtml.AppendHtml(prependEl);
 					divEl.InnerHtml.AppendHtml(prependWrapper);
 
-					var selectedOption = Options.FirstOrDefault(x=> x.Value == Value);
+					var selectedOption = Options.FirstOrDefault(x => x.Value == Value);
 					var renderedValue = Value;
-					if(selectedOption != null)
+					if (selectedOption != null)
 						renderedValue = selectedOption.Label;
 
 					var inputEl = new TagBuilder("input");

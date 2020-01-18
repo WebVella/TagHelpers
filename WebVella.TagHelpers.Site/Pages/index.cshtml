@@ -1262,7 +1262,10 @@
 					Form
 				</div>
 				<div class="card-body">
-					<wv-field-radio-list value="@("1")" label-text="FieldLabel" name="text1" mode="Form" options="@chkBxList"></wv-field-radio-list>
+					<wv-form method="get">
+						<wv-field-radio-list button-class-checked="btn-orange" button-class-unchecked="btn-outline-secondary" is-button-group="true" value="@("1")" label-text="FieldLabel" name="text1" mode="Form" options="@chkBxList"></wv-field-radio-list>
+						<button type="submit">submit</button>
+					</wv-form>
 				</div>
 			</div>
 		</div>

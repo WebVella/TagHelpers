@@ -5,7 +5,7 @@
 		<IsPackable>true</IsPackable>
 		<RazorLangVersion>3.0</RazorLangVersion>
 		<GenerateEmbeddedFilesManifest>true</GenerateEmbeddedFilesManifest>
-		<Version>1.0.85</Version> 
+		<Version>1.0.86</Version> 
 		<Authors>WebVella</Authors>
 		<PackageProjectUrl>http://webvella.com/</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/WebVella/WebVella-ERP</RepositoryUrl>
@@ -18,6 +18,10 @@
 
 	<ItemGroup>
 	  <Content Remove="TagHelpers\WvECharts\usa.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="TagHelpers\WvFieldRadioList\form.js" />
 	</ItemGroup>
 
 
@@ -56,6 +60,7 @@
 		<EmbeddedResource Include="TagHelpers\WvFieldPercent\form.js" />
 		<EmbeddedResource Include="TagHelpers\WvFieldPercent\inline-edit.js" />
 		<EmbeddedResource Include="TagHelpers\WvFieldPhone\inline-edit.js" />
+		<EmbeddedResource Include="TagHelpers\WvFieldRadioList\form.js" />
 		<EmbeddedResource Include="TagHelpers\WvFieldRadioList\inline-edit.js" />
 		<EmbeddedResource Include="TagHelpers\WvFieldSelect\form.js" />
 		<EmbeddedResource Include="TagHelpers\WvFieldSelect\inline-edit.js" />
