@@ -14,7 +14,11 @@ function RadioListFormInit(fieldId,isButtons,uncheckedClass,checkedClass) {
 	$(selectors.inputControlWrapper + " .btn").on("click",function(e){
 		e.preventDefault();
 		if($(this).hasClass(checkedClass)){
-			return false; // already activated
+			// already activated -> deactivate
+			$(this).removeClass(checkedClass);
+			$(this).addClass(uncheckedClass);
+			$(this).find("input").prop("checked", false);
+			$(this).find("input").trigger("change");
 		}
 		else{
 			var buttons = document.querySelectorAll(selectors.inputControlWrapper + " .btn");
@@ -25,12 +29,14 @@ function RadioListFormInit(fieldId,isButtons,uncheckedClass,checkedClass) {
 					$($btn).addClass(checkedClass);
 					$($btn).removeClass(uncheckedClass);
 					$($btn).find("input").prop("checked", true);
+					$($btn).find("input").trigger("change");
 				}
 				else
 				{
 					$($btn).removeClass(checkedClass);
 					$($btn).addClass(uncheckedClass);
 					$($btn).find("input").prop("checked", false);
+					$($btn).find("input").trigger("change");
 				}
 			}
 		}

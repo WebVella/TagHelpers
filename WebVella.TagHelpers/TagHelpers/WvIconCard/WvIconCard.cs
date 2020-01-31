@@ -37,6 +37,9 @@ namespace WebVella.TagHelpers.TagHelpers
 		[HtmlAttributeName("icon-color")]
 		public WvColor IconColor { get; set; } = WvColor.Default;
 
+		[HtmlAttributeName("is-icon-right")]
+		public bool IsIconRight { get; set; } = false;
+
 		[HtmlAttributeName("class")]
 		public string Class { get; set; } = "";
 
@@ -114,7 +117,8 @@ namespace WebVella.TagHelpers.TagHelpers
 				{
 					IconEl.AddCssClass("go-" + IconColor.GetLabel());
 				}
-				output.Content.AppendHtml(IconEl);
+				if(!IsIconRight)
+					output.Content.AppendHtml(IconEl);
 
 				var metaEl = new TagBuilder("div");
 				metaEl.AddCssClass("meta");
@@ -130,6 +134,10 @@ namespace WebVella.TagHelpers.TagHelpers
 				metaEl.InnerHtml.AppendHtml(metaDescriptionEl);
 
 				output.Content.AppendHtml(metaEl);
+
+				if(IsIconRight)
+					output.Content.AppendHtml(IconEl);
+
 				if (!String.IsNullOrWhiteSpace(BodyLink))
 				{
 					var linkEl = new TagBuilder("a");

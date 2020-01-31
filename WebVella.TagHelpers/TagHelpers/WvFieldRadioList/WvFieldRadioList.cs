@@ -26,7 +26,7 @@ namespace WebVella.TagHelpers.TagHelpers
 		public string ButtonClassUnchecked { get; set; } = "btn-secondary";
 
 		[HtmlAttributeName("button-class-checked")]
-		public string ButtonClassChecked { get; set; } = "btn-secondary";
+		public string ButtonClassChecked { get; set; } = "btn-primary";
 
 		public override Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
 		{

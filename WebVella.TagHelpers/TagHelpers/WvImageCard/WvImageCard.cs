@@ -43,6 +43,9 @@ namespace WebVella.TagHelpers.TagHelpers
 		[HtmlAttributeName("is-card")]
 		public bool IsCard { get; set; } = true;
 
+		[HtmlAttributeName("is-image-right")]
+		public bool IsImageRight { get; set; } = false;
+
 		[HtmlAttributeName("has-shadow")]
 		public bool HasShadow { get; set; } = true;
 
@@ -107,7 +110,9 @@ namespace WebVella.TagHelpers.TagHelpers
 				var ImageEl = new TagBuilder("img");
 				ImageEl.AddCssClass("image");
 				ImageEl.Attributes.Add("src",ImageUrl);
-				output.Content.AppendHtml(ImageEl);
+
+				if(!IsImageRight)
+					output.Content.AppendHtml(ImageEl);
 
 				var metaEl = new TagBuilder("div");
 				metaEl.AddCssClass("meta");
@@ -123,6 +128,10 @@ namespace WebVella.TagHelpers.TagHelpers
 				metaEl.InnerHtml.AppendHtml(metaDescriptionEl);
 
 				output.Content.AppendHtml(metaEl);
+
+				if(IsImageRight)
+					output.Content.AppendHtml(ImageEl);
+
 				if (!String.IsNullOrWhiteSpace(BodyLink))
 				{
 					var linkEl = new TagBuilder("a");
