@@ -189,7 +189,7 @@
 
 .icon-card-body .icon {
 	font-size: 32px;
-	width: 50px;
+	width: 60px;
 	text-align: center;
 	flex-grow: 0;
 	flex-shrink: 0;
@@ -201,6 +201,7 @@
 	align-self: center;
 	min-width: 0;
 	padding-left: 10px;
+	flex: 1 1 auto;
 }
 
 .icon-card-body .title {

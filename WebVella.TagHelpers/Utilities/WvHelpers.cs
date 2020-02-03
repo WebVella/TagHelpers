@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -4238,7 +4239,7 @@ namespace WebVella.TagHelpers.Utilities
 			var records = new List<dynamic>();
 			using (TextReader reader = new StringReader(csvData))
 			{
-				using (var csvReader = new CsvReader(reader))
+				using (var csvReader = new CsvReader(reader, CultureInfo.InvariantCulture))
 				{
 					switch (delimiterName)
 					{
@@ -4272,7 +4273,7 @@ namespace WebVella.TagHelpers.Utilities
 			var headerList = new List<string>();
 			using (TextReader reader = new StringReader(csvData))
 			{
-				using (var csvReader = new CsvReader(reader))
+				using (var csvReader = new CsvReader(reader, CultureInfo.InvariantCulture))
 				{
 					switch (delimiterName)
 					{
