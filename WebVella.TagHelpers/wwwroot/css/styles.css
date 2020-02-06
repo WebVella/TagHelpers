@@ -713,6 +713,7 @@
 .wv-field-multiselect .erp-multiselect.form-control,
 .wv-field-multiselect .edit-wrapper .form-control.erp-select {
 	padding: 0;
+	height:auto;
 }
 
 
