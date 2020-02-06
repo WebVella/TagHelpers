@@ -46,6 +46,9 @@
 	cursor:pointer;
 }
 
+.wv-field.inline-edit .view-wrapper .form-control{
+	overflow:hidden;
+}
 
 /*#endregion*/
 
