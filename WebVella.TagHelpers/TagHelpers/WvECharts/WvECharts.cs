@@ -23,18 +23,20 @@ namespace WebVella.TagHelpers.TagHelpers
 		[HtmlAttributeName("is-visible")]
 		public bool isVisible { get; set; } = true;
 
-
 		[HtmlAttributeName("mode")]
-		public string Mode { get; set; } = "map";
+		public string Mode { get; set; } = "";
+
+		[HtmlAttributeName("options")]
+		public dynamic Options { get; set; } = null;
 
 		[HtmlAttributeName("css-class")]
 		public string CssClass { get; set; } = "";
 
 		[HtmlAttributeName("width")]
-		public string Width { get; set; } = "";
+		public string Width { get; set; } = "100%";
 
 		[HtmlAttributeName("height")]
-		public string Height { get; set; } = "";
+		public string Height { get; set; } = "300px";
 
 		private Guid ElementId { get; set; }
 
@@ -65,8 +67,15 @@ namespace WebVella.TagHelpers.TagHelpers
 			output.Content.AppendHtml(wrapperEl);
 
 			dynamic options = null;
-
-			if (Mode == "map")
+			//Default mode - just apply options
+			if(String.IsNullOrWhiteSpace(Mode)){
+				options = Options;
+				if(String.IsNullOrWhiteSpace(Width))
+					Width = "100%";
+				if(String.IsNullOrWhiteSpace(Height))
+					Width = "300px";
+			}
+			else if (Mode == "map")
 			{
 				options = new
 				{
@@ -449,7 +458,7 @@ myChart.on('click', function (params) {
 
 	});";
 			}
-			else if (Mode == "match" || Mode == "expertise" || Mode == "calendar" || Mode == "hits")
+			else 
 			{
 
 				scriptTemplate = @"
