@@ -4,6 +4,53 @@ var datePickerDictionary = {};
 var flatPickrServerDateFormat = "Y-m-dTH:i:S";
 var flatPickrUiDateFormat = "d M Y";
 //From the server dates will be received yyyy-MM-ddTHH:mm:ss.fff
+
+var BulgarianDateTimeLocale = {
+    weekdays: {
+        shorthand: ["Нд", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"],
+        longhand: [
+            "Неделя",
+            "Понеделник",
+            "Вторник",
+            "Сряда",
+            "Четвъртък",
+            "Петък",
+            "Събота",
+        ],
+    },
+
+    months: {
+        shorthand: [
+            "яну",
+            "фев",
+            "март",
+            "апр",
+            "май",
+            "юни",
+            "юли",
+            "авг",
+            "сеп",
+            "окт",
+            "ное",
+            "дек",
+        ],
+        longhand: [
+            "Януари",
+            "Февруари",
+            "Март",
+            "Април",
+            "Май",
+            "Юни",
+            "Юли",
+            "Август",
+            "Септември",
+            "Октомври",
+            "Ноември",
+            "Декември",
+        ],
+    },
+};
+
 function InitFlatPickrDateInlineEdit(editWrapperSelector) {
     var defaultDate = $(editWrapperSelector).attr("data-default-date");
     if (defaultDate === "") {
@@ -17,6 +64,10 @@ function InitFlatPickrDateInlineEdit(editWrapperSelector) {
 		//locale: BulgarianDateTimeLocale,
 		altInput: true,
 		altFormat: flatPickrUiDateFormat };
+	if(SiteLang && SiteLang === "bg"){
+		options.locale = BulgarianDateTimeLocale;
+	}
+
 	flatpickr(editWrapperSelector + " .form-control", options);
 }
 

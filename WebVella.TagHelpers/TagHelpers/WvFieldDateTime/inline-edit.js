@@ -3,22 +3,74 @@
 var flatPickrServerDateTimeFormat = "Y-m-dTH:i:S";//"Z";
 //From the server dates will be received yyyy-MM-ddTHH:mm:ss.fff
 var flatPickrUiDateTimeFormat = "d M Y H:i";
+
+var BulgarianDateTimeLocale = {
+	weekdays: {
+		shorthand: ["Нд", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"],
+		longhand: [
+			"Неделя",
+			"Понеделник",
+			"Вторник",
+			"Сряда",
+			"Четвъртък",
+			"Петък",
+			"Събота",
+		],
+	},
+
+	months: {
+		shorthand: [
+			"яну",
+			"фев",
+			"март",
+			"апр",
+			"май",
+			"юни",
+			"юли",
+			"авг",
+			"сеп",
+			"окт",
+			"ное",
+			"дек",
+		],
+		longhand: [
+			"Януари",
+			"Февруари",
+			"Март",
+			"Април",
+			"Май",
+			"Юни",
+			"Юли",
+			"Август",
+			"Септември",
+			"Октомври",
+			"Ноември",
+			"Декември",
+		],
+	},
+};
+
 function InitFlatPickrDateTimeInlineEdit(editWrapperSelector) {
-    var defaultDate = $(editWrapperSelector).attr("data-default-date");
-    if (defaultDate === "") {
-        defaultDate = null;
-    }
-	var options = { 
+	var defaultDate = $(editWrapperSelector).attr("data-default-date");
+	if (defaultDate === "") {
+		defaultDate = null;
+	}
+	var options = {
 		time_24hr: true,
 		defaultDate: defaultDate,
 		dateFormat: flatPickrServerDateTimeFormat,
 		//locale: BulgarianDateTimeLocale,
-        enableTime: true,
-        "static": true,
+		enableTime: true,
+		"static": true,
 		minuteIncrement: 1,
 		altInput: true,
 		altFormat: flatPickrUiDateTimeFormat
 	};
+
+	if (SiteLang && SiteLang === "bg") {
+		options.locale = BulgarianDateTimeLocale;
+	}
+
 	flatpickr(editWrapperSelector + " .form-control", options);
 }
 
@@ -33,7 +85,7 @@ function DateTimeInlineEditGenerateSelectors(fieldId, fieldName, config) {
 function DateTimeInlineEditPreEnableCallback(fieldId, fieldName, config) {
 	var selectors = DateTimeInlineEditGenerateSelectors(fieldId, fieldName, config);
 	//init pickr only when needed
-	InitFlatPickrDateTimeInlineEdit(selectors.editWrapper , "datetime");
+	InitFlatPickrDateTimeInlineEdit(selectors.editWrapper, "datetime");
 	$(selectors.viewWrapper).hide();
 	$(selectors.editWrapper).show();
 	$(selectors.editWrapper + " .form-control").focus();
@@ -136,7 +188,7 @@ function DateTimeInlineEditInitSuccessCallback(response, fieldId, fieldName, con
 	}
 	$(selectors.viewWrapper + " .form-control").attr("title", newValue);
 	$(selectors.editWrapper + " .form-control").val(newValue);
-	$(selectors.editWrapper).attr("data-default-date",newValue);
+	$(selectors.editWrapper).attr("data-default-date", newValue);
 	DateTimeInlineEditPreDisableCallback(fieldId, fieldName, config);
 	toastr.success("The new value is successfully saved", 'Success!', { closeButton: true, tapToDismiss: true });
 }
@@ -148,7 +200,7 @@ function DateTimeInlineEditInitErrorCallback(response, fieldId, fieldName, confi
 	if (!errorMessage && response.errors && response.errors.length > 0) {
 		errorMessage = response.errors[0].message;
 	}
-		
+
 	$(selectors.editWrapper + " .input-group").after("<div class='invalid-feedback'>" + errorMessage + "</div>");
 	$(selectors.editWrapper + " .invalid-feedback").show();
 	$(selectors.editWrapper + " .save .fa").addClass("fa-check").removeClass("fa-spin fa-spinner");
