@@ -9,7 +9,6 @@ function FileInlineEditGenerateSelectors(fieldId, fieldName, config) {
 	selectors.fakeInputEl = "#fake-" + fieldId;
 	selectors.fakeInputLinkEl = "#fake-" + fieldId + " a";
 	selectors.fakeInputProgressEl = "#fake-" + fieldId + " .form-control-progress";
-	selectors.fakeInputTrigger = "#fake-" + fieldId + ".erp-file-trigger";
 	selectors.removeValueEl = "#remove-" + fieldId;
 	return selectors;
 }
@@ -23,22 +22,9 @@ function FileInlineEditPreEnableCallback(fieldId, fieldName, config) {
 		$(selectors.editWrapper + " .icon-addon").first().addClass("d-none");
 		$(selectors.editWrapper + " .input-group").first().addClass("left-border");
 		$(selectors.editWrapper + " .input-group-append .remove").first().addClass("d-none");
-		$(selectors.fakeInputEl).addClass("erp-file-trigger");
-		if ($(selectors.fakeInputTrigger)) {
-			$(selectors.fakeInputTrigger).click(function (e) {
-				e.preventDefault();
-				$(selectors.fileUploadEl).click();
-			});
-		}
 		$(selectors.fileUploadEl).first().val("");
 		$(selectors.inputEl).attr("data-newfilepath", "").attr("data-newfilename", ""); //Input element 'value' and 'data-filename' are updated only on save
 	});
-	if ($(selectors.fakeInputTrigger)) {
-		$(selectors.fakeInputTrigger).click(function (e) {
-			e.preventDefault();
-			$(selectors.fileUploadEl).click();
-		});
-	}
 
 	//Prefill the date as it could be removed from the above method without saving. inputEl should always have the correct data
 	var filePath = $(selectors.inputEl).first().val();
@@ -99,7 +85,6 @@ function FileInlineEditPreEnableCallback(fieldId, fieldName, config) {
 						$(selectors.editWrapper + " .input-group").removeClass("left-border");
 						$(selectors.editWrapper + " .input-group-prepend.addon-remove").removeClass("d-none");
 						$(selectors.inputEl).attr("data-newfilepath", result.object.url).attr("data-newfilename", result.object.filename);  //Input element 'value' and 'data-filename' are updated only on save
-						$(selectors.fakeInputEl).removeClass("erp-file-trigger");
 						$(selectors.fakeInputLinkEl).first().removeClass("d-none");
 					},
 					error: function (xhr, status, p3, p4) {

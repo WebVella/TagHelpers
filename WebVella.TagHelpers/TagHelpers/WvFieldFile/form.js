@@ -22,13 +22,6 @@ function FileFormInit(fieldId, fieldName, config) {
 		$(selectors.fakeInputEl).closest(".input-group").find(".icon-addon").addClass("d-none");
 		$(selectors.fakeInputEl).closest(".input-group").addClass("left-border");
 		$(selectors.fakeInputEl).closest(".input-group").find(".input-group-append .remove").addClass("d-none");
-		$(selectors.fakeInputEl).addClass("erp-file-trigger");
-		if ($(selectors.fakeInputTrigger)) {
-			$(selectors.fakeInputTrigger).click(function (e) {
-				e.preventDefault();
-				$(selectors.fileUploadEl).click();
-			});
-		}
 		$(selectors.inputEl).first().val("");
 		$(selectors.fileUploadEl).first().val("");
 	});
@@ -36,6 +29,7 @@ function FileFormInit(fieldId, fieldName, config) {
 	if ($(selectors.fakeInputTrigger)) {
 		$(selectors.fakeInputTrigger).click(function (e) {
 			e.preventDefault();
+			e.stopPropagation();
 			$(selectors.fileUploadEl).click();
 		});
 	}
