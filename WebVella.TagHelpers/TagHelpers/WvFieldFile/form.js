@@ -6,6 +6,7 @@
 	selectors.fakeInputEl = "#fake-" + fieldId;
 	selectors.fakeInputLinkEl = "#fake-" + fieldId + " a";
 	selectors.fakeInputProgressEl = "#fake-" + fieldId + " .form-control-progress";
+	selectors.fakeInputTrigger = "#fake-" + fieldId + ".erp-file-trigger";
 	selectors.removeValueEl = "#remove-" + fieldId;
 	return selectors;
 }
@@ -13,6 +14,7 @@
 function FileFormInit(fieldId, fieldName, config) {
 	config = ProcessConfig(config);
 	var selectors = FileFormGenerateSelectors(fieldId, fieldName, config);
+
 	//Remove value
 	$(selectors.removeValueEl).first().on('click', function (e) {
 		$(selectors.fakeInputLinkEl).attr("href", "").attr("title", "").text();
@@ -20,9 +22,23 @@ function FileFormInit(fieldId, fieldName, config) {
 		$(selectors.fakeInputEl).closest(".input-group").find(".icon-addon").addClass("d-none");
 		$(selectors.fakeInputEl).closest(".input-group").addClass("left-border");
 		$(selectors.fakeInputEl).closest(".input-group").find(".input-group-append .remove").addClass("d-none");
+		$(selectors.fakeInputEl).addClass("erp-file-trigger");
+		if ($(selectors.fakeInputTrigger)) {
+			$(selectors.fakeInputTrigger).click(function (e) {
+				e.preventDefault();
+				$(selectors.fileUploadEl).click();
+			});
+		}
 		$(selectors.inputEl).first().val("");
 		$(selectors.fileUploadEl).first().val("");
 	});
+
+	if ($(selectors.fakeInputTrigger)) {
+		$(selectors.fakeInputTrigger).click(function (e) {
+			e.preventDefault();
+			$(selectors.fileUploadEl).click();
+		});
+	}
 
 	$(selectors.fileUploadEl).first().on('change', function (e) {
 		$(selectors.fakeInputLinkEl).hide();
@@ -64,6 +80,7 @@ function FileFormInit(fieldId, fieldName, config) {
 						$(selectors.fakeInputEl).closest(".input-group").find(".icon-addon").removeClass("d-none");
 						$(selectors.fakeInputEl).closest(".input-group").removeClass("left-border");
 						$(selectors.fakeInputEl).closest(".input-group").find(".input-group-append .remove").removeClass("d-none");
+						$(selectors.fakeInputEl).removeClass("erp-file-trigger");
 						$(selectors.inputEl).val(result.object.url);
 					},
 					error: function (xhr, status, p3, p4) {

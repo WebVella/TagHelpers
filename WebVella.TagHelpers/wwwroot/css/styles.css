@@ -462,6 +462,12 @@
 }
 
 /*#endregion */
+/*#region << wv-field-file >> */
+.wv-field-file .erp-file-trigger {
+	cursor:pointer;
+}
+
+/*#endregion */
 
 /*#region << wv-field-file-multiple >> */
 .wv-field-file-multiple {

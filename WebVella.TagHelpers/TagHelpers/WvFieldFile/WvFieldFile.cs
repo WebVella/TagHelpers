@@ -65,7 +65,7 @@ namespace WebVella.TagHelpers.TagHelpers
 					var prependText = new TagBuilder("span");
 					prependText.AddCssClass("input-group-text");
 					var prependIcon = new TagBuilder("span");
-					prependIcon.AddCssClass($"fa fa-fw type-icon {PathTypeIcon} {(String.IsNullOrWhiteSpace(Value) ? "d-none" : "")}");
+					prependIcon.AddCssClass($"fa fa-fw type-icon {PathTypeIcon} {(String.IsNullOrWhiteSpace(Value) ? "fa-file" : "")}");
 					prependText.InnerHtml.AppendHtml(prependIcon);
 					prependEl.InnerHtml.AppendHtml(prependText);
 					inputGroupEl.InnerHtml.AppendHtml(prependEl);
@@ -73,7 +73,9 @@ namespace WebVella.TagHelpers.TagHelpers
 					var fakeInputEl = new TagBuilder("div");
 					var inputElCssClassList = new List<string>();
 					inputElCssClassList.Add("form-control erp-file with-progress ");
-
+					if(String.IsNullOrWhiteSpace(Value)){
+						inputElCssClassList.Add("erp-file-trigger");
+					}
 					fakeInputEl.Attributes.Add("id", $"fake-{FieldId}");
 
 					if (ValidationErrors.Count > 0)
@@ -344,6 +346,9 @@ namespace WebVella.TagHelpers.TagHelpers
 						var fakeInputEl = new TagBuilder("div");
 						var inputElCssClassList = new List<string>();
 						inputElCssClassList.Add("form-control erp-file with-progress ");
+						if(String.IsNullOrWhiteSpace(Value)){
+							inputElCssClassList.Add("erp-file-trigger");
+						}
 
 						fakeInputEl.Attributes.Add("id", $"fake-{FieldId}");
 
@@ -452,6 +457,7 @@ namespace WebVella.TagHelpers.TagHelpers
 						var scriptContent = WvHelpers.GetEmbeddedTextResource("inline-edit.js", "WebVella.TagHelpers.TagHelpers.WvFieldFile","WebVella.TagHelpers");
 						var scriptEl = new TagBuilder("script");
 						scriptEl.Attributes.Add("type", "text/javascript");
+						//scriptEl.InnerHtml.AppendHtml(scriptContent);
 						scriptEl.InnerHtml.AppendHtml(jsCompressor.Compress(scriptContent));
 						output.PostContent.AppendHtml(scriptEl);
 
