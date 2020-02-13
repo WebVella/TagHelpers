@@ -5,6 +5,7 @@ var flatPickrUiDateFormat = "d M Y";
 //From the server dates will be received yyyy-MM-ddTHH:mm:ss.fff
 
 var BulgarianDateTimeLocale = {
+   firstDayOfWeek: 1,
    weekdays: {
       shorthand: ["Нд", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"],
       longhand: [
@@ -14,8 +15,8 @@ var BulgarianDateTimeLocale = {
          "Сряда",
          "Четвъртък",
          "Петък",
-         "Събота",
-      ],
+         "Събота"
+      ]
    },
 
    months: {
@@ -31,7 +32,7 @@ var BulgarianDateTimeLocale = {
          "сеп",
          "окт",
          "ное",
-         "дек",
+         "дек"
       ],
       longhand: [
          "Януари",
@@ -45,9 +46,9 @@ var BulgarianDateTimeLocale = {
          "Септември",
          "Октомври",
          "Ноември",
-         "Декември",
-      ],
-   },
+         "Декември"
+      ]
+   }
 };
 
 
