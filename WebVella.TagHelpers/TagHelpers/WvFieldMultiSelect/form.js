@@ -125,7 +125,7 @@ function MultiSelectFormInit(fieldId, fieldName, config) {
 			processResults: function (data) {
 				var results = [];
 				var hasMore = false;
-				if (data !== null && data.object !== null) {
+if (data && data.object && data.object.list) {
 					var totalRecords = data.object.total_count;
 					var displayedCount = data.object.list.length + (currentPage - 1) * config.ajax_datasource.page_size;
 					if (displayedCount < totalRecords) {
@@ -161,16 +161,52 @@ function MultiSelectFormInit(fieldId, fieldName, config) {
 						}
 						results.push(result);
 					});
+					return {
+						results: results, //id,text
+						pagination: {
+							more: hasMore
+						}
+					};
 				}
-
-
-
-				return {
-					results: results, //id,text
-					pagination: {
-						more: hasMore
-					}
-				};
+				else if(data && data.object){
+					_.forEach(data.object, function (record) {
+						var result = {};
+						if(record[config.ajax_datasource.value])
+						{
+							result.id = record[config.ajax_datasource.value];
+						}
+						else{
+							result.id = null;
+						}
+						if(record[config.ajax_datasource.label])
+						{
+							result.text = record[config.ajax_datasource.label];
+						}
+						else{
+							result.text = "!undefined!";
+						}
+						if(record["icon_class"]){
+							result.icon_class = record["icon_class"];
+						}
+						else{
+							result.icon_class = "";
+						}
+						if(record["color"]){
+							result.color = record["color"];
+						}
+						else{
+							result.color = "";
+						}
+						results.push(result);
+					});	
+					return {
+						results: results, //id,text
+						pagination: {
+							more: hasMore
+						}
+					};					
+				}
+				return data;
 			}
 		};
 	}

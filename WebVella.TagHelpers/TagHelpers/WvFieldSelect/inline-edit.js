@@ -1,5 +1,5 @@
 ﻿
-function SelectInlineEditGenerateSelectors(fieldId, fieldName,  config) {
+function SelectInlineEditGenerateSelectors(fieldId, fieldName, config) {
 	//Method for generating selector strings of some of the presentation elements
 	var selectors = {};
 	selectors.viewWrapper = "#view-" + fieldId;
@@ -13,7 +13,7 @@ function SelectInlineEditGenerateSelectors(fieldId, fieldName,  config) {
 function SelectInlineEditFormat(record) {
 	var originalOption = record.element;
 	//Non API
-	if(originalOption){
+	if (originalOption) {
 		var iconClass = $(originalOption).data('icon');
 		var color = $(originalOption).data('color');
 		if (!color) {
@@ -25,10 +25,10 @@ function SelectInlineEditFormat(record) {
 		return '<i class="fa fa-fw ' + iconClass + '" style="color:' + color + '"></i> ' + record.text;
 	}
 	//API
-	else if(record.icon_class){
+	else if (record.icon_class) {
 		return '<i class="fa fa-fw ' + record.icon_class + '" style="color:' + record.color + '"></i> ' + record.text;
 	}
-	else{
+	else {
 		return record.text;
 	}
 }
@@ -48,7 +48,7 @@ function SelectInlineEditMatchStartsWith(params, data) {
 	// `data.text` is the text that is displayed for the data object
 	if (data.text.toLowerCase().startsWith(params.term.toLowerCase())) {
 		var modifiedData = $.extend({}, data, true);
-//		modifiedData.text += ' (matched)';
+		//		modifiedData.text += ' (matched)';
 
 		// You can return modified objects from here
 		// This includes matching the `children` how you want in nested data sets
@@ -59,12 +59,12 @@ function SelectInlineEditMatchStartsWith(params, data) {
 	return null;
 }
 
-function SelectInlineEditPreEnableCallback(fieldId, fieldName,  config) {
+function SelectInlineEditPreEnableCallback(fieldId, fieldName, config) {
 	config = ProcessConfig(config);
-	var selectors = SelectInlineEditGenerateSelectors(fieldId, fieldName,  config);
+	var selectors = SelectInlineEditGenerateSelectors(fieldId, fieldName, config);
 
 	var placeholder = 'not selected';
-	if(config.placeholder){
+	if (config.placeholder) {
 		placeholder = config.placeholder;
 	}
 
@@ -83,7 +83,7 @@ function SelectInlineEditPreEnableCallback(fieldId, fieldName,  config) {
 		templateSelection: SelectInlineEditFormat
 	};
 
-	if(config.select_match_type === 1){
+	if (config.select_match_type === 1) {
 		selectInitObject.matcher = SelectInlineEditMatchStartsWith;
 	}
 
@@ -116,7 +116,7 @@ function SelectInlineEditPreEnableCallback(fieldId, fieldName,  config) {
 			processResults: function (data) {
 				var results = [];
 				var hasMore = false;
-				if (data !== null && data.object !== null) {
+				if (data && data.object && data.object.list) {
 					var totalRecords = data.object.total_count;
 					var displayedCount = data.object.list.length + (currentPage - 1) * config.ajax_datasource.page_size;
 					if (displayedCount < totalRecords) {
@@ -124,45 +124,81 @@ function SelectInlineEditPreEnableCallback(fieldId, fieldName,  config) {
 					}
 					_.forEach(data.object.list, function (record) {
 						var result = {};
-						if(record[config.ajax_datasource.value])
-						{
+						if (record[config.ajax_datasource.value]) {
 							result.id = record[config.ajax_datasource.value];
 						}
-						else{
+						else {
 							result.id = null;
 						}
-						if(record[config.ajax_datasource.label])
-						{
+						if (record[config.ajax_datasource.label]) {
 							result.text = record[config.ajax_datasource.label];
 						}
-						else{
+						else {
 							result.text = "!undefined!";
 						}
-						if(record["icon_class"]){
+						if (record["icon_class"]) {
 							result.icon_class = record["icon_class"];
 						}
-						else{
+						else {
 							result.icon_class = "";
 						}
-						if(record["color"]){
+						if (record["color"]) {
 							result.color = record["color"];
 						}
-						else{
+						else {
 							result.color = "";
 						}
 						results.push(result);
 					});
+					return {
+						results: results, //id,text
+						pagination: {
+							more: hasMore
+						}
+					};
 				}
-				return {
-					results: results, //id,text
-					pagination: {
-						more: hasMore
-					}
-				};
+				else if (data && data.object) {
+					_.forEach(data.object, function (record) {
+						var result = {};
+						if (record[config.ajax_datasource.value]) {
+							result.id = record[config.ajax_datasource.value];
+						}
+						else {
+							result.id = null;
+						}
+						if (record[config.ajax_datasource.label]) {
+							result.text = record[config.ajax_datasource.label];
+						}
+						else {
+							result.text = "!undefined!";
+						}
+						if (record["icon_class"]) {
+							result.icon_class = record["icon_class"];
+						}
+						else {
+							result.icon_class = "";
+						}
+						if (record["color"]) {
+							result.color = record["color"];
+						}
+						else {
+							result.color = "";
+						}
+						results.push(result);
+					});
+					return {
+						results: results, //id,text
+						pagination: {
+							more: hasMore
+						}
+					};
+				}
+
+				return data;
 			}
 		};
 	}
-	else if(config.ajax_datasource_api){
+	else if (config.ajax_datasource_api) {
 		selectInitObject.ajax = {
 			type: 'POST',
 			headers: {
@@ -189,8 +225,8 @@ function SelectInlineEditPreEnableCallback(fieldId, fieldName,  config) {
 	$(selectors.inputEl).focus();
 }
 
-function SelectInlineEditPreDisableCallback(fieldId, fieldName,  config) {
-	var selectors = SelectInlineEditGenerateSelectors(fieldId, fieldName,  config);
+function SelectInlineEditPreDisableCallback(fieldId, fieldName, config) {
+	var selectors = SelectInlineEditGenerateSelectors(fieldId, fieldName, config);
 	$(selectors.editWrapper + " .invalid-feedback").remove();
 	$(selectors.editWrapper + " .form-control").removeClass("is-invalid");
 	$(selectors.editWrapper + " .save .fa").addClass("fa-check").removeClass("fa-spin fa-spinner");
@@ -203,20 +239,20 @@ function SelectInlineEditPreDisableCallback(fieldId, fieldName,  config) {
 	$(selectors.editWrapper).hide();
 }
 
-function SelectInlineEditInit(fieldId, fieldName,  config) {
+function SelectInlineEditInit(fieldId, fieldName, config) {
 	config = ProcessConfig(config);
-	var selectors = SelectInlineEditGenerateSelectors(fieldId, fieldName,  config);
+	var selectors = SelectInlineEditGenerateSelectors(fieldId, fieldName, config);
 	//Init enable action click
 	$(selectors.viewWrapper + " .action .btn").on("click", function (event) {
 		event.stopPropagation();
 		event.preventDefault();
-		SelectInlineEditPreEnableCallback(fieldId, fieldName,  config);
+		SelectInlineEditPreEnableCallback(fieldId, fieldName, config);
 	});
 	//Init enable action dblclick
 	$(selectors.viewWrapper + " .form-control").on("dblclick", function (event) {
 		event.stopPropagation();
 		event.preventDefault();
-		SelectInlineEditPreEnableCallback(fieldId, fieldName,  config);
+		SelectInlineEditPreEnableCallback(fieldId, fieldName, config);
 		//clearSelection();//double click causes text to be selected.
 		setTimeout(function () {
 			$(selectors.editWrapper + " .form-control").get(0).focus();
@@ -226,7 +262,7 @@ function SelectInlineEditInit(fieldId, fieldName,  config) {
 	$(selectors.editWrapper + " .cancel").on("click", function (event) {
 		event.stopPropagation();
 		event.preventDefault();
-		SelectInlineEditPreDisableCallback(fieldId, fieldName,  config);
+		SelectInlineEditPreDisableCallback(fieldId, fieldName, config);
 	});
 	//Save inline changes
 	$(selectors.editWrapper + " .save").on("click", function (event) {
@@ -254,7 +290,7 @@ function SelectInlineEditInit(fieldId, fieldName,  config) {
 					SelectInlineEditInitSuccessCallback(response, fieldId, fieldName, inputValue, config);
 				}
 				else {
-					SelectInlineEditInitErrorCallback(response, fieldId, fieldName,  config);
+					SelectInlineEditInitErrorCallback(response, fieldId, fieldName, config);
 				}
 			},
 			error: function (jqXHR, textStatus, errorThrown) {
@@ -263,27 +299,27 @@ function SelectInlineEditInit(fieldId, fieldName,  config) {
 				if (jqXHR && jqXHR.responseJSON) {
 					response = jqXHR.responseJSON;
 				}
-				SelectInlineEditInitErrorCallback(response, fieldId, fieldName,  config);
+				SelectInlineEditInitErrorCallback(response, fieldId, fieldName, config);
 			}
 		});
 	});
 }
 
 function SelectInlineEditInitSuccessCallback(response, fieldId, fieldName, inputValue, config) {
-	var selectors = SelectInlineEditGenerateSelectors(fieldId, fieldName,  config);
+	var selectors = SelectInlineEditGenerateSelectors(fieldId, fieldName, config);
 	var newValue = inputValue;
 
 	if (!fieldName.startsWith("$")) {
 		newValue = ProcessNewValue(response, fieldName);
 	}
 
-	if(newValue){
+	if (newValue) {
 		var selectOptions = $(selectors.inputEl + ' option');
 		var matchedOption = _.find(selectOptions, function (record) {
-			if (!newValue  && (!record.attributes["value"] || !record.attributes["value"].value)) {
+			if (!newValue && (!record.attributes["value"] || !record.attributes["value"].value)) {
 				return true;
 			}
-			else if(record.attributes["value"] && record.attributes["value"].value){
+			else if (record.attributes["value"] && record.attributes["value"].value) {
 				return newValue === record.attributes["value"].value;
 			}
 			return false;
@@ -300,20 +336,20 @@ function SelectInlineEditInitSuccessCallback(response, fieldId, fieldName, input
 		}
 		else {
 			$(selectors.viewWrapper + " .form-control").html('<i class="fa ' + iconClass + '" style="color:' + color + '"></i>  ' + optionLabel);
-		}		
+		}
 	}
-	else{
+	else {
 		$(selectors.viewWrapper + " .form-control").html("");
 	}
 
 
 	$(selectors.inputEl).val(newValue).attr("data-original-value", JSON.stringify(newValue));
-	SelectInlineEditPreDisableCallback(fieldId, fieldName,  config);
+	SelectInlineEditPreDisableCallback(fieldId, fieldName, config);
 	toastr.success("The new value is successful saved", 'Success!', { closeButton: true, tapToDismiss: true });
 }
 
-function SelectInlineEditInitErrorCallback(response, fieldId, fieldName,  config) {
-	var selectors = SelectInlineEditGenerateSelectors(fieldId, fieldName,  config);
+function SelectInlineEditInitErrorCallback(response, fieldId, fieldName, config) {
+	var selectors = SelectInlineEditGenerateSelectors(fieldId, fieldName, config);
 	$(selectors.editWrapper + " .form-control").addClass("is-invalid");
 	var errorMessage = response.message;
 	if (!errorMessage && response.errors && response.errors.length > 0) {
