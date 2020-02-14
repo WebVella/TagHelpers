@@ -54,7 +54,9 @@ namespace WebVella.TagHelpers.TagHelpers
 			if (!String.IsNullOrWhiteSpace(Message))
 			{
 				var titleEl = new TagBuilder("div");
-				titleEl.AddCssClass("title");
+				if(Errors.Count > 0)
+					titleEl.AddCssClass("title");
+
 				titleEl.InnerHtml.AppendHtml(Message);
 				contentEl.InnerHtml.AppendHtml(titleEl);
 			}

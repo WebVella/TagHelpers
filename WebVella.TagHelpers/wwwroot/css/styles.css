@@ -10,14 +10,14 @@
 		top: -1px;
 	}
 
-	.wv-field .control-label abbr i{
-		margin-right:0.25rem;
-	}
+		.wv-field .control-label abbr i {
+			margin-right: 0.25rem;
+		}
 
-	.wv-field .field-description {
-		color: #999;
-		font-size: 0.85rem;
-	}
+.wv-field .field-description {
+	color: #999;
+	font-size: 0.85rem;
+}
 
 	.wv-field .field-description.post-label {
 		margin-top: -0.5rem;
@@ -43,11 +43,11 @@
 }
 
 .wv-field .form-check-label {
-	cursor:pointer;
+	cursor: pointer;
 }
 
-.wv-field.inline-edit .view-wrapper .form-control{
-	overflow:hidden;
+.wv-field.inline-edit .view-wrapper .form-control {
+	overflow: hidden;
 }
 
 /*#endregion*/
@@ -258,50 +258,50 @@
 	padding: 5px 0;
 }
 
-.image-card-body .image {
-	font-size: 32px;
-	width: 50px;
-	text-align: center;
-	flex-grow: 0;
-	flex-shrink: 0;
-	align-self: center;
-}
+	.image-card-body .image {
+		font-size: 32px;
+		width: 50px;
+		text-align: center;
+		flex-grow: 0;
+		flex-shrink: 0;
+		align-self: center;
+	}
 
-.image-card-body .meta {
-	align-self: center;
-	min-width: 0;
-	padding-left: 10px;
-}
+	.image-card-body .meta {
+		align-self: center;
+		min-width: 0;
+		padding-left: 10px;
+	}
 
-.image-card-body .title {
-	font-weight: bold;
-	line-height: 1;
-	font-size: 13px;
-	margin-bottom: 5px;
-}
+	.image-card-body .title {
+		font-weight: bold;
+		line-height: 1;
+		font-size: 13px;
+		margin-bottom: 5px;
+	}
 
-.image-card-body .description {
-	font-size: 13px;
-	line-height: 1.25em;
-	height: 32px;
-	/*white-space: nowrap;*/
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
+	.image-card-body .description {
+		font-size: 13px;
+		line-height: 1.25em;
+		height: 32px;
+		/*white-space: nowrap;*/
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
 
-.image-card-body .library {
-	font-size: 13px;
-	color: #999;
-	height: 19px;
-}
+	.image-card-body .library {
+		font-size: 13px;
+		color: #999;
+		height: 19px;
+	}
 
-.image-card-body .link em {
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-}
+	.image-card-body .link em {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+	}
 
 /*#endregion*/
 
@@ -464,7 +464,12 @@
 /*#endregion */
 /*#region << wv-field-file >> */
 .wv-field-file .erp-file-trigger {
-	cursor:pointer;
+	cursor: pointer;
+}
+
+.wv-field-file .erp-file {
+	overflow: hidden;
+	white-space: nowrap;
 }
 
 /*#endregion */
@@ -480,7 +485,7 @@
 	}
 
 	.wv-field-file-multiple.form-control-plaintext {
-		padding:0;
+		padding: 0;
 	}
 
 	.wv-field-file-multiple .filerow {
@@ -492,35 +497,35 @@
 	}
 
 	.wv-field-file-multiple a.filerow:hover {
-		text-decoration:none;
+		text-decoration: none;
 	}
 
-		.wv-field-file-multiple.form-control-plaintext .filerow {
-			padding: 10px;
-		}
+	.wv-field-file-multiple.form-control-plaintext .filerow {
+		padding: 10px;
+	}
 
-		.wv-field-file-multiple .filerow:first-child {
-			padding-top: 5px;
-		}
+	.wv-field-file-multiple .filerow:first-child {
+		padding-top: 5px;
+	}
 
-		.wv-field-file-multiple .filerow:last-child {
-			border-bottom: none;
-			padding-bottom: 5px;
-		}
+	.wv-field-file-multiple .filerow:last-child {
+		border-bottom: none;
+		padding-bottom: 5px;
+	}
 
 
-		.wv-field-file-multiple .filerow:hover {
-			background: #fafafa;
-		}
+	.wv-field-file-multiple .filerow:hover {
+		background: #fafafa;
+	}
 
-		.wv-field-file-multiple .filerow .icon {
-			flex-grow: 0;
-			flex-shrink: 0;
-			width: 24px;
-		}
+	.wv-field-file-multiple .filerow .icon {
+		flex-grow: 0;
+		flex-shrink: 0;
+		width: 24px;
+	}
 
 	.wv-field-file-multiple a.filerow .icon {
-		color:#333;
+		color: #333;
 	}
 
 	.wv-field-file-multiple .filerow .meta {
@@ -528,36 +533,36 @@
 		flex-shrink: 0;
 	}
 
-			.wv-field-file-multiple .filerow .meta .details {
-				color: #999;
-				font-size: 12px;
-				line-height: 1em;
+		.wv-field-file-multiple .filerow .meta .details {
+			color: #999;
+			font-size: 12px;
+			line-height: 1em;
+		}
+
+			.wv-field-file-multiple .filerow .meta .details .timestamp,
+			.wv-field-file-multiple .filerow .meta .details .author {
+				position: relative;
+				padding-left: 10px;
 			}
 
-				.wv-field-file-multiple .filerow .meta .details .timestamp,
-				.wv-field-file-multiple .filerow .meta .details .author{
-					position: relative;
-					padding-left: 10px;
+				.wv-field-file-multiple .filerow .meta .details .timestamp:before,
+				.wv-field-file-multiple .filerow .meta .details .author:before {
+					position: absolute;
+					left: 4px;
+					top: 0;
+					content: "·";
+					bottom: 0;
 				}
 
-					.wv-field-file-multiple .filerow .meta .details .timestamp:before,
-					.wv-field-file-multiple .filerow .meta .details .author:before {
-						position: absolute;
-						left: 4px;
-						top: 0;
-						content: "·";
-						bottom: 0;
-					}
+	.wv-field-file-multiple .filerow .action {
+		flex-grow: 0;
+		flex-shrink: 0;
+		margin-right: 0.25rem;
+	}
 
-					.wv-field-file-multiple .filerow .action {
-						flex-grow: 0;
-						flex-shrink: 0;
-						margin-right: 0.25rem;
-					}
-
-			.wv-field-file-multiple .filerow .action.remove a {
-				color: #F44336;
-			}
+		.wv-field-file-multiple .filerow .action.remove a {
+			color: #F44336;
+		}
 
 /*#endregion */
 
@@ -722,13 +727,13 @@
 .wv-field-multiselect .erp-multiselect.form-control,
 .wv-field-multiselect .edit-wrapper .form-control.erp-select {
 	padding: 0;
-	height:auto;
+	height: auto;
 }
 
 
 /*#region <<Selection choice >>*/
 .wv-field-multiselect .select2-container--bootstrap4 {
-	font-size:16px;
+	font-size: 16px;
 }
 
 .wv-field-multiselect .select2:not(.disabled) .select2-selection__choice,
@@ -825,7 +830,7 @@
 /*#region << select 2 >>*/
 
 .wv-field-select .select2-container--bootstrap4 {
-	font-size:16px;
+	font-size: 16px;
 }
 
 .select2-container--bootstrap4 .select2-selection__clear {
@@ -842,7 +847,6 @@
 .wv-field .select2-selection {
 	/*border: none !important;*/
 	background: transparent !important;
-	
 }
 
 .wv-field.form .select2-selection--single,
@@ -860,7 +864,7 @@
 }
 
 .wv-field.inline-edit .input-group .select2-selection {
-	border:none !important;
+	border: none !important;
 }
 
 .wv-field.form .select2-selection--single,
@@ -961,7 +965,7 @@
 
 /*#region << wv-modal >>*/
 .modal-dialog.modal-full {
-	max-width:98%;
+	max-width: 98%;
 }
 /*#endregion*/
 

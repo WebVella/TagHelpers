@@ -51,8 +51,17 @@ namespace WebVella.TagHelpers.TagHelpers
 			if (Options.Count == 0 && AjaxDatasource != null && AjaxDatasource.InitOptions.Count > 0)
 				Options = AjaxDatasource.InitOptions;
 
-			if(AjaxDatasource != null && String.IsNullOrWhiteSpace(AjaxDatasourceApi))
-				AjaxDatasourceApi = "/api/v3/en_US/eql-ds";
+			if(AjaxDatasource != null && String.IsNullOrWhiteSpace(AjaxDatasourceApi)){
+				if(!AjaxDatasource.UseSelectApi){
+					//old fashion call
+					AjaxDatasourceApi = "/api/v3/en_US/eql-ds";			
+				}
+				else{
+					//The new api
+					AjaxDatasourceApi = "/api/v3/en_US/eql-ds-select2";			
+				}
+			}
+
 
 			#region << Init Prepend and Append >>
 			var content = await output.GetChildContentAsync();
