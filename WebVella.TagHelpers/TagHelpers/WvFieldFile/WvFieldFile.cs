@@ -28,6 +28,9 @@ namespace WebVella.TagHelpers.TagHelpers
 		[HtmlAttributeName("src-prefix")]
 		public string SrcPrefix { get; set; } = "/fs";
 
+		[HtmlAttributeName("clipboard-support")]
+		public bool ClipboardSupport { get; set; } = true;
+
 		public override Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
 		{
 
@@ -84,6 +87,7 @@ namespace WebVella.TagHelpers.TagHelpers
 					}
 
 					fakeInputEl.Attributes.Add("class", String.Join(' ', inputElCssClassList));
+					fakeInputEl.Attributes.Add("data-file-upload-api", FileUploadApi);
 
 					var fakeInputFileLinkEl = new TagBuilder("a");
 					fakeInputFileLinkEl.Attributes.Add("href", $"{SrcPrefix}{Value}");
@@ -109,7 +113,17 @@ namespace WebVella.TagHelpers.TagHelpers
 						appendDeleteLink.InnerHtml.AppendHtml(appendDeleteLinkIcon);
 						appendEl.InnerHtml.AppendHtml(appendDeleteLink);
 					}
-
+					if(ClipboardSupport){
+						var appendPasteLink = new TagBuilder("button");
+						appendPasteLink.Attributes.Add("type", $"button");
+						appendPasteLink.Attributes.Add("id", $"paste-{FieldId}");
+						appendPasteLink.AddCssClass($"btn btn-white");
+						appendPasteLink.Attributes.Add("title", "Activate 'Paste Image' from clipboard");
+						var appendDeleteLinkIcon = new TagBuilder("span");
+						appendDeleteLinkIcon.AddCssClass("icon fa fa-fw fa-paste");
+						appendPasteLink.InnerHtml.AppendHtml(appendDeleteLinkIcon);
+						appendEl.InnerHtml.AppendHtml(appendPasteLink);				
+					}
 					var selectFileLink = new TagBuilder("button");
 					selectFileLink.Attributes.Add("type", $"button");
 					selectFileLink.AddCssClass("btn btn-white");
@@ -152,7 +166,8 @@ namespace WebVella.TagHelpers.TagHelpers
 						var scriptContent = WvHelpers.GetEmbeddedTextResource("form.js", "WebVella.TagHelpers.TagHelpers.WvFieldFile","WebVella.TagHelpers");
 						var scriptEl = new TagBuilder("script");
 						scriptEl.Attributes.Add("type", "text/javascript");
-						scriptEl.InnerHtml.AppendHtml(jsCompressor.Compress(scriptContent));
+						//scriptEl.InnerHtml.AppendHtml(jsCompressor.Compress(scriptContent));
+						scriptEl.InnerHtml.AppendHtml(scriptContent);
 						output.PostContent.AppendHtml(scriptEl);
 
 						ViewContext.HttpContext.Items[typeof(WvFieldFile) + "-form"] = new WvTagHelperContext()

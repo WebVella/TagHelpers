@@ -20,7 +20,7 @@
 	<meta charset="utf-8">
 
 	<wv-includes></wv-includes>
-	<script src="/_content/WebVella.TagHelpers/lib/ckeditor5/ckeditor.js"></script>
+	@*<script src="/_content/WebVella.TagHelpers/lib/ckeditor5/ckeditor.js"></script>*@
 
 	@* Demo Only *@
 	<link href="/css/demo.css" rel="stylesheet" type="text/css" />
@@ -35,8 +35,7 @@
 					Form
 				</div>
 				<div class="card-body">
-					@*<wv-field-html value="@html" label-text="FieldLabel" name="text" mode="Form"></wv-field-html>*@
-					<textarea id="editor"></textarea>
+					<wv-field-file label-text="FieldLabel" name="text" mode="Form"></wv-field-file>
 				</div>
 			</div>
 		</div>
@@ -51,7 +50,7 @@
 			</div>
 		</div>
 	</div>
-	<script>
+	@*<script>
 			var config = {};
 			config.language = 'en';
 
@@ -81,6 +80,6 @@
 			.catch(function (error) {
 				console.error(error);
 			});
-	</script>
+	</script>*@
 </body>
 </html>

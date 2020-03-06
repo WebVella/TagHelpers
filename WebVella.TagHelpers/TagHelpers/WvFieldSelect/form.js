@@ -202,6 +202,7 @@ function SelectFormInit(fieldId, fieldName, config) {
 						}
 					};					
 				}
+				
 				return data;
 			}
 		};

@@ -831,6 +831,7 @@
 
 .wv-field-select .select2-container--bootstrap4 {
 	font-size: 16px;
+	background: #fff;
 }
 
 .select2-container--bootstrap4 .select2-selection__clear {
