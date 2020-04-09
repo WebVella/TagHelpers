@@ -110,7 +110,7 @@ namespace WebVella.TagHelpers.TagHelpers
 						var viewFormControlEl = new TagBuilder("div");
 						viewFormControlEl.AddCssClass($"form-control erp-checkbox-list {(ValidationErrors.Count > 0 ? "is-invalid" : "")}");
 						viewFormControlEl.Attributes.Add("title", "double click to edit");
-						viewFormControlEl.InnerHtml.AppendHtml(String.Join(", ", ((List<string>)Value)));
+						viewFormControlEl.InnerHtml.AppendHtml(String.Join(", ", Options.Select(x=> x.Label).ToList()));
 						viewWrapper.InnerHtml.AppendHtml(viewFormControlEl);
 
 
