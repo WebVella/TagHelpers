@@ -457,7 +457,7 @@ namespace WebVella.TagHelpers.TagHelpers
 					if (selectedOption == null)
 					{
 						optionEl.InnerHtml.Append(valueString);
-						if (Value != null && valueString)
+						if (Value != null)
 						{
 							var optionElIcon = new TagBuilder("span");
 							optionElIcon.AddCssClass("fa fa-fw fa-exclamation-circle go-red");

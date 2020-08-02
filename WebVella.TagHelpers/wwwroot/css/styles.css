@@ -581,6 +581,11 @@
 .wv-field-html .erp-html.is-invalid .cke {
 	border-color: rgba(220, 53, 69, 1);
 }
+
+.wv-field-html img {
+	max-width:100%;
+}
+
 /*#endregion*/
 
 /*#region <<wv-field-image>>*/
