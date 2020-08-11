@@ -167,6 +167,46 @@
 	}
 /*#endregion*/
 
+/*#region <<wv-icon>>*/
+@keyframes wvp-icon-spin {
+	from {
+		transform: rotate(0deg);
+	}
+
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.wv-icon {
+	display: inline-block;
+	width: 16px;
+	max-width: 100%;
+	height: 16px;
+	max-height: 100%;
+	/*line-height: 1;*/
+	vertical-align: middle;
+	position: relative;
+}
+
+	.wv-icon svg {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		fill: currentColor;
+	}
+
+.wv-icon--spin {
+	animation-name: wvp-icon-spin;
+	animation-duration: 2000ms;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+}
+
+/*#endregion */
+
 /*#region << wv-icon-card >>*/
 
 .icon-card.clickable:hover {
@@ -583,7 +623,7 @@
 }
 
 .wv-field-html img {
-	max-width:100%;
+	max-width: 100%;
 }
 
 /*#endregion*/

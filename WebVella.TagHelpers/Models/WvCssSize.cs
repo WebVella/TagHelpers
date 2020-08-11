@@ -14,5 +14,11 @@ namespace WebVella.TagHelpers.Models
 		Large = 2,
 		[WvSelectOption(Label = "inherit")]
 		Inherit = 3,
+		[WvSelectOption(Label = "medium")]
+		Medium = 4,
+		[WvSelectOption(Label = "extra-small")]
+		ExtraSmall = 5,
+		[WvSelectOption(Label = "extra-large")]
+		ExtraLarge = 6
 	}
 }
