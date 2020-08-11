@@ -2220,6 +2220,8 @@ namespace WebVella.TagHelpers.Models
 		MdfBackspace,
 		[Description("mdf-backup")]
 		MdfBackup,
+		[Description("mdf-bar_chart")]
+		MdfBarChart,
 		[Description("mdf-battery_20")]
 		MdfBattery20,
 		[Description("mdf-battery_30")]
@@ -2606,6 +2608,8 @@ namespace WebVella.TagHelpers.Models
 		MdfDriveEta,
 		[Description("mdf-dvr")]
 		MdfDvr,
+		[Description("mdf-dynamic_feed")]
+		MdfDynamicFeed,
 		[Description("mdf-edit")]
 		MdfEdit,
 		[Description("mdf-edit_location")]
@@ -2662,6 +2666,8 @@ namespace WebVella.TagHelpers.Models
 		MdfExtension,
 		[Description("mdf-face")]
 		MdfFace,
+		[Description("mdf-fact_check")]
+		MdfFactCheck,
 		[Description("mdf-fast_forward")]
 		MdfFastForward,
 		[Description("mdf-fast_rewind")]
@@ -2924,6 +2930,8 @@ namespace WebVella.TagHelpers.Models
 		MdfImage,
 		[Description("mdf-image_aspect_ratio")]
 		MdfImageAspectRatio,
+		[Description("mdf-image_search")]
+		MdfImageSearch,
 		[Description("mdf-important_devices")]
 		MdfImportantDevices,
 		[Description("mdf-import_contacts")]
@@ -2954,6 +2962,8 @@ namespace WebVella.TagHelpers.Models
 		MdfInsertLink,
 		[Description("mdf-insert_photo")]
 		MdfInsertPhoto,
+		[Description("mdf-insights")]
+		MdfInsights,
 		[Description("mdf-invert_colors")]
 		MdfInvertColors,
 		[Description("mdf-invert_colors_off")]
@@ -3034,6 +3044,8 @@ namespace WebVella.TagHelpers.Models
 		MdfLink,
 		[Description("mdf-list")]
 		MdfList,
+		[Description("mdf-list_alt")]
+		MdfListAlt,
 		[Description("mdf-live_help")]
 		MdfLiveHelp,
 		[Description("mdf-live_tv")]
@@ -3152,6 +3164,8 @@ namespace WebVella.TagHelpers.Models
 		MdfMergeType,
 		[Description("mdf-message")]
 		MdfMessage,
+		[Description("mdf-miscellaneous_services")]
+		MdfMiscellaneousServices,
 		[Description("mdf-m24px")]
 		MdfM24px,
 		[Description("mdf-mnone")]
