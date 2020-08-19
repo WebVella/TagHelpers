@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Razor.TagHelpers;
+using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -15,6 +16,8 @@ namespace WebVella.TagHelpers.TagHelpers
 		[HtmlAttributeName("include-regex")]
 		public string IncludeRegex { get; set; } = "";
 
+		[HtmlAttributeName("cache-breaker")]
+		public string CacheBreaker { get; set; } = "";
 
 		public override Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
 		{
@@ -76,7 +79,7 @@ namespace WebVella.TagHelpers.TagHelpers
 
 				if(!isExluded){
 					var linkEl = new TagBuilder("link");
-					linkEl.Attributes.Add("href",filePath);
+					linkEl.Attributes.Add("href",$"{filePath}{(String.IsNullOrWhiteSpace(CacheBreaker) ? "" : $"?cb={CacheBreaker}")}");
 					linkEl.Attributes.Add("type", "text/css");
 					linkEl.Attributes.Add("rel", "stylesheet");
 					output.PostContent.AppendHtml(linkEl);
@@ -97,7 +100,7 @@ namespace WebVella.TagHelpers.TagHelpers
 
 				if(!isExluded){
 					var scriptEl = new TagBuilder("script");
-					scriptEl.Attributes.Add("src",filePath);
+					scriptEl.Attributes.Add("src",$"{filePath}{(String.IsNullOrWhiteSpace(CacheBreaker) ? "" : $"?cb={CacheBreaker}")}");
 					scriptEl.Attributes.Add("type", "text/javascript");
 					output.PostContent.AppendHtml(scriptEl);
 					output.PostContent.AppendHtml("\r\n\t");
