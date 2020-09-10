@@ -23,7 +23,7 @@ function RadioListInlineEditPreDisableCallback(fieldId, fieldName, config) {
 }
 
 function RadioListInlineEditInit(fieldId, fieldName, config) {
-	config = ProcessConfig(config);
+	config = WebVellaTagHelpers.ProcessConfig(config);
 	var selectors = RadioListInlineEditGenerateSelectors(fieldId, fieldName, config);
 	//Init enable action click
 	$(selectors.viewWrapper + " .action .btn").on("click", function (event) {
@@ -93,7 +93,7 @@ function RadioListInlineEditInit(fieldId, fieldName, config) {
 
 function RadioListInlineEditInitSuccessCallback(response, fieldId, fieldName, config) {
 	var selectors = RadioListInlineEditGenerateSelectors(fieldId, fieldName, config);
-	var newValue = ProcessNewValue(response, fieldName);
+	var newValue = WebVellaTagHelpers.ProcessNewValue(response, fieldName);
 	if (newValue) {
 		$(selectors.viewWrapper + " .input-group-prepend .fa").removeClass("fa-check fa-question fa-times").addClass("fa-check");
 		$(selectors.viewWrapper + " .form-control").html(newValue);

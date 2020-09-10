@@ -60,7 +60,7 @@ function SelectInlineEditMatchStartsWith(params, data) {
 }
 
 function SelectInlineEditPreEnableCallback(fieldId, fieldName, config) {
-	config = ProcessConfig(config);
+	config = WebVellaTagHelpers.ProcessConfig(config);
 	var selectors = SelectInlineEditGenerateSelectors(fieldId, fieldName, config);
 
 	var placeholder = 'not selected';
@@ -232,7 +232,7 @@ function SelectInlineEditPreDisableCallback(fieldId, fieldName, config) {
 	$(selectors.editWrapper + " .save .fa").addClass("fa-check").removeClass("fa-spin fa-spinner");
 	$(selectors.editWrapper + " .save").attr("disabled", false);
 	var originalValue = $(selectors.inputEl).attr("data-original-value");
-	originalValue = ProcessConfig(originalValue);
+	originalValue = WebVellaTagHelpers.ProcessConfig(originalValue);
 	$(selectors.inputEl).val(originalValue);
 	$(selectors.inputEl).select2('destroy');
 	$(selectors.viewWrapper).show();
@@ -240,7 +240,7 @@ function SelectInlineEditPreDisableCallback(fieldId, fieldName, config) {
 }
 
 function SelectInlineEditInit(fieldId, fieldName, config) {
-	config = ProcessConfig(config);
+	config = WebVellaTagHelpers.ProcessConfig(config);
 	var selectors = SelectInlineEditGenerateSelectors(fieldId, fieldName, config);
 	//Init enable action click
 	$(selectors.viewWrapper + " .action .btn").on("click", function (event) {
@@ -253,7 +253,7 @@ function SelectInlineEditInit(fieldId, fieldName, config) {
 		event.stopPropagation();
 		event.preventDefault();
 		SelectInlineEditPreEnableCallback(fieldId, fieldName, config);
-		//clearSelection();//double click causes text to be selected.
+		//WebVellaTagHelpers.clearSelection();//double click causes text to be selected.
 		setTimeout(function () {
 			$(selectors.editWrapper + " .form-control").get(0).focus();
 		}, 200);
@@ -310,7 +310,7 @@ function SelectInlineEditInitSuccessCallback(response, fieldId, fieldName, input
 	var newValue = inputValue;
 
 	if (!fieldName.startsWith("$")) {
-		newValue = ProcessNewValue(response, fieldName);
+		newValue = WebVellaTagHelpers.ProcessNewValue(response, fieldName);
 	}
 
 	if (newValue) {

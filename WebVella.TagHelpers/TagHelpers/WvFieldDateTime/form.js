@@ -54,7 +54,7 @@ var BulgarianDateTimeLocale = {
 
 
 function InitFlatPickrDateTime(fieldId, config) {
-	config = ProcessConfig(config);
+	config = WebVellaTagHelpers.ProcessConfig(config);
 	var selector = "#input-" + fieldId;
 	if (document.querySelector(selector)) {
 		var inputGroulEl = $(selector).closest(".input-group");

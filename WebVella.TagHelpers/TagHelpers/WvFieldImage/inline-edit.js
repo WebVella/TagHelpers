@@ -15,7 +15,7 @@ function ImageInlineEditGenerateSelectors(fieldId, fieldName,config) {
 }
 
 function ImageInlineEditInit(fieldId, fieldName,config) {
-	config = ProcessConfig(config);
+	config = WebVellaTagHelpers.ProcessConfig(config);
 	var selectors = ImageInlineEditGenerateSelectors(fieldId, fieldName, config);
 	//Remove value
 	$(selectors.removeValueEl).first().on('click', function (e) {
@@ -92,7 +92,7 @@ function ImageInlineEditUploadSuccessCallback(response, fieldId, fieldName,confi
 	var oldValue = $(selectors.inputEl).attr("data-original-value");
 	if (newValue !== oldValue) {
 		var submitObj = {};
-		if (isStringNullOrEmptyOrWhiteSpace(newValue)) {
+		if (WebVellaTagHelpers.isStringNullOrEmptyOrWhiteSpace(newValue)) {
 			submitObj[fieldName] = null;
 		}
 		else {
@@ -131,7 +131,7 @@ function ImageInlineEditUploadSuccessCallback(response, fieldId, fieldName,confi
 
 function ImageInlineEditInitSuccessCallback(response, fieldId, fieldName,config) {
 	var selectors = ImageInlineEditGenerateSelectors(fieldId, fieldName,config);
-	var newValue = ProcessNewValue(response, fieldName);
+	var newValue = WebVellaTagHelpers.ProcessNewValue(response, fieldName);
 	var newFilename = response.filename;//injected from previous method
 	if (newValue && newValue !== "") {
 		$(selectors.inputEl).val(newValue);

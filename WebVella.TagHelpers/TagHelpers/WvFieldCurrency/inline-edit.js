@@ -26,7 +26,7 @@ function CurrencyInlineEditPreDisableCallback(fieldId, fieldName,config) {
 
 function CurrencyInlineEditInit(fieldId, fieldName,config) {
 
-	config = ProcessConfig(config);
+	config = WebVellaTagHelpers.ProcessConfig(config);
 	var selectors = CurrencyInlineEditGenerateSelectors(fieldId, fieldName,config);
 	//Init enable action click
 	$(selectors.viewWrapper + " .action .btn").on("click", function (event) {
@@ -39,7 +39,7 @@ function CurrencyInlineEditInit(fieldId, fieldName,config) {
 		event.stopPropagation();
 		event.preventDefault();
 		CurrencyInlineEditPreEnableCallback(fieldId, fieldName,config);
-		//clearSelection();//double click causes text to be selected.
+		//WebVellaTagHelpers.clearSelection();//double click causes text to be selected.
 		setTimeout(function () {
 			$(selectors.editWrapper + " .form-control").get(0).focus();
 		}, 200);
@@ -97,7 +97,7 @@ function CurrencyInlineEditInit(fieldId, fieldName,config) {
 
 function CurrencyInlineEditInitSuccessCallback(response, fieldId, fieldName,config) {
 	var selectors = CurrencyInlineEditGenerateSelectors(fieldId, fieldName,config);
-	var newValue = ProcessNewValue(response, fieldName);
+	var newValue = WebVellaTagHelpers.ProcessNewValue(response, fieldName);
 	$(selectors.viewWrapper + " .form-control").html(newValue);
 	$(selectors.editWrapper + " .form-control").val(newValue);
 	CurrencyInlineEditPreDisableCallback(fieldId, fieldName,config);

@@ -26,7 +26,7 @@ function PasswordInlineEditPreDisableCallback(fieldId, fieldName, config) {
 }
 
 function PasswordInlineEditInit(fieldId, fieldName, config) {
-	config = ProcessConfig(config);
+	config = WebVellaTagHelpers.ProcessConfig(config);
 	var selectors = PasswordInlineEditGenerateSelectors(fieldId, fieldName, config);
 	//Init enable action click
 	$(selectors.viewWrapper + " .action .btn").on("click", function (event) {
@@ -39,7 +39,7 @@ function PasswordInlineEditInit(fieldId, fieldName, config) {
 		event.stopPropagation();
 		event.preventDefault();
 		PasswordInlineEditPreEnableCallback(fieldId, fieldName, config);
-		//clearSelection();//double click causes text to be selected.
+		//WebVellaTagHelpers.clearSelection();//double click causes text to be selected.
 		setTimeout(function () {
 			$(selectors.editWrapper + " .form-control").get(0).focus();
 		}, 200);

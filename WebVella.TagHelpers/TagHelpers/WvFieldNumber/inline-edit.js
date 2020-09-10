@@ -25,7 +25,7 @@ function NumberInlineEditPreDisableCallback(fieldId, fieldName, config) {
 }
 
 function NumberInlineEditInit(fieldId, fieldName, config) {
-	config = ProcessConfig(config);
+	config = WebVellaTagHelpers.ProcessConfig(config);
 	var selectors = NumberInlineEditGenerateSelectors(fieldId, fieldName, config);
 	//Init enable action click
 	$(selectors.viewWrapper + " .action .btn").on("click", function (event) {
@@ -38,7 +38,7 @@ function NumberInlineEditInit(fieldId, fieldName, config) {
 		event.stopPropagation();
 		event.preventDefault();
 		NumberInlineEditPreEnableCallback(fieldId, fieldName, config);
-		//clearSelection();//double click causes text to be selected.
+		//WebVellaTagHelpers.clearSelection();//double click causes text to be selected.
 		setTimeout(function () {
 			$(selectors.editWrapper + " .form-control").get(0).focus();
 		}, 200);
@@ -97,7 +97,7 @@ function NumberInlineEditInit(fieldId, fieldName, config) {
 
 function NumberInlineEditInitSuccessCallback(response, fieldId, fieldName, config) {
 	var selectors = NumberInlineEditGenerateSelectors(fieldId, fieldName, config);
-	var newValue = ProcessNewValue(response, fieldName);
+	var newValue = WebVellaTagHelpers.ProcessNewValue(response, fieldName);
 	$(selectors.viewWrapper + " .form-control").html(newValue);
 	$(selectors.editWrapper + " .form-control").val(newValue);
 	NumberInlineEditPreDisableCallback(fieldId, fieldName, config);

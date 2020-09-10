@@ -3,7 +3,7 @@
 };
 
 function InitHtmlFieldCKEditor(fieldId, fieldConfig) { //modes are -> none, one-repository,user-repository
-	fieldConfig = ProcessConfig(fieldConfig);
+	fieldConfig = WebVellaTagHelpers.ProcessConfig(fieldConfig);
 	var editor = CKEDITOR.instances['input-' + fieldId];
 	if (editor) {
 		editor.destroy(true);
@@ -127,7 +127,7 @@ function HtmlInlineEditPreEnableCallback(fieldId, fieldName,config) {
 	//Enable default close functions to disable the inline edit properly;
 	$(selectors.editWrapper).on('hidden.bs.modal', function () {
 		HtmlInlineEditPreDisableCallback(fieldId, fieldName,config);
-		WvFixModalInModalClose();
+		WebVellaTagHelpers.WvFixModalInModalClose();
 	});
 	$(selectors.editWrapper).modal(htmlFieldModalOptions);
 }
@@ -148,7 +148,7 @@ function HtmlInlineEditPreDisableCallback(fieldId, fieldName,config) {
 }
 
 function HtmlInlineEditInit(fieldId, fieldName,config) {
-	config = ProcessConfig(config);
+	config = WebVellaTagHelpers.ProcessConfig(config);
 	var selectors = HtmlInlineEditGenerateSelectors(fieldId, fieldName,config);
 	//Init enable action click
 	$(selectors.viewWrapper + " .action .btn").on("click", function (event) {
@@ -161,7 +161,7 @@ function HtmlInlineEditInit(fieldId, fieldName,config) {
 		event.stopPropagation();
 		event.preventDefault();
 		HtmlInlineEditPreEnableCallback(fieldId, fieldName,config);
-		//clearSelection();//double click causes text to be selected.
+		//WebVellaTagHelpers.clearSelection();//double click causes text to be selected.
 		setTimeout(function () {
 			$(selectors.editWrapper + " .form-control").get(0).focus();
 		}, 200);
@@ -221,7 +221,7 @@ function HtmlInlineEditInit(fieldId, fieldName,config) {
 
 function HtmlInlineEditInitSuccessCallback(response, fieldId, fieldName,config) {
 	var selectors = HtmlInlineEditGenerateSelectors(fieldId, fieldName,config);
-	var newValue = ProcessNewValue(response, fieldName);
+	var newValue = WebVellaTagHelpers.ProcessNewValue(response, fieldName);
 	$(selectors.viewWrapper + " .form-control").html(newValue);
 	$(selectors.editWrapper + " .form-control").val(newValue);
 	HtmlInlineEditPreDisableCallback(fieldId, fieldName,config);

@@ -14,7 +14,7 @@
 }
 
 function ImageFormInit(fieldId, fieldName, config) {
-	config = ProcessConfig(config);
+	config = WebVellaTagHelpers.ProcessConfig(config);
 	var selectors = ImageFormGenerateSelectors(fieldId, fieldName, config);
 	//Remove value
 	$(selectors.removeValueEl).first().on('click', function (e) {

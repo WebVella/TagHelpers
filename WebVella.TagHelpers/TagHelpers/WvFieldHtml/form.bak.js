@@ -4,7 +4,7 @@
 
 
 function InitHtmlFieldCKEditor(fieldId, fieldConfig) { //modes are -> none, one-repository,user-repository
-	fieldConfig = ProcessConfig(fieldConfig);
+	fieldConfig = WebVellaTagHelpers.ProcessConfig(fieldConfig);
 	var ckInstance = CKEDITOR.instances['input-' + fieldId];
 	if (ckInstance) {
 		try {

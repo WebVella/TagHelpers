@@ -37,7 +37,7 @@ function TimeInlineEditPreDisableCallback(fieldId, fieldName, config) {
 }
 
 function TimeInlineEditInit(fieldId, fieldName, config) {
-	config = ProcessConfig(config);
+	config = WebVellaTagHelpers.ProcessConfig(config);
 	var selectors = TimeInlineEditGenerateSelectors(fieldId, fieldName, config);
 	//Init enable action click
 	$(selectors.viewWrapper + " .action .btn").on("click", function (event) {
@@ -50,7 +50,7 @@ function TimeInlineEditInit(fieldId, fieldName, config) {
 		event.stopPropagation();
 		event.preventDefault();
 		TimeInlineEditPreEnableCallback(fieldId, fieldName, config);
-		//clearSelection();//double click causes text to be selected.
+		//WebVellaTagHelpers.clearSelection();//double click causes text to be selected.
 		setTimeout(function () {
 			$(selectors.editWrapper + " .form-control").get(0).focus();
 		}, 200);
@@ -109,7 +109,7 @@ function TimeInlineEditInit(fieldId, fieldName, config) {
 
 function TimeInlineEditInitSuccessCallback(response, fieldId, fieldName, config) {
 	var selectors = TimeInlineEditGenerateSelectors(fieldId, fieldName, config);
-	var newValue = ProcessNewValue(response, fieldName);
+	var newValue = WebVellaTagHelpers.ProcessNewValue(response, fieldName);
 	if (newValue !== null) {
 		var formatedDate = moment(newValue).format("DD MMM YYYY HH:mm");
 		$(selectors.viewWrapper + " .form-control").html(formatedDate);

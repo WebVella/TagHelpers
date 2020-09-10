@@ -64,7 +64,7 @@ function SelectFormMatchStartsWith(params, data) {
 }
 
 function SelectFormInit(fieldId, fieldName, config) {
-	config = ProcessConfig(config);
+	config = WebVellaTagHelpers.ProcessConfig(config);
 	var selectors = SelectFormGenerateSelectors(fieldId, fieldName, config);
 
 	var placeholder = 'not selected';
@@ -274,7 +274,7 @@ function SelectFormInit(fieldId, fieldName, config) {
 		var $alertMessage = $(selectors.modalEl).find(".alert-danger");
 		$($alertMessage).addClass("d-none").html("");
 		var inputValue = $(selectors.modalEl).find(".add-option-input").val();
-		if (!isStringNullOrEmptyOrWhiteSpace(inputValue)) {
+		if (!WebVellaTagHelpers.isStringNullOrEmptyOrWhiteSpace(inputValue)) {
 			var submitObj = {};
 			submitObj.value = inputValue;
 			submitObj.entityName = entityName;

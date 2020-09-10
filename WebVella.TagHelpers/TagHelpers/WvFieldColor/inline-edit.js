@@ -52,7 +52,7 @@ function ColorInlineEditPreDisableCallback(fieldId, fieldName, config) {
 }
 
 function ColorInlineEditInit(fieldId, fieldName, config) {
-	config = ProcessConfig(config);
+	config = WebVellaTagHelpers.ProcessConfig(config);
 	var selectors = ColorInlineEditGenerateSelectors(fieldId, fieldName, config);
 	//Init enable action click
 	$(selectors.viewWrapper + " .action .btn").on("click", function (event) {
@@ -65,7 +65,7 @@ function ColorInlineEditInit(fieldId, fieldName, config) {
 		event.stopPropagation();
 		event.preventDefault();
 		ColorInlineEditPreEnableCallback(fieldId, fieldName, config);
-		//clearSelection();//double click causes text to be selected.
+		//WebVellaTagHelpers.clearSelection();//double click causes text to be selected.
 		setTimeout(function () {
 			$(selectors.editWrapper + " .form-control").get(0).focus();
 		}, 200);
@@ -125,7 +125,7 @@ function ColorInlineEditInit(fieldId, fieldName, config) {
 
 function ColorInlineEditInitSuccessCallback(response, fieldId, fieldName, config) {
 	var selectors = ColorInlineEditGenerateSelectors(fieldId, fieldName, config);
-	var newValue = ProcessNewValue(response, fieldName);
+	var newValue = WebVellaTagHelpers.ProcessNewValue(response, fieldName);
 	
 	$(selectors.viewWrapper + " .form-control").html(newValue);
 	$(selectors.editWrapper + " .form-control").val(newValue);

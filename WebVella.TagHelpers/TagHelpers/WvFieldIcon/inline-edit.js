@@ -24,7 +24,7 @@ function IconFieldInlineEditFormat(icon) {
 }
 
 function IconFieldInlineEditPreEnableCallback(fieldId, fieldName,config) {
-	config = ProcessConfig(config);
+	config = WebVellaTagHelpers.ProcessConfig(config);
 	var selectors = IconFieldInlineEditGenerateSelectors(fieldId, fieldName,config);
 
 	var wvIconOptions = [];
@@ -87,7 +87,7 @@ function IconFieldInlineEditPreDisableCallback(fieldId, fieldName,config) {
 	$(selectors.editWrapper + " .save .fa").addClass("fa-check").removeClass("fa-spin fa-spinner");
 	$(selectors.editWrapper + " .save").attr("disabled", false);
 	var originalValue = $(selectors.inputEl).attr("data-original-value");
-	originalValue = ProcessConfig(originalValue);
+	originalValue = WebVellaTagHelpers.ProcessConfig(originalValue);
 	$(selectors.inputEl).val(originalValue);
 	$(selectors.inputEl).select2('destroy');
 	$(selectors.viewWrapper).show();
@@ -95,7 +95,7 @@ function IconFieldInlineEditPreDisableCallback(fieldId, fieldName,config) {
 }
 
 function IconFieldInlineEditInit(fieldId, fieldName,config) {
-	config = ProcessConfig(config);
+	config = WebVellaTagHelpers.ProcessConfig(config);
 	var selectors = IconFieldInlineEditGenerateSelectors(fieldId, fieldName,config);
 	//Init enable action click
 	$(selectors.viewWrapper + " .action .btn").on("click", function (event) {
@@ -108,7 +108,7 @@ function IconFieldInlineEditInit(fieldId, fieldName,config) {
 		event.stopPropagation();
 		event.preventDefault();
 		IconFieldInlineEditPreEnableCallback(fieldId, fieldName,config);
-		//clearSelection();//double click causes text to be selected.
+		//WebVellaTagHelpers.clearSelection();//double click causes text to be selected.
 		setTimeout(function () {
 			$(selectors.editWrapper + " .form-control").get(0).focus();
 		}, 200);
@@ -164,7 +164,7 @@ function IconFieldInlineEditInitSuccessCallback(response, fieldId, fieldName, in
 	var newValue = inputValue;
 
 	if (!fieldName.startsWith("$")) {
-		newValue = ProcessNewValue(response, fieldName);
+		newValue = WebVellaTagHelpers.ProcessNewValue(response, fieldName);
 	}
 
 	$(selectors.viewWrapper + " .form-control").html('<i class="fa ' + newValue + '"></i>  ' + newValue);

@@ -104,7 +104,7 @@ function FieldMultiFileFormInsertFile(fieldId, file){
 		fileIcon = file[propIconName];
 	}
 	if(fileName && !fileIcon){
-		fileIcon = "fa " + GetPathTypeIcon(file.name);
+		fileIcon = "fa " + WebVellaTagHelpers.GetPathTypeIcon(file.name);
 	}
 
 	var fileRowEl = document.createElement("div");
@@ -261,7 +261,7 @@ function FieldMultiFileRemoveFileRow(e) {
 }
 
 function FieldMultiFileFormInit(fieldId, config) {
-	config = ProcessConfig(config);
+	config = WebVellaTagHelpers.ProcessConfig(config);
     var selectors = FieldMultiFileFormGenerateSelectors(fieldId, config);
 	//Remove value
 	$(selectors.removeFileLink).on('click', function(e){ FieldMultiFileRemoveFileRow(e);});

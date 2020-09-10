@@ -23,7 +23,7 @@ function CheckboxInlineEditPreDisableCallback(fieldId, fieldName, config) {
 }
 
 function CheckboxInlineEditInit(fieldId, fieldName, config) {
-	config = ProcessConfig(config);
+	config = WebVellaTagHelpers.ProcessConfig(config);
 	var selectors = CheckboxInlineEditGenerateSelectors(fieldId, fieldName, config);
 	//Init enable action click
 	document.querySelector(selectors.viewWrapper + " .action .btn").addEventListener("click", function (event) {
@@ -36,7 +36,7 @@ function CheckboxInlineEditInit(fieldId, fieldName, config) {
 		event.stopPropagation();
 		event.preventDefault();
 		CheckboxInlineEditPreEnableCallback(fieldId, fieldName, config);
-		//clearSelection();//double click causes text to be selected.
+		//WebVellaTagHelpers.clearSelection();//double click causes text to be selected.
 		//setTimeout(function () {
 		//	$(selectors.editWrapper + " .form-control").get(0).focus();
 		//}, 200);
@@ -95,7 +95,7 @@ function CheckboxInlineEditInit(fieldId, fieldName, config) {
 
 function CheckboxInlineEditInitSuccessCallback(response, fieldId, fieldName, config) {
 	var selectors = CheckboxInlineEditGenerateSelectors(fieldId, fieldName, config);
-	var newValue = ProcessNewValue(response, fieldName);
+	var newValue = WebVellaTagHelpers.ProcessNewValue(response, fieldName);
 	if (newValue === null) {
 		$(selectors.viewWrapper + " .input-group-prepend .fa").removeClass("fa-check fa-question fa-times").addClass("fa-question");
 		$(selectors.viewWrapper + " .form-control").html("");

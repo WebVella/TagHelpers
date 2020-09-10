@@ -8,7 +8,7 @@
 }
 
 function CodeFormInit(fieldId, fieldName, config) {
-	config = ProcessConfig(config);
+	config = WebVellaTagHelpers.ProcessConfig(config);
 	var selectors = CodeFormGenerateSelectors(fieldId, fieldName, config);
 
 

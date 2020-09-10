@@ -50,6 +50,9 @@
 	overflow: hidden;
 }
 
+.wv-field .ck-editor__editable {
+    min-height: 200px;
+}
 /*#endregion*/
 
 /*#region << wv-alert >>*/
@@ -800,8 +803,8 @@
 	color: #333 !important;
 	background: #fff !important;
 	border-color: #ccc !important;
-	padding-right: 5px;
-	padding-left: 5px;
+	padding-right: 5px !important;
+	padding-left: 5px !important;
 	/*color: rgba(0, 150, 136,1) !important;
 	background: rgba(0, 150, 136,0.25) !important;
 	border-color: rgba(0, 150, 136,1) !important;*/

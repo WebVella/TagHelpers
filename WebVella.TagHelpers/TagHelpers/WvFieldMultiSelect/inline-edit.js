@@ -240,7 +240,7 @@ function MultiSelectInlineEditPreDisableCallback(fieldId, fieldName,  config) {
 	$(selectors.editWrapper + " .save .fa").addClass("fa-check").removeClass("fa-spin fa-spinner");
 	$(selectors.editWrapper + " .save").attr("disabled", false);
 	var originalValue = $(selectors.inputEl).attr("data-original-value");
-	originalValue = ProcessConfig(originalValue);
+	originalValue = WebVellaTagHelpers.ProcessConfig(originalValue);
 	$(selectors.inputEl).val(originalValue);
 	$(selectors.inputEl).select2('destroy');
 	$(selectors.viewWrapper).show();
@@ -248,7 +248,7 @@ function MultiSelectInlineEditPreDisableCallback(fieldId, fieldName,  config) {
 }
 
 function MultiSelectInlineEditInit(fieldId, fieldName,  config) {
-	config = ProcessConfig(config);
+	config = WebVellaTagHelpers.ProcessConfig(config);
 	var selectors = MultiSelectInlineEditGenerateSelectors(fieldId, fieldName,  config);
 	//Init enable action click
 	$(selectors.viewWrapper + " .action .btn").on("click", function (event) {
@@ -261,7 +261,7 @@ function MultiSelectInlineEditInit(fieldId, fieldName,  config) {
 		event.stopPropagation();
 		event.preventDefault();
 		MultiSelectInlineEditPreEnableCallback(fieldId, fieldName,  config);
-		//clearSelection();//double click causes text to be selected.
+		//WebVellaTagHelpers.clearSelection();//double click causes text to be selected.
 		setTimeout(function () {
 			$(selectors.editWrapper + " .form-control").get(0).focus();
 		}, 200);
@@ -314,7 +314,7 @@ function MultiSelectInlineEditInit(fieldId, fieldName,  config) {
 
 function MultiSelectInlineEditInitSuccessCallback(response, fieldId, fieldName,  config) {
 	var selectors = MultiSelectInlineEditGenerateSelectors(fieldId, fieldName,  config);
-	var newValue = ProcessNewValue(response, fieldName);
+	var newValue = WebVellaTagHelpers.ProcessNewValue(response, fieldName);
 	$(selectors.viewOptionsListUl).html("");
 	var selectOptions = $(selectors.inputEl + ' option');
 	_.forEach(newValue, function (optionKey) {

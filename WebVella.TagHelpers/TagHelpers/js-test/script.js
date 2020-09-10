@@ -22,7 +22,7 @@ function DataCsvFormInitGenerateSelectors(fieldId, name, delimiterName, hasHeade
 
 
 function DataCsvFormInit(fieldId,name,delimiterName,hasHeaderName,hasHeaderColumnName,lang,config) {
-   config = ProcessConfig(config);
+   config = WebVellaTagHelpers.ProcessConfig(config);
     var $selectors = DataCsvFormInitGenerateSelectors(fieldId, name, delimiterName, hasHeaderName,hasHeaderColumnName, lang,config);
 
     $selectors.doubleScrollWrapper1.on('scroll', function (e) {

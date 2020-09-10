@@ -26,7 +26,7 @@ function PercentFormSetPercent(fieldId, fieldName, config) {
 }
 
 function PercentFormInit(fieldId, fieldName, config) {
-	config = ProcessConfig(config);
+	config = WebVellaTagHelpers.ProcessConfig(config);
 	var selectors = PercentFormGenerateSelectors(fieldId, fieldName, config);
 	$(selectors.fakeEl).on("change paste keyup", function () {
 		PercentFormSetPercent(fieldId, fieldName, config);

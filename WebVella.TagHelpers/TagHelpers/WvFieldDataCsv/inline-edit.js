@@ -24,7 +24,7 @@ function DataCsvInlineEditGenerateSelectors(fieldId, fieldName, delimiterFieldNa
 
 
 function DataCsvInlineEditInit(fieldId, fieldName, delimiterFieldName, hasHeaderFieldName,hasHeaderColumnFieldName, config) {
-	config = ProcessConfig(config);
+	config = WebVellaTagHelpers.ProcessConfig(config);
     var $selectors = DataCsvInlineEditGenerateSelectors(fieldId, fieldName,delimiterFieldName, hasHeaderFieldName,hasHeaderColumnFieldName,config);
 
     $selectors.doubleScrollWrapper1.on('scroll', function (e) {

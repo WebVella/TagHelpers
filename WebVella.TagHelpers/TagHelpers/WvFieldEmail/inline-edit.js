@@ -25,7 +25,7 @@ function EmailInlineEditPreDisableCallback(fieldId, fieldName, config) {
 }
 
 function EmailInlineEditInit(fieldId, fieldName, config) {
-	config = ProcessConfig(config);
+	config = WebVellaTagHelpers.ProcessConfig(config);
 	var selectors = EmailInlineEditGenerateSelectors(fieldId, fieldName, config);
 	//Init enable action click
 	$(selectors.viewWrapper + " .action .btn").on("click", function (event) {
@@ -38,7 +38,7 @@ function EmailInlineEditInit(fieldId, fieldName, config) {
 		event.stopPropagation();
 		event.preventDefault();
 		EmailInlineEditPreEnableCallback(fieldId, fieldName, config);
-		//clearSelection();//double click causes text to be selected.
+		//WebVellaTagHelpers.clearSelection();//double click causes text to be selected.
 		setTimeout(function () {
 			$(selectors.editWrapper + " .form-control").get(0).focus();
 		}, 200);
@@ -59,7 +59,7 @@ function EmailInlineEditInit(fieldId, fieldName, config) {
 		event.stopPropagation();
 		event.preventDefault();
 		var inputValue = $(selectors.editWrapper + " .form-control").val();
-		var validation = checkEmail(inputValue);
+		var validation = WebVellaTagHelpers.checkEmail(inputValue);
 		if (!validation.success) {
 			EmailInlineEditInitErrorCallback(validation, fieldId, fieldName, config);
 			return;
@@ -101,7 +101,7 @@ function EmailInlineEditInit(fieldId, fieldName, config) {
 
 function EmailInlineEditInitSuccessCallback(response, fieldId, fieldName, config) {
 	var selectors = EmailInlineEditGenerateSelectors(fieldId, fieldName, config);
-	var newValue = ProcessNewValue(response, fieldName);
+	var newValue = WebVellaTagHelpers.ProcessNewValue(response, fieldName);
 	$(selectors.viewWrapper + " .form-control").html(newValue);
 	$(selectors.editWrapper + " .form-control").val(newValue);
 	EmailInlineEditPreDisableCallback(fieldId, fieldName, config);

@@ -23,7 +23,7 @@ function CheckboxListInlineEditPreDisableCallback(fieldId, fieldName,  config) {
 }
 
 function CheckboxListInlineEditInit(fieldId, fieldName,  config) {
-	config = ProcessConfig(config);
+	config = WebVellaTagHelpers.ProcessConfig(config);
 	var selectors = CheckboxListInlineEditGenerateSelectors(fieldId, fieldName,  config);
 	//Init enable action click
 	$(selectors.viewWrapper + " .action .btn").on("click", function (event) {
@@ -93,7 +93,7 @@ function CheckboxListInlineEditInit(fieldId, fieldName,  config) {
 
 function CheckboxListInlineEditInitSuccessCallback(response, fieldId, fieldName,  config) {
 	var selectors = CheckboxListInlineEditGenerateSelectors(fieldId, fieldName,  config);
-	var newValue = ProcessNewValue(response, fieldName);
+	var newValue = WebVellaTagHelpers.ProcessNewValue(response, fieldName);
 	if (newValue) {
 		$(selectors.viewWrapper + " .input-group-prepend .fa").removeClass("fa-check fa-question fa-times").addClass("fa-check");
 		$(selectors.viewWrapper + " .form-control").html(newValue);

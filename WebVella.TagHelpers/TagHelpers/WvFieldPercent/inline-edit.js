@@ -61,7 +61,7 @@ function PercentInlineEditPreDisableCallback(fieldId, fieldName, config) {
 }
 
 function PercentInlineEditInit(fieldId, fieldName, config) {
-	config = ProcessConfig(config);
+	config = WebVellaTagHelpers.ProcessConfig(config);
 	var selectors = PercentInlineEditGenerateSelectors(fieldId, fieldName, config);
 	//Init enable action click
 	$(selectors.viewWrapper + " .action .btn").on("click", function (event) {
@@ -74,7 +74,7 @@ function PercentInlineEditInit(fieldId, fieldName, config) {
 		event.stopPropagation();
 		event.preventDefault();
 		PercentInlineEditPreEnableCallback(fieldId, fieldName, config);
-		//clearSelection();//double click causes text to be selected.
+		//WebVellaTagHelpers.clearSelection();//double click causes text to be selected.
 		setTimeout(function () {
 			$(selectors.editWrapper + " .form-control").get(0).focus();
 		}, 200);
@@ -132,7 +132,7 @@ function PercentInlineEditInit(fieldId, fieldName, config) {
 
 function PercentInlineEditInitSuccessCallback(response, fieldId, fieldName, config) {
 	var selectors = PercentInlineEditGenerateSelectors(fieldId, fieldName, config);
-	var newValue = ProcessNewValue(response, fieldName);
+	var newValue = WebVellaTagHelpers.ProcessNewValue(response, fieldName);
 	var newValueDec = new Decimal(newValue);
 	
 	var decimalDigits = 2;

@@ -29,8 +29,8 @@ function FileInlineEditPreEnableCallback(fieldId, fieldName, config) {
 	//Prefill the date as it could be removed from the above method without saving. inputEl should always have the correct data
 	var filePath = $(selectors.inputEl).first().val();
 	var fileName = $(selectors.inputEl).first().attr("data-filename");
-	if (!isStringNullOrEmptyOrWhiteSpace(filePath)) {
-		var typeIconClass = GetPathTypeIcon(filePath);
+	if (!WebVellaTagHelpers.isStringNullOrEmptyOrWhiteSpace(filePath)) {
+		var typeIconClass = WebVellaTagHelpers.GetPathTypeIcon(filePath);
 		$(selectors.fakeInputLinkEl).first().text(fileName).attr("href", "/fs" + filePath).attr("title", "/fs" + filePath).removeClass("d-none");;
 		$(selectors.editWrapper + " .icon-addon").removeClass("d-none");
 		$(selectors.editWrapper + " .type-icon").first().attr("class", "fa fa-fw type-icon " + typeIconClass);
@@ -78,7 +78,7 @@ function FileInlineEditPreEnableCallback(fieldId, fieldName, config) {
 						$(selectors.fakeInputLinkEl).first().text(result.object.filename).attr("href", "/fs" + result.object.url).attr("title", "/fs" + result.object.url);
 						$(selectors.fakeInputProgressEl).first().attr("style", "display:none;width:0%")
 						$(selectors.fakeInputLinkEl).show();
-						var typeIconClass = GetPathTypeIcon(result.object.filename);
+						var typeIconClass = WebVellaTagHelpers.GetPathTypeIcon(result.object.filename);
 						$(selectors.editWrapper + " .type-icon").first().attr("class", "fa fa-fw type-icon " + typeIconClass);
 						//Show the input-group-addon if needed
 						$(selectors.editWrapper + " .input-group-prepend.icon-addon").removeClass("d-none");
@@ -119,7 +119,7 @@ function FileInlineEditPreDisableCallback(fieldId, fieldName, config) {
 }
 
 function FileInlineEditInit(fieldId, fieldName, config) {
-	config = ProcessConfig(config);
+	config = WebVellaTagHelpers.ProcessConfig(config);
 	var selectors = FileInlineEditGenerateSelectors(fieldId, fieldName, config);
 	//Init enable action click
 	$(selectors.viewWrapper + " .action .btn").on("click", function (event) {
@@ -132,7 +132,7 @@ function FileInlineEditInit(fieldId, fieldName, config) {
 		event.stopPropagation();
 		event.preventDefault();
 		FileInlineEditPreEnableCallback(fieldId, fieldName, config);
-		//clearSelection();//double click causes text to be selected.
+		//WebVellaTagHelpers.clearSelection();//double click causes text to be selected.
 		setTimeout(function () {
 			$(selectors.editWrapper + " .form-control").get(0).focus();
 		}, 200);
@@ -160,7 +160,7 @@ function FileInlineEditInit(fieldId, fieldName, config) {
 		}
 		else {
 			var submitObj = {};
-			if (isStringNullOrEmptyOrWhiteSpace(newValue)) {
+			if (WebVellaTagHelpers.isStringNullOrEmptyOrWhiteSpace(newValue)) {
 				submitObj[fieldName] = null;
 			}
 			else {
@@ -199,11 +199,11 @@ function FileInlineEditInit(fieldId, fieldName, config) {
 
 function FileInlineEditInitSuccessCallback(response, fieldId, fieldName, config) {
 	var selectors = FileInlineEditGenerateSelectors(fieldId, fieldName, config);
-	var newValue = ProcessNewValue(response, fieldName);
-	var fileName = GetFilenameFromUrl(newValue);
+	var newValue = WebVellaTagHelpers.ProcessNewValue(response, fieldName);
+	var fileName = WebVellaTagHelpers.GetFilenameFromUrl(newValue);
 	$(selectors.inputEl).val(newValue).attr("data-filename", fileName);
-	if (!isStringNullOrEmptyOrWhiteSpace(newValue)) {
-		var typeIconClass = GetPathTypeIcon(newValue);
+	if (!WebVellaTagHelpers.isStringNullOrEmptyOrWhiteSpace(newValue)) {
+		var typeIconClass = WebVellaTagHelpers.GetPathTypeIcon(newValue);
 		$(selectors.viewWrapper + " .form-control a").first().text(fileName).attr("href", "/fs" + newValue).attr("title", "/fs" + newValue).removeClass("d-none");;
 		$(selectors.viewWrapper + " .type-icon").first().attr("class", "fa fa-fw type-icon " + typeIconClass);
 		$(selectors.viewWrapper + " .input-group-prepend.icon-addon").removeClass("d-none");

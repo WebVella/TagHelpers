@@ -105,7 +105,7 @@ function DateTimeInlineEditPreDisableCallback(fieldId, fieldName, config) {
 }
 
 function DateTimeInlineEditInit(fieldId, fieldName, config) {
-	config = ProcessConfig(config);
+	config = WebVellaTagHelpers.ProcessConfig(config);
 	var selectors = DateTimeInlineEditGenerateSelectors(fieldId, fieldName, config);
 	//Init enable action click
 	$(selectors.viewWrapper + " .action .btn").on("click", function (event) {
@@ -118,7 +118,7 @@ function DateTimeInlineEditInit(fieldId, fieldName, config) {
 		event.stopPropagation();
 		event.preventDefault();
 		DateTimeInlineEditPreEnableCallback(fieldId, fieldName, config);
-		//clearSelection();//double click causes text to be selected.
+		//WebVellaTagHelpers.clearSelection();//double click causes text to be selected.
 		setTimeout(function () {
 			$(selectors.editWrapper + " .form-control").get(0).focus();
 		}, 200);
@@ -179,7 +179,7 @@ function DateTimeInlineEditInit(fieldId, fieldName, config) {
 
 function DateTimeInlineEditInitSuccessCallback(response, fieldId, fieldName, config) {
 	var selectors = DateTimeInlineEditGenerateSelectors(fieldId, fieldName, config);
-	var newValue = ProcessNewValue(response, fieldName);
+	var newValue = WebVellaTagHelpers.ProcessNewValue(response, fieldName);
 	if (newValue !== null) {
 		var formatedDate = moment(newValue).format("DD MMM YYYY HH:mm");
 		$(selectors.viewWrapper + " .form-control").html(formatedDate);

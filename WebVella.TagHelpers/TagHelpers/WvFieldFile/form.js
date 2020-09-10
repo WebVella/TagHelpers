@@ -51,7 +51,7 @@ function FileFormSubmit(fieldId, files){
 						$(selectors.fakeInputLinkEl).first().text(result.object.filename).attr("href", "/fs" + result.object.url).attr("title", "/fs" + result.object.url);
 						$(selectors.fakeInputProgressEl).first().attr("style", "display:none;width:0%")
 						$(selectors.fakeInputLinkEl).show();
-						var typeIconClass = GetPathTypeIcon(result.object.filename);
+						var typeIconClass = WebVellaTagHelpers.GetPathTypeIcon(result.object.filename);
 						$(selectors.fakeInputEl).closest(".input-group").find(".type-icon").first().attr("class", "fa fa-fw type-icon " + typeIconClass);
 						//Show the input-group-addon if needed
 						$(selectors.fakeInputEl).closest(".input-group").find(".icon-addon").removeClass("d-none");
@@ -114,7 +114,7 @@ function FieldFileFormAttachEventListener(event){
 
 
 function FileFormInit(fieldId, fieldName, config) {
-	config = ProcessConfig(config);
+	config = WebVellaTagHelpers.ProcessConfig(config);
 	var selectors = FileFormGenerateSelectors(fieldId, fieldName, config);
 
 	//Remove value

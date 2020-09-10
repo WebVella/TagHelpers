@@ -70,7 +70,7 @@ function MultiSelectFormMatchStartsWith(params, data) {
 
 
 function MultiSelectFormInit(fieldId, fieldName, config) {
-	config = ProcessConfig(config);
+	config = WebVellaTagHelpers.ProcessConfig(config);
 	var selectors = MultiSelectFormGenerateSelectors(fieldId, fieldName, config);
 
 	var placeholder = 'not selected';
@@ -293,7 +293,7 @@ if (data && data.object && data.object.list) {
 		var $alertMessage = $(selectors.modalEl).find(".alert-danger");
 		$($alertMessage).addClass("d-none").html("");
 		var inputValue = $(selectors.modalEl).find(".add-option-input").val();
-		if (!isStringNullOrEmptyOrWhiteSpace(inputValue)) {
+		if (!WebVellaTagHelpers.isStringNullOrEmptyOrWhiteSpace(inputValue)) {
 			var submitObj = {};
 			submitObj.value = inputValue;
 			submitObj.entityName = entityName;
