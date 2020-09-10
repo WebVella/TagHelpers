@@ -324,8 +324,11 @@ function SelectInlineEditInitSuccessCallback(response, fieldId, fieldName, input
 			}
 			return false;
 		});
-		var optionLabel = matchedOption.text;
 
+		var optionLabel = newValue;
+		if(matchedOption && matchedOption.text && matchedOption.text.length > 0){
+			optionLabel = matchedOption.text;
+		}
 		var iconClass = $(matchedOption).data('icon');
 		var color = $(matchedOption).data('color');
 		if (!color) {

@@ -327,7 +327,10 @@ function MultiSelectInlineEditInitSuccessCallback(response, fieldId, fieldName, 
 			}
 			return false;
 		});
-		var optionLabel = matchedOption.text;
+		var optionLabel = optionKey;
+		if(matchedOption && matchedOption.text && matchedOption.text.length > 0){
+			optionLabel = matchedOption.text;
+		}
 		$(selectors.viewOptionsListUl).append('<li class="select2-selection__choice" title="' + optionLabel + '" data-key="' + optionKey + '">' + optionLabel + '</li>');
 	});
 

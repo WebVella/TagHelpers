@@ -38,7 +38,6 @@ namespace WebVella.TagHelpers.TagHelpers
 			var cssList = new List<string>();
 			cssList.Add("wv-icon");
 			cssList.Add(Class);
-			output.Attributes.Add("class", string.Join(" ", cssList));
 
 			var svgEl = new TagBuilder("svg");
 			svgEl.Attributes.Add("xmlns", "http://www.w3.org/2000/svg");
@@ -64,6 +63,8 @@ namespace WebVella.TagHelpers.TagHelpers
 
 				svgEl.InnerHtml.AppendHtml(IconTypeService.GetSVGContentForIconType(Type));
 			}
+
+			output.Attributes.Add("class", string.Join(" ", cssList));
 			output.Content.AppendHtml(svgEl);
 
 		}
