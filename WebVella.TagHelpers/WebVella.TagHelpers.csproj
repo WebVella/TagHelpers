@@ -5,7 +5,7 @@
 		<IsPackable>true</IsPackable>
 		<RazorLangVersion>3.0</RazorLangVersion>
 		<GenerateEmbeddedFilesManifest>true</GenerateEmbeddedFilesManifest>
-		<Version>1.1.9</Version> 
+		<Version>1.1.10</Version> 
 		<Authors>WebVella</Authors>
 		<PackageProjectUrl>http://webvella.com/</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/WebVella/WebVella-ERP</RepositoryUrl>
@@ -74,12 +74,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="CsvHelper" Version="15.0.1" />
-		<PackageReference Include="HtmlAgilityPack" Version="1.11.21" />
-		<PackageReference Include="Microsoft.AspNetCore.Components" Version="3.1.2" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="3.1.2" />
-		<PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.2" />
-		<PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="3.1.2" />
+		<PackageReference Include="CsvHelper" Version="15.0.5" />
+		<PackageReference Include="HtmlAgilityPack" Version="1.11.24" />
+		<PackageReference Include="Microsoft.AspNetCore.Components" Version="3.1.8" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="3.1.8" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.8" />
+		<PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="3.1.8" />
 		<PackageReference Include="YUICompressor.NET" Version="3.0.0" />
 	</ItemGroup>
 

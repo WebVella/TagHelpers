@@ -113,7 +113,7 @@
 	.alert-icon .icon {
 		flex: 0 0 40px;
 		text-align: center;
-		font-size: 1.5rem;
+		font-size: 1.25rem;
 	}
 
 .wv-alert .content {
@@ -127,6 +127,9 @@
 		font-size: 1rem;
 	}
 
+.wv-alert ul {
+	padding-left:1rem;
+}
 
 .alert-light {
 	background: linear-gradient(115deg,rgba(236, 239, 241,1),rgba(236, 239, 241,0.05));
@@ -188,13 +191,13 @@
 	height: 1em;
 	max-height: 100%;
 	line-height: inherit;
-	vertical-align: text-bottom;
+	vertical-align: middle;
 	position: relative;
 }
 
 	.wv-icon svg {
 		position: absolute;
-		top: -0.085rem;
+		top: 0;
 		left: 0;
 		width: 100%;
 		height: 100%;
