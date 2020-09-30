@@ -618,7 +618,7 @@
 	width: 100% !important;
 }
 
-.wv-field-html .cke_editable {
+.wv-field-html .cke_editable:not(.ck-editor__nested-editable) {
 	min-height: 150px;
 	max-height: 300px;
 	/*overflow-y: auto;*/
