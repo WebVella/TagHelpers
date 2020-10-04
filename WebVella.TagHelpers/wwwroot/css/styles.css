@@ -614,6 +614,11 @@
 
 /*#region <<wv-field-html>>*/
 
+/*Solves the problem of not showing in modals*/
+.ck.ck-baloon-panel {
+	z-index:2000;
+}
+
 .wv-field .ck.ck-editor {
 	width: 100% !important;
 }
