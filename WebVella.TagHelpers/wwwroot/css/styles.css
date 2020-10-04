@@ -50,9 +50,7 @@
 	overflow: hidden;
 }
 
-.wv-field .ck-editor__editable {
-    min-height: 200px;
-}
+
 /*#endregion*/
 
 /*#region << wv-alert >>*/
@@ -615,7 +613,7 @@
 /*#region <<wv-field-html>>*/
 
 /*Solves the problem of not showing in modals*/
-.ck.ck-baloon-panel {
+.ck.ck-balloon-panel {
 	z-index:2000;
 }
 
@@ -624,7 +622,7 @@
 }
 
 .wv-field-html .cke_editable:not(.ck-editor__nested-editable) {
-	min-height: 150px;
+	min-height: 200px;
 	max-height: 300px;
 	/*overflow-y: auto;*/
 }
