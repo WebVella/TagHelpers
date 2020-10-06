@@ -643,10 +643,14 @@
 
 .wv-field-html figure.image-style-align-right {
 	float: right;
+	padding-left:1rem;
+	padding-bottom:1rem;
 }
 
 .wv-field-html figure.image-style-align-left {
-	float: right;
+	float: left;
+	padding-right:1rem;
+	padding-bottom:1rem;
 }
 
 /*#endregion*/
