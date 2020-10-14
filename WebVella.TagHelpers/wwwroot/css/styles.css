@@ -617,6 +617,19 @@
 	z-index:2000 !important;
 }
 
+.ck .ck-figure-title {
+	padding: 0 1rem 0.5rem 1rem;
+	font-size: 10pt;
+	text-align: center;
+}
+
+.ck .ck-figure-caption {
+	padding: 0.5rem 1rem 0.25in 1rem;
+	font-size: 8pt;
+	text-align: center;
+	color: #333;
+}
+
 .wv-field .ck.ck-editor {
 	width: 100% !important;
 }
