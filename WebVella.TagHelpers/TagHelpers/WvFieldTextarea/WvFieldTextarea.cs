@@ -20,9 +20,6 @@ namespace WebVella.TagHelpers.TagHelpers
 		[HtmlAttributeName("height")]
 		public string Height { get; set; } = "";
 
-		[HtmlAttributeName("autogrow")]
-		public bool Autogrow { get; set; } = false;
-
 		public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
 		{
 			if (!isVisible)
@@ -79,10 +76,8 @@ namespace WebVella.TagHelpers.TagHelpers
 				var inputEl = new TagBuilder("textarea");
 				var inputElCssClassList = new List<string>();
 				inputElCssClassList.Add("form-control erp-multilinetext");
-				if (Autogrow) {
-					inputElCssClassList.Add("autogrow");
-				}
-				if (!String.IsNullOrWhiteSpace(Height)) {
+				if (!String.IsNullOrWhiteSpace(Height))
+				{
 					inputEl.Attributes.Add("style", $"height:{Height};");
 				}
 				inputEl.InnerHtml.AppendHtml((Value ?? "").ToString());
@@ -124,23 +119,6 @@ namespace WebVella.TagHelpers.TagHelpers
 					inputGroupEl.InnerHtml.AppendHtml(appendEl);
 				}
 				output.Content.AppendHtml(inputGroupEl);
-
-				if (Autogrow)
-				{
-					var jsCompressor = new JavaScriptCompressor();
-					#region << Add Autogrow Init >>
-					var initScript = new TagBuilder("script");
-					initScript.Attributes.Add("type", "text/javascript");
-					var scriptTemplate = @"
-						$(function(){
-							new Autogrow(document.getElementById('textarea-{{FieldId}}'));
-						});";
-					scriptTemplate = scriptTemplate.Replace("{{FieldId}}", (FieldId != null ? FieldId.Value.ToString() : ""));
-
-					initScript.InnerHtml.AppendHtml(jsCompressor.Compress(scriptTemplate));
-					output.PostContent.AppendHtml(initScript);
-				}
-				#endregion
 
 			}
 			else if (Mode == WvFieldRenderMode.Display)
@@ -241,10 +219,6 @@ namespace WebVella.TagHelpers.TagHelpers
 
 						var editInputEl = new TagBuilder("textarea");
 						editInputEl.AddCssClass("form-control erp-multilinetext");
-						if (Autogrow)
-						{
-							editInputEl.AddCssClass("autogrow");
-						}
 						if (!String.IsNullOrWhiteSpace(Height))
 						{
 							editInputEl.Attributes.Add("style", $"height:{Height};");
@@ -290,7 +264,7 @@ namespace WebVella.TagHelpers.TagHelpers
 					}
 					if (!tagHelperInitialized)
 					{
-						var scriptContent = WvHelpers.GetEmbeddedTextResource("inline-edit.js", "WebVella.TagHelpers.TagHelpers.WvFieldTextarea","WebVella.TagHelpers");
+						var scriptContent = WvHelpers.GetEmbeddedTextResource("inline-edit.js", "WebVella.TagHelpers.TagHelpers.WvFieldTextarea", "WebVella.TagHelpers");
 						var scriptEl = new TagBuilder("script");
 						scriptEl.Attributes.Add("type", "text/javascript");
 						scriptEl.InnerHtml.AppendHtml(jsCompressor.Compress(scriptContent));

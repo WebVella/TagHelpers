@@ -1084,14 +1084,21 @@
 				PageSize = 10,
 				UseSelectApi = true
 			};
+			var selectFieldId = new Guid("11111111-3B42-4B2D-A114-D4103AA7174D");
 			}
 				<div class="card-header">
 					Form
 				</div>
 				<div class="card-body">
-					<wv-field-select value="@("1")" label-text="FieldLabel" name="text" mode="Form" ajax-datasource="@ds"></wv-field-select>
+					<wv-field-select field-id="@selectFieldId" value="@("1")" label-text="FieldLabel" name="text" mode="Form" options="chGridRows"></wv-field-select>
 				</div>
 			</div>
+			<script>
+				function ChangeHandler(e) {
+					console.log(e);
+				};
+				document.addEventListener("WvFieldSelect_Change",ChangeHandler);
+			</script>
 		</div>
 		<div class="col-3">
 			<div class="card mt-3 mb-3">

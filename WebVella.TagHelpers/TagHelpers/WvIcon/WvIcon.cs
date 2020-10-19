@@ -38,35 +38,22 @@ namespace WebVella.TagHelpers.TagHelpers
 			var cssList = new List<string>();
 			cssList.Add("wv-icon");
 			cssList.Add(Class);
-
-			var svgEl = new TagBuilder("svg");
-			svgEl.Attributes.Add("xmlns", "http://www.w3.org/2000/svg");
-			svgEl.Attributes.Add("fill", $"currentColor");
-
-
+			var typeDescription = Type.ToDescriptionString();
 			if (Type != WvIconType.NoIcon)
 			{
-				var typeDescription = Type.ToDescriptionString();
 				if (typeDescription.StartsWith("bs"))
 				{
-					svgEl.Attributes.Add("viewBox", $"0 0 16 16");
 					cssList.Add($" wvp-icon--bs ");
 				}
 				else if (typeDescription.StartsWith("mdf"))
 				{
-					svgEl.Attributes.Add("viewBox", $"0 0 24 24");
 					cssList.Add($" wvp-icon--mdf ");
 				}
-				else{
-					svgEl.Attributes.Add("viewBox", $"0 0 16 16");
-				}
-
-				svgEl.InnerHtml.AppendHtml(IconTypeService.GetSVGContentForIconType(Type));
+				else{}
 			}
 
 			output.Attributes.Add("class", string.Join(" ", cssList));
-			output.Content.AppendHtml(svgEl);
-
+			output.Content.AppendHtml(IconTypeService.GetSVGContentForIconType(Type));
 		}
 	}
 }

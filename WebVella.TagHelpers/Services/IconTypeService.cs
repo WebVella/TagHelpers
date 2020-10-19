@@ -13,12 +13,22 @@ namespace WebVella.TagHelpers.Services
 	public static class IconTypeService
 	{
 		private static Dictionary<WvIconType, string> _iconTypeSvgDict = null;
-		
-		private static  Dictionary<string,WvIconType> _iconDecriptionTypeEnumDict = null;
 
-		public static string GetSVGContentForIconType(WvIconType type){
+		private static Dictionary<string, WvIconType> _iconDecriptionTypeEnumDict = null;
+
+		public static string GetSVGContentForIconType(WvIconType type)
+		{
+			var typeDescription = type.ToDescriptionString();
 			var iconTypeDict = GetIconTypeDict();
-			return iconTypeDict[type];
+			var viewBox = "0 0 16 16";
+			if (typeDescription.StartsWith("mdf"))
+			{
+				viewBox = "0 0 24 24";
+			}
+			var svgHtml = $"<svg xmlns='http://www.w3.org/2000/svg' fill='currentColor' viewBox='{viewBox}'>";
+			svgHtml += iconTypeDict[type];
+			svgHtml += "</svg>";
+			return svgHtml;
 		}
 
 		public static Dictionary<WvIconType, string> GetIconTypeDict()
@@ -2043,10 +2053,12 @@ namespace WebVella.TagHelpers.Services
 			return _iconTypeSvgDict;
 		}
 
-		public static Dictionary<string,WvIconType> GetIconTypeDescriptionEnumDict(){
+		public static Dictionary<string, WvIconType> GetIconTypeDescriptionEnumDict()
+		{
 
-			if(_iconDecriptionTypeEnumDict == null){
-				_iconDecriptionTypeEnumDict = new Dictionary<string,WvIconType>();
+			if (_iconDecriptionTypeEnumDict == null)
+			{
+				_iconDecriptionTypeEnumDict = new Dictionary<string, WvIconType>();
 				var values = Enum.GetValues(typeof(WvIconType)).Cast<WvIconType>();
 
 				foreach (var value in values)
