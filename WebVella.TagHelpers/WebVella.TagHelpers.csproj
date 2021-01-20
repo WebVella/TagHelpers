@@ -5,7 +5,7 @@
 		<IsPackable>true</IsPackable>
 		<RazorLangVersion>3.0</RazorLangVersion>
 		<GenerateEmbeddedFilesManifest>true</GenerateEmbeddedFilesManifest>
-		<Version>1.1.23</Version> 
+		<Version>1.1.24</Version> 
 		<Authors>WebVella</Authors>
 		<PackageProjectUrl>http://webvella.com/</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/WebVella/WebVella-ERP</RepositoryUrl>
@@ -74,7 +74,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="CsvHelper" Version="15.0.10" />
+		<PackageReference Include="CsvHelper" Version="18.0.0" />
 		<PackageReference Include="HtmlAgilityPack" Version="1.11.29" />
 		<PackageReference Include="Microsoft.AspNetCore.Components" Version="5.0.2" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.2" />
