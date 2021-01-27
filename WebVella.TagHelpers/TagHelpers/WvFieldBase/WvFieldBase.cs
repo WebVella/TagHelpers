@@ -241,13 +241,13 @@ namespace WebVella.TagHelpers.TagHelpers
 						var newListString = new List<string>();
 						foreach (var option in (List<WvSelectOption>)Value)
 						{
-							newListString.Add(option.Value);
+							newListString.Add(option.Value.ToLowerInvariant());
 						}
 						Value = newListString;
 					}
 					else if (Value is string)
 					{
-						var stringValue = Value.ToString();
+						var stringValue = Value.ToString().ToLowerInvariant();
 
 						Value = new List<string>() { stringValue };
 					}
@@ -273,6 +273,14 @@ namespace WebVella.TagHelpers.TagHelpers
 					break;
 				case "wv-field-select":
 					fieldType = WvFieldType.SelectField;
+					if (Value == null)
+					{
+						Value = "";
+					}
+					else if(!String.IsNullOrWhiteSpace(Value))
+					{
+						Value = Value.ToString().ToLowerInvariant();
+					}
 					break;
 				case "wv-field-text":
 					fieldType = WvFieldType.TextField;
