@@ -277,7 +277,7 @@ namespace WebVella.TagHelpers.TagHelpers
 					{
 						Value = "";
 					}
-					else if(!String.IsNullOrWhiteSpace(Value))
+					else if(Value is string && !String.IsNullOrWhiteSpace(Value.ToString()))
 					{
 						Value = Value.ToString().ToLowerInvariant();
 					}
