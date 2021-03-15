@@ -24,7 +24,7 @@ namespace WebVella.TagHelpers.Utilities
 			Assembly assembly = null;
 			if (!String.IsNullOrWhiteSpace(assemblyName))
 			{
-				assembly = AppDomain.CurrentDomain.GetAssemblies().SingleOrDefault(x => x.GetName().Name == assemblyName);
+				assembly = AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault(x => x.GetName().Name == assemblyName);
 			}
 			else
 			{
@@ -51,7 +51,7 @@ namespace WebVella.TagHelpers.Utilities
 			Assembly assembly = null;
 			if (!String.IsNullOrWhiteSpace(assemblyName))
 			{
-				assembly = AppDomain.CurrentDomain.GetAssemblies().SingleOrDefault(x => x.GetName().Name == assemblyName);
+				assembly = AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault(x => x.GetName().Name == assemblyName);
 			}
 			else
 			{
