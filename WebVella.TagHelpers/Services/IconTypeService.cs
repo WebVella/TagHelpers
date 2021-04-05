@@ -2080,7 +2080,10 @@ namespace WebVella.TagHelpers.Services
 
 		public static Dictionary<string, WvIconType> GetIconTypeDescriptionEnumDict()
 		{
-			return _iconDecriptionTypeEnumDict;
+			if(_iconDecriptionTypeEnumDict != null)
+				return _iconDecriptionTypeEnumDict;
+			else
+				return new Dictionary<string, WvIconType>();
 		}
 	}
 }
