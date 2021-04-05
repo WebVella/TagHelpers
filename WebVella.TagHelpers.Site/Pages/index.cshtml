@@ -6,87 +6,88 @@
 @using Newtonsoft.Json;
 @using Microsoft.AspNetCore.Html;
 @{
-	Layout = null;
-	var apiUrl = "/";
-	var cb = DateTime.Now.ToString("yyyyMMddHHmmss");
-	var textFieldValue = "this is a test <script></script>";
-	var htmlValue = "<p>&lt;script&gt;</p>";
-	var chartDs = new WvChartDataset(){
-		BorderColor = "#FF9800",
-		Data = new List<decimal>{5,15,25}
-	};
-	var autoNumberValue = (decimal)1.00;
-	var autonumberTemplate = "boz-{0}";
-	var chartDsList = new List<WvChartDataset>{ chartDs};
+    Layout = null;
+    var apiUrl = "/";
+    var cb = DateTime.Now.ToString("yyyyMMddHHmmss");
+    var textFieldValue = "this is a test <script></script>";
+    var htmlValue = "<p>&lt;script&gt;</p>";
+    var chartDs = new WvChartDataset(){
+        BorderColor = "#FF9800",
+        Data = new List<decimal>{5,15,25}
+    };
+    var autoNumberValue = (decimal)1.00;
+    var autonumberTemplate = "boz-{0}";
+    var chartDsList = new List<WvChartDataset>{ chartDs};
 
-	var htmlEncoded = HttpUtility.HtmlEncode("<div class=\"text\">text<script></div>");
-	var colorVal = "#FF9800";
-	var chGridRows = new List<WvSelectOption>(){
-		new WvSelectOption(){Label = "row 1", Value = "row1"},
-		new WvSelectOption(){Label = "row 2", Value = "row2"},
-		new WvSelectOption(){Label = "row 3", Value = "row3"},
-	};
+    var htmlEncoded = HttpUtility.HtmlEncode("<div class=\"text\">text<script></div>");
+    var colorVal = "#FF9800";
+    var chGridRows = new List<WvSelectOption>(){
+        new WvSelectOption(){Label = "row 1", Value = "row1"},
+        new WvSelectOption(){Label = "row 2", Value = "row2"},
+        new WvSelectOption(){Label = "row 3", Value = "row3"},
+       
+    };
 
-	var chGridColumns = new List<WvSelectOption>(){
-		new WvSelectOption(){Label = "col 1", Value = "col1"},
-		new WvSelectOption(){Label = "col 2", Value = "col2"},
-		new WvSelectOption(){Label = "col 3", Value = "col3"},
-	};
+    var chGridColumns = new List<WvSelectOption>(){
+        new WvSelectOption(){Label = "col 1", Value = "col1"},
+        new WvSelectOption(){Label = "col 2", Value = "col2"},
+        new WvSelectOption(){Label = "col 3", Value = "col3"},
+    };
 
-	var chGridValues = new List<WvKeyStringList>(){
-		new WvKeyStringList(){Key = "row1",Values = new List<string>{"col1","col2"}}
-	};
+    var chGridValues = new List<WvKeyStringList>(){
+        new WvKeyStringList(){Key = "row1",Values = new List<string>{"col1","col2"}}
+    };
 
-	var chGridValuesJson = JsonConvert.SerializeObject(chGridValues);
+    var chGridValuesJson = JsonConvert.SerializeObject(chGridValues);
 
-	var chkBxList = new List<WvSelectOption>(){
-		new WvSelectOption(){Value = "1", Label = "one"},
-		new WvSelectOption(){Value = "2", Label = "two"},
-	};
+    var chkBxList = new List<WvSelectOption>(){
+        new WvSelectOption(){Value = "1", Label = "one"},
+        new WvSelectOption(){Value = "2", Label = "two"},
+    };
 
-	var chkBxListValues = new List<string>{"1"};
+    var chkBxListValues = new List<string>{"1"};
 
-	decimal decVal = (decimal)23.3434;
+    decimal decVal = (decimal)23.3434;
 
-	var emailVal = "test@domain.com ";
+    var emailVal = "test@domain.com ";
 
-	var fileVal = "/_content/WebVella.TagHelpers/assets/background.png";
-	var multiFilesVal = new List<string>{"/_content/WebVella.TagHelpers/assets/background1.png","/_content/WebVella.TagHelpers/assets/background2.png"};
-	var multiFilesValRecords = new List<dynamic>{
-		new {
-			path = "/_content/WebVella.TagHelpers/assets/background1.png",
-			name = "FileName1",
-			icon = "",
-			size = 345,
-			timestamp = DateTime.Now,
-			author = "Boz Zashev"
-		},
-		new {
-			path = "/_content/WebVella.TagHelpers/assets/background2.png",
-			name = "FileName2",
-			icon = "",
-			size = 58888
-		}
-	};
+    var fileVal = "/_content/WebVella.TagHelpers/assets/background.png";
+    var multiFilesVal = new List<string>{"/_content/WebVella.TagHelpers/assets/background1.png","/_content/WebVella.TagHelpers/assets/background2.png"};
+    var multiFilesValRecords = new List<dynamic>{
+        new {
+            path = "/_content/WebVella.TagHelpers/assets/background1.png",
+            name = "FileName1",
+            icon = "",
+            size = 345,
+            timestamp = DateTime.Now,
+            author = "Boz Zashev"
+        },
+        new {
+            path = "/_content/WebVella.TagHelpers/assets/background2.png",
+            name = "FileName2",
+            icon = "",
+            size = 58888
+        }
+    };
 
-	var guidVal = Guid.NewGuid();
+    var guidVal = Guid.NewGuid();
 
-	var iconVal = "fa fa-save";
-	var urlVal = "http://google.com";
+    var iconVal = "fa fa-save";
+    var urlVal = "http://google.com";
 
-	var gridColumns = new List<WvGridColumnMeta>{
-		new WvGridColumnMeta{
-			Name = "col1",
-			Label = "column 1"
-		}
-	};
-	var gridRecords = new List<string>{"one","two"};
+    var gridColumns = new List<WvGridColumnMeta>{
+        new WvGridColumnMeta{
+            Name = "col1",
+            Label = "column 1"
+        }
+    };
+    var gridRecords = new List<string>{"one","two"};
 
-	var valErrors = new List<KeyValuePair<string,string>>{
-		new KeyValuePair<string, string>("name","Name is required"),
-		new KeyValuePair<string, string>("email","Email is required")
-	};
-	var csvFieldValue = "1,2,3\r\njohn,eve,jim";
+    var valErrors = new List<KeyValuePair<string,string>>{
+        new KeyValuePair<string, string>("name","Name is required"),
+        new KeyValuePair<string, string>("email","Email is required")
+    };
+    var csvFieldValue = "1,2,3\r\njohn,eve,jim";
 }
 
 <!DOCTYPE html>
@@ -1454,7 +1455,7 @@
 					Form
 				</div>
 				<div class="card-body">
-					<wv-field-text size="Small" value="@textFieldValue" label-text="FieldLabel" name="text" mode="Form"></wv-field-text>
+					<wv-field-text size="Small" value="@textFieldValue" link="https://www.google.com" label-text="FieldLabel" name="text" mode="Form"></wv-field-text>
 				</div>
 			</div>
 		</div>
@@ -1464,7 +1465,7 @@
 					Inline Edit
 				</div>
 				<div class="card-body">
-					<wv-field-text value="@textFieldValue" label-text="FieldLabel" name="text" mode="InlineEdit" api-url="@apiUrl"></wv-field-text>
+					<wv-field-text value="@textFieldValue" label-text="FieldLabel" link="https://www.google.com" name="text" mode="InlineEdit" api-url="@apiUrl"></wv-field-text>
 				</div>
 			</div>
 		</div>
@@ -1474,7 +1475,7 @@
 					Display
 				</div>
 				<div class="card-body">
-					<wv-field-text value="@textFieldValue" label-text="FieldLabel" name="text" mode="Display"></wv-field-text>
+					<wv-field-text value="@textFieldValue" label-text="FieldLabel" link="https://www.google.com" name="text" mode="Display"></wv-field-text>
 				</div>
 			</div>
 		</div>
@@ -1484,7 +1485,7 @@
 					Display
 				</div>
 				<div class="card-body">
-					<wv-field-text value="@textFieldValue" label-text="FieldLabel" name="text" mode="Simple"></wv-field-text>
+					<wv-field-text value="@textFieldValue" label-text="FieldLabel" link="https://www.google.com" name="text" mode="Simple"></wv-field-text>
 				</div>
 			</div>
 		</div>
