@@ -10,2066 +10,2657 @@ namespace WebVella.TagHelpers.Models
 		NoIcon = 0,
 
 		#region << Bootstrap 5 >>
-		[Description("bs-alarm-fill")]
-		BsAlarmFill,
-		[Description("bs-alarm")]
-		BsAlarm,
-		[Description("bs-align-bottom")]
-		BsAlignBottom,
-		[Description("bs-align-center")]
-		BsAlignCenter,
-		[Description("bs-align-end")]
-		BsAlignEnd,
-		[Description("bs-align-middle")]
-		BsAlignMiddle,
-		[Description("bs-align-start")]
-		BsAlignStart,
-		[Description("bs-align-top")]
-		BsAlignTop,
-		[Description("bs-alt")]
-		BsAlt,
-		[Description("bs-app-indicator")]
-		BsAppIndicator,
-		[Description("bs-app")]
-		BsApp,
-		[Description("bs-archive-fill")]
-		BsArchiveFill,
-		[Description("bs-archive")]
-		BsArchive,
-		[Description("bs-arrow-90deg-down")]
-		BsArrow90degDown,
-		[Description("bs-arrow-90deg-left")]
-		BsArrow90degLeft,
-		[Description("bs-arrow-90deg-right")]
-		BsArrow90degRight,
-		[Description("bs-arrow-90deg-up")]
-		BsArrow90degUp,
-		[Description("bs-arrow-bar-down")]
-		BsArrowBarDown,
-		[Description("bs-arrow-bar-left")]
-		BsArrowBarLeft,
-		[Description("bs-arrow-bar-right")]
-		BsArrowBarRight,
-		[Description("bs-arrow-bar-up")]
-		BsArrowBarUp,
-		[Description("bs-arrow-clockwise")]
-		BsArrowClockwise,
-		[Description("bs-arrow-counterclockwise")]
-		BsArrowCounterclockwise,
-		[Description("bs-arrow-down-circle-fill")]
-		BsArrowDownCircleFill,
-		[Description("bs-arrow-down-circle")]
-		BsArrowDownCircle,
-		[Description("bs-arrow-down-left-circle-fill")]
-		BsArrowDownLeftCircleFill,
-		[Description("bs-arrow-down-left-circle")]
-		BsArrowDownLeftCircle,
-		[Description("bs-arrow-down-left-square-fill")]
-		BsArrowDownLeftSquareFill,
-		[Description("bs-arrow-down-left-square")]
-		BsArrowDownLeftSquare,
-		[Description("bs-arrow-down-left")]
-		BsArrowDownLeft,
-		[Description("bs-arrow-down-right-circle-fill")]
-		BsArrowDownRightCircleFill,
-		[Description("bs-arrow-down-right-circle")]
-		BsArrowDownRightCircle,
-		[Description("bs-arrow-down-right-square-fill")]
-		BsArrowDownRightSquareFill,
-		[Description("bs-arrow-down-right-square")]
-		BsArrowDownRightSquare,
-		[Description("bs-arrow-down-right")]
-		BsArrowDownRight,
-		[Description("bs-arrow-down-short")]
-		BsArrowDownShort,
-		[Description("bs-arrow-down-square-fill")]
-		BsArrowDownSquareFill,
-		[Description("bs-arrow-down-square")]
-		BsArrowDownSquare,
-		[Description("bs-arrow-down-up")]
-		BsArrowDownUp,
-		[Description("bs-arrow-down")]
-		BsArrowDown,
-		[Description("bs-arrow-left-circle-fill")]
-		BsArrowLeftCircleFill,
-		[Description("bs-arrow-left-circle")]
-		BsArrowLeftCircle,
-		[Description("bs-arrow-left-right")]
-		BsArrowLeftRight,
-		[Description("bs-arrow-left-short")]
-		BsArrowLeftShort,
-		[Description("bs-arrow-left-square-fill")]
-		BsArrowLeftSquareFill,
-		[Description("bs-arrow-left-square")]
-		BsArrowLeftSquare,
-		[Description("bs-arrow-left")]
-		BsArrowLeft,
-		[Description("bs-arrow-repeat")]
-		BsArrowRepeat,
-		[Description("bs-arrow-return-left")]
-		BsArrowReturnLeft,
-		[Description("bs-arrow-return-right")]
-		BsArrowReturnRight,
-		[Description("bs-arrow-right-circle-fill")]
-		BsArrowRightCircleFill,
-		[Description("bs-arrow-right-circle")]
-		BsArrowRightCircle,
-		[Description("bs-arrow-right-short")]
-		BsArrowRightShort,
-		[Description("bs-arrow-right-square-fill")]
-		BsArrowRightSquareFill,
-		[Description("bs-arrow-right-square")]
-		BsArrowRightSquare,
-		[Description("bs-arrow-right")]
-		BsArrowRight,
-		[Description("bs-arrow-up-circle-fill")]
-		BsArrowUpCircleFill,
-		[Description("bs-arrow-up-circle")]
-		BsArrowUpCircle,
-		[Description("bs-arrow-up-left-circle-fill")]
-		BsArrowUpLeftCircleFill,
-		[Description("bs-arrow-up-left-circle")]
-		BsArrowUpLeftCircle,
-		[Description("bs-arrow-up-left-square-fill")]
-		BsArrowUpLeftSquareFill,
-		[Description("bs-arrow-up-left-square")]
-		BsArrowUpLeftSquare,
-		[Description("bs-arrow-up-left")]
-		BsArrowUpLeft,
-		[Description("bs-arrow-up-right-circle-fill")]
-		BsArrowUpRightCircleFill,
-		[Description("bs-arrow-up-right-circle")]
-		BsArrowUpRightCircle,
-		[Description("bs-arrow-up-right-square-fill")]
-		BsArrowUpRightSquareFill,
-		[Description("bs-arrow-up-right-square")]
-		BsArrowUpRightSquare,
-		[Description("bs-arrow-up-right")]
-		BsArrowUpRight,
-		[Description("bs-arrow-up-short")]
-		BsArrowUpShort,
-		[Description("bs-arrow-up-square-fill")]
-		BsArrowUpSquareFill,
-		[Description("bs-arrow-up-square")]
-		BsArrowUpSquare,
-		[Description("bs-arrow-up")]
-		BsArrowUp,
-		[Description("bs-arrows-angle-contract")]
-		BsArrowsAngleContract,
-		[Description("bs-arrows-angle-expand")]
-		BsArrowsAngleExpand,
-		[Description("bs-arrows-collapse")]
-		BsArrowsCollapse,
-		[Description("bs-arrows-expand")]
-		BsArrowsExpand,
-		[Description("bs-arrows-fullscreen")]
-		BsArrowsFullscreen,
-		[Description("bs-arrows-move")]
-		BsArrowsMove,
-		[Description("bs-aspect-ratio-fill")]
-		BsAspectRatioFill,
-		[Description("bs-aspect-ratio")]
-		BsAspectRatio,
-		[Description("bs-asterisk")]
-		BsAsterisk,
-		[Description("bs-at")]
-		BsAt,
-		[Description("bs-award-fill")]
-		BsAwardFill,
-		[Description("bs-award")]
-		BsAward,
-		[Description("bs-back")]
-		BsBack,
-		[Description("bs-backspace-fill")]
-		BsBackspaceFill,
-		[Description("bs-backspace-reverse-fill")]
-		BsBackspaceReverseFill,
-		[Description("bs-backspace-reverse")]
-		BsBackspaceReverse,
-		[Description("bs-backspace")]
-		BsBackspace,
-		[Description("bs-badge-4k-fill")]
-		BsBadge4kFill,
-		[Description("bs-badge-4k")]
-		BsBadge4k,
-		[Description("bs-badge-8k-fill")]
-		BsBadge8kFill,
-		[Description("bs-badge-8k")]
-		BsBadge8k,
-		[Description("bs-badge-cc-fill")]
-		BsBadgeCcFill,
-		[Description("bs-badge-cc")]
-		BsBadgeCc,
-		[Description("bs-badge-hd-fill")]
-		BsBadgeHdFill,
-		[Description("bs-badge-hd")]
-		BsBadgeHd,
-		[Description("bs-badge-tm-fill")]
-		BsBadgeTmFill,
-		[Description("bs-badge-tm")]
-		BsBadgeTm,
-		[Description("bs-badge-vo-fill")]
-		BsBadgeVoFill,
-		[Description("bs-badge-vo")]
-		BsBadgeVo,
-		[Description("bs-bag-check")]
-		BsBagCheck,
-		[Description("bs-bag-dash")]
-		BsBagDash,
-		[Description("bs-bag-fill")]
-		BsBagFill,
-		[Description("bs-bag-plus")]
-		BsBagPlus,
-		[Description("bs-bag")]
-		BsBag,
-		[Description("bs-bar-chart-fill")]
-		BsBarChartFill,
-		[Description("bs-bar-chart-line-fill")]
-		BsBarChartLineFill,
-		[Description("bs-bar-chart-line")]
-		BsBarChartLine,
-		[Description("bs-bar-chart-steps")]
-		BsBarChartSteps,
-		[Description("bs-bar-chart")]
-		BsBarChart,
-		[Description("bs-basket-fill")]
-		BsBasketFill,
-		[Description("bs-basket")]
-		BsBasket,
-		[Description("bs-basket2-fill")]
-		BsBasket2Fill,
-		[Description("bs-basket2")]
-		BsBasket2,
-		[Description("bs-basket3-fill")]
-		BsBasket3Fill,
-		[Description("bs-basket3")]
-		BsBasket3,
-		[Description("bs-battery-charging")]
-		BsBatteryCharging,
-		[Description("bs-battery-full")]
-		BsBatteryFull,
-		[Description("bs-battery-half")]
-		BsBatteryHalf,
-		[Description("bs-battery")]
-		BsBattery,
-		[Description("bs-bell-fill")]
-		BsBellFill,
-		[Description("bs-bell")]
-		BsBell,
-		[Description("bs-bezier")]
-		BsBezier,
-		[Description("bs-bezier2")]
-		BsBezier2,
-		[Description("bs-bicycle")]
-		BsBicycle,
-		[Description("bs-binoculars-fill")]
-		BsBinocularsFill,
-		[Description("bs-binoculars")]
-		BsBinoculars,
-		[Description("bs-blockquote-left")]
-		BsBlockquoteLeft,
-		[Description("bs-blockquote-right")]
-		BsBlockquoteRight,
-		[Description("bs-book-fill")]
-		BsBookFill,
-		[Description("bs-book-half")]
-		BsBookHalf,
-		[Description("bs-book")]
-		BsBook,
-		[Description("bs-bookmark-check")]
-		BsBookmarkCheck,
-		[Description("bs-bookmark-dash")]
-		BsBookmarkDash,
-		[Description("bs-bookmark-fill")]
-		BsBookmarkFill,
-		[Description("bs-bookmark-plus")]
-		BsBookmarkPlus,
-		[Description("bs-bookmark")]
-		BsBookmark,
-		[Description("bs-bookmarks-fill")]
-		BsBookmarksFill,
-		[Description("bs-bookmarks")]
-		BsBookmarks,
-		[Description("bs-bookshelf")]
-		BsBookshelf,
-		[Description("bs-bootstrap-fill")]
-		BsBootstrapFill,
-		[Description("bs-bootstrap-reboot")]
-		BsBootstrapReboot,
-		[Description("bs-bootstrap")]
-		BsBootstrap,
-		[Description("bs-border-style")]
-		BsBorderStyle,
-		[Description("bs-border-width")]
-		BsBorderWidth,
-		[Description("bs-bounding-box-circles")]
-		BsBoundingBoxCircles,
-		[Description("bs-bounding-box")]
-		BsBoundingBox,
-		[Description("bs-box-arrow-down-left")]
-		BsBoxArrowDownLeft,
-		[Description("bs-box-arrow-down-right")]
-		BsBoxArrowDownRight,
-		[Description("bs-box-arrow-down")]
-		BsBoxArrowDown,
-		[Description("bs-box-arrow-in-down-left")]
-		BsBoxArrowInDownLeft,
-		[Description("bs-box-arrow-in-down-right")]
-		BsBoxArrowInDownRight,
-		[Description("bs-box-arrow-in-down")]
-		BsBoxArrowInDown,
-		[Description("bs-box-arrow-in-left")]
-		BsBoxArrowInLeft,
-		[Description("bs-box-arrow-in-right")]
-		BsBoxArrowInRight,
-		[Description("bs-box-arrow-in-up-left")]
-		BsBoxArrowInUpLeft,
-		[Description("bs-box-arrow-in-up-right")]
-		BsBoxArrowInUpRight,
-		[Description("bs-box-arrow-in-up")]
-		BsBoxArrowInUp,
-		[Description("bs-box-arrow-left")]
-		BsBoxArrowLeft,
-		[Description("bs-box-arrow-right")]
-		BsBoxArrowRight,
-		[Description("bs-box-arrow-up-left")]
-		BsBoxArrowUpLeft,
-		[Description("bs-box-arrow-up-right")]
-		BsBoxArrowUpRight,
-		[Description("bs-box-arrow-up")]
-		BsBoxArrowUp,
-		[Description("bs-box-seam")]
-		BsBoxSeam,
-		[Description("bs-box")]
-		BsBox,
-		[Description("bs-braces")]
-		BsBraces,
-		[Description("bs-bricks")]
-		BsBricks,
-		[Description("bs-briefcase-fill")]
-		BsBriefcaseFill,
-		[Description("bs-briefcase")]
-		BsBriefcase,
-		[Description("bs-brightness-alt-high-fill")]
-		BsBrightnessAltHighFill,
-		[Description("bs-brightness-alt-high")]
-		BsBrightnessAltHigh,
-		[Description("bs-brightness-alt-low-fill")]
-		BsBrightnessAltLowFill,
-		[Description("bs-brightness-alt-low")]
-		BsBrightnessAltLow,
-		[Description("bs-brightness-high-fill")]
-		BsBrightnessHighFill,
-		[Description("bs-brightness-high")]
-		BsBrightnessHigh,
-		[Description("bs-brightness-low-fill")]
-		BsBrightnessLowFill,
-		[Description("bs-brightness-low")]
-		BsBrightnessLow,
-		[Description("bs-broadcast-pin")]
-		BsBroadcastPin,
-		[Description("bs-broadcast")]
-		BsBroadcast,
-		[Description("bs-brush")]
-		BsBrush,
-		[Description("bs-bucket-fill")]
-		BsBucketFill,
-		[Description("bs-bucket")]
-		BsBucket,
-		[Description("bs-bug-fill")]
-		BsBugFill,
-		[Description("bs-bug")]
-		BsBug,
-		[Description("bs-building")]
-		BsBuilding,
-		[Description("bs-bullseye")]
-		BsBullseye,
-		[Description("bs-calculator-fill")]
-		BsCalculatorFill,
-		[Description("bs-calculator")]
-		BsCalculator,
-		[Description("bs-calendar-check-fill")]
-		BsCalendarCheckFill,
-		[Description("bs-calendar-check")]
-		BsCalendarCheck,
-		[Description("bs-calendar-date-fill")]
-		BsCalendarDateFill,
-		[Description("bs-calendar-date")]
-		BsCalendarDate,
-		[Description("bs-calendar-day-fill")]
-		BsCalendarDayFill,
-		[Description("bs-calendar-day")]
-		BsCalendarDay,
-		[Description("bs-calendar-event-fill")]
-		BsCalendarEventFill,
-		[Description("bs-calendar-event")]
-		BsCalendarEvent,
-		[Description("bs-calendar-fill")]
-		BsCalendarFill,
-		[Description("bs-calendar-minus-fill")]
-		BsCalendarMinusFill,
-		[Description("bs-calendar-minus")]
-		BsCalendarMinus,
-		[Description("bs-calendar-month-fill")]
-		BsCalendarMonthFill,
-		[Description("bs-calendar-month")]
-		BsCalendarMonth,
-		[Description("bs-calendar-plus-fill")]
-		BsCalendarPlusFill,
-		[Description("bs-calendar-plus")]
-		BsCalendarPlus,
-		[Description("bs-calendar-range-fill")]
-		BsCalendarRangeFill,
-		[Description("bs-calendar-range")]
-		BsCalendarRange,
-		[Description("bs-calendar-week-fill")]
-		BsCalendarWeekFill,
-		[Description("bs-calendar-week")]
-		BsCalendarWeek,
-		[Description("bs-calendar")]
-		BsCalendar,
-		[Description("bs-calendar2-check-fill")]
-		BsCalendar2CheckFill,
-		[Description("bs-calendar2-check")]
-		BsCalendar2Check,
-		[Description("bs-calendar2-date-fill")]
-		BsCalendar2DateFill,
-		[Description("bs-calendar2-date")]
-		BsCalendar2Date,
-		[Description("bs-calendar2-day-fill")]
-		BsCalendar2DayFill,
-		[Description("bs-calendar2-day")]
-		BsCalendar2Day,
-		[Description("bs-calendar2-event-fill")]
-		BsCalendar2EventFill,
-		[Description("bs-calendar2-event")]
-		BsCalendar2Event,
-		[Description("bs-calendar2-fill")]
-		BsCalendar2Fill,
-		[Description("bs-calendar2-minus-fill")]
-		BsCalendar2MinusFill,
-		[Description("bs-calendar2-minus")]
-		BsCalendar2Minus,
-		[Description("bs-calendar2-month-fill")]
-		BsCalendar2MonthFill,
-		[Description("bs-calendar2-month")]
-		BsCalendar2Month,
-		[Description("bs-calendar2-plus-fill")]
-		BsCalendar2PlusFill,
-		[Description("bs-calendar2-plus")]
-		BsCalendar2Plus,
-		[Description("bs-calendar2-range-fill")]
-		BsCalendar2RangeFill,
-		[Description("bs-calendar2-range")]
-		BsCalendar2Range,
-		[Description("bs-calendar2-week-fill")]
-		BsCalendar2WeekFill,
-		[Description("bs-calendar2-week")]
-		BsCalendar2Week,
-		[Description("bs-calendar2")]
-		BsCalendar2,
-		[Description("bs-calendar3-event-fill")]
-		BsCalendar3EventFill,
-		[Description("bs-calendar3-event")]
-		BsCalendar3Event,
-		[Description("bs-calendar3-fill")]
-		BsCalendar3Fill,
-		[Description("bs-calendar3-range-fill")]
-		BsCalendar3RangeFill,
-		[Description("bs-calendar3-range")]
-		BsCalendar3Range,
-		[Description("bs-calendar3-week-fill")]
-		BsCalendar3WeekFill,
-		[Description("bs-calendar3-week")]
-		BsCalendar3Week,
-		[Description("bs-calendar3")]
-		BsCalendar3,
-		[Description("bs-calendar4-event")]
-		BsCalendar4Event,
-		[Description("bs-calendar4-range")]
-		BsCalendar4Range,
-		[Description("bs-calendar4-week")]
-		BsCalendar4Week,
-		[Description("bs-calendar4")]
-		BsCalendar4,
-		[Description("bs-camera-fill")]
-		BsCameraFill,
-		[Description("bs-camera-reels-fill")]
-		BsCameraReelsFill,
-		[Description("bs-camera-reels")]
-		BsCameraReels,
-		[Description("bs-camera-video-fill")]
-		BsCameraVideoFill,
-		[Description("bs-camera-video-off-fill")]
-		BsCameraVideoOffFill,
-		[Description("bs-camera-video-off")]
-		BsCameraVideoOff,
-		[Description("bs-camera-video")]
-		BsCameraVideo,
-		[Description("bs-camera")]
-		BsCamera,
-		[Description("bs-camera2")]
-		BsCamera2,
-		[Description("bs-capslock-fill")]
-		BsCapslockFill,
-		[Description("bs-capslock")]
-		BsCapslock,
-		[Description("bs-card-checklist")]
-		BsCardChecklist,
-		[Description("bs-card-heading")]
-		BsCardHeading,
-		[Description("bs-card-image")]
-		BsCardImage,
-		[Description("bs-card-list")]
-		BsCardList,
-		[Description("bs-card-text")]
-		BsCardText,
-		[Description("bs-caret-down-fill")]
-		BsCaretDownFill,
-		[Description("bs-caret-down-square-fill")]
-		BsCaretDownSquareFill,
-		[Description("bs-caret-down-square")]
-		BsCaretDownSquare,
-		[Description("bs-caret-down")]
-		BsCaretDown,
-		[Description("bs-caret-left-fill")]
-		BsCaretLeftFill,
-		[Description("bs-caret-left-square-fill")]
-		BsCaretLeftSquareFill,
-		[Description("bs-caret-left-square")]
-		BsCaretLeftSquare,
-		[Description("bs-caret-left")]
-		BsCaretLeft,
-		[Description("bs-caret-right-fill")]
-		BsCaretRightFill,
-		[Description("bs-caret-right-square-fill")]
-		BsCaretRightSquareFill,
-		[Description("bs-caret-right-square")]
-		BsCaretRightSquare,
-		[Description("bs-caret-right")]
-		BsCaretRight,
-		[Description("bs-caret-up-fill")]
-		BsCaretUpFill,
-		[Description("bs-caret-up-square-fill")]
-		BsCaretUpSquareFill,
-		[Description("bs-caret-up-square")]
-		BsCaretUpSquare,
-		[Description("bs-caret-up")]
-		BsCaretUp,
-		[Description("bs-cart-check")]
-		BsCartCheck,
-		[Description("bs-cart-dash")]
-		BsCartDash,
-		[Description("bs-cart-fill")]
-		BsCartFill,
-		[Description("bs-cart-plus")]
-		BsCartPlus,
-		[Description("bs-cart")]
-		BsCart,
-		[Description("bs-cart2")]
-		BsCart2,
-		[Description("bs-cart3")]
-		BsCart3,
-		[Description("bs-cart4")]
-		BsCart4,
-		[Description("bs-cash-stack")]
-		BsCashStack,
-		[Description("bs-cash")]
-		BsCash,
-		[Description("bs-cast")]
-		BsCast,
-		[Description("bs-chat-dots-fill")]
-		BsChatDotsFill,
-		[Description("bs-chat-dots")]
-		BsChatDots,
-		[Description("bs-chat-fill")]
-		BsChatFill,
-		[Description("bs-chat-left-dots-fill")]
-		BsChatLeftDotsFill,
-		[Description("bs-chat-left-dots")]
-		BsChatLeftDots,
-		[Description("bs-chat-left-fill")]
-		BsChatLeftFill,
-		[Description("bs-chat-left-quote-fill")]
-		BsChatLeftQuoteFill,
-		[Description("bs-chat-left-quote")]
-		BsChatLeftQuote,
-		[Description("bs-chat-left-text-fill")]
-		BsChatLeftTextFill,
-		[Description("bs-chat-left-text")]
-		BsChatLeftText,
-		[Description("bs-chat-left")]
-		BsChatLeft,
-		[Description("bs-chat-quote-fill")]
-		BsChatQuoteFill,
-		[Description("bs-chat-quote")]
-		BsChatQuote,
-		[Description("bs-chat-right-dots-fill")]
-		BsChatRightDotsFill,
-		[Description("bs-chat-right-dots")]
-		BsChatRightDots,
-		[Description("bs-chat-right-fill")]
-		BsChatRightFill,
-		[Description("bs-chat-right-quote-fill")]
-		BsChatRightQuoteFill,
-		[Description("bs-chat-right-quote")]
-		BsChatRightQuote,
-		[Description("bs-chat-right-text-fill")]
-		BsChatRightTextFill,
-		[Description("bs-chat-right-text")]
-		BsChatRightText,
-		[Description("bs-chat-right")]
-		BsChatRight,
-		[Description("bs-chat-square-dots-fill")]
-		BsChatSquareDotsFill,
-		[Description("bs-chat-square-dots")]
-		BsChatSquareDots,
-		[Description("bs-chat-square-fill")]
-		BsChatSquareFill,
-		[Description("bs-chat-square-quote-fill")]
-		BsChatSquareQuoteFill,
-		[Description("bs-chat-square-quote")]
-		BsChatSquareQuote,
-		[Description("bs-chat-square-text-fill")]
-		BsChatSquareTextFill,
-		[Description("bs-chat-square-text")]
-		BsChatSquareText,
-		[Description("bs-chat-square")]
-		BsChatSquare,
-		[Description("bs-chat-text-fill")]
-		BsChatTextFill,
-		[Description("bs-chat-text")]
-		BsChatText,
-		[Description("bs-chat")]
-		BsChat,
-		[Description("bs-check-all")]
-		BsCheckAll,
-		[Description("bs-check-circle-fill")]
-		BsCheckCircleFill,
-		[Description("bs-check-circle")]
-		BsCheckCircle,
-		[Description("bs-check-square-fill")]
-		BsCheckSquareFill,
-		[Description("bs-check-square")]
-		BsCheckSquare,
-		[Description("bs-check")]
-		BsCheck,
-		[Description("bs-check2-all")]
-		BsCheck2All,
-		[Description("bs-check2-circle")]
-		BsCheck2Circle,
-		[Description("bs-check2-square")]
-		BsCheck2Square,
-		[Description("bs-check2")]
-		BsCheck2,
-		[Description("bs-chevron-bar-contract")]
-		BsChevronBarContract,
-		[Description("bs-chevron-bar-down")]
-		BsChevronBarDown,
-		[Description("bs-chevron-bar-expand")]
-		BsChevronBarExpand,
-		[Description("bs-chevron-bar-left")]
-		BsChevronBarLeft,
-		[Description("bs-chevron-bar-right")]
-		BsChevronBarRight,
-		[Description("bs-chevron-bar-up")]
-		BsChevronBarUp,
-		[Description("bs-chevron-compact-down")]
-		BsChevronCompactDown,
-		[Description("bs-chevron-compact-left")]
-		BsChevronCompactLeft,
-		[Description("bs-chevron-compact-right")]
-		BsChevronCompactRight,
-		[Description("bs-chevron-compact-up")]
-		BsChevronCompactUp,
-		[Description("bs-chevron-contract")]
-		BsChevronContract,
-		[Description("bs-chevron-double-down")]
-		BsChevronDoubleDown,
-		[Description("bs-chevron-double-left")]
-		BsChevronDoubleLeft,
-		[Description("bs-chevron-double-right")]
-		BsChevronDoubleRight,
-		[Description("bs-chevron-double-up")]
-		BsChevronDoubleUp,
-		[Description("bs-chevron-down")]
-		BsChevronDown,
-		[Description("bs-chevron-expand")]
-		BsChevronExpand,
-		[Description("bs-chevron-left")]
-		BsChevronLeft,
-		[Description("bs-chevron-right")]
-		BsChevronRight,
-		[Description("bs-chevron-up")]
-		BsChevronUp,
-		[Description("bs-circle-fill")]
-		BsCircleFill,
-		[Description("bs-circle-half")]
-		BsCircleHalf,
-		[Description("bs-circle-square")]
-		BsCircleSquare,
-		[Description("bs-circle")]
-		BsCircle,
-		[Description("bs-clipboard-check")]
-		BsClipboardCheck,
-		[Description("bs-clipboard-data")]
-		BsClipboardData,
-		[Description("bs-clipboard-minus")]
-		BsClipboardMinus,
-		[Description("bs-clipboard-plus")]
-		BsClipboardPlus,
-		[Description("bs-clipboard")]
-		BsClipboard,
-		[Description("bs-clock-fill")]
-		BsClockFill,
-		[Description("bs-clock-history")]
-		BsClockHistory,
-		[Description("bs-clock")]
-		BsClock,
-		[Description("bs-cloud-arrow-down-fill")]
-		BsCloudArrowDownFill,
-		[Description("bs-cloud-arrow-down")]
-		BsCloudArrowDown,
-		[Description("bs-cloud-arrow-up-fill")]
-		BsCloudArrowUpFill,
-		[Description("bs-cloud-arrow-up")]
-		BsCloudArrowUp,
-		[Description("bs-cloud-check-fill")]
-		BsCloudCheckFill,
-		[Description("bs-cloud-check")]
-		BsCloudCheck,
-		[Description("bs-cloud-download-fill")]
-		BsCloudDownloadFill,
-		[Description("bs-cloud-download")]
-		BsCloudDownload,
-		[Description("bs-cloud-fill")]
-		BsCloudFill,
-		[Description("bs-cloud-minus-fill")]
-		BsCloudMinusFill,
-		[Description("bs-cloud-minus")]
-		BsCloudMinus,
-		[Description("bs-cloud-plus-fill")]
-		BsCloudPlusFill,
-		[Description("bs-cloud-plus")]
-		BsCloudPlus,
-		[Description("bs-cloud-slash-fill")]
-		BsCloudSlashFill,
-		[Description("bs-cloud-slash")]
-		BsCloudSlash,
-		[Description("bs-cloud-upload-fill")]
-		BsCloudUploadFill,
-		[Description("bs-cloud-upload")]
-		BsCloudUpload,
-		[Description("bs-cloud")]
-		BsCloud,
-		[Description("bs-code-slash")]
-		BsCodeSlash,
-		[Description("bs-code-square")]
-		BsCodeSquare,
-		[Description("bs-code")]
-		BsCode,
-		[Description("bs-collection-fill")]
-		BsCollectionFill,
-		[Description("bs-collection-play-fill")]
-		BsCollectionPlayFill,
-		[Description("bs-collection-play")]
-		BsCollectionPlay,
-		[Description("bs-collection")]
-		BsCollection,
-		[Description("bs-columns-gap")]
-		BsColumnsGap,
-		[Description("bs-columns")]
-		BsColumns,
-		[Description("bs-command")]
-		BsCommand,
-		[Description("bs-compass")]
-		BsCompass,
-		[Description("bs-cone-striped")]
-		BsConeStriped,
-		[Description("bs-cone")]
-		BsCone,
-		[Description("bs-controller")]
-		BsController,
-		[Description("bs-cpu-fill")]
-		BsCpuFill,
-		[Description("bs-cpu")]
-		BsCpu,
-		[Description("bs-credit-card-2-back-fill")]
-		BsCreditCard2BackFill,
-		[Description("bs-credit-card-2-back")]
-		BsCreditCard2Back,
-		[Description("bs-credit-card-2-front-fill")]
-		BsCreditCard2FrontFill,
-		[Description("bs-credit-card-2-front")]
-		BsCreditCard2Front,
-		[Description("bs-credit-card-fill")]
-		BsCreditCardFill,
-		[Description("bs-credit-card")]
-		BsCreditCard,
-		[Description("bs-crop")]
-		BsCrop,
-		[Description("bs-cup-straw")]
-		BsCupStraw,
-		[Description("bs-cup")]
-		BsCup,
-		[Description("bs-cursor-fill")]
-		BsCursorFill,
-		[Description("bs-cursor-text")]
-		BsCursorText,
-		[Description("bs-cursor")]
-		BsCursor,
-		[Description("bs-dash-circle-fill")]
-		BsDashCircleFill,
-		[Description("bs-dash-circle")]
-		BsDashCircle,
-		[Description("bs-dash-square-fill")]
-		BsDashSquareFill,
-		[Description("bs-dash-square")]
-		BsDashSquare,
-		[Description("bs-dash")]
-		BsDash,
-		[Description("bs-diagram-2-fill")]
-		BsDiagram2Fill,
-		[Description("bs-diagram-2")]
-		BsDiagram2,
-		[Description("bs-diagram-3-fill")]
-		BsDiagram3Fill,
-		[Description("bs-diagram-3")]
-		BsDiagram3,
-		[Description("bs-diamond-fill")]
-		BsDiamondFill,
-		[Description("bs-diamond-half")]
-		BsDiamondHalf,
-		[Description("bs-diamond")]
-		BsDiamond,
-		[Description("bs-dice-1-fill")]
-		BsDice1Fill,
-		[Description("bs-dice-1")]
-		BsDice1,
-		[Description("bs-dice-2-fill")]
-		BsDice2Fill,
-		[Description("bs-dice-2")]
-		BsDice2,
-		[Description("bs-dice-3-fill")]
-		BsDice3Fill,
-		[Description("bs-dice-3")]
-		BsDice3,
-		[Description("bs-dice-4-fill")]
-		BsDice4Fill,
-		[Description("bs-dice-4")]
-		BsDice4,
-		[Description("bs-dice-5-fill")]
-		BsDice5Fill,
-		[Description("bs-dice-5")]
-		BsDice5,
-		[Description("bs-dice-6-fill")]
-		BsDice6Fill,
-		[Description("bs-dice-6")]
-		BsDice6,
-		[Description("bs-display-fill")]
-		BsDisplayFill,
-		[Description("bs-display")]
-		BsDisplay,
-		[Description("bs-distribute-horizontal")]
-		BsDistributeHorizontal,
-		[Description("bs-distribute-vertical")]
-		BsDistributeVertical,
-		[Description("bs-door-closed-fill")]
-		BsDoorClosedFill,
-		[Description("bs-door-closed")]
-		BsDoorClosed,
-		[Description("bs-door-open-fill")]
-		BsDoorOpenFill,
-		[Description("bs-door-open")]
-		BsDoorOpen,
-		[Description("bs-dot")]
-		BsDot,
-		[Description("bs-download")]
-		BsDownload,
-		[Description("bs-droplet-fill")]
-		BsDropletFill,
-		[Description("bs-droplet-half")]
-		BsDropletHalf,
-		[Description("bs-droplet")]
-		BsDroplet,
-		[Description("bs-earbuds")]
-		BsEarbuds,
-		[Description("bs-easel-fill")]
-		BsEaselFill,
-		[Description("bs-easel")]
-		BsEasel,
-		[Description("bs-egg-fill")]
-		BsEggFill,
-		[Description("bs-egg-fried")]
-		BsEggFried,
-		[Description("bs-egg")]
-		BsEgg,
-		[Description("bs-eject-fill")]
-		BsEjectFill,
-		[Description("bs-eject")]
-		BsEject,
-		[Description("bs-emoji-angry")]
-		BsEmojiAngry,
-		[Description("bs-emoji-dizzy")]
-		BsEmojiDizzy,
-		[Description("bs-emoji-expressionless")]
-		BsEmojiExpressionless,
-		[Description("bs-emoji-frown")]
-		BsEmojiFrown,
-		[Description("bs-emoji-laughing")]
-		BsEmojiLaughing,
-		[Description("bs-emoji-neutral")]
-		BsEmojiNeutral,
-		[Description("bs-emoji-smile-upside-down")]
-		BsEmojiSmileUpsideDown,
-		[Description("bs-emoji-smile")]
-		BsEmojiSmile,
-		[Description("bs-emoji-sunglasses")]
-		BsEmojiSunglasses,
-		[Description("bs-envelope-fill")]
-		BsEnvelopeFill,
-		[Description("bs-envelope-open-fill")]
-		BsEnvelopeOpenFill,
-		[Description("bs-envelope-open")]
-		BsEnvelopeOpen,
-		[Description("bs-envelope")]
-		BsEnvelope,
-		[Description("bs-exclamation-circle-fill")]
-		BsExclamationCircleFill,
-		[Description("bs-exclamation-circle")]
-		BsExclamationCircle,
-		[Description("bs-exclamation-diamond-fill")]
-		BsExclamationDiamondFill,
-		[Description("bs-exclamation-diamond")]
-		BsExclamationDiamond,
-		[Description("bs-exclamation-octagon-fill")]
-		BsExclamationOctagonFill,
-		[Description("bs-exclamation-octagon")]
-		BsExclamationOctagon,
-		[Description("bs-exclamation-square-fill")]
-		BsExclamationSquareFill,
-		[Description("bs-exclamation-square")]
-		BsExclamationSquare,
-		[Description("bs-exclamation-triangle-fill")]
-		BsExclamationTriangleFill,
-		[Description("bs-exclamation-triangle")]
-		BsExclamationTriangle,
-		[Description("bs-exclamation")]
-		BsExclamation,
-		[Description("bs-exclude")]
-		BsExclude,
-		[Description("bs-eye-fill")]
-		BsEyeFill,
-		[Description("bs-eye-slash-fill")]
-		BsEyeSlashFill,
-		[Description("bs-eye-slash")]
-		BsEyeSlash,
-		[Description("bs-eye")]
-		BsEye,
-		[Description("bs-eyeglasses")]
-		BsEyeglasses,
-		[Description("bs-file-arrow-down-fill")]
-		BsFileArrowDownFill,
-		[Description("bs-file-arrow-down")]
-		BsFileArrowDown,
-		[Description("bs-file-arrow-up-fill")]
-		BsFileArrowUpFill,
-		[Description("bs-file-arrow-up")]
-		BsFileArrowUp,
-		[Description("bs-file-binary-fill")]
-		BsFileBinaryFill,
-		[Description("bs-file-binary")]
-		BsFileBinary,
-		[Description("bs-file-break-fill")]
-		BsFileBreakFill,
-		[Description("bs-file-break")]
-		BsFileBreak,
-		[Description("bs-file-check-fill")]
-		BsFileCheckFill,
-		[Description("bs-file-check")]
-		BsFileCheck,
-		[Description("bs-file-code-fill")]
-		BsFileCodeFill,
-		[Description("bs-file-code")]
-		BsFileCode,
-		[Description("bs-file-diff-fill")]
-		BsFileDiffFill,
-		[Description("bs-file-diff")]
-		BsFileDiff,
-		[Description("bs-file-earmark-arrow-down")]
-		BsFileEarmarkArrowDown,
-		[Description("bs-file-earmark-arrow-up-fill")]
-		BsFileEarmarkArrowUpFill,
-		[Description("bs-file-earmark-arrow-up")]
-		BsFileEarmarkArrowUp,
-		[Description("bs-file-earmark-binary-fill")]
-		BsFileEarmarkBinaryFill,
-		[Description("bs-file-earmark-binary")]
-		BsFileEarmarkBinary,
-		[Description("bs-file-earmark-break-fill")]
-		BsFileEarmarkBreakFill,
-		[Description("bs-file-earmark-break")]
-		BsFileEarmarkBreak,
-		[Description("bs-file-earmark-check-fill")]
-		BsFileEarmarkCheckFill,
-		[Description("bs-file-earmark-check")]
-		BsFileEarmarkCheck,
-		[Description("bs-file-earmark-code-fill")]
-		BsFileEarmarkCodeFill,
-		[Description("bs-file-earmark-code")]
-		BsFileEarmarkCode,
-		[Description("bs-file-earmark-diff-fill")]
-		BsFileEarmarkDiffFill,
-		[Description("bs-file-earmark-diff")]
-		BsFileEarmarkDiff,
-		[Description("bs-file-earmark-fill")]
-		BsFileEarmarkFill,
-		[Description("bs-file-earmark-medical-fill")]
-		BsFileEarmarkMedicalFill,
-		[Description("bs-file-earmark-medical")]
-		BsFileEarmarkMedical,
-		[Description("bs-file-earmark-minus-fill")]
-		BsFileEarmarkMinusFill,
-		[Description("bs-file-earmark-minus")]
-		BsFileEarmarkMinus,
-		[Description("bs-file-earmark-plus-fill")]
-		BsFileEarmarkPlusFill,
-		[Description("bs-file-earmark-plus")]
-		BsFileEarmarkPlus,
-		[Description("bs-file-earmark-ruled-fill")]
-		BsFileEarmarkRuledFill,
-		[Description("bs-file-earmark-ruled")]
-		BsFileEarmarkRuled,
-		[Description("bs-file-earmark-spreadsheet-fill")]
-		BsFileEarmarkSpreadsheetFill,
-		[Description("bs-file-earmark-spreadsheet")]
-		BsFileEarmarkSpreadsheet,
-		[Description("bs-file-earmark-text-fill")]
-		BsFileEarmarkTextFill,
-		[Description("bs-file-earmark-text")]
-		BsFileEarmarkText,
-		[Description("bs-file-earmark-zip-fill")]
-		BsFileEarmarkZipFill,
-		[Description("bs-file-earmark-zip")]
-		BsFileEarmarkZip,
-		[Description("bs-file-earmark")]
-		BsFileEarmark,
-		[Description("bs-file-fill")]
-		BsFileFill,
-		[Description("bs-file-medical-fill")]
-		BsFileMedicalFill,
-		[Description("bs-file-medical")]
-		BsFileMedical,
-		[Description("bs-file-minus-fill")]
-		BsFileMinusFill,
-		[Description("bs-file-minus")]
-		BsFileMinus,
-		[Description("bs-file-music-fill")]
-		BsFileMusicFill,
-		[Description("bs-file-music")]
-		BsFileMusic,
-		[Description("bs-file-person-fill")]
-		BsFilePersonFill,
-		[Description("bs-file-person")]
-		BsFilePerson,
-		[Description("bs-file-plus-fill")]
-		BsFilePlusFill,
-		[Description("bs-file-plus")]
-		BsFilePlus,
-		[Description("bs-file-post-fill")]
-		BsFilePostFill,
-		[Description("bs-file-post")]
-		BsFilePost,
-		[Description("bs-file-richtext-fill")]
-		BsFileRichtextFill,
-		[Description("bs-file-richtext")]
-		BsFileRichtext,
-		[Description("bs-file-ruled-fill")]
-		BsFileRuledFill,
-		[Description("bs-file-ruled")]
-		BsFileRuled,
-		[Description("bs-file-spreadsheet-fill")]
-		BsFileSpreadsheetFill,
-		[Description("bs-file-spreadsheet")]
-		BsFileSpreadsheet,
-		[Description("bs-file-text-fill")]
-		BsFileTextFill,
-		[Description("bs-file-text")]
-		BsFileText,
-		[Description("bs-file-zip-fill")]
-		BsFileZipFill,
-		[Description("bs-file-zip")]
-		BsFileZip,
-		[Description("bs-file")]
-		BsFile,
-		[Description("bs-files-alt")]
-		BsFilesAlt,
-		[Description("bs-files")]
-		BsFiles,
-		[Description("bs-film")]
-		BsFilm,
-		[Description("bs-filter-circle-fill")]
-		BsFilterCircleFill,
-		[Description("bs-filter-circle")]
-		BsFilterCircle,
-		[Description("bs-filter-left")]
-		BsFilterLeft,
-		[Description("bs-filter-right")]
-		BsFilterRight,
-		[Description("bs-filter-square-fill")]
-		BsFilterSquareFill,
-		[Description("bs-filter-square")]
-		BsFilterSquare,
-		[Description("bs-filter")]
-		BsFilter,
-		[Description("bs-flag-fill")]
-		BsFlagFill,
-		[Description("bs-flag")]
-		BsFlag,
-		[Description("bs-flower1")]
-		BsFlower1,
-		[Description("bs-flower2")]
-		BsFlower2,
-		[Description("bs-flower3")]
-		BsFlower3,
-		[Description("bs-folder-check")]
-		BsFolderCheck,
-		[Description("bs-folder-fill")]
-		BsFolderFill,
-		[Description("bs-folder-minus")]
-		BsFolderMinus,
-		[Description("bs-folder-plus")]
-		BsFolderPlus,
-		[Description("bs-folder-symlink-fill")]
-		BsFolderSymlinkFill,
-		[Description("bs-folder-symlink")]
-		BsFolderSymlink,
-		[Description("bs-folder")]
-		BsFolder,
-		[Description("bs-folder2-open")]
-		BsFolder2Open,
-		[Description("bs-folder2")]
-		BsFolder2,
-		[Description("bs-fonts")]
-		BsFonts,
-		[Description("bs-forward-fill")]
-		BsForwardFill,
-		[Description("bs-forward")]
-		BsForward,
-		[Description("bs-front")]
-		BsFront,
-		[Description("bs-fullscreen-exit")]
-		BsFullscreenExit,
-		[Description("bs-fullscreen")]
-		BsFullscreen,
-		[Description("bs-funnel-fill")]
-		BsFunnelFill,
-		[Description("bs-funnel")]
-		BsFunnel,
-		[Description("bs-gear-fill")]
-		BsGearFill,
-		[Description("bs-gear-wide-connected")]
-		BsGearWideConnected,
-		[Description("bs-gear-wide")]
-		BsGearWide,
-		[Description("bs-gear")]
-		BsGear,
-		[Description("bs-gem")]
-		BsGem,
-		[Description("bs-geo-alt")]
-		BsGeoAlt,
-		[Description("bs-geo")]
-		BsGeo,
-		[Description("bs-gift-fill")]
-		BsGiftFill,
-		[Description("bs-gift")]
-		BsGift,
-		[Description("bs-globe")]
-		BsGlobe,
-		[Description("bs-globe2")]
-		BsGlobe2,
-		[Description("bs-graph-down")]
-		BsGraphDown,
-		[Description("bs-graph-up")]
-		BsGraphUp,
-		[Description("bs-grid-1x2-fill")]
-		BsGrid1x2Fill,
-		[Description("bs-grid-1x2")]
-		BsGrid1x2,
-		[Description("bs-grid-3x2-gap-fill")]
-		BsGrid3x2GapFill,
-		[Description("bs-grid-3x2-gap")]
-		BsGrid3x2Gap,
-		[Description("bs-grid-3x2")]
-		BsGrid3x2,
-		[Description("bs-grid-3x3-gap-fill")]
-		BsGrid3x3GapFill,
-		[Description("bs-grid-3x3-gap")]
-		BsGrid3x3Gap,
-		[Description("bs-grid-3x3")]
-		BsGrid3x3,
-		[Description("bs-grid-fill")]
-		BsGridFill,
-		[Description("bs-grid")]
-		BsGrid,
-		[Description("bs-grip-horizontal")]
-		BsGripHorizontal,
-		[Description("bs-grip-vertical")]
-		BsGripVertical,
-		[Description("bs-hammer")]
-		BsHammer,
-		[Description("bs-hand-index-thumb")]
-		BsHandIndexThumb,
-		[Description("bs-hand-index")]
-		BsHandIndex,
-		[Description("bs-hand-thumbs-down")]
-		BsHandThumbsDown,
-		[Description("bs-hand-thumbs-up")]
-		BsHandThumbsUp,
-		[Description("bs-handbag-fill")]
-		BsHandbagFill,
-		[Description("bs-handbag")]
-		BsHandbag,
-		[Description("bs-hash")]
-		BsHash,
-		[Description("bs-hdd-fill")]
-		BsHddFill,
-		[Description("bs-hdd-network-fill")]
-		BsHddNetworkFill,
-		[Description("bs-hdd-network")]
-		BsHddNetwork,
-		[Description("bs-hdd-rack-fill")]
-		BsHddRackFill,
-		[Description("bs-hdd-rack")]
-		BsHddRack,
-		[Description("bs-hdd-stack-fill")]
-		BsHddStackFill,
-		[Description("bs-hdd-stack")]
-		BsHddStack,
-		[Description("bs-hdd")]
-		BsHdd,
-		[Description("bs-headphones")]
-		BsHeadphones,
-		[Description("bs-headset")]
-		BsHeadset,
-		[Description("bs-heart-fill")]
-		BsHeartFill,
-		[Description("bs-heart-half")]
-		BsHeartHalf,
-		[Description("bs-heart")]
-		BsHeart,
-		[Description("bs-heptagon-fill")]
-		BsHeptagonFill,
-		[Description("bs-heptagon-half")]
-		BsHeptagonHalf,
-		[Description("bs-heptagon")]
-		BsHeptagon,
-		[Description("bs-hexagon-fill")]
-		BsHexagonFill,
-		[Description("bs-hexagon-half")]
-		BsHexagonHalf,
-		[Description("bs-hexagon")]
-		BsHexagon,
-		[Description("bs-hourglass-bottom")]
-		BsHourglassBottom,
-		[Description("bs-hourglass-split")]
-		BsHourglassSplit,
-		[Description("bs-hourglass-top")]
-		BsHourglassTop,
-		[Description("bs-hourglass")]
-		BsHourglass,
-		[Description("bs-house-door-fill")]
-		BsHouseDoorFill,
-		[Description("bs-house-door")]
-		BsHouseDoor,
-		[Description("bs-house-fill")]
-		BsHouseFill,
-		[Description("bs-house")]
-		BsHouse,
-		[Description("bs-hr")]
-		BsHr,
-		[Description("bs-image-alt")]
-		BsImageAlt,
-		[Description("bs-image-fill")]
-		BsImageFill,
-		[Description("bs-image")]
-		BsImage,
-		[Description("bs-images")]
-		BsImages,
-		[Description("bs-inbox-fill")]
-		BsInboxFill,
-		[Description("bs-inbox")]
-		BsInbox,
-		[Description("bs-inboxes-fill")]
-		BsInboxesFill,
-		[Description("bs-inboxes")]
-		BsInboxes,
-		[Description("bs-info-circle-fill")]
-		BsInfoCircleFill,
-		[Description("bs-info-circle")]
-		BsInfoCircle,
-		[Description("bs-info-square-fill")]
-		BsInfoSquareFill,
-		[Description("bs-info-square")]
-		BsInfoSquare,
-		[Description("bs-info")]
-		BsInfo,
-		[Description("bs-input-cursor-text")]
-		BsInputCursorText,
-		[Description("bs-input-cursor")]
-		BsInputCursor,
-		[Description("bs-intersect")]
-		BsIntersect,
-		[Description("bs-journal-album")]
-		BsJournalAlbum,
-		[Description("bs-journal-arrow-down")]
-		BsJournalArrowDown,
-		[Description("bs-journal-arrow-up")]
-		BsJournalArrowUp,
-		[Description("bs-journal-check")]
-		BsJournalCheck,
-		[Description("bs-journal-code")]
-		BsJournalCode,
-		[Description("bs-journal-medical")]
-		BsJournalMedical,
-		[Description("bs-journal-minus")]
-		BsJournalMinus,
-		[Description("bs-journal-plus")]
-		BsJournalPlus,
-		[Description("bs-journal-richtext")]
-		BsJournalRichtext,
-		[Description("bs-journal-text")]
-		BsJournalText,
-		[Description("bs-journal")]
-		BsJournal,
-		[Description("bs-journals")]
-		BsJournals,
-		[Description("bs-joystick")]
-		BsJoystick,
-		[Description("bs-justify-left")]
-		BsJustifyLeft,
-		[Description("bs-justify-right")]
-		BsJustifyRight,
-		[Description("bs-justify")]
-		BsJustify,
-		[Description("bs-kanban-fill")]
-		BsKanbanFill,
-		[Description("bs-kanban")]
-		BsKanban,
-		[Description("bs-key-fill")]
-		BsKeyFill,
-		[Description("bs-key")]
-		BsKey,
-		[Description("bs-keyboard-fill")]
-		BsKeyboardFill,
-		[Description("bs-keyboard")]
-		BsKeyboard,
-		[Description("bs-ladder")]
-		BsLadder,
-		[Description("bs-lamp-fill")]
-		BsLampFill,
-		[Description("bs-lamp")]
-		BsLamp,
-		[Description("bs-laptop-fill")]
-		BsLaptopFill,
-		[Description("bs-laptop")]
-		BsLaptop,
-		[Description("bs-layers-fill")]
-		BsLayersFill,
-		[Description("bs-layers-half")]
-		BsLayersHalf,
-		[Description("bs-layers")]
-		BsLayers,
-		[Description("bs-layout-sidebar-inset-reverse")]
-		BsLayoutSidebarInsetReverse,
-		[Description("bs-layout-sidebar-inset")]
-		BsLayoutSidebarInset,
-		[Description("bs-layout-sidebar-reverse")]
-		BsLayoutSidebarReverse,
-		[Description("bs-layout-sidebar")]
-		BsLayoutSidebar,
-		[Description("bs-layout-split")]
-		BsLayoutSplit,
-		[Description("bs-layout-text-sidebar-reverse")]
-		BsLayoutTextSidebarReverse,
-		[Description("bs-layout-text-sidebar")]
-		BsLayoutTextSidebar,
-		[Description("bs-layout-text-window-reverse")]
-		BsLayoutTextWindowReverse,
-		[Description("bs-layout-text-window")]
-		BsLayoutTextWindow,
-		[Description("bs-layout-three-columns")]
-		BsLayoutThreeColumns,
-		[Description("bs-layout-wtf")]
-		BsLayoutWtf,
-		[Description("bs-life-preserver")]
-		BsLifePreserver,
-		[Description("bs-lightning-fill")]
-		BsLightningFill,
-		[Description("bs-lightning")]
-		BsLightning,
-		[Description("bs-link-45deg")]
-		BsLink45deg,
-		[Description("bs-link")]
-		BsLink,
-		[Description("bs-list-check")]
-		BsListCheck,
-		[Description("bs-list-nested")]
-		BsListNested,
-		[Description("bs-list-ol")]
-		BsListOl,
-		[Description("bs-list-stars")]
-		BsListStars,
-		[Description("bs-list-task")]
-		BsListTask,
-		[Description("bs-list-ul")]
-		BsListUl,
-		[Description("bs-list")]
-		BsList,
-		[Description("bs-lock-fill")]
-		BsLockFill,
-		[Description("bs-lock")]
-		BsLock,
-		[Description("bs-mailbox")]
-		BsMailbox,
-		[Description("bs-mailbox2")]
-		BsMailbox2,
-		[Description("bs-map")]
-		BsMap,
-		[Description("bs-markdown-fill")]
-		BsMarkdownFill,
-		[Description("bs-markdown")]
-		BsMarkdown,
-		[Description("bs-menu-app-fill")]
-		BsMenuAppFill,
-		[Description("bs-menu-app")]
-		BsMenuApp,
-		[Description("bs-menu-button-fill")]
-		BsMenuButtonFill,
-		[Description("bs-menu-button-wide-fill")]
-		BsMenuButtonWideFill,
-		[Description("bs-menu-button-wide")]
-		BsMenuButtonWide,
-		[Description("bs-menu-button")]
-		BsMenuButton,
-		[Description("bs-menu-down")]
-		BsMenuDown,
-		[Description("bs-menu-up")]
-		BsMenuUp,
-		[Description("bs-mic-fill")]
-		BsMicFill,
-		[Description("bs-mic-mute-fill")]
-		BsMicMuteFill,
-		[Description("bs-mic-mute")]
-		BsMicMute,
-		[Description("bs-mic")]
-		BsMic,
-		[Description("bs-minecart-loaded")]
-		BsMinecartLoaded,
-		[Description("bs-minecart")]
-		BsMinecart,
-		[Description("bs-moon")]
-		BsMoon,
-		[Description("bs-mouse")]
-		BsMouse,
-		[Description("bs-mouse2")]
-		BsMouse2,
-		[Description("bs-mouse3")]
-		BsMouse3,
-		[Description("bs-music-note-beamed")]
-		BsMusicNoteBeamed,
-		[Description("bs-music-note-list")]
-		BsMusicNoteList,
-		[Description("bs-music-note")]
-		BsMusicNote,
-		[Description("bs-music-player-fill")]
-		BsMusicPlayerFill,
-		[Description("bs-music-player")]
-		BsMusicPlayer,
-		[Description("bs-newspaper")]
-		BsNewspaper,
-		[Description("bs-node-minus-fill")]
-		BsNodeMinusFill,
-		[Description("bs-node-minus")]
-		BsNodeMinus,
-		[Description("bs-node-plus-fill")]
-		BsNodePlusFill,
-		[Description("bs-node-plus")]
-		BsNodePlus,
-		[Description("bs-nut-fill")]
-		BsNutFill,
-		[Description("bs-nut")]
-		BsNut,
-		[Description("bs-octagon-fill")]
-		BsOctagonFill,
-		[Description("bs-octagon-half")]
-		BsOctagonHalf,
-		[Description("bs-octagon")]
-		BsOctagon,
-		[Description("bs-option")]
-		BsOption,
-		[Description("bs-outlet")]
-		BsOutlet,
-		[Description("bs-paperclip")]
-		BsPaperclip,
-		[Description("bs-paragraph")]
-		BsParagraph,
-		[Description("bs-patch-check-fll")]
-		BsPatchCheckFll,
-		[Description("bs-patch-check")]
-		BsPatchCheck,
-		[Description("bs-patch-exclamation-fll")]
-		BsPatchExclamationFll,
-		[Description("bs-patch-exclamation")]
-		BsPatchExclamation,
-		[Description("bs-patch-minus-fll")]
-		BsPatchMinusFll,
-		[Description("bs-patch-minus")]
-		BsPatchMinus,
-		[Description("bs-patch-plus-fll")]
-		BsPatchPlusFll,
-		[Description("bs-patch-plus")]
-		BsPatchPlus,
-		[Description("bs-patch-question-fll")]
-		BsPatchQuestionFll,
-		[Description("bs-patch-question")]
-		BsPatchQuestion,
-		[Description("bs-pause-fill")]
-		BsPauseFill,
-		[Description("bs-pause")]
-		BsPause,
-		[Description("bs-peace-fill")]
-		BsPeaceFill,
-		[Description("bs-peace")]
-		BsPeace,
-		[Description("bs-pen")]
-		BsPen,
-		[Description("bs-pencil-square")]
-		BsPencilSquare,
-		[Description("bs-pencil")]
-		BsPencil,
-		[Description("bs-pentagon-fill")]
-		BsPentagonFill,
-		[Description("bs-pentagon-half")]
-		BsPentagonHalf,
-		[Description("bs-pentagon")]
-		BsPentagon,
-		[Description("bs-people-fill")]
-		BsPeopleFill,
-		[Description("bs-people")]
-		BsPeople,
-		[Description("bs-percent")]
-		BsPercent,
-		[Description("bs-person-badge-fill")]
-		BsPersonBadgeFill,
-		[Description("bs-person-badge")]
-		BsPersonBadge,
-		[Description("bs-person-bounding-box")]
-		BsPersonBoundingBox,
-		[Description("bs-person-check-fill")]
-		BsPersonCheckFill,
-		[Description("bs-person-check")]
-		BsPersonCheck,
-		[Description("bs-person-circle")]
-		BsPersonCircle,
-		[Description("bs-person-dash-fill")]
-		BsPersonDashFill,
-		[Description("bs-person-dash")]
-		BsPersonDash,
-		[Description("bs-person-fill")]
-		BsPersonFill,
-		[Description("bs-person-lines-fill")]
-		BsPersonLinesFill,
-		[Description("bs-person-plus-fill")]
-		BsPersonPlusFill,
-		[Description("bs-person-plus")]
-		BsPersonPlus,
-		[Description("bs-person-square")]
-		BsPersonSquare,
-		[Description("bs-person")]
-		BsPerson,
-		[Description("bs-phone-fill")]
-		BsPhoneFill,
-		[Description("bs-phone-landscape-fill")]
-		BsPhoneLandscapeFill,
-		[Description("bs-phone-landscape")]
-		BsPhoneLandscape,
-		[Description("bs-phone")]
-		BsPhone,
-		[Description("bs-pie-chart-fill")]
-		BsPieChartFill,
-		[Description("bs-pie-chart")]
-		BsPieChart,
-		[Description("bs-pip-fill")]
-		BsPipFill,
-		[Description("bs-pip")]
-		BsPip,
-		[Description("bs-play-fill")]
-		BsPlayFill,
-		[Description("bs-play")]
-		BsPlay,
-		[Description("bs-plug")]
-		BsPlug,
-		[Description("bs-plus-circle-fill")]
-		BsPlusCircleFill,
-		[Description("bs-plus-circle")]
-		BsPlusCircle,
-		[Description("bs-plus-square-fill")]
-		BsPlusSquareFill,
-		[Description("bs-plus-square")]
-		BsPlusSquare,
-		[Description("bs-plus")]
-		BsPlus,
-		[Description("bs-power")]
-		BsPower,
-		[Description("bs-printer-fill")]
-		BsPrinterFill,
-		[Description("bs-printer")]
-		BsPrinter,
-		[Description("bs-puzzle-fill")]
-		BsPuzzleFill,
-		[Description("bs-puzzle")]
-		BsPuzzle,
-		[Description("bs-question-circle-fill")]
-		BsQuestionCircleFill,
-		[Description("bs-question-circle")]
-		BsQuestionCircle,
-		[Description("bs-question-diamond-fill")]
-		BsQuestionDiamondFill,
-		[Description("bs-question-diamond")]
-		BsQuestionDiamond,
-		[Description("bs-question-octagon-fill")]
-		BsQuestionOctagonFill,
-		[Description("bs-question-octagon")]
-		BsQuestionOctagon,
-		[Description("bs-question-square-fill")]
-		BsQuestionSquareFill,
-		[Description("bs-question-square")]
-		BsQuestionSquare,
-		[Description("bs-question")]
-		BsQuestion,
-		[Description("bs-receipt-cutoff")]
-		BsReceiptCutoff,
-		[Description("bs-receipt")]
-		BsReceipt,
-		[Description("bs-reception-0")]
-		BsReception0,
-		[Description("bs-reception-1")]
-		BsReception1,
-		[Description("bs-reception-2")]
-		BsReception2,
-		[Description("bs-reception-3")]
-		BsReception3,
-		[Description("bs-reception-4")]
-		BsReception4,
-		[Description("bs-reply-all-fill")]
-		BsReplyAllFill,
-		[Description("bs-reply-all")]
-		BsReplyAll,
-		[Description("bs-reply-fill")]
-		BsReplyFill,
-		[Description("bs-reply")]
-		BsReply,
-		[Description("bs-rss-fill")]
-		BsRssFill,
-		[Description("bs-rss")]
-		BsRss,
-		[Description("bs-screwdriver")]
-		BsScrewdriver,
-		[Description("bs-search")]
-		BsSearch,
-		[Description("bs-segmented-nav")]
-		BsSegmentedNav,
-		[Description("bs-server")]
-		BsServer,
-		[Description("bs-share-fill")]
-		BsShareFill,
-		[Description("bs-share")]
-		BsShare,
-		[Description("bs-shield-check")]
-		BsShieldCheck,
-		[Description("bs-shield-exclamation")]
-		BsShieldExclamation,
-		[Description("bs-shield-fill-check")]
-		BsShieldFillCheck,
-		[Description("bs-shield-fill-exclamation")]
-		BsShieldFillExclamation,
-		[Description("bs-shield-fill-minus")]
-		BsShieldFillMinus,
-		[Description("bs-shield-fill-plus")]
-		BsShieldFillPlus,
-		[Description("bs-shield-fill")]
-		BsShieldFill,
-		[Description("bs-shield-lock-fill")]
-		BsShieldLockFill,
-		[Description("bs-shield-lock")]
-		BsShieldLock,
-		[Description("bs-shield-minus")]
-		BsShieldMinus,
-		[Description("bs-shield-plus")]
-		BsShieldPlus,
-		[Description("bs-shield-shaded")]
-		BsShieldShaded,
-		[Description("bs-shield-slash-fill")]
-		BsShieldSlashFill,
-		[Description("bs-shield-slash")]
-		BsShieldSlash,
-		[Description("bs-shield")]
-		BsShield,
-		[Description("bs-shift-fill")]
-		BsShiftFill,
-		[Description("bs-shift")]
-		BsShift,
-		[Description("bs-shop-window")]
-		BsShopWindow,
-		[Description("bs-shop")]
-		BsShop,
-		[Description("bs-shuffle")]
-		BsShuffle,
-		[Description("bs-signpost-2-fill")]
-		BsSignpost2Fill,
-		[Description("bs-signpost-2")]
-		BsSignpost2,
-		[Description("bs-signpost-fill")]
-		BsSignpostFill,
-		[Description("bs-signpost-split-fill")]
-		BsSignpostSplitFill,
-		[Description("bs-signpost-split")]
-		BsSignpostSplit,
-		[Description("bs-signpost")]
-		BsSignpost,
-		[Description("bs-sim-fill")]
-		BsSimFill,
-		[Description("bs-sim")]
-		BsSim,
-		[Description("bs-skip-backward-fill")]
-		BsSkipBackwardFill,
-		[Description("bs-skip-backward")]
-		BsSkipBackward,
-		[Description("bs-skip-end-fill")]
-		BsSkipEndFill,
-		[Description("bs-skip-end")]
-		BsSkipEnd,
-		[Description("bs-skip-forward-fill")]
-		BsSkipForwardFill,
-		[Description("bs-skip-forward")]
-		BsSkipForward,
-		[Description("bs-skip-start-fill")]
-		BsSkipStartFill,
-		[Description("bs-skip-start")]
-		BsSkipStart,
-		[Description("bs-slash-circle-fill")]
-		BsSlashCircleFill,
-		[Description("bs-slash-circle")]
-		BsSlashCircle,
-		[Description("bs-slash-square-fill")]
-		BsSlashSquareFill,
-		[Description("bs-slash-square")]
-		BsSlashSquare,
-		[Description("bs-slash")]
-		BsSlash,
-		[Description("bs-sliders")]
-		BsSliders,
-		[Description("bs-smartwatch")]
-		BsSmartwatch,
-		[Description("bs-sort-alpha-down-alt")]
-		BsSortAlphaDownAlt,
-		[Description("bs-sort-alpha-down")]
-		BsSortAlphaDown,
-		[Description("bs-sort-alpha-up-alt")]
-		BsSortAlphaUpAlt,
-		[Description("bs-sort-alpha-up")]
-		BsSortAlphaUp,
-		[Description("bs-sort-down-alt")]
-		BsSortDownAlt,
-		[Description("bs-sort-down")]
-		BsSortDown,
-		[Description("bs-sort-numeric-down-alt")]
-		BsSortNumericDownAlt,
-		[Description("bs-sort-numeric-down")]
-		BsSortNumericDown,
-		[Description("bs-sort-numeric-up-alt")]
-		BsSortNumericUpAlt,
-		[Description("bs-sort-numeric-up")]
-		BsSortNumericUp,
-		[Description("bs-sort-up-alt")]
-		BsSortUpAlt,
-		[Description("bs-sort-up")]
-		BsSortUp,
-		[Description("bs-soundwave")]
-		BsSoundwave,
-		[Description("bs-speaker")]
-		BsSpeaker,
-		[Description("bs-spellcheck")]
-		BsSpellcheck,
-		[Description("bs-square-fill")]
-		BsSquareFill,
-		[Description("bs-square-half")]
-		BsSquareHalf,
-		[Description("bs-square")]
-		BsSquare,
-		[Description("bs-star-fill")]
-		BsStarFill,
-		[Description("bs-star-half")]
-		BsStarHalf,
-		[Description("bs-star")]
-		BsStar,
-		[Description("bs-stickies-fill")]
-		BsStickiesFill,
-		[Description("bs-stickies")]
-		BsStickies,
-		[Description("bs-sticky-fill")]
-		BsStickyFill,
-		[Description("bs-sticky")]
-		BsSticky,
-		[Description("bs-stop-fill")]
-		BsStopFill,
-		[Description("bs-stop")]
-		BsStop,
-		[Description("bs-stoplights-fill")]
-		BsStoplightsFill,
-		[Description("bs-stoplights")]
-		BsStoplights,
-		[Description("bs-stopwatch-fill")]
-		BsStopwatchFill,
-		[Description("bs-stopwatch")]
-		BsStopwatch,
-		[Description("bs-subtract")]
-		BsSubtract,
-		[Description("bs-suit-club-fill")]
-		BsSuitClubFill,
-		[Description("bs-suit-club")]
-		BsSuitClub,
-		[Description("bs-suit-diamond-fill")]
-		BsSuitDiamondFill,
-		[Description("bs-suit-diamond")]
-		BsSuitDiamond,
-		[Description("bs-suit-heart-fill")]
-		BsSuitHeartFill,
-		[Description("bs-suit-heart")]
-		BsSuitHeart,
-		[Description("bs-suit-spade-fill")]
-		BsSuitSpadeFill,
-		[Description("bs-suit-spade")]
-		BsSuitSpade,
-		[Description("bs-sun")]
-		BsSun,
-		[Description("bs-sunglasses")]
-		BsSunglasses,
-		[Description("bs-table")]
-		BsTable,
-		[Description("bs-tablet-fill")]
-		BsTabletFill,
-		[Description("bs-tablet-landscape-fill")]
-		BsTabletLandscapeFill,
-		[Description("bs-tablet-landscape")]
-		BsTabletLandscape,
-		[Description("bs-tablet")]
-		BsTablet,
-		[Description("bs-tag-fill")]
-		BsTagFill,
-		[Description("bs-tag")]
-		BsTag,
-		[Description("bs-tags-fill")]
-		BsTagsFill,
-		[Description("bs-tags")]
-		BsTags,
-		[Description("bs-telephone-fill")]
-		BsTelephoneFill,
-		[Description("bs-telephone-forward-fill")]
-		BsTelephoneForwardFill,
-		[Description("bs-telephone-forward")]
-		BsTelephoneForward,
-		[Description("bs-telephone-inbound-fill")]
-		BsTelephoneInboundFill,
-		[Description("bs-telephone-inbound")]
-		BsTelephoneInbound,
-		[Description("bs-telephone-minus-fill")]
-		BsTelephoneMinusFill,
-		[Description("bs-telephone-minus")]
-		BsTelephoneMinus,
-		[Description("bs-telephone-outbound-fill")]
-		BsTelephoneOutboundFill,
-		[Description("bs-telephone-outbound")]
-		BsTelephoneOutbound,
-		[Description("bs-telephone-plus-fill")]
-		BsTelephonePlusFill,
-		[Description("bs-telephone-plus")]
-		BsTelephonePlus,
-		[Description("bs-telephone-x-fill")]
-		BsTelephoneXFill,
-		[Description("bs-telephone-x")]
-		BsTelephoneX,
-		[Description("bs-telephone")]
-		BsTelephone,
-		[Description("bs-terminal-fill")]
-		BsTerminalFill,
-		[Description("bs-terminal")]
-		BsTerminal,
-		[Description("bs-text-center")]
-		BsTextCenter,
-		[Description("bs-text-indent-left")]
-		BsTextIndentLeft,
-		[Description("bs-text-indent-right")]
-		BsTextIndentRight,
-		[Description("bs-text-left")]
-		BsTextLeft,
-		[Description("bs-text-right")]
-		BsTextRight,
-		[Description("bs-textarea-resize")]
-		BsTextareaResize,
-		[Description("bs-textarea-t")]
-		BsTextareaT,
-		[Description("bs-textarea")]
-		BsTextarea,
-		[Description("bs-thermometer-half")]
-		BsThermometerHalf,
-		[Description("bs-thermometer")]
-		BsThermometer,
-		[Description("bs-three-dots-vertical")]
-		BsThreeDotsVertical,
-		[Description("bs-three-dots")]
-		BsThreeDots,
-		[Description("bs-toggle-off")]
-		BsToggleOff,
-		[Description("bs-toggle-on")]
-		BsToggleOn,
-		[Description("bs-toggle2-off")]
-		BsToggle2Off,
-		[Description("bs-toggle2-on")]
-		BsToggle2On,
-		[Description("bs-toggles")]
-		BsToggles,
-		[Description("bs-toggles2")]
-		BsToggles2,
-		[Description("bs-tools")]
-		BsTools,
-		[Description("bs-trash-fill")]
-		BsTrashFill,
-		[Description("bs-trash")]
-		BsTrash,
-		[Description("bs-trash2-fill")]
-		BsTrash2Fill,
-		[Description("bs-trash2")]
-		BsTrash2,
-		[Description("bs-tree-fill")]
-		BsTreeFill,
-		[Description("bs-tree")]
-		BsTree,
-		[Description("bs-triangle-fill")]
-		BsTriangleFill,
-		[Description("bs-triangle-half")]
-		BsTriangleHalf,
-		[Description("bs-triangle")]
-		BsTriangle,
-		[Description("bs-trophy")]
-		BsTrophy,
-		[Description("bs-truck-flatbed")]
-		BsTruckFlatbed,
-		[Description("bs-truck")]
-		BsTruck,
-		[Description("bs-tv-fill")]
-		BsTvFill,
-		[Description("bs-tv")]
-		BsTv,
-		[Description("bs-type-bold")]
-		BsTypeBold,
-		[Description("bs-type-h1")]
-		BsTypeH1,
-		[Description("bs-type-h2")]
-		BsTypeH2,
-		[Description("bs-type-h3")]
-		BsTypeH3,
-		[Description("bs-type-italic")]
-		BsTypeItalic,
-		[Description("bs-type-strikethrough")]
-		BsTypeStrikethrough,
-		[Description("bs-type-underline")]
-		BsTypeUnderline,
-		[Description("bs-type")]
-		BsType,
-		[Description("bs-ui-checks")]
-		BsUiChecks,
-		[Description("bs-ui-radios")]
-		BsUiRadios,
-		[Description("bs-union")]
-		BsUnion,
-		[Description("bs-unlock-fill")]
-		BsUnlockFill,
-		[Description("bs-unlock")]
-		BsUnlock,
-		[Description("bs-upc-scan")]
-		BsUpcScan,
-		[Description("bs-upc")]
-		BsUpc,
-		[Description("bs-upload")]
-		BsUpload,
-		[Description("bs-view-list")]
-		BsViewList,
-		[Description("bs-view-stacked")]
-		BsViewStacked,
-		[Description("bs-voicemail")]
-		BsVoicemail,
-		[Description("bs-volume-down-fill")]
-		BsVolumeDownFill,
-		[Description("bs-volume-down")]
-		BsVolumeDown,
-		[Description("bs-volume-mute-fill")]
-		BsVolumeMuteFill,
-		[Description("bs-volume-mute")]
-		BsVolumeMute,
-		[Description("bs-volume-off-fill")]
-		BsVolumeOffFill,
-		[Description("bs-volume-off")]
-		BsVolumeOff,
-		[Description("bs-volume-up-fill")]
-		BsVolumeUpFill,
-		[Description("bs-volume-up")]
-		BsVolumeUp,
-		[Description("bs-vr")]
-		BsVr,
-		[Description("bs-wallet-fill")]
-		BsWalletFill,
-		[Description("bs-wallet")]
-		BsWallet,
-		[Description("bs-wallet2")]
-		BsWallet2,
-		[Description("bs-watch")]
-		BsWatch,
-		[Description("bs-wifi-1")]
-		BsWifi1,
-		[Description("bs-wifi-2")]
-		BsWifi2,
-		[Description("bs-wifi-off")]
-		BsWifiOff,
-		[Description("bs-wifi")]
-		BsWifi,
-		[Description("bs-window")]
-		BsWindow,
-		[Description("bs-wrench")]
-		BsWrench,
-		[Description("bs-x-circle-fill")]
-		BsXCircleFill,
-		[Description("bs-x-circle")]
-		BsXCircle,
-		[Description("bs-x-diamond-fill")]
-		BsXDiamondFill,
-		[Description("bs-x-diamond")]
-		BsXDiamond,
-		[Description("bs-x-octagon-fill")]
-		BsXOctagonFill,
-		[Description("bs-x-octagon")]
-		BsXOctagon,
-		[Description("bs-x-square-fill")]
-		BsXSquareFill,
-		[Description("bs-x-square")]
-		BsXSquare,
-		[Description("bs-x")]
-		BsX,
-		[Description("bs-zoom-in")]
-		BsZoomIn,
-		[Description("bs-zoom-out")]
-		BsZoomOut,
+[Description("bs-alarm-fill")]
+BsAlarmFill,
+[Description("bs-alarm")]
+BsAlarm,
+[Description("bs-align-bottom")]
+BsAlignBottom,
+[Description("bs-align-center")]
+BsAlignCenter,
+[Description("bs-align-end")]
+BsAlignEnd,
+[Description("bs-align-middle")]
+BsAlignMiddle,
+[Description("bs-align-start")]
+BsAlignStart,
+[Description("bs-align-top")]
+BsAlignTop,
+[Description("bs-alt")]
+BsAlt,
+[Description("bs-app-indicator")]
+BsAppIndicator,
+[Description("bs-app")]
+BsApp,
+[Description("bs-archive-fill")]
+BsArchiveFill,
+[Description("bs-archive")]
+BsArchive,
+[Description("bs-arrow-90deg-down")]
+BsArrow90degDown,
+[Description("bs-arrow-90deg-left")]
+BsArrow90degLeft,
+[Description("bs-arrow-90deg-right")]
+BsArrow90degRight,
+[Description("bs-arrow-90deg-up")]
+BsArrow90degUp,
+[Description("bs-arrow-bar-down")]
+BsArrowBarDown,
+[Description("bs-arrow-bar-left")]
+BsArrowBarLeft,
+[Description("bs-arrow-bar-right")]
+BsArrowBarRight,
+[Description("bs-arrow-bar-up")]
+BsArrowBarUp,
+[Description("bs-arrow-clockwise")]
+BsArrowClockwise,
+[Description("bs-arrow-counterclockwise")]
+BsArrowCounterclockwise,
+[Description("bs-arrow-down-circle-fill")]
+BsArrowDownCircleFill,
+[Description("bs-arrow-down-circle")]
+BsArrowDownCircle,
+[Description("bs-arrow-down-left-circle-fill")]
+BsArrowDownLeftCircleFill,
+[Description("bs-arrow-down-left-circle")]
+BsArrowDownLeftCircle,
+[Description("bs-arrow-down-left-square-fill")]
+BsArrowDownLeftSquareFill,
+[Description("bs-arrow-down-left-square")]
+BsArrowDownLeftSquare,
+[Description("bs-arrow-down-left")]
+BsArrowDownLeft,
+[Description("bs-arrow-down-right-circle-fill")]
+BsArrowDownRightCircleFill,
+[Description("bs-arrow-down-right-circle")]
+BsArrowDownRightCircle,
+[Description("bs-arrow-down-right-square-fill")]
+BsArrowDownRightSquareFill,
+[Description("bs-arrow-down-right-square")]
+BsArrowDownRightSquare,
+[Description("bs-arrow-down-right")]
+BsArrowDownRight,
+[Description("bs-arrow-down-short")]
+BsArrowDownShort,
+[Description("bs-arrow-down-square-fill")]
+BsArrowDownSquareFill,
+[Description("bs-arrow-down-square")]
+BsArrowDownSquare,
+[Description("bs-arrow-down-up")]
+BsArrowDownUp,
+[Description("bs-arrow-down")]
+BsArrowDown,
+[Description("bs-arrow-left-circle-fill")]
+BsArrowLeftCircleFill,
+[Description("bs-arrow-left-circle")]
+BsArrowLeftCircle,
+[Description("bs-arrow-left-right")]
+BsArrowLeftRight,
+[Description("bs-arrow-left-short")]
+BsArrowLeftShort,
+[Description("bs-arrow-left-square-fill")]
+BsArrowLeftSquareFill,
+[Description("bs-arrow-left-square")]
+BsArrowLeftSquare,
+[Description("bs-arrow-left")]
+BsArrowLeft,
+[Description("bs-arrow-repeat")]
+BsArrowRepeat,
+[Description("bs-arrow-return-left")]
+BsArrowReturnLeft,
+[Description("bs-arrow-return-right")]
+BsArrowReturnRight,
+[Description("bs-arrow-right-circle-fill")]
+BsArrowRightCircleFill,
+[Description("bs-arrow-right-circle")]
+BsArrowRightCircle,
+[Description("bs-arrow-right-short")]
+BsArrowRightShort,
+[Description("bs-arrow-right-square-fill")]
+BsArrowRightSquareFill,
+[Description("bs-arrow-right-square")]
+BsArrowRightSquare,
+[Description("bs-arrow-right")]
+BsArrowRight,
+[Description("bs-arrow-up-circle-fill")]
+BsArrowUpCircleFill,
+[Description("bs-arrow-up-circle")]
+BsArrowUpCircle,
+[Description("bs-arrow-up-left-circle-fill")]
+BsArrowUpLeftCircleFill,
+[Description("bs-arrow-up-left-circle")]
+BsArrowUpLeftCircle,
+[Description("bs-arrow-up-left-square-fill")]
+BsArrowUpLeftSquareFill,
+[Description("bs-arrow-up-left-square")]
+BsArrowUpLeftSquare,
+[Description("bs-arrow-up-left")]
+BsArrowUpLeft,
+[Description("bs-arrow-up-right-circle-fill")]
+BsArrowUpRightCircleFill,
+[Description("bs-arrow-up-right-circle")]
+BsArrowUpRightCircle,
+[Description("bs-arrow-up-right-square-fill")]
+BsArrowUpRightSquareFill,
+[Description("bs-arrow-up-right-square")]
+BsArrowUpRightSquare,
+[Description("bs-arrow-up-right")]
+BsArrowUpRight,
+[Description("bs-arrow-up-short")]
+BsArrowUpShort,
+[Description("bs-arrow-up-square-fill")]
+BsArrowUpSquareFill,
+[Description("bs-arrow-up-square")]
+BsArrowUpSquare,
+[Description("bs-arrow-up")]
+BsArrowUp,
+[Description("bs-arrows-angle-contract")]
+BsArrowsAngleContract,
+[Description("bs-arrows-angle-expand")]
+BsArrowsAngleExpand,
+[Description("bs-arrows-collapse")]
+BsArrowsCollapse,
+[Description("bs-arrows-expand")]
+BsArrowsExpand,
+[Description("bs-arrows-fullscreen")]
+BsArrowsFullscreen,
+[Description("bs-arrows-move")]
+BsArrowsMove,
+[Description("bs-aspect-ratio-fill")]
+BsAspectRatioFill,
+[Description("bs-aspect-ratio")]
+BsAspectRatio,
+[Description("bs-asterisk")]
+BsAsterisk,
+[Description("bs-at")]
+BsAt,
+[Description("bs-award-fill")]
+BsAwardFill,
+[Description("bs-award")]
+BsAward,
+[Description("bs-back")]
+BsBack,
+[Description("bs-backspace-fill")]
+BsBackspaceFill,
+[Description("bs-backspace-reverse-fill")]
+BsBackspaceReverseFill,
+[Description("bs-backspace-reverse")]
+BsBackspaceReverse,
+[Description("bs-backspace")]
+BsBackspace,
+[Description("bs-badge-3d-fill")]
+BsBadge3dFill,
+[Description("bs-badge-3d")]
+BsBadge3d,
+[Description("bs-badge-4k-fill")]
+BsBadge4kFill,
+[Description("bs-badge-4k")]
+BsBadge4k,
+[Description("bs-badge-8k-fill")]
+BsBadge8kFill,
+[Description("bs-badge-8k")]
+BsBadge8k,
+[Description("bs-badge-ad-fill")]
+BsBadgeAdFill,
+[Description("bs-badge-ad")]
+BsBadgeAd,
+[Description("bs-badge-ar-fill")]
+BsBadgeArFill,
+[Description("bs-badge-ar")]
+BsBadgeAr,
+[Description("bs-badge-cc-fill")]
+BsBadgeCcFill,
+[Description("bs-badge-cc")]
+BsBadgeCc,
+[Description("bs-badge-hd-fill")]
+BsBadgeHdFill,
+[Description("bs-badge-hd")]
+BsBadgeHd,
+[Description("bs-badge-tm-fill")]
+BsBadgeTmFill,
+[Description("bs-badge-tm")]
+BsBadgeTm,
+[Description("bs-badge-vo-fill")]
+BsBadgeVoFill,
+[Description("bs-badge-vo")]
+BsBadgeVo,
+[Description("bs-badge-vr-fill")]
+BsBadgeVrFill,
+[Description("bs-badge-vr")]
+BsBadgeVr,
+[Description("bs-badge-wc-fill")]
+BsBadgeWcFill,
+[Description("bs-badge-wc")]
+BsBadgeWc,
+[Description("bs-bag-check-fill")]
+BsBagCheckFill,
+[Description("bs-bag-check")]
+BsBagCheck,
+[Description("bs-bag-dash-fill")]
+BsBagDashFill,
+[Description("bs-bag-dash")]
+BsBagDash,
+[Description("bs-bag-fill")]
+BsBagFill,
+[Description("bs-bag-plus-fill")]
+BsBagPlusFill,
+[Description("bs-bag-plus")]
+BsBagPlus,
+[Description("bs-bag-x-fill")]
+BsBagXFill,
+[Description("bs-bag-x")]
+BsBagX,
+[Description("bs-bag")]
+BsBag,
+[Description("bs-bar-chart-fill")]
+BsBarChartFill,
+[Description("bs-bar-chart-line-fill")]
+BsBarChartLineFill,
+[Description("bs-bar-chart-line")]
+BsBarChartLine,
+[Description("bs-bar-chart-steps")]
+BsBarChartSteps,
+[Description("bs-bar-chart")]
+BsBarChart,
+[Description("bs-basket-fill")]
+BsBasketFill,
+[Description("bs-basket")]
+BsBasket,
+[Description("bs-basket2-fill")]
+BsBasket2Fill,
+[Description("bs-basket2")]
+BsBasket2,
+[Description("bs-basket3-fill")]
+BsBasket3Fill,
+[Description("bs-basket3")]
+BsBasket3,
+[Description("bs-battery-charging")]
+BsBatteryCharging,
+[Description("bs-battery-full")]
+BsBatteryFull,
+[Description("bs-battery-half")]
+BsBatteryHalf,
+[Description("bs-battery")]
+BsBattery,
+[Description("bs-bell-fill")]
+BsBellFill,
+[Description("bs-bell")]
+BsBell,
+[Description("bs-bezier")]
+BsBezier,
+[Description("bs-bezier2")]
+BsBezier2,
+[Description("bs-bicycle")]
+BsBicycle,
+[Description("bs-binoculars-fill")]
+BsBinocularsFill,
+[Description("bs-binoculars")]
+BsBinoculars,
+[Description("bs-blockquote-left")]
+BsBlockquoteLeft,
+[Description("bs-blockquote-right")]
+BsBlockquoteRight,
+[Description("bs-book-fill")]
+BsBookFill,
+[Description("bs-book-half")]
+BsBookHalf,
+[Description("bs-book")]
+BsBook,
+[Description("bs-bookmark-check-fill")]
+BsBookmarkCheckFill,
+[Description("bs-bookmark-check")]
+BsBookmarkCheck,
+[Description("bs-bookmark-dash-fill")]
+BsBookmarkDashFill,
+[Description("bs-bookmark-dash")]
+BsBookmarkDash,
+[Description("bs-bookmark-fill")]
+BsBookmarkFill,
+[Description("bs-bookmark-heart-fill")]
+BsBookmarkHeartFill,
+[Description("bs-bookmark-heart")]
+BsBookmarkHeart,
+[Description("bs-bookmark-plus-fill")]
+BsBookmarkPlusFill,
+[Description("bs-bookmark-plus")]
+BsBookmarkPlus,
+[Description("bs-bookmark-star-fill")]
+BsBookmarkStarFill,
+[Description("bs-bookmark-star")]
+BsBookmarkStar,
+[Description("bs-bookmark-x-fill")]
+BsBookmarkXFill,
+[Description("bs-bookmark-x")]
+BsBookmarkX,
+[Description("bs-bookmark")]
+BsBookmark,
+[Description("bs-bookmarks-fill")]
+BsBookmarksFill,
+[Description("bs-bookmarks")]
+BsBookmarks,
+[Description("bs-bookshelf")]
+BsBookshelf,
+[Description("bs-bootstrap-fill")]
+BsBootstrapFill,
+[Description("bs-bootstrap-reboot")]
+BsBootstrapReboot,
+[Description("bs-bootstrap")]
+BsBootstrap,
+[Description("bs-border-all")]
+BsBorderAll,
+[Description("bs-border-bottom")]
+BsBorderBottom,
+[Description("bs-border-center")]
+BsBorderCenter,
+[Description("bs-border-inner")]
+BsBorderInner,
+[Description("bs-border-left")]
+BsBorderLeft,
+[Description("bs-border-middle")]
+BsBorderMiddle,
+[Description("bs-border-outer")]
+BsBorderOuter,
+[Description("bs-border-right")]
+BsBorderRight,
+[Description("bs-border-style")]
+BsBorderStyle,
+[Description("bs-border-top")]
+BsBorderTop,
+[Description("bs-border-width")]
+BsBorderWidth,
+[Description("bs-border")]
+BsBorder,
+[Description("bs-bounding-box-circles")]
+BsBoundingBoxCircles,
+[Description("bs-bounding-box")]
+BsBoundingBox,
+[Description("bs-box-arrow-down-left")]
+BsBoxArrowDownLeft,
+[Description("bs-box-arrow-down-right")]
+BsBoxArrowDownRight,
+[Description("bs-box-arrow-down")]
+BsBoxArrowDown,
+[Description("bs-box-arrow-in-down-left")]
+BsBoxArrowInDownLeft,
+[Description("bs-box-arrow-in-down-right")]
+BsBoxArrowInDownRight,
+[Description("bs-box-arrow-in-down")]
+BsBoxArrowInDown,
+[Description("bs-box-arrow-in-left")]
+BsBoxArrowInLeft,
+[Description("bs-box-arrow-in-right")]
+BsBoxArrowInRight,
+[Description("bs-box-arrow-in-up-left")]
+BsBoxArrowInUpLeft,
+[Description("bs-box-arrow-in-up-right")]
+BsBoxArrowInUpRight,
+[Description("bs-box-arrow-in-up")]
+BsBoxArrowInUp,
+[Description("bs-box-arrow-left")]
+BsBoxArrowLeft,
+[Description("bs-box-arrow-right")]
+BsBoxArrowRight,
+[Description("bs-box-arrow-up-left")]
+BsBoxArrowUpLeft,
+[Description("bs-box-arrow-up-right")]
+BsBoxArrowUpRight,
+[Description("bs-box-arrow-up")]
+BsBoxArrowUp,
+[Description("bs-box-seam")]
+BsBoxSeam,
+[Description("bs-box")]
+BsBox,
+[Description("bs-braces")]
+BsBraces,
+[Description("bs-bricks")]
+BsBricks,
+[Description("bs-briefcase-fill")]
+BsBriefcaseFill,
+[Description("bs-briefcase")]
+BsBriefcase,
+[Description("bs-brightness-alt-high-fill")]
+BsBrightnessAltHighFill,
+[Description("bs-brightness-alt-high")]
+BsBrightnessAltHigh,
+[Description("bs-brightness-alt-low-fill")]
+BsBrightnessAltLowFill,
+[Description("bs-brightness-alt-low")]
+BsBrightnessAltLow,
+[Description("bs-brightness-high-fill")]
+BsBrightnessHighFill,
+[Description("bs-brightness-high")]
+BsBrightnessHigh,
+[Description("bs-brightness-low-fill")]
+BsBrightnessLowFill,
+[Description("bs-brightness-low")]
+BsBrightnessLow,
+[Description("bs-broadcast-pin")]
+BsBroadcastPin,
+[Description("bs-broadcast")]
+BsBroadcast,
+[Description("bs-brush-fill")]
+BsBrushFill,
+[Description("bs-brush")]
+BsBrush,
+[Description("bs-bucket-fill")]
+BsBucketFill,
+[Description("bs-bucket")]
+BsBucket,
+[Description("bs-bug-fill")]
+BsBugFill,
+[Description("bs-bug")]
+BsBug,
+[Description("bs-building")]
+BsBuilding,
+[Description("bs-bullseye")]
+BsBullseye,
+[Description("bs-calculator-fill")]
+BsCalculatorFill,
+[Description("bs-calculator")]
+BsCalculator,
+[Description("bs-calendar-check-fill")]
+BsCalendarCheckFill,
+[Description("bs-calendar-check")]
+BsCalendarCheck,
+[Description("bs-calendar-date-fill")]
+BsCalendarDateFill,
+[Description("bs-calendar-date")]
+BsCalendarDate,
+[Description("bs-calendar-day-fill")]
+BsCalendarDayFill,
+[Description("bs-calendar-day")]
+BsCalendarDay,
+[Description("bs-calendar-event-fill")]
+BsCalendarEventFill,
+[Description("bs-calendar-event")]
+BsCalendarEvent,
+[Description("bs-calendar-fill")]
+BsCalendarFill,
+[Description("bs-calendar-minus-fill")]
+BsCalendarMinusFill,
+[Description("bs-calendar-minus")]
+BsCalendarMinus,
+[Description("bs-calendar-month-fill")]
+BsCalendarMonthFill,
+[Description("bs-calendar-month")]
+BsCalendarMonth,
+[Description("bs-calendar-plus-fill")]
+BsCalendarPlusFill,
+[Description("bs-calendar-plus")]
+BsCalendarPlus,
+[Description("bs-calendar-range-fill")]
+BsCalendarRangeFill,
+[Description("bs-calendar-range")]
+BsCalendarRange,
+[Description("bs-calendar-week-fill")]
+BsCalendarWeekFill,
+[Description("bs-calendar-week")]
+BsCalendarWeek,
+[Description("bs-calendar-x-fill")]
+BsCalendarXFill,
+[Description("bs-calendar-x")]
+BsCalendarX,
+[Description("bs-calendar")]
+BsCalendar,
+[Description("bs-calendar2-check-fill")]
+BsCalendar2CheckFill,
+[Description("bs-calendar2-check")]
+BsCalendar2Check,
+[Description("bs-calendar2-date-fill")]
+BsCalendar2DateFill,
+[Description("bs-calendar2-date")]
+BsCalendar2Date,
+[Description("bs-calendar2-day-fill")]
+BsCalendar2DayFill,
+[Description("bs-calendar2-day")]
+BsCalendar2Day,
+[Description("bs-calendar2-event-fill")]
+BsCalendar2EventFill,
+[Description("bs-calendar2-event")]
+BsCalendar2Event,
+[Description("bs-calendar2-fill")]
+BsCalendar2Fill,
+[Description("bs-calendar2-minus-fill")]
+BsCalendar2MinusFill,
+[Description("bs-calendar2-minus")]
+BsCalendar2Minus,
+[Description("bs-calendar2-month-fill")]
+BsCalendar2MonthFill,
+[Description("bs-calendar2-month")]
+BsCalendar2Month,
+[Description("bs-calendar2-plus-fill")]
+BsCalendar2PlusFill,
+[Description("bs-calendar2-plus")]
+BsCalendar2Plus,
+[Description("bs-calendar2-range-fill")]
+BsCalendar2RangeFill,
+[Description("bs-calendar2-range")]
+BsCalendar2Range,
+[Description("bs-calendar2-week-fill")]
+BsCalendar2WeekFill,
+[Description("bs-calendar2-week")]
+BsCalendar2Week,
+[Description("bs-calendar2-x-fill")]
+BsCalendar2XFill,
+[Description("bs-calendar2-x")]
+BsCalendar2X,
+[Description("bs-calendar2")]
+BsCalendar2,
+[Description("bs-calendar3-event-fill")]
+BsCalendar3EventFill,
+[Description("bs-calendar3-event")]
+BsCalendar3Event,
+[Description("bs-calendar3-fill")]
+BsCalendar3Fill,
+[Description("bs-calendar3-range-fill")]
+BsCalendar3RangeFill,
+[Description("bs-calendar3-range")]
+BsCalendar3Range,
+[Description("bs-calendar3-week-fill")]
+BsCalendar3WeekFill,
+[Description("bs-calendar3-week")]
+BsCalendar3Week,
+[Description("bs-calendar3")]
+BsCalendar3,
+[Description("bs-calendar4-event")]
+BsCalendar4Event,
+[Description("bs-calendar4-range")]
+BsCalendar4Range,
+[Description("bs-calendar4-week")]
+BsCalendar4Week,
+[Description("bs-calendar4")]
+BsCalendar4,
+[Description("bs-camera-fill")]
+BsCameraFill,
+[Description("bs-camera-reels-fill")]
+BsCameraReelsFill,
+[Description("bs-camera-reels")]
+BsCameraReels,
+[Description("bs-camera-video-fill")]
+BsCameraVideoFill,
+[Description("bs-camera-video-off-fill")]
+BsCameraVideoOffFill,
+[Description("bs-camera-video-off")]
+BsCameraVideoOff,
+[Description("bs-camera-video")]
+BsCameraVideo,
+[Description("bs-camera")]
+BsCamera,
+[Description("bs-camera2")]
+BsCamera2,
+[Description("bs-capslock-fill")]
+BsCapslockFill,
+[Description("bs-capslock")]
+BsCapslock,
+[Description("bs-card-checklist")]
+BsCardChecklist,
+[Description("bs-card-heading")]
+BsCardHeading,
+[Description("bs-card-image")]
+BsCardImage,
+[Description("bs-card-list")]
+BsCardList,
+[Description("bs-card-text")]
+BsCardText,
+[Description("bs-caret-down-fill")]
+BsCaretDownFill,
+[Description("bs-caret-down-square-fill")]
+BsCaretDownSquareFill,
+[Description("bs-caret-down-square")]
+BsCaretDownSquare,
+[Description("bs-caret-down")]
+BsCaretDown,
+[Description("bs-caret-left-fill")]
+BsCaretLeftFill,
+[Description("bs-caret-left-square-fill")]
+BsCaretLeftSquareFill,
+[Description("bs-caret-left-square")]
+BsCaretLeftSquare,
+[Description("bs-caret-left")]
+BsCaretLeft,
+[Description("bs-caret-right-fill")]
+BsCaretRightFill,
+[Description("bs-caret-right-square-fill")]
+BsCaretRightSquareFill,
+[Description("bs-caret-right-square")]
+BsCaretRightSquare,
+[Description("bs-caret-right")]
+BsCaretRight,
+[Description("bs-caret-up-fill")]
+BsCaretUpFill,
+[Description("bs-caret-up-square-fill")]
+BsCaretUpSquareFill,
+[Description("bs-caret-up-square")]
+BsCaretUpSquare,
+[Description("bs-caret-up")]
+BsCaretUp,
+[Description("bs-cart-check-fill")]
+BsCartCheckFill,
+[Description("bs-cart-check")]
+BsCartCheck,
+[Description("bs-cart-dash-fill")]
+BsCartDashFill,
+[Description("bs-cart-dash")]
+BsCartDash,
+[Description("bs-cart-fill")]
+BsCartFill,
+[Description("bs-cart-plus-fill")]
+BsCartPlusFill,
+[Description("bs-cart-plus")]
+BsCartPlus,
+[Description("bs-cart-x-fill")]
+BsCartXFill,
+[Description("bs-cart-x")]
+BsCartX,
+[Description("bs-cart")]
+BsCart,
+[Description("bs-cart2")]
+BsCart2,
+[Description("bs-cart3")]
+BsCart3,
+[Description("bs-cart4")]
+BsCart4,
+[Description("bs-cash-stack")]
+BsCashStack,
+[Description("bs-cash")]
+BsCash,
+[Description("bs-cast")]
+BsCast,
+[Description("bs-chat-dots-fill")]
+BsChatDotsFill,
+[Description("bs-chat-dots")]
+BsChatDots,
+[Description("bs-chat-fill")]
+BsChatFill,
+[Description("bs-chat-left-dots-fill")]
+BsChatLeftDotsFill,
+[Description("bs-chat-left-dots")]
+BsChatLeftDots,
+[Description("bs-chat-left-fill")]
+BsChatLeftFill,
+[Description("bs-chat-left-quote-fill")]
+BsChatLeftQuoteFill,
+[Description("bs-chat-left-quote")]
+BsChatLeftQuote,
+[Description("bs-chat-left-text-fill")]
+BsChatLeftTextFill,
+[Description("bs-chat-left-text")]
+BsChatLeftText,
+[Description("bs-chat-left")]
+BsChatLeft,
+[Description("bs-chat-quote-fill")]
+BsChatQuoteFill,
+[Description("bs-chat-quote")]
+BsChatQuote,
+[Description("bs-chat-right-dots-fill")]
+BsChatRightDotsFill,
+[Description("bs-chat-right-dots")]
+BsChatRightDots,
+[Description("bs-chat-right-fill")]
+BsChatRightFill,
+[Description("bs-chat-right-quote-fill")]
+BsChatRightQuoteFill,
+[Description("bs-chat-right-quote")]
+BsChatRightQuote,
+[Description("bs-chat-right-text-fill")]
+BsChatRightTextFill,
+[Description("bs-chat-right-text")]
+BsChatRightText,
+[Description("bs-chat-right")]
+BsChatRight,
+[Description("bs-chat-square-dots-fill")]
+BsChatSquareDotsFill,
+[Description("bs-chat-square-dots")]
+BsChatSquareDots,
+[Description("bs-chat-square-fill")]
+BsChatSquareFill,
+[Description("bs-chat-square-quote-fill")]
+BsChatSquareQuoteFill,
+[Description("bs-chat-square-quote")]
+BsChatSquareQuote,
+[Description("bs-chat-square-text-fill")]
+BsChatSquareTextFill,
+[Description("bs-chat-square-text")]
+BsChatSquareText,
+[Description("bs-chat-square")]
+BsChatSquare,
+[Description("bs-chat-text-fill")]
+BsChatTextFill,
+[Description("bs-chat-text")]
+BsChatText,
+[Description("bs-chat")]
+BsChat,
+[Description("bs-check-all")]
+BsCheckAll,
+[Description("bs-check-circle-fill")]
+BsCheckCircleFill,
+[Description("bs-check-circle")]
+BsCheckCircle,
+[Description("bs-check-square-fill")]
+BsCheckSquareFill,
+[Description("bs-check-square")]
+BsCheckSquare,
+[Description("bs-check")]
+BsCheck,
+[Description("bs-check2-all")]
+BsCheck2All,
+[Description("bs-check2-circle")]
+BsCheck2Circle,
+[Description("bs-check2-square")]
+BsCheck2Square,
+[Description("bs-check2")]
+BsCheck2,
+[Description("bs-chevron-bar-contract")]
+BsChevronBarContract,
+[Description("bs-chevron-bar-down")]
+BsChevronBarDown,
+[Description("bs-chevron-bar-expand")]
+BsChevronBarExpand,
+[Description("bs-chevron-bar-left")]
+BsChevronBarLeft,
+[Description("bs-chevron-bar-right")]
+BsChevronBarRight,
+[Description("bs-chevron-bar-up")]
+BsChevronBarUp,
+[Description("bs-chevron-compact-down")]
+BsChevronCompactDown,
+[Description("bs-chevron-compact-left")]
+BsChevronCompactLeft,
+[Description("bs-chevron-compact-right")]
+BsChevronCompactRight,
+[Description("bs-chevron-compact-up")]
+BsChevronCompactUp,
+[Description("bs-chevron-contract")]
+BsChevronContract,
+[Description("bs-chevron-double-down")]
+BsChevronDoubleDown,
+[Description("bs-chevron-double-left")]
+BsChevronDoubleLeft,
+[Description("bs-chevron-double-right")]
+BsChevronDoubleRight,
+[Description("bs-chevron-double-up")]
+BsChevronDoubleUp,
+[Description("bs-chevron-down")]
+BsChevronDown,
+[Description("bs-chevron-expand")]
+BsChevronExpand,
+[Description("bs-chevron-left")]
+BsChevronLeft,
+[Description("bs-chevron-right")]
+BsChevronRight,
+[Description("bs-chevron-up")]
+BsChevronUp,
+[Description("bs-circle-fill")]
+BsCircleFill,
+[Description("bs-circle-half")]
+BsCircleHalf,
+[Description("bs-circle-square")]
+BsCircleSquare,
+[Description("bs-circle")]
+BsCircle,
+[Description("bs-clipboard-check")]
+BsClipboardCheck,
+[Description("bs-clipboard-data")]
+BsClipboardData,
+[Description("bs-clipboard-minus")]
+BsClipboardMinus,
+[Description("bs-clipboard-plus")]
+BsClipboardPlus,
+[Description("bs-clipboard-x")]
+BsClipboardX,
+[Description("bs-clipboard")]
+BsClipboard,
+[Description("bs-clock-fill")]
+BsClockFill,
+[Description("bs-clock-history")]
+BsClockHistory,
+[Description("bs-clock")]
+BsClock,
+[Description("bs-cloud-arrow-down-fill")]
+BsCloudArrowDownFill,
+[Description("bs-cloud-arrow-down")]
+BsCloudArrowDown,
+[Description("bs-cloud-arrow-up-fill")]
+BsCloudArrowUpFill,
+[Description("bs-cloud-arrow-up")]
+BsCloudArrowUp,
+[Description("bs-cloud-check-fill")]
+BsCloudCheckFill,
+[Description("bs-cloud-check")]
+BsCloudCheck,
+[Description("bs-cloud-download-fill")]
+BsCloudDownloadFill,
+[Description("bs-cloud-download")]
+BsCloudDownload,
+[Description("bs-cloud-drizzle-fill")]
+BsCloudDrizzleFill,
+[Description("bs-cloud-drizzle")]
+BsCloudDrizzle,
+[Description("bs-cloud-fill")]
+BsCloudFill,
+[Description("bs-cloud-fog-fill")]
+BsCloudFogFill,
+[Description("bs-cloud-fog")]
+BsCloudFog,
+[Description("bs-cloud-fog2-fill")]
+BsCloudFog2Fill,
+[Description("bs-cloud-fog2")]
+BsCloudFog2,
+[Description("bs-cloud-hail-fill")]
+BsCloudHailFill,
+[Description("bs-cloud-hail")]
+BsCloudHail,
+[Description("bs-cloud-haze-1")]
+BsCloudHaze1,
+[Description("bs-cloud-haze-fill")]
+BsCloudHazeFill,
+[Description("bs-cloud-haze")]
+BsCloudHaze,
+[Description("bs-cloud-haze2-fill")]
+BsCloudHaze2Fill,
+[Description("bs-cloud-lightning-fill")]
+BsCloudLightningFill,
+[Description("bs-cloud-lightning-rain-fill")]
+BsCloudLightningRainFill,
+[Description("bs-cloud-lightning-rain")]
+BsCloudLightningRain,
+[Description("bs-cloud-lightning")]
+BsCloudLightning,
+[Description("bs-cloud-minus-fill")]
+BsCloudMinusFill,
+[Description("bs-cloud-minus")]
+BsCloudMinus,
+[Description("bs-cloud-moon-fill")]
+BsCloudMoonFill,
+[Description("bs-cloud-moon")]
+BsCloudMoon,
+[Description("bs-cloud-plus-fill")]
+BsCloudPlusFill,
+[Description("bs-cloud-plus")]
+BsCloudPlus,
+[Description("bs-cloud-rain-fill")]
+BsCloudRainFill,
+[Description("bs-cloud-rain-heavy-fill")]
+BsCloudRainHeavyFill,
+[Description("bs-cloud-rain-heavy")]
+BsCloudRainHeavy,
+[Description("bs-cloud-rain")]
+BsCloudRain,
+[Description("bs-cloud-slash-fill")]
+BsCloudSlashFill,
+[Description("bs-cloud-slash")]
+BsCloudSlash,
+[Description("bs-cloud-sleet-fill")]
+BsCloudSleetFill,
+[Description("bs-cloud-sleet")]
+BsCloudSleet,
+[Description("bs-cloud-snow-fill")]
+BsCloudSnowFill,
+[Description("bs-cloud-snow")]
+BsCloudSnow,
+[Description("bs-cloud-sun-fill")]
+BsCloudSunFill,
+[Description("bs-cloud-sun")]
+BsCloudSun,
+[Description("bs-cloud-upload-fill")]
+BsCloudUploadFill,
+[Description("bs-cloud-upload")]
+BsCloudUpload,
+[Description("bs-cloud")]
+BsCloud,
+[Description("bs-clouds-fill")]
+BsCloudsFill,
+[Description("bs-clouds")]
+BsClouds,
+[Description("bs-cloudy-fill")]
+BsCloudyFill,
+[Description("bs-cloudy")]
+BsCloudy,
+[Description("bs-code-slash")]
+BsCodeSlash,
+[Description("bs-code-square")]
+BsCodeSquare,
+[Description("bs-code")]
+BsCode,
+[Description("bs-collection-fill")]
+BsCollectionFill,
+[Description("bs-collection-play-fill")]
+BsCollectionPlayFill,
+[Description("bs-collection-play")]
+BsCollectionPlay,
+[Description("bs-collection")]
+BsCollection,
+[Description("bs-columns-gap")]
+BsColumnsGap,
+[Description("bs-columns")]
+BsColumns,
+[Description("bs-command")]
+BsCommand,
+[Description("bs-compass-fill")]
+BsCompassFill,
+[Description("bs-compass")]
+BsCompass,
+[Description("bs-cone-striped")]
+BsConeStriped,
+[Description("bs-cone")]
+BsCone,
+[Description("bs-controller")]
+BsController,
+[Description("bs-cpu-fill")]
+BsCpuFill,
+[Description("bs-cpu")]
+BsCpu,
+[Description("bs-credit-card-2-back-fill")]
+BsCreditCard2BackFill,
+[Description("bs-credit-card-2-back")]
+BsCreditCard2Back,
+[Description("bs-credit-card-2-front-fill")]
+BsCreditCard2FrontFill,
+[Description("bs-credit-card-2-front")]
+BsCreditCard2Front,
+[Description("bs-credit-card-fill")]
+BsCreditCardFill,
+[Description("bs-credit-card")]
+BsCreditCard,
+[Description("bs-crop")]
+BsCrop,
+[Description("bs-cup-fill")]
+BsCupFill,
+[Description("bs-cup-straw")]
+BsCupStraw,
+[Description("bs-cup")]
+BsCup,
+[Description("bs-cursor-fill")]
+BsCursorFill,
+[Description("bs-cursor-text")]
+BsCursorText,
+[Description("bs-cursor")]
+BsCursor,
+[Description("bs-dash-circle-dotted")]
+BsDashCircleDotted,
+[Description("bs-dash-circle-fill")]
+BsDashCircleFill,
+[Description("bs-dash-circle")]
+BsDashCircle,
+[Description("bs-dash-square-dotted")]
+BsDashSquareDotted,
+[Description("bs-dash-square-fill")]
+BsDashSquareFill,
+[Description("bs-dash-square")]
+BsDashSquare,
+[Description("bs-dash")]
+BsDash,
+[Description("bs-diagram-2-fill")]
+BsDiagram2Fill,
+[Description("bs-diagram-2")]
+BsDiagram2,
+[Description("bs-diagram-3-fill")]
+BsDiagram3Fill,
+[Description("bs-diagram-3")]
+BsDiagram3,
+[Description("bs-diamond-fill")]
+BsDiamondFill,
+[Description("bs-diamond-half")]
+BsDiamondHalf,
+[Description("bs-diamond")]
+BsDiamond,
+[Description("bs-dice-1-fill")]
+BsDice1Fill,
+[Description("bs-dice-1")]
+BsDice1,
+[Description("bs-dice-2-fill")]
+BsDice2Fill,
+[Description("bs-dice-2")]
+BsDice2,
+[Description("bs-dice-3-fill")]
+BsDice3Fill,
+[Description("bs-dice-3")]
+BsDice3,
+[Description("bs-dice-4-fill")]
+BsDice4Fill,
+[Description("bs-dice-4")]
+BsDice4,
+[Description("bs-dice-5-fill")]
+BsDice5Fill,
+[Description("bs-dice-5")]
+BsDice5,
+[Description("bs-dice-6-fill")]
+BsDice6Fill,
+[Description("bs-dice-6")]
+BsDice6,
+[Description("bs-disc-fill")]
+BsDiscFill,
+[Description("bs-disc")]
+BsDisc,
+[Description("bs-discord")]
+BsDiscord,
+[Description("bs-display-fill")]
+BsDisplayFill,
+[Description("bs-display")]
+BsDisplay,
+[Description("bs-distribute-horizontal")]
+BsDistributeHorizontal,
+[Description("bs-distribute-vertical")]
+BsDistributeVertical,
+[Description("bs-door-closed-fill")]
+BsDoorClosedFill,
+[Description("bs-door-closed")]
+BsDoorClosed,
+[Description("bs-door-open-fill")]
+BsDoorOpenFill,
+[Description("bs-door-open")]
+BsDoorOpen,
+[Description("bs-dot")]
+BsDot,
+[Description("bs-download")]
+BsDownload,
+[Description("bs-droplet-fill")]
+BsDropletFill,
+[Description("bs-droplet-half")]
+BsDropletHalf,
+[Description("bs-droplet")]
+BsDroplet,
+[Description("bs-earbuds")]
+BsEarbuds,
+[Description("bs-easel-fill")]
+BsEaselFill,
+[Description("bs-easel")]
+BsEasel,
+[Description("bs-egg-fill")]
+BsEggFill,
+[Description("bs-egg-fried")]
+BsEggFried,
+[Description("bs-egg")]
+BsEgg,
+[Description("bs-eject-fill")]
+BsEjectFill,
+[Description("bs-eject")]
+BsEject,
+[Description("bs-emoji-angry-fill")]
+BsEmojiAngryFill,
+[Description("bs-emoji-angry")]
+BsEmojiAngry,
+[Description("bs-emoji-dizzy-fill")]
+BsEmojiDizzyFill,
+[Description("bs-emoji-dizzy")]
+BsEmojiDizzy,
+[Description("bs-emoji-expressionless-fill")]
+BsEmojiExpressionlessFill,
+[Description("bs-emoji-expressionless")]
+BsEmojiExpressionless,
+[Description("bs-emoji-frown-fill")]
+BsEmojiFrownFill,
+[Description("bs-emoji-frown")]
+BsEmojiFrown,
+[Description("bs-emoji-heart-eyes-fill")]
+BsEmojiHeartEyesFill,
+[Description("bs-emoji-heart-eyes")]
+BsEmojiHeartEyes,
+[Description("bs-emoji-laughing-fill")]
+BsEmojiLaughingFill,
+[Description("bs-emoji-laughing")]
+BsEmojiLaughing,
+[Description("bs-emoji-neutral-fill")]
+BsEmojiNeutralFill,
+[Description("bs-emoji-neutral")]
+BsEmojiNeutral,
+[Description("bs-emoji-smile-fill")]
+BsEmojiSmileFill,
+[Description("bs-emoji-smile-upside-down-fill")]
+BsEmojiSmileUpsideDownFill,
+[Description("bs-emoji-smile-upside-down")]
+BsEmojiSmileUpsideDown,
+[Description("bs-emoji-smile")]
+BsEmojiSmile,
+[Description("bs-emoji-sunglasses-fill")]
+BsEmojiSunglassesFill,
+[Description("bs-emoji-sunglasses")]
+BsEmojiSunglasses,
+[Description("bs-emoji-wink-fill")]
+BsEmojiWinkFill,
+[Description("bs-emoji-wink")]
+BsEmojiWink,
+[Description("bs-envelope-fill")]
+BsEnvelopeFill,
+[Description("bs-envelope-open-fill")]
+BsEnvelopeOpenFill,
+[Description("bs-envelope-open")]
+BsEnvelopeOpen,
+[Description("bs-envelope")]
+BsEnvelope,
+[Description("bs-eraser-fill")]
+BsEraserFill,
+[Description("bs-eraser")]
+BsEraser,
+[Description("bs-exclamation-circle-fill")]
+BsExclamationCircleFill,
+[Description("bs-exclamation-circle")]
+BsExclamationCircle,
+[Description("bs-exclamation-diamond-fill")]
+BsExclamationDiamondFill,
+[Description("bs-exclamation-diamond")]
+BsExclamationDiamond,
+[Description("bs-exclamation-octagon-fill")]
+BsExclamationOctagonFill,
+[Description("bs-exclamation-octagon")]
+BsExclamationOctagon,
+[Description("bs-exclamation-square-fill")]
+BsExclamationSquareFill,
+[Description("bs-exclamation-square")]
+BsExclamationSquare,
+[Description("bs-exclamation-triangle-fill")]
+BsExclamationTriangleFill,
+[Description("bs-exclamation-triangle")]
+BsExclamationTriangle,
+[Description("bs-exclamation")]
+BsExclamation,
+[Description("bs-exclude")]
+BsExclude,
+[Description("bs-eye-fill")]
+BsEyeFill,
+[Description("bs-eye-slash-fill")]
+BsEyeSlashFill,
+[Description("bs-eye-slash")]
+BsEyeSlash,
+[Description("bs-eye")]
+BsEye,
+[Description("bs-eyedropper")]
+BsEyedropper,
+[Description("bs-eyeglasses")]
+BsEyeglasses,
+[Description("bs-facebook")]
+BsFacebook,
+[Description("bs-file-arrow-down-fill")]
+BsFileArrowDownFill,
+[Description("bs-file-arrow-down")]
+BsFileArrowDown,
+[Description("bs-file-arrow-up-fill")]
+BsFileArrowUpFill,
+[Description("bs-file-arrow-up")]
+BsFileArrowUp,
+[Description("bs-file-bar-graph-fill")]
+BsFileBarGraphFill,
+[Description("bs-file-bar-graph")]
+BsFileBarGraph,
+[Description("bs-file-binary-fill")]
+BsFileBinaryFill,
+[Description("bs-file-binary")]
+BsFileBinary,
+[Description("bs-file-break-fill")]
+BsFileBreakFill,
+[Description("bs-file-break")]
+BsFileBreak,
+[Description("bs-file-check-fill")]
+BsFileCheckFill,
+[Description("bs-file-check")]
+BsFileCheck,
+[Description("bs-file-code-fill")]
+BsFileCodeFill,
+[Description("bs-file-code")]
+BsFileCode,
+[Description("bs-file-diff-fill")]
+BsFileDiffFill,
+[Description("bs-file-diff")]
+BsFileDiff,
+[Description("bs-file-earmark-arrow-down-fill")]
+BsFileEarmarkArrowDownFill,
+[Description("bs-file-earmark-arrow-down")]
+BsFileEarmarkArrowDown,
+[Description("bs-file-earmark-arrow-up-fill")]
+BsFileEarmarkArrowUpFill,
+[Description("bs-file-earmark-arrow-up")]
+BsFileEarmarkArrowUp,
+[Description("bs-file-earmark-bar-graph-fill")]
+BsFileEarmarkBarGraphFill,
+[Description("bs-file-earmark-bar-graph")]
+BsFileEarmarkBarGraph,
+[Description("bs-file-earmark-binary-fill")]
+BsFileEarmarkBinaryFill,
+[Description("bs-file-earmark-binary")]
+BsFileEarmarkBinary,
+[Description("bs-file-earmark-break-fill")]
+BsFileEarmarkBreakFill,
+[Description("bs-file-earmark-break")]
+BsFileEarmarkBreak,
+[Description("bs-file-earmark-check-fill")]
+BsFileEarmarkCheckFill,
+[Description("bs-file-earmark-check")]
+BsFileEarmarkCheck,
+[Description("bs-file-earmark-code-fill")]
+BsFileEarmarkCodeFill,
+[Description("bs-file-earmark-code")]
+BsFileEarmarkCode,
+[Description("bs-file-earmark-diff-fill")]
+BsFileEarmarkDiffFill,
+[Description("bs-file-earmark-diff")]
+BsFileEarmarkDiff,
+[Description("bs-file-earmark-easel-fill")]
+BsFileEarmarkEaselFill,
+[Description("bs-file-earmark-easel")]
+BsFileEarmarkEasel,
+[Description("bs-file-earmark-excel-fill")]
+BsFileEarmarkExcelFill,
+[Description("bs-file-earmark-excel")]
+BsFileEarmarkExcel,
+[Description("bs-file-earmark-fill")]
+BsFileEarmarkFill,
+[Description("bs-file-earmark-font-fill")]
+BsFileEarmarkFontFill,
+[Description("bs-file-earmark-font")]
+BsFileEarmarkFont,
+[Description("bs-file-earmark-image-fill")]
+BsFileEarmarkImageFill,
+[Description("bs-file-earmark-image")]
+BsFileEarmarkImage,
+[Description("bs-file-earmark-lock-fill")]
+BsFileEarmarkLockFill,
+[Description("bs-file-earmark-lock")]
+BsFileEarmarkLock,
+[Description("bs-file-earmark-lock2-fill")]
+BsFileEarmarkLock2Fill,
+[Description("bs-file-earmark-lock2")]
+BsFileEarmarkLock2,
+[Description("bs-file-earmark-medical-fill")]
+BsFileEarmarkMedicalFill,
+[Description("bs-file-earmark-medical")]
+BsFileEarmarkMedical,
+[Description("bs-file-earmark-minus-fill")]
+BsFileEarmarkMinusFill,
+[Description("bs-file-earmark-minus")]
+BsFileEarmarkMinus,
+[Description("bs-file-earmark-music-fill")]
+BsFileEarmarkMusicFill,
+[Description("bs-file-earmark-music")]
+BsFileEarmarkMusic,
+[Description("bs-file-earmark-person-fill")]
+BsFileEarmarkPersonFill,
+[Description("bs-file-earmark-person")]
+BsFileEarmarkPerson,
+[Description("bs-file-earmark-play-fill")]
+BsFileEarmarkPlayFill,
+[Description("bs-file-earmark-play")]
+BsFileEarmarkPlay,
+[Description("bs-file-earmark-plus-fill")]
+BsFileEarmarkPlusFill,
+[Description("bs-file-earmark-plus")]
+BsFileEarmarkPlus,
+[Description("bs-file-earmark-post-fill")]
+BsFileEarmarkPostFill,
+[Description("bs-file-earmark-post")]
+BsFileEarmarkPost,
+[Description("bs-file-earmark-ppt-fill")]
+BsFileEarmarkPptFill,
+[Description("bs-file-earmark-ppt")]
+BsFileEarmarkPpt,
+[Description("bs-file-earmark-richtext-fill")]
+BsFileEarmarkRichtextFill,
+[Description("bs-file-earmark-richtext")]
+BsFileEarmarkRichtext,
+[Description("bs-file-earmark-ruled-fill")]
+BsFileEarmarkRuledFill,
+[Description("bs-file-earmark-ruled")]
+BsFileEarmarkRuled,
+[Description("bs-file-earmark-slides-fill")]
+BsFileEarmarkSlidesFill,
+[Description("bs-file-earmark-slides")]
+BsFileEarmarkSlides,
+[Description("bs-file-earmark-spreadsheet-fill")]
+BsFileEarmarkSpreadsheetFill,
+[Description("bs-file-earmark-spreadsheet")]
+BsFileEarmarkSpreadsheet,
+[Description("bs-file-earmark-text-fill")]
+BsFileEarmarkTextFill,
+[Description("bs-file-earmark-text")]
+BsFileEarmarkText,
+[Description("bs-file-earmark-word-fill")]
+BsFileEarmarkWordFill,
+[Description("bs-file-earmark-word")]
+BsFileEarmarkWord,
+[Description("bs-file-earmark-x-fill")]
+BsFileEarmarkXFill,
+[Description("bs-file-earmark-x")]
+BsFileEarmarkX,
+[Description("bs-file-earmark-zip-fill")]
+BsFileEarmarkZipFill,
+[Description("bs-file-earmark-zip")]
+BsFileEarmarkZip,
+[Description("bs-file-earmark")]
+BsFileEarmark,
+[Description("bs-file-easel-fill")]
+BsFileEaselFill,
+[Description("bs-file-easel")]
+BsFileEasel,
+[Description("bs-file-excel-fill")]
+BsFileExcelFill,
+[Description("bs-file-excel")]
+BsFileExcel,
+[Description("bs-file-fill")]
+BsFileFill,
+[Description("bs-file-font-fill")]
+BsFileFontFill,
+[Description("bs-file-font")]
+BsFileFont,
+[Description("bs-file-image-fill")]
+BsFileImageFill,
+[Description("bs-file-image")]
+BsFileImage,
+[Description("bs-file-lock-fill")]
+BsFileLockFill,
+[Description("bs-file-lock")]
+BsFileLock,
+[Description("bs-file-lock2-fill")]
+BsFileLock2Fill,
+[Description("bs-file-lock2")]
+BsFileLock2,
+[Description("bs-file-medical-fill")]
+BsFileMedicalFill,
+[Description("bs-file-medical")]
+BsFileMedical,
+[Description("bs-file-minus-fill")]
+BsFileMinusFill,
+[Description("bs-file-minus")]
+BsFileMinus,
+[Description("bs-file-music-fill")]
+BsFileMusicFill,
+[Description("bs-file-music")]
+BsFileMusic,
+[Description("bs-file-person-fill")]
+BsFilePersonFill,
+[Description("bs-file-person")]
+BsFilePerson,
+[Description("bs-file-play-fill")]
+BsFilePlayFill,
+[Description("bs-file-play")]
+BsFilePlay,
+[Description("bs-file-plus-fill")]
+BsFilePlusFill,
+[Description("bs-file-plus")]
+BsFilePlus,
+[Description("bs-file-post-fill")]
+BsFilePostFill,
+[Description("bs-file-post")]
+BsFilePost,
+[Description("bs-file-ppt-fill")]
+BsFilePptFill,
+[Description("bs-file-ppt")]
+BsFilePpt,
+[Description("bs-file-richtext-fill")]
+BsFileRichtextFill,
+[Description("bs-file-richtext")]
+BsFileRichtext,
+[Description("bs-file-ruled-fill")]
+BsFileRuledFill,
+[Description("bs-file-ruled")]
+BsFileRuled,
+[Description("bs-file-slides-fill")]
+BsFileSlidesFill,
+[Description("bs-file-slides")]
+BsFileSlides,
+[Description("bs-file-spreadsheet-fill")]
+BsFileSpreadsheetFill,
+[Description("bs-file-spreadsheet")]
+BsFileSpreadsheet,
+[Description("bs-file-text-fill")]
+BsFileTextFill,
+[Description("bs-file-text")]
+BsFileText,
+[Description("bs-file-word-fill")]
+BsFileWordFill,
+[Description("bs-file-word")]
+BsFileWord,
+[Description("bs-file-x-fill")]
+BsFileXFill,
+[Description("bs-file-x")]
+BsFileX,
+[Description("bs-file-zip-fill")]
+BsFileZipFill,
+[Description("bs-file-zip")]
+BsFileZip,
+[Description("bs-file")]
+BsFile,
+[Description("bs-files-alt")]
+BsFilesAlt,
+[Description("bs-files")]
+BsFiles,
+[Description("bs-film")]
+BsFilm,
+[Description("bs-filter-circle-fill")]
+BsFilterCircleFill,
+[Description("bs-filter-circle")]
+BsFilterCircle,
+[Description("bs-filter-left")]
+BsFilterLeft,
+[Description("bs-filter-right")]
+BsFilterRight,
+[Description("bs-filter-square-fill")]
+BsFilterSquareFill,
+[Description("bs-filter-square")]
+BsFilterSquare,
+[Description("bs-filter")]
+BsFilter,
+[Description("bs-flag-fill")]
+BsFlagFill,
+[Description("bs-flag")]
+BsFlag,
+[Description("bs-flower1")]
+BsFlower1,
+[Description("bs-flower2")]
+BsFlower2,
+[Description("bs-flower3")]
+BsFlower3,
+[Description("bs-folder-check")]
+BsFolderCheck,
+[Description("bs-folder-fill")]
+BsFolderFill,
+[Description("bs-folder-minus")]
+BsFolderMinus,
+[Description("bs-folder-plus")]
+BsFolderPlus,
+[Description("bs-folder-symlink-fill")]
+BsFolderSymlinkFill,
+[Description("bs-folder-symlink")]
+BsFolderSymlink,
+[Description("bs-folder-x")]
+BsFolderX,
+[Description("bs-folder")]
+BsFolder,
+[Description("bs-folder2-open")]
+BsFolder2Open,
+[Description("bs-folder2")]
+BsFolder2,
+[Description("bs-fonts")]
+BsFonts,
+[Description("bs-forward-fill")]
+BsForwardFill,
+[Description("bs-forward")]
+BsForward,
+[Description("bs-front")]
+BsFront,
+[Description("bs-fullscreen-exit")]
+BsFullscreenExit,
+[Description("bs-fullscreen")]
+BsFullscreen,
+[Description("bs-funnel-fill")]
+BsFunnelFill,
+[Description("bs-funnel")]
+BsFunnel,
+[Description("bs-gear-fill")]
+BsGearFill,
+[Description("bs-gear-wide-connected")]
+BsGearWideConnected,
+[Description("bs-gear-wide")]
+BsGearWide,
+[Description("bs-gear")]
+BsGear,
+[Description("bs-gem")]
+BsGem,
+[Description("bs-geo-alt-fill")]
+BsGeoAltFill,
+[Description("bs-geo-alt")]
+BsGeoAlt,
+[Description("bs-geo-fill")]
+BsGeoFill,
+[Description("bs-geo")]
+BsGeo,
+[Description("bs-gift-fill")]
+BsGiftFill,
+[Description("bs-gift")]
+BsGift,
+[Description("bs-github")]
+BsGithub,
+[Description("bs-globe")]
+BsGlobe,
+[Description("bs-globe2")]
+BsGlobe2,
+[Description("bs-google")]
+BsGoogle,
+[Description("bs-graph-down")]
+BsGraphDown,
+[Description("bs-graph-up")]
+BsGraphUp,
+[Description("bs-grid-1x2-fill")]
+BsGrid1x2Fill,
+[Description("bs-grid-1x2")]
+BsGrid1x2,
+[Description("bs-grid-3x2-gap-fill")]
+BsGrid3x2GapFill,
+[Description("bs-grid-3x2-gap")]
+BsGrid3x2Gap,
+[Description("bs-grid-3x2")]
+BsGrid3x2,
+[Description("bs-grid-3x3-gap-fill")]
+BsGrid3x3GapFill,
+[Description("bs-grid-3x3-gap")]
+BsGrid3x3Gap,
+[Description("bs-grid-3x3")]
+BsGrid3x3,
+[Description("bs-grid-fill")]
+BsGridFill,
+[Description("bs-grid")]
+BsGrid,
+[Description("bs-grip-horizontal")]
+BsGripHorizontal,
+[Description("bs-grip-vertical")]
+BsGripVertical,
+[Description("bs-hammer")]
+BsHammer,
+[Description("bs-hand-index-fill")]
+BsHandIndexFill,
+[Description("bs-hand-index-thumb-fill")]
+BsHandIndexThumbFill,
+[Description("bs-hand-index-thumb")]
+BsHandIndexThumb,
+[Description("bs-hand-index")]
+BsHandIndex,
+[Description("bs-hand-thumbs-down-fill")]
+BsHandThumbsDownFill,
+[Description("bs-hand-thumbs-down")]
+BsHandThumbsDown,
+[Description("bs-hand-thumbs-up-fill")]
+BsHandThumbsUpFill,
+[Description("bs-hand-thumbs-up")]
+BsHandThumbsUp,
+[Description("bs-handbag-fill")]
+BsHandbagFill,
+[Description("bs-handbag")]
+BsHandbag,
+[Description("bs-hash")]
+BsHash,
+[Description("bs-hdd-fill")]
+BsHddFill,
+[Description("bs-hdd-network-fill")]
+BsHddNetworkFill,
+[Description("bs-hdd-network")]
+BsHddNetwork,
+[Description("bs-hdd-rack-fill")]
+BsHddRackFill,
+[Description("bs-hdd-rack")]
+BsHddRack,
+[Description("bs-hdd-stack-fill")]
+BsHddStackFill,
+[Description("bs-hdd-stack")]
+BsHddStack,
+[Description("bs-hdd")]
+BsHdd,
+[Description("bs-headphones")]
+BsHeadphones,
+[Description("bs-headset")]
+BsHeadset,
+[Description("bs-heart-fill")]
+BsHeartFill,
+[Description("bs-heart-half")]
+BsHeartHalf,
+[Description("bs-heart")]
+BsHeart,
+[Description("bs-heptagon-fill")]
+BsHeptagonFill,
+[Description("bs-heptagon-half")]
+BsHeptagonHalf,
+[Description("bs-heptagon")]
+BsHeptagon,
+[Description("bs-hexagon-fill")]
+BsHexagonFill,
+[Description("bs-hexagon-half")]
+BsHexagonHalf,
+[Description("bs-hexagon")]
+BsHexagon,
+[Description("bs-hourglass-bottom")]
+BsHourglassBottom,
+[Description("bs-hourglass-split")]
+BsHourglassSplit,
+[Description("bs-hourglass-top")]
+BsHourglassTop,
+[Description("bs-hourglass")]
+BsHourglass,
+[Description("bs-house-door-fill")]
+BsHouseDoorFill,
+[Description("bs-house-door")]
+BsHouseDoor,
+[Description("bs-house-fill")]
+BsHouseFill,
+[Description("bs-house")]
+BsHouse,
+[Description("bs-hr")]
+BsHr,
+[Description("bs-hurricane")]
+BsHurricane,
+[Description("bs-image-alt")]
+BsImageAlt,
+[Description("bs-image-fill")]
+BsImageFill,
+[Description("bs-image")]
+BsImage,
+[Description("bs-images")]
+BsImages,
+[Description("bs-inbox-fill")]
+BsInboxFill,
+[Description("bs-inbox")]
+BsInbox,
+[Description("bs-inboxes-fill")]
+BsInboxesFill,
+[Description("bs-inboxes")]
+BsInboxes,
+[Description("bs-info-circle-fill")]
+BsInfoCircleFill,
+[Description("bs-info-circle")]
+BsInfoCircle,
+[Description("bs-info-square-fill")]
+BsInfoSquareFill,
+[Description("bs-info-square")]
+BsInfoSquare,
+[Description("bs-info")]
+BsInfo,
+[Description("bs-input-cursor-text")]
+BsInputCursorText,
+[Description("bs-input-cursor")]
+BsInputCursor,
+[Description("bs-instagram")]
+BsInstagram,
+[Description("bs-intersect")]
+BsIntersect,
+[Description("bs-journal-album")]
+BsJournalAlbum,
+[Description("bs-journal-arrow-down")]
+BsJournalArrowDown,
+[Description("bs-journal-arrow-up")]
+BsJournalArrowUp,
+[Description("bs-journal-bookmark-fill")]
+BsJournalBookmarkFill,
+[Description("bs-journal-bookmark")]
+BsJournalBookmark,
+[Description("bs-journal-check")]
+BsJournalCheck,
+[Description("bs-journal-code")]
+BsJournalCode,
+[Description("bs-journal-medical")]
+BsJournalMedical,
+[Description("bs-journal-minus")]
+BsJournalMinus,
+[Description("bs-journal-plus")]
+BsJournalPlus,
+[Description("bs-journal-richtext")]
+BsJournalRichtext,
+[Description("bs-journal-text")]
+BsJournalText,
+[Description("bs-journal-x")]
+BsJournalX,
+[Description("bs-journal")]
+BsJournal,
+[Description("bs-journals")]
+BsJournals,
+[Description("bs-joystick")]
+BsJoystick,
+[Description("bs-justify-left")]
+BsJustifyLeft,
+[Description("bs-justify-right")]
+BsJustifyRight,
+[Description("bs-justify")]
+BsJustify,
+[Description("bs-kanban-fill")]
+BsKanbanFill,
+[Description("bs-kanban")]
+BsKanban,
+[Description("bs-key-fill")]
+BsKeyFill,
+[Description("bs-key")]
+BsKey,
+[Description("bs-keyboard-fill")]
+BsKeyboardFill,
+[Description("bs-keyboard")]
+BsKeyboard,
+[Description("bs-ladder")]
+BsLadder,
+[Description("bs-lamp-fill")]
+BsLampFill,
+[Description("bs-lamp")]
+BsLamp,
+[Description("bs-laptop-fill")]
+BsLaptopFill,
+[Description("bs-laptop")]
+BsLaptop,
+[Description("bs-layer-backward")]
+BsLayerBackward,
+[Description("bs-layer-forward")]
+BsLayerForward,
+[Description("bs-layers-fill")]
+BsLayersFill,
+[Description("bs-layers-half")]
+BsLayersHalf,
+[Description("bs-layers")]
+BsLayers,
+[Description("bs-layout-sidebar-inset-reverse")]
+BsLayoutSidebarInsetReverse,
+[Description("bs-layout-sidebar-inset")]
+BsLayoutSidebarInset,
+[Description("bs-layout-sidebar-reverse")]
+BsLayoutSidebarReverse,
+[Description("bs-layout-sidebar")]
+BsLayoutSidebar,
+[Description("bs-layout-split")]
+BsLayoutSplit,
+[Description("bs-layout-text-sidebar-reverse")]
+BsLayoutTextSidebarReverse,
+[Description("bs-layout-text-sidebar")]
+BsLayoutTextSidebar,
+[Description("bs-layout-text-window-reverse")]
+BsLayoutTextWindowReverse,
+[Description("bs-layout-text-window")]
+BsLayoutTextWindow,
+[Description("bs-layout-three-columns")]
+BsLayoutThreeColumns,
+[Description("bs-layout-wtf")]
+BsLayoutWtf,
+[Description("bs-life-preserver")]
+BsLifePreserver,
+[Description("bs-lightbulb-fill")]
+BsLightbulbFill,
+[Description("bs-lightbulb-off-fill")]
+BsLightbulbOffFill,
+[Description("bs-lightbulb-off")]
+BsLightbulbOff,
+[Description("bs-lightbulb")]
+BsLightbulb,
+[Description("bs-lightning-charge-fill")]
+BsLightningChargeFill,
+[Description("bs-lightning-charge")]
+BsLightningCharge,
+[Description("bs-lightning-fill")]
+BsLightningFill,
+[Description("bs-lightning")]
+BsLightning,
+[Description("bs-link-45deg")]
+BsLink45deg,
+[Description("bs-link")]
+BsLink,
+[Description("bs-linkedin")]
+BsLinkedin,
+[Description("bs-list-check")]
+BsListCheck,
+[Description("bs-list-nested")]
+BsListNested,
+[Description("bs-list-ol")]
+BsListOl,
+[Description("bs-list-stars")]
+BsListStars,
+[Description("bs-list-task")]
+BsListTask,
+[Description("bs-list-ul")]
+BsListUl,
+[Description("bs-list")]
+BsList,
+[Description("bs-lock-fill")]
+BsLockFill,
+[Description("bs-lock")]
+BsLock,
+[Description("bs-mailbox")]
+BsMailbox,
+[Description("bs-mailbox2")]
+BsMailbox2,
+[Description("bs-map-fill")]
+BsMapFill,
+[Description("bs-map")]
+BsMap,
+[Description("bs-markdown-fill")]
+BsMarkdownFill,
+[Description("bs-markdown")]
+BsMarkdown,
+[Description("bs-mask")]
+BsMask,
+[Description("bs-megaphone-fill")]
+BsMegaphoneFill,
+[Description("bs-megaphone")]
+BsMegaphone,
+[Description("bs-menu-app-fill")]
+BsMenuAppFill,
+[Description("bs-menu-app")]
+BsMenuApp,
+[Description("bs-menu-button-fill")]
+BsMenuButtonFill,
+[Description("bs-menu-button-wide-fill")]
+BsMenuButtonWideFill,
+[Description("bs-menu-button-wide")]
+BsMenuButtonWide,
+[Description("bs-menu-button")]
+BsMenuButton,
+[Description("bs-menu-down")]
+BsMenuDown,
+[Description("bs-menu-up")]
+BsMenuUp,
+[Description("bs-mic-fill")]
+BsMicFill,
+[Description("bs-mic-mute-fill")]
+BsMicMuteFill,
+[Description("bs-mic-mute")]
+BsMicMute,
+[Description("bs-mic")]
+BsMic,
+[Description("bs-minecart-loaded")]
+BsMinecartLoaded,
+[Description("bs-minecart")]
+BsMinecart,
+[Description("bs-moisture")]
+BsMoisture,
+[Description("bs-moon-fill")]
+BsMoonFill,
+[Description("bs-moon-stars-fill")]
+BsMoonStarsFill,
+[Description("bs-moon-stars")]
+BsMoonStars,
+[Description("bs-moon")]
+BsMoon,
+[Description("bs-mouse-fill")]
+BsMouseFill,
+[Description("bs-mouse")]
+BsMouse,
+[Description("bs-mouse2-fill")]
+BsMouse2Fill,
+[Description("bs-mouse2")]
+BsMouse2,
+[Description("bs-mouse3-fill")]
+BsMouse3Fill,
+[Description("bs-mouse3")]
+BsMouse3,
+[Description("bs-music-note-beamed")]
+BsMusicNoteBeamed,
+[Description("bs-music-note-list")]
+BsMusicNoteList,
+[Description("bs-music-note")]
+BsMusicNote,
+[Description("bs-music-player-fill")]
+BsMusicPlayerFill,
+[Description("bs-music-player")]
+BsMusicPlayer,
+[Description("bs-newspaper")]
+BsNewspaper,
+[Description("bs-node-minus-fill")]
+BsNodeMinusFill,
+[Description("bs-node-minus")]
+BsNodeMinus,
+[Description("bs-node-plus-fill")]
+BsNodePlusFill,
+[Description("bs-node-plus")]
+BsNodePlus,
+[Description("bs-nut-fill")]
+BsNutFill,
+[Description("bs-nut")]
+BsNut,
+[Description("bs-octagon-fill")]
+BsOctagonFill,
+[Description("bs-octagon-half")]
+BsOctagonHalf,
+[Description("bs-octagon")]
+BsOctagon,
+[Description("bs-option")]
+BsOption,
+[Description("bs-outlet")]
+BsOutlet,
+[Description("bs-paint-bucket")]
+BsPaintBucket,
+[Description("bs-palette-fill")]
+BsPaletteFill,
+[Description("bs-palette")]
+BsPalette,
+[Description("bs-palette2")]
+BsPalette2,
+[Description("bs-paperclip")]
+BsPaperclip,
+[Description("bs-paragraph")]
+BsParagraph,
+[Description("bs-patch-check-fill")]
+BsPatchCheckFill,
+[Description("bs-patch-check")]
+BsPatchCheck,
+[Description("bs-patch-exclamation-fill")]
+BsPatchExclamationFill,
+[Description("bs-patch-exclamation")]
+BsPatchExclamation,
+[Description("bs-patch-minus-fill")]
+BsPatchMinusFill,
+[Description("bs-patch-minus")]
+BsPatchMinus,
+[Description("bs-patch-plus-fill")]
+BsPatchPlusFill,
+[Description("bs-patch-plus")]
+BsPatchPlus,
+[Description("bs-patch-question-fill")]
+BsPatchQuestionFill,
+[Description("bs-patch-question")]
+BsPatchQuestion,
+[Description("bs-pause-btn-fill")]
+BsPauseBtnFill,
+[Description("bs-pause-btn")]
+BsPauseBtn,
+[Description("bs-pause-circle-fill")]
+BsPauseCircleFill,
+[Description("bs-pause-circle")]
+BsPauseCircle,
+[Description("bs-pause-fill")]
+BsPauseFill,
+[Description("bs-pause")]
+BsPause,
+[Description("bs-peace-fill")]
+BsPeaceFill,
+[Description("bs-peace")]
+BsPeace,
+[Description("bs-pen-fill")]
+BsPenFill,
+[Description("bs-pen")]
+BsPen,
+[Description("bs-pencil-fill")]
+BsPencilFill,
+[Description("bs-pencil-square")]
+BsPencilSquare,
+[Description("bs-pencil")]
+BsPencil,
+[Description("bs-pentagon-fill")]
+BsPentagonFill,
+[Description("bs-pentagon-half")]
+BsPentagonHalf,
+[Description("bs-pentagon")]
+BsPentagon,
+[Description("bs-people-fill")]
+BsPeopleFill,
+[Description("bs-people")]
+BsPeople,
+[Description("bs-percent")]
+BsPercent,
+[Description("bs-person-badge-fill")]
+BsPersonBadgeFill,
+[Description("bs-person-badge")]
+BsPersonBadge,
+[Description("bs-person-bounding-box")]
+BsPersonBoundingBox,
+[Description("bs-person-check-fill")]
+BsPersonCheckFill,
+[Description("bs-person-check")]
+BsPersonCheck,
+[Description("bs-person-circle")]
+BsPersonCircle,
+[Description("bs-person-dash-fill")]
+BsPersonDashFill,
+[Description("bs-person-dash")]
+BsPersonDash,
+[Description("bs-person-fill")]
+BsPersonFill,
+[Description("bs-person-lines-fill")]
+BsPersonLinesFill,
+[Description("bs-person-plus-fill")]
+BsPersonPlusFill,
+[Description("bs-person-plus")]
+BsPersonPlus,
+[Description("bs-person-square")]
+BsPersonSquare,
+[Description("bs-person-x-fill")]
+BsPersonXFill,
+[Description("bs-person-x")]
+BsPersonX,
+[Description("bs-person")]
+BsPerson,
+[Description("bs-phone-fill")]
+BsPhoneFill,
+[Description("bs-phone-landscape-fill")]
+BsPhoneLandscapeFill,
+[Description("bs-phone-landscape")]
+BsPhoneLandscape,
+[Description("bs-phone-vibrate-fill")]
+BsPhoneVibrateFill,
+[Description("bs-phone-vibrate")]
+BsPhoneVibrate,
+[Description("bs-phone")]
+BsPhone,
+[Description("bs-pie-chart-fill")]
+BsPieChartFill,
+[Description("bs-pie-chart")]
+BsPieChart,
+[Description("bs-pin-angle-fill")]
+BsPinAngleFill,
+[Description("bs-pin-angle")]
+BsPinAngle,
+[Description("bs-pin-fill")]
+BsPinFill,
+[Description("bs-pin")]
+BsPin,
+[Description("bs-pip-fill")]
+BsPipFill,
+[Description("bs-pip")]
+BsPip,
+[Description("bs-play-btn-fill")]
+BsPlayBtnFill,
+[Description("bs-play-btn")]
+BsPlayBtn,
+[Description("bs-play-circle-fill")]
+BsPlayCircleFill,
+[Description("bs-play-circle")]
+BsPlayCircle,
+[Description("bs-play-fill")]
+BsPlayFill,
+[Description("bs-play")]
+BsPlay,
+[Description("bs-plug-fill")]
+BsPlugFill,
+[Description("bs-plug")]
+BsPlug,
+[Description("bs-plus-circle-dotted")]
+BsPlusCircleDotted,
+[Description("bs-plus-circle-fill")]
+BsPlusCircleFill,
+[Description("bs-plus-circle")]
+BsPlusCircle,
+[Description("bs-plus-square-dotted")]
+BsPlusSquareDotted,
+[Description("bs-plus-square-fill")]
+BsPlusSquareFill,
+[Description("bs-plus-square")]
+BsPlusSquare,
+[Description("bs-plus")]
+BsPlus,
+[Description("bs-power")]
+BsPower,
+[Description("bs-printer-fill")]
+BsPrinterFill,
+[Description("bs-printer")]
+BsPrinter,
+[Description("bs-puzzle-fill")]
+BsPuzzleFill,
+[Description("bs-puzzle")]
+BsPuzzle,
+[Description("bs-question-circle-fill")]
+BsQuestionCircleFill,
+[Description("bs-question-circle")]
+BsQuestionCircle,
+[Description("bs-question-diamond-fill")]
+BsQuestionDiamondFill,
+[Description("bs-question-diamond")]
+BsQuestionDiamond,
+[Description("bs-question-octagon-fill")]
+BsQuestionOctagonFill,
+[Description("bs-question-octagon")]
+BsQuestionOctagon,
+[Description("bs-question-square-fill")]
+BsQuestionSquareFill,
+[Description("bs-question-square")]
+BsQuestionSquare,
+[Description("bs-question")]
+BsQuestion,
+[Description("bs-rainbow")]
+BsRainbow,
+[Description("bs-receipt-cutoff")]
+BsReceiptCutoff,
+[Description("bs-receipt")]
+BsReceipt,
+[Description("bs-reception-0")]
+BsReception0,
+[Description("bs-reception-1")]
+BsReception1,
+[Description("bs-reception-2")]
+BsReception2,
+[Description("bs-reception-3")]
+BsReception3,
+[Description("bs-reception-4")]
+BsReception4,
+[Description("bs-record-btn-fill")]
+BsRecordBtnFill,
+[Description("bs-record-btn")]
+BsRecordBtn,
+[Description("bs-record-circle-fill")]
+BsRecordCircleFill,
+[Description("bs-record-circle")]
+BsRecordCircle,
+[Description("bs-record-fill")]
+BsRecordFill,
+[Description("bs-record")]
+BsRecord,
+[Description("bs-record2-fill")]
+BsRecord2Fill,
+[Description("bs-record2")]
+BsRecord2,
+[Description("bs-reply-all-fill")]
+BsReplyAllFill,
+[Description("bs-reply-all")]
+BsReplyAll,
+[Description("bs-reply-fill")]
+BsReplyFill,
+[Description("bs-reply")]
+BsReply,
+[Description("bs-rss-fill")]
+BsRssFill,
+[Description("bs-rss")]
+BsRss,
+[Description("bs-rulers")]
+BsRulers,
+[Description("bs-save-fill")]
+BsSaveFill,
+[Description("bs-save")]
+BsSave,
+[Description("bs-save2-fill")]
+BsSave2Fill,
+[Description("bs-save2")]
+BsSave2,
+[Description("bs-scissors")]
+BsScissors,
+[Description("bs-screwdriver")]
+BsScrewdriver,
+[Description("bs-search")]
+BsSearch,
+[Description("bs-segmented-nav")]
+BsSegmentedNav,
+[Description("bs-server")]
+BsServer,
+[Description("bs-share-fill")]
+BsShareFill,
+[Description("bs-share")]
+BsShare,
+[Description("bs-shield-check")]
+BsShieldCheck,
+[Description("bs-shield-exclamation")]
+BsShieldExclamation,
+[Description("bs-shield-fill-check")]
+BsShieldFillCheck,
+[Description("bs-shield-fill-exclamation")]
+BsShieldFillExclamation,
+[Description("bs-shield-fill-minus")]
+BsShieldFillMinus,
+[Description("bs-shield-fill-plus")]
+BsShieldFillPlus,
+[Description("bs-shield-fill-x")]
+BsShieldFillX,
+[Description("bs-shield-fill")]
+BsShieldFill,
+[Description("bs-shield-lock-fill")]
+BsShieldLockFill,
+[Description("bs-shield-lock")]
+BsShieldLock,
+[Description("bs-shield-minus")]
+BsShieldMinus,
+[Description("bs-shield-plus")]
+BsShieldPlus,
+[Description("bs-shield-shaded")]
+BsShieldShaded,
+[Description("bs-shield-slash-fill")]
+BsShieldSlashFill,
+[Description("bs-shield-slash")]
+BsShieldSlash,
+[Description("bs-shield-x")]
+BsShieldX,
+[Description("bs-shield")]
+BsShield,
+[Description("bs-shift-fill")]
+BsShiftFill,
+[Description("bs-shift")]
+BsShift,
+[Description("bs-shop-window")]
+BsShopWindow,
+[Description("bs-shop")]
+BsShop,
+[Description("bs-shuffle")]
+BsShuffle,
+[Description("bs-signpost-2-fill")]
+BsSignpost2Fill,
+[Description("bs-signpost-2")]
+BsSignpost2,
+[Description("bs-signpost-fill")]
+BsSignpostFill,
+[Description("bs-signpost-split-fill")]
+BsSignpostSplitFill,
+[Description("bs-signpost-split")]
+BsSignpostSplit,
+[Description("bs-signpost")]
+BsSignpost,
+[Description("bs-sim-fill")]
+BsSimFill,
+[Description("bs-sim")]
+BsSim,
+[Description("bs-skip-backward-btn-fill")]
+BsSkipBackwardBtnFill,
+[Description("bs-skip-backward-btn")]
+BsSkipBackwardBtn,
+[Description("bs-skip-backward-circle-fill")]
+BsSkipBackwardCircleFill,
+[Description("bs-skip-backward-circle")]
+BsSkipBackwardCircle,
+[Description("bs-skip-backward-fill")]
+BsSkipBackwardFill,
+[Description("bs-skip-backward")]
+BsSkipBackward,
+[Description("bs-skip-end-btn-fill")]
+BsSkipEndBtnFill,
+[Description("bs-skip-end-btn")]
+BsSkipEndBtn,
+[Description("bs-skip-end-circle-fill")]
+BsSkipEndCircleFill,
+[Description("bs-skip-end-circle")]
+BsSkipEndCircle,
+[Description("bs-skip-end-fill")]
+BsSkipEndFill,
+[Description("bs-skip-end")]
+BsSkipEnd,
+[Description("bs-skip-forward-btn-fill")]
+BsSkipForwardBtnFill,
+[Description("bs-skip-forward-btn")]
+BsSkipForwardBtn,
+[Description("bs-skip-forward-circle-fill")]
+BsSkipForwardCircleFill,
+[Description("bs-skip-forward-circle")]
+BsSkipForwardCircle,
+[Description("bs-skip-forward-fill")]
+BsSkipForwardFill,
+[Description("bs-skip-forward")]
+BsSkipForward,
+[Description("bs-skip-start-btn-fill")]
+BsSkipStartBtnFill,
+[Description("bs-skip-start-btn")]
+BsSkipStartBtn,
+[Description("bs-skip-start-circle-fill")]
+BsSkipStartCircleFill,
+[Description("bs-skip-start-circle")]
+BsSkipStartCircle,
+[Description("bs-skip-start-fill")]
+BsSkipStartFill,
+[Description("bs-skip-start")]
+BsSkipStart,
+[Description("bs-slack")]
+BsSlack,
+[Description("bs-slash-circle-fill")]
+BsSlashCircleFill,
+[Description("bs-slash-circle")]
+BsSlashCircle,
+[Description("bs-slash-square-fill")]
+BsSlashSquareFill,
+[Description("bs-slash-square")]
+BsSlashSquare,
+[Description("bs-slash")]
+BsSlash,
+[Description("bs-sliders")]
+BsSliders,
+[Description("bs-smartwatch")]
+BsSmartwatch,
+[Description("bs-snow")]
+BsSnow,
+[Description("bs-snow2")]
+BsSnow2,
+[Description("bs-snow3")]
+BsSnow3,
+[Description("bs-sort-alpha-down-alt")]
+BsSortAlphaDownAlt,
+[Description("bs-sort-alpha-down")]
+BsSortAlphaDown,
+[Description("bs-sort-alpha-up-alt")]
+BsSortAlphaUpAlt,
+[Description("bs-sort-alpha-up")]
+BsSortAlphaUp,
+[Description("bs-sort-down-alt")]
+BsSortDownAlt,
+[Description("bs-sort-down")]
+BsSortDown,
+[Description("bs-sort-numeric-down-alt")]
+BsSortNumericDownAlt,
+[Description("bs-sort-numeric-down")]
+BsSortNumericDown,
+[Description("bs-sort-numeric-up-alt")]
+BsSortNumericUpAlt,
+[Description("bs-sort-numeric-up")]
+BsSortNumericUp,
+[Description("bs-sort-up-alt")]
+BsSortUpAlt,
+[Description("bs-sort-up")]
+BsSortUp,
+[Description("bs-soundwave")]
+BsSoundwave,
+[Description("bs-speaker-fill")]
+BsSpeakerFill,
+[Description("bs-speaker")]
+BsSpeaker,
+[Description("bs-speedometer")]
+BsSpeedometer,
+[Description("bs-speedometer2")]
+BsSpeedometer2,
+[Description("bs-spellcheck")]
+BsSpellcheck,
+[Description("bs-square-fill")]
+BsSquareFill,
+[Description("bs-square-half")]
+BsSquareHalf,
+[Description("bs-square")]
+BsSquare,
+[Description("bs-stack")]
+BsStack,
+[Description("bs-star-fill")]
+BsStarFill,
+[Description("bs-star-half")]
+BsStarHalf,
+[Description("bs-star")]
+BsStar,
+[Description("bs-stars")]
+BsStars,
+[Description("bs-stickies-fill")]
+BsStickiesFill,
+[Description("bs-stickies")]
+BsStickies,
+[Description("bs-sticky-fill")]
+BsStickyFill,
+[Description("bs-sticky")]
+BsSticky,
+[Description("bs-stop-btn-fill")]
+BsStopBtnFill,
+[Description("bs-stop-btn")]
+BsStopBtn,
+[Description("bs-stop-circle-fill")]
+BsStopCircleFill,
+[Description("bs-stop-circle")]
+BsStopCircle,
+[Description("bs-stop-fill")]
+BsStopFill,
+[Description("bs-stop")]
+BsStop,
+[Description("bs-stoplights-fill")]
+BsStoplightsFill,
+[Description("bs-stoplights")]
+BsStoplights,
+[Description("bs-stopwatch-fill")]
+BsStopwatchFill,
+[Description("bs-stopwatch")]
+BsStopwatch,
+[Description("bs-subtract")]
+BsSubtract,
+[Description("bs-suit-club-fill")]
+BsSuitClubFill,
+[Description("bs-suit-club")]
+BsSuitClub,
+[Description("bs-suit-diamond-fill")]
+BsSuitDiamondFill,
+[Description("bs-suit-diamond")]
+BsSuitDiamond,
+[Description("bs-suit-heart-fill")]
+BsSuitHeartFill,
+[Description("bs-suit-heart")]
+BsSuitHeart,
+[Description("bs-suit-spade-fill")]
+BsSuitSpadeFill,
+[Description("bs-suit-spade")]
+BsSuitSpade,
+[Description("bs-sun-fill")]
+BsSunFill,
+[Description("bs-sun")]
+BsSun,
+[Description("bs-sunglasses")]
+BsSunglasses,
+[Description("bs-sunrise-fill")]
+BsSunriseFill,
+[Description("bs-sunrise")]
+BsSunrise,
+[Description("bs-sunset-fill")]
+BsSunsetFill,
+[Description("bs-sunset")]
+BsSunset,
+[Description("bs-symmetry-horizontal")]
+BsSymmetryHorizontal,
+[Description("bs-symmetry-vertical")]
+BsSymmetryVertical,
+[Description("bs-table")]
+BsTable,
+[Description("bs-tablet-fill")]
+BsTabletFill,
+[Description("bs-tablet-landscape-fill")]
+BsTabletLandscapeFill,
+[Description("bs-tablet-landscape")]
+BsTabletLandscape,
+[Description("bs-tablet")]
+BsTablet,
+[Description("bs-tag-fill")]
+BsTagFill,
+[Description("bs-tag")]
+BsTag,
+[Description("bs-tags-fill")]
+BsTagsFill,
+[Description("bs-tags")]
+BsTags,
+[Description("bs-telegram")]
+BsTelegram,
+[Description("bs-telephone-fill")]
+BsTelephoneFill,
+[Description("bs-telephone-forward-fill")]
+BsTelephoneForwardFill,
+[Description("bs-telephone-forward")]
+BsTelephoneForward,
+[Description("bs-telephone-inbound-fill")]
+BsTelephoneInboundFill,
+[Description("bs-telephone-inbound")]
+BsTelephoneInbound,
+[Description("bs-telephone-minus-fill")]
+BsTelephoneMinusFill,
+[Description("bs-telephone-minus")]
+BsTelephoneMinus,
+[Description("bs-telephone-outbound-fill")]
+BsTelephoneOutboundFill,
+[Description("bs-telephone-outbound")]
+BsTelephoneOutbound,
+[Description("bs-telephone-plus-fill")]
+BsTelephonePlusFill,
+[Description("bs-telephone-plus")]
+BsTelephonePlus,
+[Description("bs-telephone-x-fill")]
+BsTelephoneXFill,
+[Description("bs-telephone-x")]
+BsTelephoneX,
+[Description("bs-telephone")]
+BsTelephone,
+[Description("bs-terminal-fill")]
+BsTerminalFill,
+[Description("bs-terminal")]
+BsTerminal,
+[Description("bs-text-center")]
+BsTextCenter,
+[Description("bs-text-indent-left")]
+BsTextIndentLeft,
+[Description("bs-text-indent-right")]
+BsTextIndentRight,
+[Description("bs-text-left")]
+BsTextLeft,
+[Description("bs-text-paragraph")]
+BsTextParagraph,
+[Description("bs-text-right")]
+BsTextRight,
+[Description("bs-textarea-resize")]
+BsTextareaResize,
+[Description("bs-textarea-t")]
+BsTextareaT,
+[Description("bs-textarea")]
+BsTextarea,
+[Description("bs-thermometer-half")]
+BsThermometerHalf,
+[Description("bs-thermometer-high")]
+BsThermometerHigh,
+[Description("bs-thermometer-low")]
+BsThermometerLow,
+[Description("bs-thermometer-snow")]
+BsThermometerSnow,
+[Description("bs-thermometer-sun")]
+BsThermometerSun,
+[Description("bs-thermometer")]
+BsThermometer,
+[Description("bs-three-dots-vertical")]
+BsThreeDotsVertical,
+[Description("bs-three-dots")]
+BsThreeDots,
+[Description("bs-toggle-off")]
+BsToggleOff,
+[Description("bs-toggle-on")]
+BsToggleOn,
+[Description("bs-toggle2-off")]
+BsToggle2Off,
+[Description("bs-toggle2-on")]
+BsToggle2On,
+[Description("bs-toggles")]
+BsToggles,
+[Description("bs-toggles2")]
+BsToggles2,
+[Description("bs-tools")]
+BsTools,
+[Description("bs-tornado")]
+BsTornado,
+[Description("bs-trash-fill")]
+BsTrashFill,
+[Description("bs-trash")]
+BsTrash,
+[Description("bs-trash2-fill")]
+BsTrash2Fill,
+[Description("bs-trash2")]
+BsTrash2,
+[Description("bs-tree-fill")]
+BsTreeFill,
+[Description("bs-tree")]
+BsTree,
+[Description("bs-triangle-fill")]
+BsTriangleFill,
+[Description("bs-triangle-half")]
+BsTriangleHalf,
+[Description("bs-triangle")]
+BsTriangle,
+[Description("bs-trophy-fill")]
+BsTrophyFill,
+[Description("bs-trophy")]
+BsTrophy,
+[Description("bs-tropical-storm")]
+BsTropicalStorm,
+[Description("bs-truck-flatbed")]
+BsTruckFlatbed,
+[Description("bs-truck")]
+BsTruck,
+[Description("bs-tsunami")]
+BsTsunami,
+[Description("bs-tv-fill")]
+BsTvFill,
+[Description("bs-tv")]
+BsTv,
+[Description("bs-twitch")]
+BsTwitch,
+[Description("bs-twitter")]
+BsTwitter,
+[Description("bs-type-bold")]
+BsTypeBold,
+[Description("bs-type-h1")]
+BsTypeH1,
+[Description("bs-type-h2")]
+BsTypeH2,
+[Description("bs-type-h3")]
+BsTypeH3,
+[Description("bs-type-italic")]
+BsTypeItalic,
+[Description("bs-type-strikethrough")]
+BsTypeStrikethrough,
+[Description("bs-type-underline")]
+BsTypeUnderline,
+[Description("bs-type")]
+BsType,
+[Description("bs-ui-checks-grid")]
+BsUiChecksGrid,
+[Description("bs-ui-checks")]
+BsUiChecks,
+[Description("bs-ui-radios-grid")]
+BsUiRadiosGrid,
+[Description("bs-ui-radios")]
+BsUiRadios,
+[Description("bs-umbrella-fill")]
+BsUmbrellaFill,
+[Description("bs-umbrella")]
+BsUmbrella,
+[Description("bs-union")]
+BsUnion,
+[Description("bs-unlock-fill")]
+BsUnlockFill,
+[Description("bs-unlock")]
+BsUnlock,
+[Description("bs-upc-scan")]
+BsUpcScan,
+[Description("bs-upc")]
+BsUpc,
+[Description("bs-upload")]
+BsUpload,
+[Description("bs-vector-pen")]
+BsVectorPen,
+[Description("bs-view-list")]
+BsViewList,
+[Description("bs-view-stacked")]
+BsViewStacked,
+[Description("bs-vinyl-fill")]
+BsVinylFill,
+[Description("bs-vinyl")]
+BsVinyl,
+[Description("bs-voicemail")]
+BsVoicemail,
+[Description("bs-volume-down-fill")]
+BsVolumeDownFill,
+[Description("bs-volume-down")]
+BsVolumeDown,
+[Description("bs-volume-mute-fill")]
+BsVolumeMuteFill,
+[Description("bs-volume-mute")]
+BsVolumeMute,
+[Description("bs-volume-off-fill")]
+BsVolumeOffFill,
+[Description("bs-volume-off")]
+BsVolumeOff,
+[Description("bs-volume-up-fill")]
+BsVolumeUpFill,
+[Description("bs-volume-up")]
+BsVolumeUp,
+[Description("bs-vr")]
+BsVr,
+[Description("bs-wallet-fill")]
+BsWalletFill,
+[Description("bs-wallet")]
+BsWallet,
+[Description("bs-wallet2")]
+BsWallet2,
+[Description("bs-watch")]
+BsWatch,
+[Description("bs-water")]
+BsWater,
+[Description("bs-whatsapp")]
+BsWhatsapp,
+[Description("bs-wifi-1")]
+BsWifi1,
+[Description("bs-wifi-2")]
+BsWifi2,
+[Description("bs-wifi-off")]
+BsWifiOff,
+[Description("bs-wifi")]
+BsWifi,
+[Description("bs-wind")]
+BsWind,
+[Description("bs-window-dock")]
+BsWindowDock,
+[Description("bs-window-sidebar")]
+BsWindowSidebar,
+[Description("bs-window")]
+BsWindow,
+[Description("bs-wrench")]
+BsWrench,
+[Description("bs-x-circle-fill")]
+BsXCircleFill,
+[Description("bs-x-circle")]
+BsXCircle,
+[Description("bs-x-diamond-fill")]
+BsXDiamondFill,
+[Description("bs-x-diamond")]
+BsXDiamond,
+[Description("bs-x-octagon-fill")]
+BsXOctagonFill,
+[Description("bs-x-octagon")]
+BsXOctagon,
+[Description("bs-x-square-fill")]
+BsXSquareFill,
+[Description("bs-x-square")]
+BsXSquare,
+[Description("bs-x")]
+BsX,
+[Description("bs-youtube")]
+BsYoutube,
+[Description("bs-zoom-in")]
+BsZoomIn,
+[Description("bs-zoom-out")]
+BsZoomOut,
+
 
 		#endregion
 
