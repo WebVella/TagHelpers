@@ -19,6 +19,14 @@ namespace WebVella.TagHelpers.TagHelpers
 		[HtmlAttributeName("maxlength")]
 		public int? MaxLength { get; set; } = null;
 
+		/*
+		 * The link that will be opened.
+		 * Feature: LInkable Text Field
+		 *Author: Amarjeet-L
+		 */
+		[HtmlAttributeName("link")]
+		public string Link { get; set; } = null;
+
 		public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
 		{
 			if (!isVisible)
@@ -196,7 +204,19 @@ namespace WebVella.TagHelpers.TagHelpers
 					if (Size == WvCssSize.Small)
 						divEl.AddCssClass("input-group-sm");
 
-					divEl.InnerHtml.Append((Value ?? "").ToString());
+					/*
+					 * Append an anchor field with the provided link value, if it is present
+					 * Feature: LInkable Text Field
+					 *Author: Amarjeet-L
+					 */
+					if (Link != null && Link != "")
+					{
+						divEl.InnerHtml.AppendHtml("<a href='" + Link + "' target='_blank'>" + (Value ?? "").ToString() + "</a>");
+					}
+					else
+					{
+						divEl.InnerHtml.Append((Value ?? "").ToString());
+					}
 					output.Content.AppendHtml(divEl);
 				}
 				else
@@ -207,7 +227,19 @@ namespace WebVella.TagHelpers.TagHelpers
 			else if (Mode == WvFieldRenderMode.Simple)
 			{
 				output.SuppressOutput();
-				output.Content.Append((Value ?? "").ToString());
+				/*
+					 * Append an anchor field with the provided link value, if it is present
+					 * Feature: LInkable Text Field
+					 *Author: Amarjeet-L
+					 */
+				if (Link != null && Link != "")
+				{
+					output.Content.AppendHtml("<a href='" + Link + "' target='_blank'>" + (Value ?? "").ToString() + "</a>");
+				}
+				else
+				{
+					output.Content.Append((Value ?? "").ToString());
+				}
 				return;
 			}
 			else if (Mode == WvFieldRenderMode.InlineEdit)
@@ -253,7 +285,22 @@ namespace WebVella.TagHelpers.TagHelpers
 						}
 						viewInputActionEl.InnerHtml.AppendHtml("<button type=\"button\" class='btn btn-white' title='edit'><i class='fa fa-fw fa-pencil-alt'></i></button>");
 						viewWrapperEl.InnerHtml.AppendHtml(viewInputActionEl);
-
+						/*
+							 * Append an anchor field with the provided link value, if it is present
+							 * Feature: LInkable Text Field
+							 *Author: Amarjeet-L
+							 */
+						if (Link != "" && Link != null)
+						{
+							var linkInputActionEl = new TagBuilder("span");
+							linkInputActionEl.AddCssClass("input-group-append");
+							foreach (var htmlString in AppendHtml)
+							{
+								linkInputActionEl.InnerHtml.AppendHtml(htmlString);
+							}
+							linkInputActionEl.InnerHtml.AppendHtml("<a href='" + Link + "' target='_blank' class='btn btn-white' title='details'><i class='fas fa-external-link-alt'></i></a>");
+							viewWrapperEl.InnerHtml.AppendHtml(linkInputActionEl);
+						}
 						output.Content.AppendHtml(viewWrapperEl);
 					}
 					#endregion
@@ -314,7 +361,7 @@ namespace WebVella.TagHelpers.TagHelpers
 
 						editInputGroupEl.InnerHtml.AppendHtml(editInputGroupAppendEl);
 						editWrapperEl.InnerHtml.AppendHtml(editInputGroupEl);
-
+						
 						output.Content.AppendHtml(editWrapperEl);
 					}
 					#endregion

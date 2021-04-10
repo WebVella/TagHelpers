@@ -28,6 +28,13 @@ namespace WebVella.TagHelpers.TagHelpers
 
 		[HtmlAttributeName("select-match-type")]
 		public WvSelectMatchType SelectMatchType { get; set; } = WvSelectMatchType.Contains;
+		/*
+		 * The link that will be opened.
+		 * Feature: LInkable Text Field
+		 *Author: Amarjeet-L
+		 */
+		[HtmlAttributeName("link")]
+		public string Link { get; set; } = null;
 
 		public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
 		{
@@ -597,7 +604,22 @@ namespace WebVella.TagHelpers.TagHelpers
 						}
 						viewInputActionEl.InnerHtml.AppendHtml("<button type=\"button\" class='btn btn-white' title='edit'><i class='fa fa-fw fa-pencil-alt'></i></button>");
 						viewWrapperEl.InnerHtml.AppendHtml(viewInputActionEl);
-
+						/*
+					 * Append an anchor field with the provided link value, if it is present
+					 * Feature: LInkable Text Field
+					 *Author: Amarjeet-L
+					 */
+						if (Link != "" && Link != null)
+						{
+							var linkInputActionEl = new TagBuilder("span");
+							linkInputActionEl.AddCssClass("input-group-append");
+							foreach (var htmlString in AppendHtml)
+							{
+								linkInputActionEl.InnerHtml.AppendHtml(htmlString);
+							}
+							linkInputActionEl.InnerHtml.AppendHtml("<a href='" + Link + "' target='_blank' class='btn btn-white' title='details'><i class='fas fa-external-link-alt'></i></a>");
+							viewWrapperEl.InnerHtml.AppendHtml(linkInputActionEl);
+						}
 						output.Content.AppendHtml(viewWrapperEl);
 					}
 					#endregion
