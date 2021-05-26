@@ -22,7 +22,7 @@
 function MultiSelectFormFormat(record) {
 	var originalOption = record.element;
 	//Non API
-	if(originalOption){
+	if (originalOption) {
 		var iconClass = $(originalOption).data('icon');
 		var color = $(originalOption).data('color');
 		if (!color) {
@@ -34,10 +34,10 @@ function MultiSelectFormFormat(record) {
 		return '<i class="fa fa-fw ' + iconClass + '" style="color:' + color + '"></i> ' + record.text;
 	}
 	//API
-	else if(record.icon_class){
+	else if (record.icon_class) {
 		return '<i class="fa fa-fw ' + record.icon_class + '" style="color:' + record.color + '"></i> ' + record.text;
 	}
-	else{
+	else {
 		return record.text;
 	}
 }
@@ -57,7 +57,7 @@ function MultiSelectFormMatchStartsWith(params, data) {
 	// `data.text` is the text that is displayed for the data object
 	if (data.text.toLowerCase().startsWith(params.term.toLowerCase())) {
 		var modifiedData = $.extend({}, data, true);
-//		modifiedData.text += ' (matched)';
+		//		modifiedData.text += ' (matched)';
 
 		// You can return modified objects from here
 		// This includes matching the `children` how you want in nested data sets
@@ -74,13 +74,13 @@ function MultiSelectFormInit(fieldId, fieldName, config) {
 	var selectors = MultiSelectFormGenerateSelectors(fieldId, fieldName, config);
 
 	var placeholder = 'not selected';
-	if(config.placeholder){
+	if (config.placeholder) {
 		placeholder = config.placeholder;
 	}
 
 	var selectInitObject = {
 		theme: 'bootstrap4',
-		placeholder:placeholder,
+		placeholder: placeholder,
 		closeOnSelect: true,
 		language: "en",
 		minimumResultsForSearch: 10,
@@ -92,7 +92,7 @@ function MultiSelectFormInit(fieldId, fieldName, config) {
 		templateSelection: MultiSelectFormFormat
 	};
 
-	if(config.select_match_type === 1){
+	if (config.select_match_type === 1) {
 		selectInitObject.matcher = MultiSelectFormMatchStartsWith;
 	}
 
@@ -125,7 +125,7 @@ function MultiSelectFormInit(fieldId, fieldName, config) {
 			processResults: function (data) {
 				var results = [];
 				var hasMore = false;
-if (data && data.object && data.object.list) {
+				if (data && data.object && data.object.list) {
 					var totalRecords = data.object.total_count;
 					var displayedCount = data.object.list.length + (currentPage - 1) * config.ajax_datasource.page_size;
 					if (displayedCount < totalRecords) {
@@ -133,30 +133,28 @@ if (data && data.object && data.object.list) {
 					}
 					_.forEach(data.object.list, function (record) {
 						var result = {};
-						if(record[config.ajax_datasource.value])
-						{
+						if (record[config.ajax_datasource.value]) {
 							result.id = record[config.ajax_datasource.value];
 						}
-						else{
+						else {
 							result.id = null;
 						}
-						if(record[config.ajax_datasource.label])
-						{
+						if (record[config.ajax_datasource.label]) {
 							result.text = record[config.ajax_datasource.label];
 						}
-						else{
+						else {
 							result.text = "!undefined!";
 						}
-						if(record["icon_class"]){
+						if (record["icon_class"]) {
 							result.icon_class = record["icon_class"];
 						}
-						else{
+						else {
 							result.icon_class = "";
 						}
-						if(record["color"]){
+						if (record["color"]) {
 							result.color = record["color"];
 						}
-						else{
+						else {
 							result.color = "";
 						}
 						results.push(result);
@@ -168,50 +166,48 @@ if (data && data.object && data.object.list) {
 						}
 					};
 				}
-				else if(data && data.object){
+				else if (data && data.object) {
 					_.forEach(data.object, function (record) {
 						var result = {};
-						if(record[config.ajax_datasource.value])
-						{
+						if (record[config.ajax_datasource.value]) {
 							result.id = record[config.ajax_datasource.value];
 						}
-						else{
+						else {
 							result.id = null;
 						}
-						if(record[config.ajax_datasource.label])
-						{
+						if (record[config.ajax_datasource.label]) {
 							result.text = record[config.ajax_datasource.label];
 						}
-						else{
+						else {
 							result.text = "!undefined!";
 						}
-						if(record["icon_class"]){
+						if (record["icon_class"]) {
 							result.icon_class = record["icon_class"];
 						}
-						else{
+						else {
 							result.icon_class = "";
 						}
-						if(record["color"]){
+						if (record["color"]) {
 							result.color = record["color"];
 						}
-						else{
+						else {
 							result.color = "";
 						}
 						results.push(result);
-					});	
+					});
 					return {
 						results: results, //id,text
 						pagination: {
 							more: hasMore
 						}
-					};					
+					};
 				}
 				return data;
 			}
 		};
 	}
 	//Only API url is provided
-	else if(config.ajax_datasource_api){
+	else if (config.ajax_datasource_api) {
 		selectInitObject.ajax = {
 			type: 'POST',
 			headers: {
@@ -245,12 +241,12 @@ if (data && data.object && data.object.list) {
 	//	}
 	//});
 
-	$(selectors.inputEl).on('change', function(event) {
+	$(selectors.inputEl).on('change', function (event) {
 		var customEvent = new Event('WvFieldSelect_Change');
 		var inputElement = document.getElementById('input-' + fieldId);
 		var selectedJson = $(selectors.inputEl).select2('data');
 		var selectedKeys = [];
-		for (var i= 0; i < selectedJson.length; i++) {
+		for (var i = 0; i < selectedJson.length; i++) {
 			selectedKeys.push(selectedJson[i].id); //this is a single select
 		}
 		var fieldname = $(selectors.inputEl).attr("data-field-name");
@@ -278,7 +274,7 @@ if (data && data.object && data.object.list) {
 		customEvent.payload = {
 			value: selectedKeys,
 			fieldId: fieldId,
-			fieldName:inputElement.name
+			fieldName: inputElement.name
 		};
 		document.dispatchEvent(customEvent);
 	});
@@ -288,7 +284,7 @@ if (data && data.object && data.object.list) {
 	var $form = $('<form id="add-option-modal-' + fieldId + '" name="add-option-modal-' + fieldId + '"></form>');
 	$(selectors.modalEl + " .modal-dialog").append($form);
 	$(selectors.modalEl + " .modal-content").appendTo(selectors.modalEl + " form");
-	$(selectors.modalEl + " form").on("submit", function(event) {
+	$(selectors.modalEl + " form").on("submit", function (event) {
 		event.preventDefault();
 		var $alertMessage = $(selectors.modalEl).find(".alert-danger");
 		$($alertMessage).addClass("d-none").html("");
@@ -317,10 +313,10 @@ if (data && data.object && data.object.list) {
 				},
 				error: function (jqXHR, textStatus, errorThrown) {
 					var response = {};
-				response.message = "";
-				if (jqXHR && jqXHR.responseJSON) {
-					response = jqXHR.responseJSON;
-				}
+					response.message = "";
+					if (jqXHR && jqXHR.responseJSON) {
+						response = jqXHR.responseJSON;
+					}
 					addMultiSelectOptionErrorCallback(response, fieldId, fieldName, entityName, inputValue);
 				}
 			});
@@ -363,6 +359,10 @@ function addMultiSelectOptionModal(fieldId, fieldName, entityName) {
 		$(selectorInputEl).select2("close");
 		$('.add-option-input').trigger('focus');
 	});
-	$(selectorModalEl).modal();
+	$(selectorModalEl).modal(
+		{
+			focus: false
+		}
+	);
 }
 

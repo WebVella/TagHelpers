@@ -1,5 +1,6 @@
 ﻿var htmlFieldModalOptions = {
-	backdrop: "static"
+	backdrop: "static",
+	focus: false
 };
 
 function InitHtmlFieldCKEditor(fieldId, fieldConfig) { //modes are -> none, one-repository,user-repository

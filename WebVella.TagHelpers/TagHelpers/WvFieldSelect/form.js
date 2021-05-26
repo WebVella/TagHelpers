@@ -17,7 +17,7 @@ function SelectFormGenerateSelectors(fieldId, fieldName, config) {
 function SelectFormFormat(record) {
 	var originalOption = record.element;
 	//Non API
-	if(originalOption){
+	if (originalOption) {
 		var iconClass = $(originalOption).data('icon');
 		var color = $(originalOption).data('color');
 		if (!color) {
@@ -29,10 +29,10 @@ function SelectFormFormat(record) {
 		return '<i class="fa fa-fw ' + iconClass + '" style="color:' + color + '"></i> ' + record.text;
 	}
 	//API
-	else if(record.icon_class){
+	else if (record.icon_class) {
 		return '<i class="fa fa-fw ' + record.icon_class + '" style="color:' + record.color + '"></i> ' + record.text;
 	}
-	else{
+	else {
 		return record.text;
 	}
 }
@@ -52,7 +52,7 @@ function SelectFormMatchStartsWith(params, data) {
 	// `data.text` is the text that is displayed for the data object
 	if (data.text.toLowerCase().startsWith(params.term.toLowerCase())) {
 		var modifiedData = $.extend({}, data, true);
-//		modifiedData.text += ' (matched)';
+		//		modifiedData.text += ' (matched)';
 
 		// You can return modified objects from here
 		// This includes matching the `children` how you want in nested data sets
@@ -68,7 +68,7 @@ function SelectFormInit(fieldId, fieldName, config) {
 	var selectors = SelectFormGenerateSelectors(fieldId, fieldName, config);
 
 	var placeholder = 'not selected';
-	if(config.placeholder){
+	if (config.placeholder) {
 		placeholder = config.placeholder;
 	}
 
@@ -87,7 +87,7 @@ function SelectFormInit(fieldId, fieldName, config) {
 		templateSelection: SelectFormFormat
 	};
 
-	if(config.select_match_type === 1){
+	if (config.select_match_type === 1) {
 		selectInitObject.matcher = SelectFormMatchStartsWith;
 	}
 
@@ -129,30 +129,28 @@ function SelectFormInit(fieldId, fieldName, config) {
 					}
 					_.forEach(data.object.list, function (record) {
 						var result = {};
-						if(record[config.ajax_datasource.value])
-						{
+						if (record[config.ajax_datasource.value]) {
 							result.id = record[config.ajax_datasource.value];
 						}
-						else{
+						else {
 							result.id = null;
 						}
-						if(record[config.ajax_datasource.label])
-						{
+						if (record[config.ajax_datasource.label]) {
 							result.text = record[config.ajax_datasource.label];
 						}
-						else{
+						else {
 							result.text = "!undefined!";
 						}
-						if(record["icon_class"]){
+						if (record["icon_class"]) {
 							result.icon_class = record["icon_class"];
 						}
-						else{
+						else {
 							result.icon_class = "";
 						}
-						if(record["color"]){
+						if (record["color"]) {
 							result.color = record["color"];
 						}
-						else{
+						else {
 							result.color = "";
 						}
 						results.push(result);
@@ -164,51 +162,49 @@ function SelectFormInit(fieldId, fieldName, config) {
 						}
 					};
 				}
-				else if(data && data.object){
+				else if (data && data.object) {
 					_.forEach(data.object, function (record) {
 						var result = {};
-						if(record[config.ajax_datasource.value])
-						{
+						if (record[config.ajax_datasource.value]) {
 							result.id = record[config.ajax_datasource.value];
 						}
-						else{
+						else {
 							result.id = null;
 						}
-						if(record[config.ajax_datasource.label])
-						{
+						if (record[config.ajax_datasource.label]) {
 							result.text = record[config.ajax_datasource.label];
 						}
-						else{
+						else {
 							result.text = "!undefined!";
 						}
-						if(record["icon_class"]){
+						if (record["icon_class"]) {
 							result.icon_class = record["icon_class"];
 						}
-						else{
+						else {
 							result.icon_class = "";
 						}
-						if(record["color"]){
+						if (record["color"]) {
 							result.color = record["color"];
 						}
-						else{
+						else {
 							result.color = "";
 						}
 						results.push(result);
-					});	
+					});
 					return {
 						results: results, //id,text
 						pagination: {
 							more: hasMore
 						}
-					};					
+					};
 				}
-				
+
 				return data;
 			}
 		};
 	}
 	//Only API url is provided
-	else if(config.ajax_datasource_api){
+	else if (config.ajax_datasource_api) {
 		selectInitObject.ajax = {
 			type: 'POST',
 			headers: {
@@ -365,5 +361,7 @@ function addOptionModal(fieldId, fieldName, entityName, prefix) {
 		$('.add-option-input').trigger('focus');
 	});
 
-	$(selectorModalEl).modal();
+	$(selectorModalEl).modal({
+		focus: false
+	});
 }

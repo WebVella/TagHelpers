@@ -1,5 +1,6 @@
 ﻿var htmlFieldModalOptions = {
-	backdrop: "static"
+	backdrop: "static",
+	focus: false
 };
 
 if(!window.HtmlFieldEditors){
