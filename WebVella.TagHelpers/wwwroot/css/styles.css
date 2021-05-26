@@ -51,6 +51,10 @@
 }
 
 
+.wv-field figure.media {
+	display:block;
+}
+
 /*#endregion*/
 
 /*#region << wv-alert >>*/
