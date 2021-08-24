@@ -131,7 +131,12 @@ function SelectInlineEditPreEnableCallback(fieldId, fieldName, config) {
 							result.id = null;
 						}
 						if (record[config.ajax_datasource.label]) {
-							result.text = record[config.ajax_datasource.label];
+							if (config.ajax_datasource.label.included("{{") && config.ajax_datasource.label.included("}}")) {
+								result.text = ProcessStringTemplateWithObject(config.ajax_datasource.label, record);
+							}
+							else {
+								result.text = record[config.ajax_datasource.label];
+							}
 						}
 						else {
 							result.text = "!undefined!";
@@ -167,7 +172,12 @@ function SelectInlineEditPreEnableCallback(fieldId, fieldName, config) {
 							result.id = null;
 						}
 						if (record[config.ajax_datasource.label]) {
-							result.text = record[config.ajax_datasource.label];
+							if (config.ajax_datasource.label.included("{{") && config.ajax_datasource.label.included("}}")) {
+								result.text = ProcessStringTemplateWithObject(config.ajax_datasource.label, record);
+							}
+							else {
+								result.text = record[config.ajax_datasource.label];
+							}
 						}
 						else {
 							result.text = "!undefined!";
