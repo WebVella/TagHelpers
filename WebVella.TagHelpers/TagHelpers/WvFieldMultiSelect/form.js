@@ -139,12 +139,15 @@ function MultiSelectFormInit(fieldId, fieldName, config) {
 						else {
 							result.id = null;
 						}
-						if (record[config.ajax_datasource.label]) {
-							if (config.ajax_datasource.label.included("{{") && config.ajax_datasource.label.included("}}")) {
-								result.text = ProcessStringTemplateWithObject(config.ajax_datasource.label, record);
+						if (config.ajax_datasource.label.length > 0) {
+							if (config.ajax_datasource.label.includes("{{") && config.ajax_datasource.label.includes("}}")) {
+								result.text = WebVellaTagHelpers.ProcessStringTemplateWithObject(config.ajax_datasource.label, record);
+							}
+							else if (record.hasOwnProperty(config.ajax_datasource.label)) {
+								result.text = record[config.ajax_datasource.label];
 							}
 							else {
-								result.text = record[config.ajax_datasource.label];
+								result.text = "!undefined!";
 							}
 						}
 						else {
@@ -180,12 +183,15 @@ function MultiSelectFormInit(fieldId, fieldName, config) {
 						else {
 							result.id = null;
 						}
-						if (record[config.ajax_datasource.label]) {
-							if (config.ajax_datasource.label.included("{{") && config.ajax_datasource.label.included("}}")) {
-								result.text = ProcessStringTemplateWithObject(config.ajax_datasource.label, record);
+						if (config.ajax_datasource.label.length > 0) {
+							if (config.ajax_datasource.label.includes("{{") && config.ajax_datasource.label.includes("}}")) {
+								result.text = WebVellaTagHelpers.ProcessStringTemplateWithObject(config.ajax_datasource.label, record);
+							}
+							else if (record.hasOwnProperty(config.ajax_datasource.label)) {
+								result.text = record[config.ajax_datasource.label];
 							}
 							else {
-								result.text = record[config.ajax_datasource.label];
+								result.text = "!undefined!";
 							}
 						}
 						else {
