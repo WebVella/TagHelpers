@@ -15,23 +15,13 @@ namespace WebVella.TagHelpers.Utilities
 			if (e is Enum)
 			{
 				Type type = e.GetType();
-				Array values = Enum.GetValues(type);
-
-				foreach (int val in values)
+				var memInfo = type.GetMember(type.GetEnumName(e.ToInt32(CultureInfo.InvariantCulture)));
+				var soAttributes = memInfo[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
+				if (soAttributes.Length > 0)
 				{
-					if (val == e.ToInt32(CultureInfo.InvariantCulture))
-					{
-						var memInfo = type.GetMember(type.GetEnumName(val));
-						var soAttributes = memInfo[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
-						if (soAttributes.Length > 0)
-						{
-							// we're only getting the first description we find
-							// others will be ignored
-							description = ((DescriptionAttribute)soAttributes[0]).Description;
-						}
-
-						break;
-					}
+					// we're only getting the first description we find
+					// others will be ignored
+					description = ((DescriptionAttribute)soAttributes[0]).Description;
 				}
 			}
 

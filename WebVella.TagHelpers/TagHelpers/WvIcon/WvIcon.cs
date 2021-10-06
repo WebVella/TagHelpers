@@ -38,7 +38,7 @@ namespace WebVella.TagHelpers.TagHelpers
 			var cssList = new List<string>();
 			cssList.Add("wv-icon");
 			cssList.Add(Class);
-			var typeDescription = Type.ToDescriptionString();
+			var typeDescription = IconTypeService.GetDescriptionByIconType(Type);
 			if (Type != WvIconType.NoIcon)
 			{
 				if (typeDescription.StartsWith("bs"))
