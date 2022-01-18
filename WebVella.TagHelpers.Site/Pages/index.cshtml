@@ -590,6 +590,9 @@
 	</div>
 
 	<h2>wv-field-date</h2>
+	@{
+		var date = new DateTime(2021,10,12);
+	}
 	<div class="row">
 		<div class="col-3">
 			<div class="card mt-3 mb-3">
@@ -597,7 +600,7 @@
 					Form
 				</div>
 				<div class="card-body">
-					<wv-field-date value="@DateTime.Now" label-text="FieldLabel" name="text" mode="Form" required="true"></wv-field-date>
+					<wv-field-date value="@date" label-text="FieldLabel" name="text" mode="Form" required="true"></wv-field-date>
 				</div>
 			</div>
 		</div>
@@ -607,7 +610,7 @@
 					Inline Edit
 				</div>
 				<div class="card-body">
-					<wv-field-date value="@DateTime.Now" label-text="FieldLabel" name="text" mode="InlineEdit" api-url="@apiUrl"  required="true"></wv-field-date>
+					<wv-field-date value="@date" label-text="FieldLabel" name="text" mode="InlineEdit" api-url="@apiUrl"  required="true"></wv-field-date>
 				</div>
 			</div>
 		</div>
@@ -617,7 +620,7 @@
 					Display
 				</div>
 				<div class="card-body">
-					<wv-field-date value="@DateTime.Now" label-text="FieldLabel" name="text" mode="Display"  required="true"></wv-field-date>
+					<wv-field-date value="@date" label-text="FieldLabel" name="text" mode="Display"  required="true"></wv-field-date>
 				</div>
 			</div>
 		</div>
@@ -627,7 +630,7 @@
 					Display
 				</div>
 				<div class="card-body">
-					<wv-field-date value="@DateTime.Now" label-text="FieldLabel" name="text" mode="Simple"></wv-field-date>
+					<wv-field-date value="@date" label-text="FieldLabel" name="text" mode="Simple"></wv-field-date>
 				</div>
 			</div>
 		</div>
