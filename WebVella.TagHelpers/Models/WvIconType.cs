@@ -3473,6 +3473,8 @@ BsZoomOut,
 		MdfGroupWork,
 		[Description("mdf-g_translate")]
 		MdfGTranslate,
+		[Description("mdf-handyman")]
+		MdfHandyman,		
 		[Description("mdf-hdr_off")]
 		MdfHdrOff,
 		[Description("mdf-hdr_on")]
