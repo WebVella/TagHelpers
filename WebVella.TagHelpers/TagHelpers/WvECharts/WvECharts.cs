@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Text.Json;
 using System.Threading.Tasks;
 using WebVella.TagHelpers.Models;
 using WebVella.TagHelpers.Utilities;
@@ -489,7 +489,7 @@ myChart.on('click', function (params) {
 			{
 			};
 			var usaJson = WvHelpers.GetEmbeddedTextResource("usa.json", "WebVella.TagHelpers.TagHelpers.WvECharts", "WebVella.TagHelpers");
-			scriptTemplate = scriptTemplate.Replace("{{OPTIONS}}", JsonConvert.SerializeObject(options));
+			scriptTemplate = scriptTemplate.Replace("{{OPTIONS}}", JsonSerializer.Serialize(options));
 			scriptTemplate = scriptTemplate.Replace("{{USAJSON}}", usaJson);
 			scriptTemplate = scriptTemplate.Replace("{{ELEMENTID}}", ElementId.ToString());
 

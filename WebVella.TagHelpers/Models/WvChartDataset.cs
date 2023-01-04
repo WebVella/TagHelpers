@@ -1,7 +1,5 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace WebVella.TagHelpers.Models
 {
@@ -10,22 +8,22 @@ namespace WebVella.TagHelpers.Models
 		/// <summary>
 		/// The label for the dataset which appears in the legend and tooltips.
 		/// </summary>
-		[JsonProperty(PropertyName = "label")]
+		[JsonPropertyName("label")]
 		public string Label { get; set; }
 
-		[JsonProperty(PropertyName = "data")]
+		[JsonPropertyName("data")]
 		public List<decimal> Data { get; set; }
 
-		[JsonProperty(PropertyName = "borderColor")]
+		[JsonPropertyName("borderColor")]
 		public object BorderColor { get; set; } = null; // List<string> or string
 
-		[JsonProperty(PropertyName = "backgroundColor")]
+		[JsonPropertyName("backgroundColor")]
 		public object BackgroundColor { get; set; } = null; // List<string> or string
 
-		[JsonProperty(PropertyName = "fill")]
+		[JsonPropertyName("fill")]
 		public bool? Fill { get; set; } = null;
 
-		[JsonProperty(PropertyName = "borderWidth")]
+		[JsonPropertyName("borderWidth")]
 		public int BorderWidth { get; set; } = 2;
 	}
 }

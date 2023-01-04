@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Razor.TagHelpers;
-using Newtonsoft.Json;
+using System.Text.Json;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -38,7 +38,7 @@ namespace WebVella.TagHelpers.TagHelpers
 			//ValueGuid
 			if (Value is string && ((string)Value).StartsWith("["))
 			{
-				ValueGrid = JsonConvert.DeserializeObject<List<WvKeyStringList>>((string)Value);
+				ValueGrid = JsonSerializer.Deserialize<List<WvKeyStringList>>((string)Value);
 			}
 			else
 			{

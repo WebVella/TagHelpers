@@ -1,54 +1,54 @@
-﻿using Newtonsoft.Json;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace WebVella.TagHelpers.Models
 {
 	public class WvCurrency
 	{
 
-		[JsonProperty(PropertyName = "id")]
+		[JsonPropertyName("id")]
 		public string Id { get; set; } = "";
 
-		[JsonProperty(PropertyName = "alternate_symbols")]
+		[JsonPropertyName("alternate_symbols")]
 		public List<string> AlternateSymbols { get; set; } = new List<string>();
 
-		[JsonProperty(PropertyName = "decimal_mark")]
+		[JsonPropertyName("decimal_mark")]
 		public string DecimalMark { get; set; } = "";
 
-		[JsonProperty(PropertyName = "disambiguate_symbol")]
+		[JsonPropertyName("disambiguate_symbol")]
 		public string DisambiguateSymbol { get; set; } = "";
 
-		[JsonProperty(PropertyName = "html_entity")]
+		[JsonPropertyName("html_entity")]
 		public string html_entity { get; set; } = "";
 
-		[JsonProperty(PropertyName = "iso_code")]
+		[JsonPropertyName("iso_code")]
 		public string IsoCode { get; set; } = "";
 
-		[JsonProperty(PropertyName = "iso_numeric")]
+		[JsonPropertyName("iso_numeric")]
 		public string IsoNumeric { get; set; } = "";
 
-		[JsonProperty(PropertyName = "name")]
+		[JsonPropertyName("name")]
 		public string Name { get; set; } = "";
 
-		[JsonProperty(PropertyName = "priority")]
+		[JsonPropertyName("priority")]
 		public int Priority { get; set; } = 100;
 
-		[JsonProperty(PropertyName = "smallest_denomination")]
+		[JsonPropertyName("smallest_denomination")]
 		public int SmallestDenomination { get; set; } = 1;
 
-		[JsonProperty(PropertyName = "subunit")]
+		[JsonPropertyName("subunit")]
 		public string SubUnit { get; set; } = "";
 
-		[JsonProperty(PropertyName = "subunit_to_unit")]
+		[JsonPropertyName("subunit_to_unit")]
 		public int SubUnitToUnit { get; set; } = 100;
 
-		[JsonProperty(PropertyName = "symbol")]
+		[JsonPropertyName("symbol")]
 		public string Symbol { get; set; } = "";
 
-		[JsonProperty(PropertyName = "symbol_first")]
+		[JsonPropertyName("symbol_first")]
 		public bool SymbolFirst { get; set; } = false;
 
-		[JsonProperty(PropertyName = "thousands_separator")]
+		[JsonPropertyName("thousands_separator")]
 		public string ThousandsSeparator { get; set; } = "";
 	}
 }

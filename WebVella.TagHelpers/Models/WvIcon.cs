@@ -1,19 +1,16 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Text.Json.Serialization;
 
 namespace WebVella.TagHelpers.Models
 {
 	public class WvIcon
 	{
-		[JsonProperty(PropertyName = "name")]
-		public string Name { get; set; } = "";	
-		
-		[JsonProperty(PropertyName = "class")]
-		public string Class { get; set; } = "";		
+		[JsonPropertyName("name")]
+		public string Name { get; set; } = "";
 
-		[JsonProperty(PropertyName = "symbol")]
+		[JsonPropertyName("class")]
+		public string Class { get; set; } = "";
+
+		[JsonPropertyName("symbol")]
 		public string Symbol { get; set; } = "";
 	}
 }

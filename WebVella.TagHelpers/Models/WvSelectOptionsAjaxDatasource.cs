@@ -1,26 +1,26 @@
-﻿using Newtonsoft.Json;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace WebVella.TagHelpers.Models
 {
 	public class WvSelectOptionsAjaxDatasource
 	{
-		[JsonProperty(PropertyName = "ds")]
+		[JsonPropertyName("ds")]
 		public string DatasourceName { get; set; } = "";
 
-		[JsonProperty(PropertyName = "use_select_api")]
+		[JsonPropertyName("use_select_api")]
 		public bool UseSelectApi { get; set; } = false;
 
-		[JsonProperty(PropertyName = "value")]
+		[JsonPropertyName("value")]
 		public string Value { get; set; } = "id";
 
-		[JsonProperty(PropertyName = "label")]
+		[JsonPropertyName("label")]
 		public string Label { get; set; } = "label";
 
-		[JsonProperty(PropertyName = "page_size")]
+		[JsonPropertyName("page_size")]
 		public int PageSize { get; set; } = 10;
 
-		[JsonProperty(PropertyName = "init_options")]
+		[JsonPropertyName("init_options")]
 		public List<WvSelectOption> InitOptions { get; set; } = new List<WvSelectOption>();
 	}
 }

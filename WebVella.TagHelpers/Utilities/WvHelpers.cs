@@ -1,8 +1,7 @@
 ﻿using CsvHelper;
 using CsvHelper.Configuration;
 using HtmlAgilityPack;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -2908,13 +2907,14 @@ namespace WebVella.TagHelpers.Utilities
   }
 }";
 			#endregion
-			var currencyObj = (JObject)JsonConvert.DeserializeObject(currencyJson);
 
-			foreach (var property in currencyObj)
+			var currencyDict = JsonSerializer.Deserialize<Dictionary<string, WvCurrency>>(currencyJson);
+
+			foreach (var property in currencyDict.Keys)
 			{
-				var objectJson = JsonConvert.SerializeObject(property.Value);
-				var currency = JsonConvert.DeserializeObject<WvCurrency>(objectJson);
-				result.Add(currency);
+				//var objectJson = JsonSerializer.Serialize(property);
+				//var currency = JsonSerializer.Deserialize<WvCurrency>(objectJson);
+                result.Add(currencyDict[property]);
 			}
 			result = result.OrderBy(x => x.Priority).ToList();
 
@@ -4075,7 +4075,7 @@ namespace WebVella.TagHelpers.Utilities
 }";
 			#endregion
 
-			var iconsDict = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
+			var iconsDict = JsonSerializer.Deserialize<Dictionary<string, string>>(json);
 
 			foreach (var key in iconsDict.Keys)
 			{

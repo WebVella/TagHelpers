@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Razor.TagHelpers;
-using Newtonsoft.Json;
 using System;
+using System.Text.Json;
 using System.Threading.Tasks;
 using WebVella.TagHelpers.Models;
 using WebVella.TagHelpers.Utilities;
@@ -305,7 +305,7 @@ namespace WebVella.TagHelpers.TagHelpers
 							FalseLabel = TextFalse
 						};
 
-						scriptTemplate = scriptTemplate.Replace("{{ConfigJson}}", JsonConvert.SerializeObject(fieldConfig));
+						scriptTemplate = scriptTemplate.Replace("{{ConfigJson}}", JsonSerializer.Serialize(fieldConfig));
 
 						initScript.InnerHtml.AppendHtml(scriptTemplate);
 

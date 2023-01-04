@@ -5,12 +5,13 @@
 		<IsPackable>true</IsPackable>
 		<RazorLangVersion>3.0</RazorLangVersion>
 		<GenerateEmbeddedFilesManifest>true</GenerateEmbeddedFilesManifest>
-		<Version>1.2.00</Version> 
+		<Version>1.3.00</Version> 
 		<Authors>WebVella</Authors>
 		<PackageProjectUrl>http://webvella.com/</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/WebVella/WebVella-ERP</RepositoryUrl>
 		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
-		<PackageIconUrl>http://webvella.com/favicon.ico</PackageIconUrl>
+		<Icon>http://webvella.com/favicon.ico</Icon>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<Description>A collection of razor TagHelpers for easy generation of bootstrap 4 styled UI components</Description>
 		<PackageTags>taghelper,razor,bootstrap</PackageTags>
 		<RepositoryType>public github</RepositoryType>
@@ -22,6 +23,10 @@
 
 	<ItemGroup>
 	  <None Remove="TagHelpers\WvFieldRadioList\form.js" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="README.md" Pack="true" PackagePath="\"/>
 	</ItemGroup>
 
 
@@ -78,9 +83,9 @@
 		<PackageReference Include="HtmlAgilityPack" Version="1.11.46" />
 		<PackageReference Include="Microsoft.AspNetCore.Components" Version="7.0.1" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.1" />
-		<PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="7.0.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Razor" Version="2.2.0" />
 		<PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="7.0.1" />
-		<!--<PackageReference Include="YUICompressor.NET" Version="3.1.0" />-->
 	</ItemGroup>
 
 

@@ -1,17 +1,17 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 
 namespace WebVella.TagHelpers.Models
 {
 	public class WvChartMeta
 	{
 
-		[JsonProperty(PropertyName = "type")]
+		[JsonPropertyName("type")]
 		public WvChartType Type { get; set; } = WvChartType.Line;
 
-		[JsonProperty(PropertyName = "data")]
+		[JsonPropertyName("data")]
 		public WvChartData Data { get; set; }
 
 		//Hard coded for now
@@ -21,7 +21,7 @@ namespace WebVella.TagHelpers.Models
 		/// <summary>
 		/// A chart options json.
 		/// </summary>
-		[JsonProperty(PropertyName = "options")]
+		[JsonPropertyName("options")]
 		public dynamic Options { get; set; }
 
 		public WvChartMeta(WvChartType type, List<string> labels, List<WvChartDataset> datasets, bool ShowLegend)

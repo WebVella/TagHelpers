@@ -1,7 +1,7 @@
 ﻿using HtmlAgilityPack;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Razor.TagHelpers;
-using Newtonsoft.Json;
+using System.Text.Json;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -198,7 +198,7 @@ namespace WebVella.TagHelpers.TagHelpers
 					{
 						IsRequired = Required
 					};
-					scriptTemplate = scriptTemplate.Replace("{{ConfigJson}}", JsonConvert.SerializeObject(fieldConfig));
+					scriptTemplate = scriptTemplate.Replace("{{ConfigJson}}", JsonSerializer.Serialize(fieldConfig));
 
 					initScript.InnerHtml.AppendHtml(scriptTemplate);
 
@@ -417,7 +417,7 @@ namespace WebVella.TagHelpers.TagHelpers
 						IsRequired = Required
 					};
 
-					scriptTemplate = scriptTemplate.Replace("{{ConfigJson}}", JsonConvert.SerializeObject(fieldConfig));
+					scriptTemplate = scriptTemplate.Replace("{{ConfigJson}}", JsonSerializer.Serialize(fieldConfig));
 
 					initScript.InnerHtml.AppendHtml(scriptTemplate);
 

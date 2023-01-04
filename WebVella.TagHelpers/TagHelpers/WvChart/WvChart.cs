@@ -1,10 +1,9 @@
-﻿using HtmlAgilityPack;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Text.Json;
 using System.Threading.Tasks;
 using WebVella.TagHelpers.Models;
 using WebVella.TagHelpers.Utilities;
@@ -146,8 +145,8 @@ namespace WebVella.TagHelpers.TagHelpers
 			scriptJs += "$(function(){";
 			scriptJs += $"new Chart('{Id}', {{";
 			scriptJs += $"type: '{ModelExtensions.GetLabel(Chart.Type)}',";
-			scriptJs += $"data: " + JsonConvert.SerializeObject(Chart.Data) + ",";
-			scriptJs += $"options: " + JsonConvert.SerializeObject(Chart.Options);
+			scriptJs += $"data: " + JsonSerializer.Serialize(Chart.Data) + ",";
+			scriptJs += $"options: " + JsonSerializer.Serialize(Chart.Options);
 			scriptJs += "});";
 			scriptJs += "});";
 			scriptJs += "</script>";
@@ -162,6 +161,6 @@ namespace WebVella.TagHelpers.TagHelpers
 			await Task.FromResult<object>(null);
 		}
 
-		
+
 	}
 }

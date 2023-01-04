@@ -1,7 +1,7 @@
 ﻿using HtmlAgilityPack;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Razor.TagHelpers;
-using Newtonsoft.Json;
+using System.Text.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -181,8 +181,8 @@ namespace WebVella.TagHelpers.TagHelpers
 						var optionEl = new TagBuilder("option");
 						optionEl.Attributes.Add("value", option.Value);
 						Debug.WriteLine("============================");
-						string valueJson = JsonConvert.SerializeObject(Value);
-						string optionValueJson = JsonConvert.SerializeObject(option.Value);
+						string valueJson = JsonSerializer.Serialize(Value);
+						string optionValueJson = JsonSerializer.Serialize(option.Value);
 						Debug.WriteLine("value: " + valueJson);
 						if (Value != null && ((List<string>)Value).Any(x => x == option.Value))
 						{
@@ -191,7 +191,7 @@ namespace WebVella.TagHelpers.TagHelpers
 						}
 						optionEl.Attributes.Add("data-icon", option.IconClass);
 						optionEl.Attributes.Add("data-color", option.Color);
-						optionEl.Attributes.Add("data-value", JsonConvert.SerializeObject(Value));
+						optionEl.Attributes.Add("data-value", JsonSerializer.Serialize(Value));
 						optionEl.InnerHtml.Append(option.Label);
 						selectEl.InnerHtml.AppendHtml(optionEl);
 					}
@@ -307,7 +307,7 @@ namespace WebVella.TagHelpers.TagHelpers
 						Placeholder = Placeholder
 					};
 
-					scriptTemplate = scriptTemplate.Replace("{{ConfigJson}}", JsonConvert.SerializeObject(fieldConfig));
+					scriptTemplate = scriptTemplate.Replace("{{ConfigJson}}", JsonSerializer.Serialize(fieldConfig));
 
 					initScript.InnerHtml.AppendHtml(scriptTemplate);
 
@@ -666,7 +666,7 @@ namespace WebVella.TagHelpers.TagHelpers
 							emptyOptionAdded = true;
 						}
 						selectEl.Attributes.Add("multiple", "multiple");
-						selectEl.Attributes.Add("data-original-value", JsonConvert.SerializeObject((Value ?? "").ToString()));
+						selectEl.Attributes.Add("data-original-value", JsonSerializer.Serialize((Value ?? "").ToString()));
 
 
 						foreach (var option in Options)
@@ -798,7 +798,7 @@ namespace WebVella.TagHelpers.TagHelpers
 						Placeholder = Placeholder
 					};
 
-					scriptTemplate = scriptTemplate.Replace("{{ConfigJson}}", JsonConvert.SerializeObject(fieldConfig));
+					scriptTemplate = scriptTemplate.Replace("{{ConfigJson}}", JsonSerializer.Serialize(fieldConfig));
 
 					initScript.InnerHtml.AppendHtml(scriptTemplate);
 

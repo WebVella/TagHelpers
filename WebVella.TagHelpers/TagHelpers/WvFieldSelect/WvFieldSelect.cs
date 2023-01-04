@@ -1,7 +1,7 @@
 ﻿using HtmlAgilityPack;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Razor.TagHelpers;
-using Newtonsoft.Json;
+using System.Text.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -307,7 +307,7 @@ namespace WebVella.TagHelpers.TagHelpers
 						Placeholder = Placeholder
 					};
 
-					scriptTemplate = scriptTemplate.Replace("{{ConfigJson}}", JsonConvert.SerializeObject(fieldConfig));
+					scriptTemplate = scriptTemplate.Replace("{{ConfigJson}}", JsonSerializer.Serialize(fieldConfig));
 
 					initScript.InnerHtml.AppendHtml(scriptTemplate);
 
@@ -672,7 +672,7 @@ namespace WebVella.TagHelpers.TagHelpers
 							emptyOptionAdded = true;
 						}
 
-						selectEl.Attributes.Add("data-original-value", JsonConvert.SerializeObject((Value ?? "").ToString()));
+						selectEl.Attributes.Add("data-original-value", JsonSerializer.Serialize((Value ?? "").ToString()));
 
 						foreach (var option in Options)
 						{
@@ -806,7 +806,7 @@ namespace WebVella.TagHelpers.TagHelpers
 						Placeholder = Placeholder
 					};
 
-					scriptTemplate = scriptTemplate.Replace("{{ConfigJson}}", JsonConvert.SerializeObject(fieldConfig));
+					scriptTemplate = scriptTemplate.Replace("{{ConfigJson}}", JsonSerializer.Serialize(fieldConfig));
 
 					initScript.InnerHtml.AppendHtml(scriptTemplate);
 

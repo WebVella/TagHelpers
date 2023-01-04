@@ -1,20 +1,19 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System.Text.Json.Serialization;
 
 namespace WebVella.TagHelpers.Models
 {
 	public class WvSelectOption
 	{
-		[JsonProperty(PropertyName = "value")]
+		[JsonPropertyName("value")]
 		public string Value { get; set; } = "";
 
-		[JsonProperty(PropertyName = "label")]
+		[JsonPropertyName("label")]
 		public string Label { get; set; } = "";
 
-		[JsonProperty(PropertyName = "icon_class")]
+		[JsonPropertyName("icon_class")]
 		public string IconClass { get; set; } = "";
 
-		[JsonProperty(PropertyName = "color")]
+		[JsonPropertyName("color")]
 		public string Color { get; set; } = "";
 
 		public WvSelectOption()

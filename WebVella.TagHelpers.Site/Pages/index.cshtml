@@ -1,9 +1,9 @@
 ﻿@page
 @model WebVella.TagHelpers.Site.Pages.indexModel
 @addTagHelper *, WebVella.TagHelpers
+@using System.Text.Json;
 @using WebVella.TagHelpers.Models;
 @using System.Web;
-@using Newtonsoft.Json;
 @using Microsoft.AspNetCore.Html;
 @{
     Layout = null;
@@ -38,7 +38,7 @@
         new WvKeyStringList(){Key = "row1",Values = new List<string>{"col1","col2"}}
     };
 
-    var chGridValuesJson = JsonConvert.SerializeObject(chGridValues);
+    var chGridValuesJson = JsonSerializer.Serialize(chGridValues);
 
     var chkBxList = new List<WvSelectOption>(){
         new WvSelectOption(){Value = "1", Label = "one"},

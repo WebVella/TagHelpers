@@ -1,16 +1,14 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace WebVella.TagHelpers.Models
 {
 	public class WvChartData
 	{
-		[JsonProperty(PropertyName = "labels")]
+		[JsonPropertyName("labels")]
 		public List<string> Labels { get; set; }
 
-		[JsonProperty(PropertyName = "datasets")]
+		[JsonPropertyName("datasets")]
 		public List<WvChartDataset> Datasets { get; set; }
 	}
 }

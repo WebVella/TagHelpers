@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace WebVella.TagHelpers.Models
 {
@@ -11,13 +11,13 @@ namespace WebVella.TagHelpers.Models
 			IsRequired = false;
 		}
 
-		[JsonProperty(PropertyName = "can_add_values")]
+		[JsonPropertyName("can_add_values")]
 		public bool? CanAddValues { get; set; }
 
-		[JsonProperty(PropertyName = "api_url")]
+		[JsonPropertyName("api_url")]
 		public string ApiUrl { get; set; }
 
-		[JsonProperty(PropertyName = "is_required")]
+		[JsonPropertyName("is_required")]
 		public bool IsRequired { get; set; }
 	}
 
@@ -88,10 +88,10 @@ namespace WebVella.TagHelpers.Models
 			ApiUrl = baseConfig.ApiUrl;
 		}
 
-		[JsonProperty(PropertyName = "true_label")]
+		[JsonPropertyName("true_label")]
 		public string TrueLabel { get; set; }
 
-		[JsonProperty(PropertyName = "false_label")]
+		[JsonPropertyName("false_label")]
 		public string FalseLabel { get; set; }
 	}
 
@@ -176,13 +176,13 @@ namespace WebVella.TagHelpers.Models
 			SrcPrefix = "/fs";
 		}
 
-		[JsonProperty(PropertyName = "accept")]
+		[JsonPropertyName("accept")]
 		public string Accept { get; set; }
 
-		[JsonProperty(PropertyName = "file_upload_api")]
+		[JsonPropertyName("file_upload_api")]
 		public string FileUploadApi { get; set; } = "/fs/upload";
 
-		[JsonProperty(PropertyName = "src_prefix")]
+		[JsonPropertyName("src_prefix")]
 		public string SrcPrefix { get; set; } = "/fs";
 	}
 
@@ -204,10 +204,10 @@ namespace WebVella.TagHelpers.Models
 			ApiUrl = baseConfig.ApiUrl;
 		}
 
-		[JsonProperty(PropertyName = "upload_mode")]
+		[JsonPropertyName("upload_mode")]
 		public HtmlUploadMode UploadMode { get; set; }
 
-		[JsonProperty(PropertyName = "toolbar_mode")]
+		[JsonPropertyName("toolbar_mode")]
 		public HtmlToolbarMode ToolbarMode { get; set; }
 	}
 
@@ -237,22 +237,22 @@ namespace WebVella.TagHelpers.Models
 			SrcPrefix = "/fs";
 		}
 
-		[JsonProperty(PropertyName = "accept")]
+		[JsonPropertyName("accept")]
 		public string Accept { get; set; }
 
-		[JsonProperty(PropertyName = "width")]
+		[JsonPropertyName("width")]
 		public int? Width { get; set; }
 
-		[JsonProperty(PropertyName = "height")]
+		[JsonPropertyName("height")]
 		public int? Height { get; set; }
 
-		[JsonProperty(PropertyName = "resize_action")]
+		[JsonPropertyName("resize_action")]
 		public ImageResizeMode? ResizeAction { get; set; }
 
-		[JsonProperty(PropertyName = "file_upload_api")]
+		[JsonPropertyName("file_upload_api")]
 		public string FileUploadApi { get; set; } = "/fs/upload";
 
-		[JsonProperty(PropertyName = "src_prefix")]
+		[JsonPropertyName("src_prefix")]
 		public string SrcPrefix { get; set; } = "/fs";
 	}
 
@@ -287,16 +287,16 @@ namespace WebVella.TagHelpers.Models
 			AjaxDatasourceApi = "/api/v3/en_US/eql-ds";
 		}
 
-		[JsonProperty(PropertyName = "ajax_datasource")]
+		[JsonPropertyName("ajax_datasource")]
 		public WvSelectOptionsAjaxDatasource AjaxDatasource { get; set; } = null;
 
-		[JsonProperty(PropertyName = "ajax_datasource_api")]
+		[JsonPropertyName("ajax_datasource_api")]
 		public string AjaxDatasourceApi { get; set; } = "/api/v3/en_US/eql-ds";
 
-		[JsonProperty(PropertyName = "select_match_type")]
+		[JsonPropertyName("select_match_type")]
 		public WvSelectMatchType SelectMatchType { get; set; } = WvSelectMatchType.Contains;
 
-		[JsonProperty(PropertyName = "placeholder")]
+		[JsonPropertyName("placeholder")]
 		public string Placeholder { get; set; } = "";
 
 	}
@@ -347,7 +347,7 @@ namespace WebVella.TagHelpers.Models
 			DecimalDigits = null;
 		}
 
-		[JsonProperty(PropertyName = "decimal_digits")]
+		[JsonPropertyName("decimal_digits")]
 		public int? DecimalDigits { get; set; }
 	}
 
@@ -397,19 +397,19 @@ namespace WebVella.TagHelpers.Models
 			AjaxDatasourceApi = "/api/v3/en_US/eql-ds";
 		}
 
-		[JsonProperty(PropertyName = "is_invalid")]
+		[JsonPropertyName("is_invalid")]
 		public bool IsInvalid { get; set; } = false;
 
-		[JsonProperty(PropertyName = "ajax_datasource")]
+		[JsonPropertyName("ajax_datasource")]
 		public WvSelectOptionsAjaxDatasource AjaxDatasource { get; set; } = null;
 
-		[JsonProperty(PropertyName = "ajax_datasource_api")]
+		[JsonPropertyName("ajax_datasource_api")]
 		public string AjaxDatasourceApi { get; set; } = "/api/v3/en_US/eql-ds";
 
-		[JsonProperty(PropertyName = "select_match_type")]
+		[JsonPropertyName("select_match_type")]
 		public WvSelectMatchType SelectMatchType { get; set; } = WvSelectMatchType.Contains;
 
-		[JsonProperty(PropertyName = "placeholder")]
+		[JsonPropertyName("placeholder")]
 		public string Placeholder { get; set; } = "";
 
 	}
@@ -464,13 +464,13 @@ namespace WebVella.TagHelpers.Models
 			ReadOnly = false;
 		}
 
-		[JsonProperty(PropertyName = "language")]
+		[JsonPropertyName("language")]
 		public string Language { get; set; } = "razor";
 
-		[JsonProperty(PropertyName = "theme")]
+		[JsonPropertyName("theme")]
 		public string Theme { get; set; } = "xcode";
 
-		[JsonProperty(PropertyName = "read_only")]
+		[JsonPropertyName("read_only")]
 		public bool ReadOnly { get; set; } = false;
 	}
 
@@ -505,7 +505,7 @@ namespace WebVella.TagHelpers.Models
 			PreviewApiUrl = "/api/v3.0/en/p/core/ui/field-table-data/generate/preview";
 		}
 
-		[JsonProperty(PropertyName = "preview_api_url")]
+		[JsonPropertyName("preview_api_url")]
 		public string PreviewApiUrl { get; set; } = "/api/v3.0/en/p/core/ui/field-table-data/generate/preview";
 	}
 }

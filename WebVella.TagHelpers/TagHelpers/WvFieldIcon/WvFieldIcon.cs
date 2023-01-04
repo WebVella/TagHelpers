@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Razor.TagHelpers;
-using Newtonsoft.Json;
+using System.Text.Json;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -96,7 +96,7 @@ namespace WebVella.TagHelpers.TagHelpers
 							var scriptIconTemplate = @"
 								WvFontAwesomeIcons = {{FAIcons}}
 							";
-							scriptIconTemplate = scriptIconTemplate.Replace("{{FAIcons}}", JsonConvert.SerializeObject(WvHelpers.GetAllFontAwesomeIcons()));
+							scriptIconTemplate = scriptIconTemplate.Replace("{{FAIcons}}", JsonSerializer.Serialize(WvHelpers.GetAllFontAwesomeIcons()));
 							libJsEl.InnerHtml.AppendHtml(scriptIconTemplate);
 
 							output.PostContent.AppendHtml(libJsEl);
@@ -194,7 +194,7 @@ namespace WebVella.TagHelpers.TagHelpers
 						IsInvalid = ValidationErrors.Count > 0
 					};
 
-					scriptTemplate = scriptTemplate.Replace("{{ConfigJson}}", JsonConvert.SerializeObject(fieldConfig));
+					scriptTemplate = scriptTemplate.Replace("{{ConfigJson}}", JsonSerializer.Serialize(fieldConfig));
 
 					initScript.InnerHtml.AppendHtml(scriptTemplate);
 
@@ -359,7 +359,7 @@ namespace WebVella.TagHelpers.TagHelpers
 							formControl.Attributes.Add("required", null);
 						}
 
-						formControl.Attributes.Add("data-original-value", JsonConvert.SerializeObject((Value ?? "").ToString()));
+						formControl.Attributes.Add("data-original-value", JsonSerializer.Serialize((Value ?? "").ToString()));
 
 						if (Value != null)
 						{
@@ -407,7 +407,7 @@ namespace WebVella.TagHelpers.TagHelpers
 							var scriptIconTemplate = @"
 								var WvFontAwesomeIcons = {{FAIcons}}
 							";
-							scriptIconTemplate = scriptIconTemplate.Replace("{{FAIcons}}", JsonConvert.SerializeObject(WvHelpers.GetAllFontAwesomeIcons()));
+							scriptIconTemplate = scriptIconTemplate.Replace("{{FAIcons}}", JsonSerializer.Serialize(WvHelpers.GetAllFontAwesomeIcons()));
 							libJsEl.InnerHtml.AppendHtml(scriptIconTemplate);
 
 							output.PostContent.AppendHtml(libJsEl);
@@ -504,7 +504,7 @@ namespace WebVella.TagHelpers.TagHelpers
 						IsInvalid = ValidationErrors.Count > 0
 					};
 
-					scriptTemplate = scriptTemplate.Replace("{{ConfigJson}}", JsonConvert.SerializeObject(fieldConfig));
+					scriptTemplate = scriptTemplate.Replace("{{ConfigJson}}", JsonSerializer.Serialize(fieldConfig));
 
 					initScript.InnerHtml.AppendHtml(scriptTemplate);
 
