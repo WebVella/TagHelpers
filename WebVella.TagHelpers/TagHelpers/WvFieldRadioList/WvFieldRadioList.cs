@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using Newtonsoft.Json;
 using System;
@@ -8,7 +7,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebVella.TagHelpers.Models;
 using WebVella.TagHelpers.Utilities;
-using Yahoo.Yui.Compressor;
 
 namespace WebVella.TagHelpers.TagHelpers
 {
@@ -52,7 +50,7 @@ namespace WebVella.TagHelpers.TagHelpers
 				{
 					var wrapper1 = new TagBuilder("div");
 					wrapper1.AddCssClass("form-control-plaintext erp-radio-list");
-					wrapper1.Attributes.Add("id",$"input-" + FieldId);
+					wrapper1.Attributes.Add("id", $"input-" + FieldId);
 					foreach (var selectOption in Options)
 					{
 						var wrapper2 = new TagBuilder("div");
@@ -85,10 +83,11 @@ namespace WebVella.TagHelpers.TagHelpers
 
 					output.Content.AppendHtml(wrapper1);
 				}
-				else{
+				else
+				{
 					var wrapper1 = new TagBuilder("div");
 					wrapper1.AddCssClass("form-control-plaintext erp-radio-list is-buttons");
-					wrapper1.Attributes.Add("id",$"input-" + FieldId);
+					wrapper1.Attributes.Add("id", $"input-" + FieldId);
 					var wrapper2 = new TagBuilder("div");
 					wrapper2.AddCssClass("btn-group btn-group-toggle");
 					foreach (var selectOption in Options)
@@ -98,7 +97,8 @@ namespace WebVella.TagHelpers.TagHelpers
 						{
 							labelWrapper.AddCssClass($"btn {ButtonClassChecked}");
 						}
-						else{
+						else
+						{
 							labelWrapper.AddCssClass($"btn {ButtonClassUnchecked}");
 						}
 						var inputChkb = new TagBuilder("input");
@@ -123,11 +123,9 @@ namespace WebVella.TagHelpers.TagHelpers
 
 					}
 					wrapper1.InnerHtml.AppendHtml(wrapper2);
-					output.Content.AppendHtml(wrapper1);					
+					output.Content.AppendHtml(wrapper1);
 				}
 
-				var jsCompressor = new JavaScriptCompressor();
-				
 				#region << Init Scripts >>
 				var tagHelperInitialized = false;
 				var fileName = "form.js";
@@ -138,10 +136,9 @@ namespace WebVella.TagHelpers.TagHelpers
 				}
 				if (!tagHelperInitialized)
 				{
-					var scriptContent = WvHelpers.GetEmbeddedTextResource(fileName, "WebVella.TagHelpers.TagHelpers.WvFieldRadioList","WebVella.TagHelpers");
+					var scriptContent = WvHelpers.GetEmbeddedTextResource(fileName, "WebVella.TagHelpers.TagHelpers.WvFieldRadioList", "WebVella.TagHelpers");
 					var scriptEl = new TagBuilder("script");
 					scriptEl.Attributes.Add("type", "text/javascript");
-					//scriptEl.InnerHtml.AppendHtml(jsCompressor.Compress(scriptContent));
 					scriptEl.InnerHtml.AppendHtml(scriptContent);
 					output.PostContent.AppendHtml(scriptEl);
 
@@ -165,7 +162,7 @@ namespace WebVella.TagHelpers.TagHelpers
 				scriptTemplate = scriptTemplate.Replace("{{ButtonClassUnchecked}}", ButtonClassUnchecked);
 				scriptTemplate = scriptTemplate.Replace("{{ButtonClassChecked}}", ButtonClassChecked);
 
-				initScript.InnerHtml.AppendHtml(jsCompressor.Compress(scriptTemplate));
+				initScript.InnerHtml.AppendHtml(scriptTemplate);
 
 				output.PostContent.AppendHtml(initScript);
 				#endregion
@@ -299,9 +296,6 @@ namespace WebVella.TagHelpers.TagHelpers
 						editWrapper.InnerHtml.AppendHtml(inputGroupEl);
 						output.Content.AppendHtml(editWrapper);
 
-
-
-						var jsCompressor = new JavaScriptCompressor();
 						#region << Init Scripts >>
 						var tagHelperInitialized = false;
 						if (ViewContext.HttpContext.Items.ContainsKey(typeof(WvFieldRadioList) + "-inline-edit"))
@@ -314,7 +308,7 @@ namespace WebVella.TagHelpers.TagHelpers
 							var scriptContent = WvHelpers.GetEmbeddedTextResource("inline-edit.js", "WebVella.TagHelpers.TagHelpers.WvFieldRadioList", "WebVella.TagHelpers");
 							var scriptEl = new TagBuilder("script");
 							scriptEl.Attributes.Add("type", "text/javascript");
-							scriptEl.InnerHtml.AppendHtml(jsCompressor.Compress(scriptContent));
+							scriptEl.InnerHtml.AppendHtml(scriptContent);
 							output.PostContent.AppendHtml(scriptEl);
 
 							ViewContext.HttpContext.Items[typeof(WvFieldRadioList) + "-inline-edit"] = new WvTagHelperContext()
@@ -344,7 +338,7 @@ namespace WebVella.TagHelpers.TagHelpers
 
 						scriptTemplate = scriptTemplate.Replace("{{ConfigJson}}", JsonConvert.SerializeObject(fieldConfig));
 
-						initScript.InnerHtml.AppendHtml(jsCompressor.Compress(scriptTemplate));
+						initScript.InnerHtml.AppendHtml(scriptTemplate);
 
 						output.PostContent.AppendHtml(initScript);
 						#endregion

@@ -5,7 +5,6 @@ using System;
 using System.Threading.Tasks;
 using WebVella.TagHelpers.Models;
 using WebVella.TagHelpers.Utilities;
-using Yahoo.Yui.Compressor;
 
 namespace WebVella.TagHelpers.TagHelpers
 {
@@ -248,8 +247,6 @@ namespace WebVella.TagHelpers.TagHelpers
 				}
 			}
 
-
-			var jsCompressor = new JavaScriptCompressor();
 			#region << Init Scripts >>
 			var tagHelperInitialized = false;
 			var fileName = "service.js";
@@ -260,10 +257,9 @@ namespace WebVella.TagHelpers.TagHelpers
 			}
 			if (!tagHelperInitialized)
 			{
-				var scriptContent = WvHelpers.GetEmbeddedTextResource(fileName, "WebVella.TagHelpers.TagHelpers.WvSection","WebVella.TagHelpers");
+				var scriptContent = WvHelpers.GetEmbeddedTextResource(fileName, "WebVella.TagHelpers.TagHelpers.WvSection", "WebVella.TagHelpers");
 				var scriptEl = new TagBuilder("script");
 				scriptEl.Attributes.Add("type", "text/javascript");
-				//scriptEl.InnerHtml.AppendHtml(jsCompressor.Compress(scriptContent));
 				scriptEl.InnerHtml.AppendHtml(scriptContent);
 				output.PostContent.AppendHtml(scriptEl);
 
@@ -284,12 +280,10 @@ namespace WebVella.TagHelpers.TagHelpers
             		});";
 			scriptTemplate = scriptTemplate.Replace("{{SectionId}}", Id.ToString());
 
-			initScript.InnerHtml.AppendHtml(jsCompressor.Compress(scriptTemplate));
+			initScript.InnerHtml.AppendHtml(scriptTemplate);
 
 			output.PostContent.AppendHtml(initScript);
 			#endregion
-
-
 
 			context.Items[typeof(WvLabelRenderMode)] = LabelMode;
 			context.Items[typeof(WvFieldRenderMode)] = FieldMode;

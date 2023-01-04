@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using System.Web;
 using WebVella.TagHelpers.Models;
 using WebVella.TagHelpers.Utilities;
-using Yahoo.Yui.Compressor;
 
 namespace WebVella.TagHelpers.TagHelpers
 {
@@ -46,12 +45,15 @@ namespace WebVella.TagHelpers.TagHelpers
 
 			#region << Render >>
 
-			if(!String.IsNullOrWhiteSpace(Value)){
-				if(IsEncoded){
+			if (!String.IsNullOrWhiteSpace(Value))
+			{
+				if (IsEncoded)
+				{
 					Value = HttpUtility.HtmlDecode(Value);
 				}
 			}
-			else{
+			else
+			{
 				Value = "";
 			}
 
@@ -79,7 +81,6 @@ namespace WebVella.TagHelpers.TagHelpers
 
 			output.Content.AppendHtml(editorWrapperEl);
 
-			var jsCompressor = new JavaScriptCompressor();
 
 			#region << Add Ace lib >>
 			{
@@ -117,10 +118,10 @@ namespace WebVella.TagHelpers.TagHelpers
 				}
 				if (!tagHelperInitialized)
 				{
-					var scriptContent = WvHelpers.GetEmbeddedTextResource(fileName, "WebVella.TagHelpers.TagHelpers.WvFieldCode","WebVella.TagHelpers");
+					var scriptContent = WvHelpers.GetEmbeddedTextResource(fileName, "WebVella.TagHelpers.TagHelpers.WvFieldCode", "WebVella.TagHelpers");
 					var scriptEl = new TagBuilder("script");
 					scriptEl.Attributes.Add("type", "text/javascript");
-					scriptEl.InnerHtml.AppendHtml(jsCompressor.Compress(scriptContent));
+					scriptEl.InnerHtml.AppendHtml(scriptContent);
 					//scriptEl.InnerHtml.AppendHtml(scriptContent);
 					output.PostContent.AppendHtml(scriptEl);
 
@@ -154,7 +155,7 @@ namespace WebVella.TagHelpers.TagHelpers
 			};
 			scriptTemplate = scriptTemplate.Replace("{{ConfigJson}}", JsonConvert.SerializeObject(fieldConfig));
 
-			initScript.InnerHtml.AppendHtml(jsCompressor.Compress(scriptTemplate));
+			initScript.InnerHtml.AppendHtml(scriptTemplate);
 
 			output.PostContent.AppendHtml(initScript);
 			#endregion

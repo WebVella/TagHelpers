@@ -4,11 +4,9 @@ using Microsoft.AspNetCore.Razor.TagHelpers;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Dynamic;
 using System.Threading.Tasks;
 using WebVella.TagHelpers.Models;
 using WebVella.TagHelpers.Utilities;
-using Yahoo.Yui.Compressor;
 
 
 namespace WebVella.TagHelpers.TagHelpers
@@ -57,10 +55,12 @@ namespace WebVella.TagHelpers.TagHelpers
 			wrapperEl.Attributes.Add("id", "echarts-" + ElementId);
 			wrapperEl.AddCssClass("echart");
 			var style = "";
-			if(!String.IsNullOrWhiteSpace(Width)){
+			if (!String.IsNullOrWhiteSpace(Width))
+			{
 				style += $"width:{Width};";
 			}
-			if(!String.IsNullOrWhiteSpace(Height)){
+			if (!String.IsNullOrWhiteSpace(Height))
+			{
 				style += $"height:{Height};";
 			}
 			wrapperEl.Attributes.Add("style", style);
@@ -68,11 +68,12 @@ namespace WebVella.TagHelpers.TagHelpers
 
 			dynamic options = null;
 			//Default mode - just apply options
-			if(String.IsNullOrWhiteSpace(Mode)){
+			if (String.IsNullOrWhiteSpace(Mode))
+			{
 				options = Options;
-				if(String.IsNullOrWhiteSpace(Width))
+				if (String.IsNullOrWhiteSpace(Width))
 					Width = "100%";
-				if(String.IsNullOrWhiteSpace(Height))
+				if (String.IsNullOrWhiteSpace(Height))
 					Width = "300px";
 			}
 			else if (Mode == "map")
@@ -164,8 +165,8 @@ namespace WebVella.TagHelpers.TagHelpers
 								new{
 									areaStyle = new { color = "#009688", opacity = 0.25},
 									lineStyle = new { color = "#009688"},
-									value = new List<int>{ 55, 25, 5, 75, 34}								
-								}							
+									value = new List<int>{ 55, 25, 5, 75, 34}
+								}
 							}
 						}
 					}
@@ -176,7 +177,8 @@ namespace WebVella.TagHelpers.TagHelpers
 
 				options = new
 				{
-					legend = new {
+					legend = new
+					{
 						bottom = 0,
 						top = "auto",
 						data = new List<dynamic>{
@@ -254,7 +256,7 @@ namespace WebVella.TagHelpers.TagHelpers
 									itemStyle = new { color = "#2196F3"},
 									value = new List<int>{ 85, 45, 34, 0, 0, 33, 44},
 									name = "selection"
-								}									
+								}
 							}
 						}
 					}
@@ -266,8 +268,8 @@ namespace WebVella.TagHelpers.TagHelpers
 				for (int i = 0; i < 190; i++)
 				{
 					Random r = new Random();
-					var number = r.Next(0,3);
-					var date = DateTime.ParseExact("2019-10-01", "yyyy-MM-dd",System.Globalization.CultureInfo.InvariantCulture).AddDays(i);
+					var number = r.Next(0, 3);
+					var date = DateTime.ParseExact("2019-10-01", "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture).AddDays(i);
 					calendarData.Add(new List<dynamic>{
 						date.ToString("yyyy-MM-dd"),number
 					});
@@ -275,28 +277,33 @@ namespace WebVella.TagHelpers.TagHelpers
 
 				options = new
 				{
-				    visualMap = new {
+					visualMap = new
+					{
 						show = false,
 						min = 0,
 						max = 2,
-						color  = new List<string>{"#E57373","#FFB74D","#eee"}
+						color = new List<string> { "#E57373", "#FFB74D", "#eee" }
 					},
-					calendar = new {
-						range = new List<string>{"2019-10","2020-4"},
-						splitLine = new {
-							lineStyle = new {
+					calendar = new
+					{
+						range = new List<string> { "2019-10", "2020-4" },
+						splitLine = new
+						{
+							lineStyle = new
+							{
 								color = "#fff",
 								width = 3,
 								shadowBlur = 0,
 								opacity = 1
 							}
 						},
-						itemStyle = new {
-								borderColor = "#fff",
-								borderWidth = 1,
-								shadowBlur = 0,
-								opacity = 1
-							}
+						itemStyle = new
+						{
+							borderColor = "#fff",
+							borderWidth = 1,
+							shadowBlur = 0,
+							opacity = 1
+						}
 					},
 					series = new List<dynamic>{
 						new {
@@ -317,23 +324,24 @@ namespace WebVella.TagHelpers.TagHelpers
 				for (int i = 0; i < 190; i++)
 				{
 					Random r = new Random();
-					var number = r.Next(0,3);
-					var date = DateTime.ParseExact("2019-10-01", "yyyy-MM-dd",System.Globalization.CultureInfo.InvariantCulture).AddDays(i);
+					var number = r.Next(0, 3);
+					var date = DateTime.ParseExact("2019-10-01", "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture).AddDays(i);
 					calendarData.Add(new List<dynamic>{
 						date.ToString("yyyy-MM-dd"),number
 					});
 
 					calendaryDays.Add(date.ToString("MM/dd"));
-					calendarValues.Add(r.Next(0,300));
+					calendarValues.Add(r.Next(0, 300));
 				}
 
 				options = new
 				{
-				    visualMap = new {
+					visualMap = new
+					{
 						show = false,
 						min = 0,
 						max = 300,
-						color  = new List<string>{"#009688","#E0F2F1"}
+						color = new List<string> { "#009688", "#E0F2F1" }
 					},
 					xAxis = new List<dynamic>{
 						new {
@@ -354,8 +362,6 @@ namespace WebVella.TagHelpers.TagHelpers
 					}
 				};
 			}
-
-			var jsCompressor = new JavaScriptCompressor();
 
 			#region << Init Echarts >>
 			{
@@ -458,7 +464,7 @@ myChart.on('click', function (params) {
 
 	});";
 			}
-			else 
+			else
 			{
 
 				scriptTemplate = @"
@@ -482,13 +488,12 @@ myChart.on('click', function (params) {
 			var fieldConfig = new WvFieldSelectConfig()
 			{
 			};
-			var usaJson = WvHelpers.GetEmbeddedTextResource("usa.json", "WebVella.TagHelpers.TagHelpers.WvECharts","WebVella.TagHelpers");
+			var usaJson = WvHelpers.GetEmbeddedTextResource("usa.json", "WebVella.TagHelpers.TagHelpers.WvECharts", "WebVella.TagHelpers");
 			scriptTemplate = scriptTemplate.Replace("{{OPTIONS}}", JsonConvert.SerializeObject(options));
 			scriptTemplate = scriptTemplate.Replace("{{USAJSON}}", usaJson);
 			scriptTemplate = scriptTemplate.Replace("{{ELEMENTID}}", ElementId.ToString());
 
-			//initScript.InnerHtml.AppendHtml(scriptTemplate);
-			initScript.InnerHtml.AppendHtml(jsCompressor.Compress(scriptTemplate));
+			initScript.InnerHtml.AppendHtml(scriptTemplate);
 
 			output.PostContent.AppendHtml(initScript);
 			#endregion

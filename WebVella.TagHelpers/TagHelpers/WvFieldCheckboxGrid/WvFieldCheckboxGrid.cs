@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using Newtonsoft.Json;
 using System;
@@ -7,7 +6,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using WebVella.TagHelpers.Models;
 using WebVella.TagHelpers.Utilities;
-using Yahoo.Yui.Compressor;
 
 namespace WebVella.TagHelpers.TagHelpers
 {
@@ -42,10 +40,11 @@ namespace WebVella.TagHelpers.TagHelpers
 			{
 				ValueGrid = JsonConvert.DeserializeObject<List<WvKeyStringList>>((string)Value);
 			}
-			else {
+			else
+			{
 				ValueGrid = new List<WvKeyStringList>();
 			}
-			
+
 
 			#region << Init >>
 			var initSuccess = InitField(context, output);
@@ -55,7 +54,8 @@ namespace WebVella.TagHelpers.TagHelpers
 				return Task.CompletedTask;
 			}
 
-			if (String.IsNullOrWhiteSpace(TextTrue)){
+			if (String.IsNullOrWhiteSpace(TextTrue))
+			{
 				TextTrue = "selected";
 			}
 
@@ -180,7 +180,6 @@ namespace WebVella.TagHelpers.TagHelpers
 				output.Content.AppendHtml(wrapper1);
 
 
-				var jsCompressor = new JavaScriptCompressor();
 				#region << Init Scripts >>
 				var tagHelperInitialized = false;
 				var fileName = "form.js";
@@ -191,10 +190,10 @@ namespace WebVella.TagHelpers.TagHelpers
 				}
 				if (!tagHelperInitialized)
 				{
-					var scriptContent = WvHelpers.GetEmbeddedTextResource(fileName, "WebVella.TagHelpers.TagHelpers.WvFieldCheckboxGrid","WebVella.TagHelpers");
+					var scriptContent = WvHelpers.GetEmbeddedTextResource(fileName, "WebVella.TagHelpers.TagHelpers.WvFieldCheckboxGrid", "WebVella.TagHelpers");
 					var scriptEl = new TagBuilder("script");
 					scriptEl.Attributes.Add("type", "text/javascript");
-					scriptEl.InnerHtml.AppendHtml(jsCompressor.Compress(scriptContent));
+					scriptEl.InnerHtml.AppendHtml(scriptContent);
 					output.PostContent.AppendHtml(scriptEl);
 
 					ViewContext.HttpContext.Items[typeof(WvFieldCheckboxGrid) + fileName] = new WvTagHelperContext()
@@ -214,7 +213,7 @@ namespace WebVella.TagHelpers.TagHelpers
 						});";
 				scriptTemplate = scriptTemplate.Replace("{{FieldId}}", (FieldId != null ? FieldId.Value.ToString() : ""));
 
-				initScript.InnerHtml.AppendHtml(jsCompressor.Compress(scriptTemplate));
+				initScript.InnerHtml.AppendHtml(scriptTemplate);
 
 				output.PostContent.AppendHtml(initScript);
 				#endregion
@@ -286,8 +285,8 @@ namespace WebVella.TagHelpers.TagHelpers
 			}
 			else if (Mode == WvFieldRenderMode.Simple)
 			{
-                output.SuppressOutput();
-                var alertEl = new TagBuilder("div");
+				output.SuppressOutput();
+				var alertEl = new TagBuilder("div");
 				alertEl.AddCssClass($"alert alert-danger");
 				alertEl.InnerHtml.Append($"Not Implemented yet");
 				output.Content.AppendHtml(alertEl);

@@ -9,7 +9,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebVella.TagHelpers.Models;
 using WebVella.TagHelpers.Utilities;
-using Yahoo.Yui.Compressor;
 
 namespace WebVella.TagHelpers.TagHelpers
 {
@@ -50,14 +49,17 @@ namespace WebVella.TagHelpers.TagHelpers
 			if (Options.Count == 0 && AjaxDatasource != null && AjaxDatasource.InitOptions.Count > 0)
 				Options = AjaxDatasource.InitOptions;
 
-			if(AjaxDatasource != null && String.IsNullOrWhiteSpace(AjaxDatasourceApi)){
-				if(!AjaxDatasource.UseSelectApi){
+			if (AjaxDatasource != null && String.IsNullOrWhiteSpace(AjaxDatasourceApi))
+			{
+				if (!AjaxDatasource.UseSelectApi)
+				{
 					//old fashion call
-					AjaxDatasourceApi = "/api/v3/en_US/eql-ds";			
+					AjaxDatasourceApi = "/api/v3/en_US/eql-ds";
 				}
-				else{
+				else
+				{
 					//The new api
-					AjaxDatasourceApi = "/api/v3/en_US/eql-ds-select2";			
+					AjaxDatasourceApi = "/api/v3/en_US/eql-ds-select2";
 				}
 			}
 
@@ -218,8 +220,6 @@ namespace WebVella.TagHelpers.TagHelpers
 
 					output.Content.AppendHtml(inputGroupEl);
 
-					var jsCompressor = new JavaScriptCompressor();
-
 					#region << Init Select2 >>
 					{
 						var wvLibraryInitialized = false;
@@ -275,7 +275,7 @@ namespace WebVella.TagHelpers.TagHelpers
 						var scriptContent = WvHelpers.GetEmbeddedTextResource("form.js", "WebVella.TagHelpers.TagHelpers.WvFieldMultiSelect", "WebVella.TagHelpers");
 						var scriptEl = new TagBuilder("script");
 						scriptEl.Attributes.Add("type", "text/javascript");
-						scriptEl.InnerHtml.AppendHtml(jsCompressor.Compress(scriptContent));
+						scriptEl.InnerHtml.AppendHtml(scriptContent);
 						//scriptEl.InnerHtml.AppendHtml(scriptContent);
 						output.PostContent.AppendHtml(scriptEl);
 
@@ -309,7 +309,7 @@ namespace WebVella.TagHelpers.TagHelpers
 
 					scriptTemplate = scriptTemplate.Replace("{{ConfigJson}}", JsonConvert.SerializeObject(fieldConfig));
 
-					initScript.InnerHtml.AppendHtml(jsCompressor.Compress(scriptTemplate));
+					initScript.InnerHtml.AppendHtml(scriptTemplate);
 
 					output.PostContent.AppendHtml(initScript);
 					#endregion
@@ -711,8 +711,6 @@ namespace WebVella.TagHelpers.TagHelpers
 					}
 					#endregion
 
-					var jsCompressor = new JavaScriptCompressor();
-
 					#region << Init Select2 >>
 					{
 						var wvLibraryInitialized = false;
@@ -802,7 +800,7 @@ namespace WebVella.TagHelpers.TagHelpers
 
 					scriptTemplate = scriptTemplate.Replace("{{ConfigJson}}", JsonConvert.SerializeObject(fieldConfig));
 
-					initScript.InnerHtml.AppendHtml(jsCompressor.Compress(scriptTemplate));
+					initScript.InnerHtml.AppendHtml(scriptTemplate);
 
 					output.PostContent.AppendHtml(initScript);
 					#endregion

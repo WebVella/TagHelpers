@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using WebVella.TagHelpers.Models;
 using WebVella.TagHelpers.Utilities;
-using Yahoo.Yui.Compressor;
 
 namespace WebVella.TagHelpers.TagHelpers
 {
@@ -58,14 +57,13 @@ namespace WebVella.TagHelpers.TagHelpers
 			#endregion
 
 			#region << Init Value >>
-			if(Value != null){
+			if (Value != null)
+			{
 				processedValue = Value.ToString();
 			}
 			#endregion
 
 			#endregion
-
-
 
 			#region << Render >>
 			if (Mode == WvFieldRenderMode.Form)
@@ -94,8 +92,6 @@ namespace WebVella.TagHelpers.TagHelpers
 
 					output.Content.AppendHtml(inputEl);
 
-					var jsCompressor = new JavaScriptCompressor();
-
 					#region << Init Libraries >>
 					//Due to many problems is included in the head not module by module
 					//var wvLibraryInitialized = false;
@@ -112,7 +108,7 @@ namespace WebVella.TagHelpers.TagHelpers
 					//	libJsEl.Attributes.Add("src", "/_content/WebVella.TagHelpers/lib/ckeditor5/ckeditor.js");
 					//	output.PostContent.AppendHtml(libJsEl);	
 					//	output.PostContent.AppendHtml("\r\n\t");			
-						
+
 					//	ViewContext.HttpContext.Items[libraryItemsKey] = new WvTagHelperContext()
 					//	{
 					//		Initialized = true
@@ -129,7 +125,7 @@ namespace WebVella.TagHelpers.TagHelpers
 					}
 					if (!tagHelperInitialized)
 					{
-						var scriptContent = WvHelpers.GetEmbeddedTextResource("form.js", "WebVella.TagHelpers.TagHelpers.WvFieldHtml","WebVella.TagHelpers");
+						var scriptContent = WvHelpers.GetEmbeddedTextResource("form.js", "WebVella.TagHelpers.TagHelpers.WvFieldHtml", "WebVella.TagHelpers");
 						var scriptEl = new TagBuilder("script");
 						scriptEl.Attributes.Add("type", "text/javascript");
 						//scriptEl.InnerHtml.AppendHtml(jsCompressor.Compress(scriptContent));
@@ -163,7 +159,7 @@ namespace WebVella.TagHelpers.TagHelpers
 
 					scriptTemplate = scriptTemplate.Replace("{{ConfigJson}}", JsonConvert.SerializeObject(fieldConfig));
 
-					initScript.InnerHtml.AppendHtml(jsCompressor.Compress(scriptTemplate));
+					initScript.InnerHtml.AppendHtml(scriptTemplate);
 
 					output.PostContent.AppendHtml(initScript);
 					#endregion
@@ -343,8 +339,6 @@ namespace WebVella.TagHelpers.TagHelpers
 						output.Content.AppendHtml(editModalEl);
 					}
 					#endregion
-					var jsCompressor = new JavaScriptCompressor();
-
 
 					#region << Init Libraries >>
 					//Due to many problems is included in the head not module by module
@@ -362,14 +356,13 @@ namespace WebVella.TagHelpers.TagHelpers
 					//	libJsEl.Attributes.Add("src", "/_content/WebVella.TagHelpers/lib/ckeditor5/ckeditor.js");
 					//	output.PostContent.AppendHtml(libJsEl);	
 					//	output.PostContent.AppendHtml("\r\n\t");			
-						
+
 					//	ViewContext.HttpContext.Items[libraryItemsKey] = new WvTagHelperContext()
 					//	{
 					//		Initialized = true
 					//	};
 					//}
 					#endregion
-
 
 					#region << Init Scripts >>
 					var tagHelperInitialized = false;
@@ -380,7 +373,7 @@ namespace WebVella.TagHelpers.TagHelpers
 					}
 					if (!tagHelperInitialized)
 					{
-						var scriptContent = WvHelpers.GetEmbeddedTextResource("inline-edit.js", "WebVella.TagHelpers.TagHelpers.WvFieldHtml","WebVella.TagHelpers");
+						var scriptContent = WvHelpers.GetEmbeddedTextResource("inline-edit.js", "WebVella.TagHelpers.TagHelpers.WvFieldHtml", "WebVella.TagHelpers");
 						var scriptEl = new TagBuilder("script");
 						scriptEl.Attributes.Add("type", "text/javascript");
 						//scriptEl.InnerHtml.AppendHtml(jsCompressor.Compress(scriptContent));
@@ -415,7 +408,7 @@ namespace WebVella.TagHelpers.TagHelpers
 
 					scriptTemplate = scriptTemplate.Replace("{{ConfigJson}}", JsonConvert.SerializeObject(fieldConfig));
 
-					initScript.InnerHtml.AppendHtml(jsCompressor.Compress(scriptTemplate));
+					initScript.InnerHtml.AppendHtml(scriptTemplate);
 
 					output.PostContent.AppendHtml(initScript);
 					#endregion

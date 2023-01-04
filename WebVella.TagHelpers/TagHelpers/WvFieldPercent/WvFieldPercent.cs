@@ -1,6 +1,5 @@
 ﻿using HtmlAgilityPack;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using Newtonsoft.Json;
 using System;
@@ -8,7 +7,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using WebVella.TagHelpers.Models;
 using WebVella.TagHelpers.Utilities;
-using Yahoo.Yui.Compressor;
 
 namespace WebVella.TagHelpers.TagHelpers
 {
@@ -65,7 +63,7 @@ namespace WebVella.TagHelpers.TagHelpers
 			//Apply currency dec places
 			if (Value != null)
 			{
-				Value = Math.Round(Convert.ToDecimal(Value), DecimalDigits+2);
+				Value = Math.Round(Convert.ToDecimal(Value), DecimalDigits + 2);
 			}
 
 			if (Step == null)
@@ -156,13 +154,10 @@ namespace WebVella.TagHelpers.TagHelpers
 					var hiddenValueString = "";
 					if (Value != null)
 					{
-						hiddenValueString = ((decimal)Value).ToString("N" + (DecimalDigits+2));
+						hiddenValueString = ((decimal)Value).ToString("N" + (DecimalDigits + 2));
 					}
 					hiddenInputEl.Attributes.Add("value", hiddenValueString);
 					output.Content.AppendHtml(hiddenInputEl);
-
-
-					var jsCompressor = new JavaScriptCompressor();
 
 					#region << Init Scripts >>
 					var tagHelperInitialized = false;
@@ -173,10 +168,10 @@ namespace WebVella.TagHelpers.TagHelpers
 					}
 					if (!tagHelperInitialized)
 					{
-						var scriptContent = WvHelpers.GetEmbeddedTextResource("form.js", "WebVella.TagHelpers.TagHelpers.WvFieldPercent","WebVella.TagHelpers");
+						var scriptContent = WvHelpers.GetEmbeddedTextResource("form.js", "WebVella.TagHelpers.TagHelpers.WvFieldPercent", "WebVella.TagHelpers");
 						var scriptEl = new TagBuilder("script");
 						scriptEl.Attributes.Add("type", "text/javascript");
-						scriptEl.InnerHtml.AppendHtml(jsCompressor.Compress(scriptContent));
+						scriptEl.InnerHtml.AppendHtml(scriptContent);
 						output.PostContent.AppendHtml(scriptEl);
 
 						ViewContext.HttpContext.Items[typeof(WvFieldPercent) + "-form"] = new WvTagHelperContext()
@@ -206,7 +201,7 @@ namespace WebVella.TagHelpers.TagHelpers
 
 					scriptTemplate = scriptTemplate.Replace("{{ConfigJson}}", JsonConvert.SerializeObject(fieldConfig));
 
-					initScript.InnerHtml.AppendHtml(jsCompressor.Compress(scriptTemplate));
+					initScript.InnerHtml.AppendHtml(scriptTemplate);
 
 					output.PostContent.AppendHtml(initScript);
 					#endregion
@@ -289,8 +284,8 @@ namespace WebVella.TagHelpers.TagHelpers
 				}
 				else
 				{
-                    output.SuppressOutput();
-                    output.Content.Append("");
+					output.SuppressOutput();
+					output.Content.Append("");
 				}
 				return;
 			}
@@ -415,7 +410,7 @@ namespace WebVella.TagHelpers.TagHelpers
 						var hiddenValueString = "";
 						if (Value != null)
 						{
-							hiddenValueString = ((decimal)Value).ToString("N" + (DecimalDigits+2));
+							hiddenValueString = ((decimal)Value).ToString("N" + (DecimalDigits + 2));
 						}
 						hiddenInputEl.Attributes.Add("value", hiddenValueString);
 						hiddenInputEl.Attributes.Add("data-original-value", hiddenValueString);
@@ -425,7 +420,6 @@ namespace WebVella.TagHelpers.TagHelpers
 					}
 					#endregion
 
-					var jsCompressor = new JavaScriptCompressor();
 					#region << Init Scripts >>
 					var tagHelperInitialized = false;
 					if (ViewContext.HttpContext.Items.ContainsKey(typeof(WvFieldPercent) + "-inline-edit"))
@@ -435,10 +429,10 @@ namespace WebVella.TagHelpers.TagHelpers
 					}
 					if (!tagHelperInitialized)
 					{
-						var scriptContent = WvHelpers.GetEmbeddedTextResource("inline-edit.js", "WebVella.TagHelpers.TagHelpers.WvFieldPercent","WebVella.TagHelpers");
+						var scriptContent = WvHelpers.GetEmbeddedTextResource("inline-edit.js", "WebVella.TagHelpers.TagHelpers.WvFieldPercent", "WebVella.TagHelpers");
 						var scriptEl = new TagBuilder("script");
 						scriptEl.Attributes.Add("type", "text/javascript");
-						scriptEl.InnerHtml.AppendHtml(jsCompressor.Compress(scriptContent));
+						scriptEl.InnerHtml.AppendHtml(scriptContent);
 						output.PostContent.AppendHtml(scriptEl);
 
 						ViewContext.HttpContext.Items[typeof(WvFieldPercent) + "-inline-edit"] = new WvTagHelperContext()
@@ -468,7 +462,7 @@ namespace WebVella.TagHelpers.TagHelpers
 
 					scriptTemplate = scriptTemplate.Replace("{{ConfigJson}}", JsonConvert.SerializeObject(fieldConfig));
 
-					initScript.InnerHtml.AppendHtml(jsCompressor.Compress(scriptTemplate));
+					initScript.InnerHtml.AppendHtml(scriptTemplate);
 
 					output.PostContent.AppendHtml(initScript);
 					#endregion

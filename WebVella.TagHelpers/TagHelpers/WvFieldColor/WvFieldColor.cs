@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using Newtonsoft.Json;
 using System;
@@ -7,7 +6,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using WebVella.TagHelpers.Models;
 using WebVella.TagHelpers.Utilities;
-using Yahoo.Yui.Compressor;
 
 namespace WebVella.TagHelpers.TagHelpers
 {
@@ -65,8 +63,6 @@ namespace WebVella.TagHelpers.TagHelpers
 
 				output.Content.AppendHtml(wrapperEl);
 
-				var jsCompressor = new JavaScriptCompressor();
-
 				#region << Init Libraries >>
 				var wvLibraryInitialized = false;
 				var libraryItemsKey = "WebVella-" + "spectrum";
@@ -76,20 +72,21 @@ namespace WebVella.TagHelpers.TagHelpers
 					wvLibraryInitialized = tagHelperContext.Initialized;
 				}
 
-				if(!wvLibraryInitialized){
+				if (!wvLibraryInitialized)
+				{
 					var libCssEl = new TagBuilder("link");
 					libCssEl.Attributes.Add("href", "/_content/WebVella.TagHelpers/lib/spectrum/spectrum.min.css");
 					libCssEl.Attributes.Add("type", "text/css");
 					libCssEl.Attributes.Add("rel", "stylesheet");
-					output.PostContent.AppendHtml(libCssEl);	
+					output.PostContent.AppendHtml(libCssEl);
 					output.PostContent.AppendHtml("\r\n\t");
 
 					var libJsEl = new TagBuilder("script");
 					libJsEl.Attributes.Add("type", "text/javascript");
 					libJsEl.Attributes.Add("src", "/_content/WebVella.TagHelpers/lib/spectrum/spectrum.min.js");
-					output.PostContent.AppendHtml(libJsEl);	
-					output.PostContent.AppendHtml("\r\n\t");			
-						
+					output.PostContent.AppendHtml(libJsEl);
+					output.PostContent.AppendHtml("\r\n\t");
+
 					ViewContext.HttpContext.Items[libraryItemsKey] = new WvTagHelperContext()
 					{
 						Initialized = true
@@ -108,7 +105,7 @@ namespace WebVella.TagHelpers.TagHelpers
 				}
 				if (!tagHelperInitialized)
 				{
-					var scriptContent = WvHelpers.GetEmbeddedTextResource(fileName, "WebVella.TagHelpers.TagHelpers.WvFieldColor","WebVella.TagHelpers");
+					var scriptContent = WvHelpers.GetEmbeddedTextResource(fileName, "WebVella.TagHelpers.TagHelpers.WvFieldColor", "WebVella.TagHelpers");
 					var scriptEl = new TagBuilder("script");
 					scriptEl.Attributes.Add("type", "text/javascript");
 					//scriptEl.InnerHtml.AppendHtml(jsCompressor.Compress(scriptContent));
@@ -132,7 +129,7 @@ namespace WebVella.TagHelpers.TagHelpers
 						});";
 				scriptTemplate = scriptTemplate.Replace("{{FieldId}}", (FieldId != null ? FieldId.Value.ToString() : ""));
 
-				initScript.InnerHtml.AppendHtml(jsCompressor.Compress(scriptTemplate));
+				initScript.InnerHtml.AppendHtml(scriptTemplate);
 
 				output.PostContent.AppendHtml(initScript);
 				#endregion
@@ -148,7 +145,7 @@ namespace WebVella.TagHelpers.TagHelpers
 					divEl.AddCssClass("form-control-plaintext erp-color");
 					var colorDiv = new TagBuilder("div");
 					colorDiv.AddCssClass("color-box");
-					colorDiv.Attributes.Add("style",$"background-color:{(Value ?? "").ToString()}");
+					colorDiv.Attributes.Add("style", $"background-color:{(Value ?? "").ToString()}");
 					divEl.InnerHtml.AppendHtml(colorDiv);
 					divEl.InnerHtml.Append((Value ?? "").ToString());
 					output.Content.AppendHtml(divEl);
@@ -164,45 +161,46 @@ namespace WebVella.TagHelpers.TagHelpers
 				output.Content.Append((Value ?? "").ToString());
 				return Task.CompletedTask;
 			}
-			else if (Mode == WvFieldRenderMode.InlineEdit) {
+			else if (Mode == WvFieldRenderMode.InlineEdit)
+			{
 				if (Access == WvFieldAccess.Full || Access == WvFieldAccess.FullAndCreate)
 				{
 					#region << View Wrapper >>
-				{
-					var viewWrapperEl = new TagBuilder("div");
-					viewWrapperEl.AddCssClass("input-group view-wrapper");
-					viewWrapperEl.Attributes.Add("title", "double click to edit");
-					viewWrapperEl.Attributes.Add("id", $"view-{FieldId}");
+					{
+						var viewWrapperEl = new TagBuilder("div");
+						viewWrapperEl.AddCssClass("input-group view-wrapper");
+						viewWrapperEl.Attributes.Add("title", "double click to edit");
+						viewWrapperEl.Attributes.Add("id", $"view-{FieldId}");
 
-					var viewInputPrepend = new TagBuilder("span");
-					viewInputPrepend.AddCssClass("input-group-prepend");
-					var viewInputPrependText = new TagBuilder("span");
-					viewInputPrependText.AddCssClass("input-group-text");
-					viewInputPrependText.InnerHtml.AppendHtml($"<i class='fas fa-fw fa-square' style='color:{(Value ?? "#ffffff").ToString()}'></i>");
-					viewInputPrepend.InnerHtml.AppendHtml(viewInputPrependText);
-					viewWrapperEl.InnerHtml.AppendHtml(viewInputPrepend);
+						var viewInputPrepend = new TagBuilder("span");
+						viewInputPrepend.AddCssClass("input-group-prepend");
+						var viewInputPrependText = new TagBuilder("span");
+						viewInputPrependText.AddCssClass("input-group-text");
+						viewInputPrependText.InnerHtml.AppendHtml($"<i class='fas fa-fw fa-square' style='color:{(Value ?? "#ffffff").ToString()}'></i>");
+						viewInputPrepend.InnerHtml.AppendHtml(viewInputPrependText);
+						viewWrapperEl.InnerHtml.AppendHtml(viewInputPrepend);
 
 						var viewFormControlEl = new TagBuilder("div");
-					viewFormControlEl.AddCssClass("form-control erp-color");
-					viewFormControlEl.InnerHtml.Append((Value ?? "").ToString());
-					viewWrapperEl.InnerHtml.AppendHtml(viewFormControlEl);
+						viewFormControlEl.AddCssClass("form-control erp-color");
+						viewFormControlEl.InnerHtml.Append((Value ?? "").ToString());
+						viewWrapperEl.InnerHtml.AppendHtml(viewFormControlEl);
 
-					var viewInputActionEl = new TagBuilder("span");
-					viewInputActionEl.AddCssClass("input-group-append action");
-					viewInputActionEl.Attributes.Add("title", "edit");
+						var viewInputActionEl = new TagBuilder("span");
+						viewInputActionEl.AddCssClass("input-group-append action");
+						viewInputActionEl.Attributes.Add("title", "edit");
 
-					var viewInputActionLinkEl = new TagBuilder("button");
-					viewInputActionLinkEl.Attributes.Add("type", "button");
-					viewInputActionLinkEl.AddCssClass("btn btn-white");
+						var viewInputActionLinkEl = new TagBuilder("button");
+						viewInputActionLinkEl.Attributes.Add("type", "button");
+						viewInputActionLinkEl.AddCssClass("btn btn-white");
 
-					var viewInputActionIconEl = new TagBuilder("span");
-					viewInputActionIconEl.AddCssClass("fa fa-fw fa-pencil-alt");
-					viewInputActionLinkEl.InnerHtml.AppendHtml(viewInputActionIconEl);
-					viewInputActionEl.InnerHtml.AppendHtml(viewInputActionLinkEl);
-					viewWrapperEl.InnerHtml.AppendHtml(viewInputActionEl);
+						var viewInputActionIconEl = new TagBuilder("span");
+						viewInputActionIconEl.AddCssClass("fa fa-fw fa-pencil-alt");
+						viewInputActionLinkEl.InnerHtml.AppendHtml(viewInputActionIconEl);
+						viewInputActionEl.InnerHtml.AppendHtml(viewInputActionLinkEl);
+						viewWrapperEl.InnerHtml.AppendHtml(viewInputActionEl);
 
-					output.Content.AppendHtml(viewWrapperEl);
-				}
+						output.Content.AppendHtml(viewWrapperEl);
+					}
 					#endregion
 
 					#region << Edit Wrapper>>
@@ -252,8 +250,6 @@ namespace WebVella.TagHelpers.TagHelpers
 					}
 					#endregion
 
-					var jsCompressor = new JavaScriptCompressor();
-
 					#region << Init Libraries >>
 					var wvLibraryInitialized = false;
 					var libraryItemsKey = "WebVella-" + "spectrum";
@@ -263,20 +259,21 @@ namespace WebVella.TagHelpers.TagHelpers
 						wvLibraryInitialized = tagHelperContext.Initialized;
 					}
 
-					if(!wvLibraryInitialized){
+					if (!wvLibraryInitialized)
+					{
 						var libCssEl = new TagBuilder("link");
 						libCssEl.Attributes.Add("href", "/_content/WebVella.TagHelpers/lib/spectrum/spectrum.min.css");
 						libCssEl.Attributes.Add("type", "text/css");
 						libCssEl.Attributes.Add("rel", "stylesheet");
-						output.PostContent.AppendHtml(libCssEl);	
+						output.PostContent.AppendHtml(libCssEl);
 						output.PostContent.AppendHtml("\r\n\t");
 
 						var libJsEl = new TagBuilder("script");
 						libJsEl.Attributes.Add("type", "text/javascript");
 						libJsEl.Attributes.Add("src", "/_content/WebVella.TagHelpers/lib/spectrum/spectrum.min.js");
-						output.PostContent.AppendHtml(libJsEl);	
-						output.PostContent.AppendHtml("\r\n\t");			
-						
+						output.PostContent.AppendHtml(libJsEl);
+						output.PostContent.AppendHtml("\r\n\t");
+
 						ViewContext.HttpContext.Items[libraryItemsKey] = new WvTagHelperContext()
 						{
 							Initialized = true
@@ -293,10 +290,10 @@ namespace WebVella.TagHelpers.TagHelpers
 					}
 					if (!tagHelperInitialized)
 					{
-						var scriptContent = WvHelpers.GetEmbeddedTextResource("inline-edit.js", "WebVella.TagHelpers.TagHelpers.WvFieldColor","WebVella.TagHelpers");
+						var scriptContent = WvHelpers.GetEmbeddedTextResource("inline-edit.js", "WebVella.TagHelpers.TagHelpers.WvFieldColor", "WebVella.TagHelpers");
 						var scriptEl = new TagBuilder("script");
 						scriptEl.Attributes.Add("type", "text/javascript");
-						scriptEl.InnerHtml.AppendHtml(jsCompressor.Compress(scriptContent));
+						scriptEl.InnerHtml.AppendHtml(scriptContent);
 						output.PostContent.AppendHtml(scriptEl);
 
 						ViewContext.HttpContext.Items[typeof(WvFieldColor) + "-inline-edit"] = new WvTagHelperContext()
@@ -317,23 +314,25 @@ namespace WebVella.TagHelpers.TagHelpers
 					scriptTemplate = scriptTemplate.Replace("{{FieldId}}", (FieldId != null ? FieldId.Value.ToString() : ""));
 					scriptTemplate = scriptTemplate.Replace("{{Name}}", Name);
 
-					var fieldConfig = new WvFieldColorConfig() {
+					var fieldConfig = new WvFieldColorConfig()
+					{
 						ApiUrl = ApiUrl,
 						CanAddValues = Access == WvFieldAccess.FullAndCreate ? true : false
 					};
 
 					scriptTemplate = scriptTemplate.Replace("{{ConfigJson}}", JsonConvert.SerializeObject(fieldConfig));
 
-					initScript.InnerHtml.AppendHtml(jsCompressor.Compress(scriptTemplate));
+					initScript.InnerHtml.AppendHtml(scriptTemplate);
 
 					output.PostContent.AppendHtml(initScript);
 					#endregion
 				}
-				else if(Access == WvFieldAccess.ReadOnly){
-					
+				else if (Access == WvFieldAccess.ReadOnly)
+				{
+
 					var divEl = new TagBuilder("div");
 					divEl.AddCssClass("input-group");
-					
+
 					var inputEl = new TagBuilder("input");
 					inputEl.AddCssClass("form-control erp-color");
 					inputEl.Attributes.Add("type", "color");
@@ -371,6 +370,6 @@ namespace WebVella.TagHelpers.TagHelpers
 			return Task.CompletedTask;
 		}
 
-		
+
 	}
 }

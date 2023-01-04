@@ -3,11 +3,9 @@ using Microsoft.AspNetCore.Razor.TagHelpers;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Threading.Tasks;
 using WebVella.TagHelpers.Models;
 using WebVella.TagHelpers.Utilities;
-using Yahoo.Yui.Compressor;
 
 namespace WebVella.TagHelpers.TagHelpers.WvFieldImage
 {
@@ -95,7 +93,8 @@ namespace WebVella.TagHelpers.TagHelpers.WvFieldImage
 
 			WrapperStyle = String.Join(";", StylesList);
 			ImageQuery = "";
-			if(QueryCommandsList.Count > 0){
+			if (QueryCommandsList.Count > 0)
+			{
 				ImageQuery = "?" + String.Join("&", QueryCommandsList);
 			}
 			#endregion
@@ -115,13 +114,15 @@ namespace WebVella.TagHelpers.TagHelpers.WvFieldImage
 
 					var viewImage = new TagBuilder("img");
 					viewImage.AddCssClass("wrapper-image");
-					if(!String.IsNullOrWhiteSpace(Value)){
+					if (!String.IsNullOrWhiteSpace(Value))
+					{
 						viewImage.Attributes.Add("src", $"{SrcPrefix}{Value}{ImageQuery}");
 					}
-					else{
+					else
+					{
 						viewImage.Attributes.Add("src", $"");
 					}
-					
+
 					viewImage.Attributes.Add("title", $"{FileName}");
 					viewWrapper.InnerHtml.AppendHtml(viewImage);
 
@@ -179,8 +180,6 @@ namespace WebVella.TagHelpers.TagHelpers.WvFieldImage
 
 					output.Content.AppendHtml(outsideWrapper);
 
-					var jsCompressor = new JavaScriptCompressor();
-
 					#region << Init Scripts >>
 					var tagHelperInitialized = false;
 					if (ViewContext.HttpContext.Items.ContainsKey(typeof(WvFieldImage) + "-form"))
@@ -190,10 +189,10 @@ namespace WebVella.TagHelpers.TagHelpers.WvFieldImage
 					}
 					if (!tagHelperInitialized)
 					{
-						var scriptContent = WvHelpers.GetEmbeddedTextResource("form.js", "WebVella.TagHelpers.TagHelpers.WvFieldImage","WebVella.TagHelpers");
+						var scriptContent = WvHelpers.GetEmbeddedTextResource("form.js", "WebVella.TagHelpers.TagHelpers.WvFieldImage", "WebVella.TagHelpers");
 						var scriptEl = new TagBuilder("script");
 						scriptEl.Attributes.Add("type", "text/javascript");
-						scriptEl.InnerHtml.AppendHtml(jsCompressor.Compress(scriptContent));
+						scriptEl.InnerHtml.AppendHtml(scriptContent);
 						output.PostContent.AppendHtml(scriptEl);
 
 						ViewContext.HttpContext.Items[typeof(WvFieldImage) + "-form"] = new WvTagHelperContext()
@@ -228,7 +227,7 @@ namespace WebVella.TagHelpers.TagHelpers.WvFieldImage
 
 					scriptTemplate = scriptTemplate.Replace("{{ConfigJson}}", JsonConvert.SerializeObject(fieldConfig));
 
-					initScript.InnerHtml.AppendHtml(jsCompressor.Compress(scriptTemplate));
+					initScript.InnerHtml.AppendHtml(scriptTemplate);
 
 					output.PostContent.AppendHtml(initScript);
 					#endregion
@@ -368,8 +367,6 @@ namespace WebVella.TagHelpers.TagHelpers.WvFieldImage
 
 					output.Content.AppendHtml(outsideWrapper);
 
-					var jsCompressor = new JavaScriptCompressor();
-
 					#region << Init Scripts >>
 					var tagHelperInitialized = false;
 					if (ViewContext.HttpContext.Items.ContainsKey(typeof(WvFieldImage) + "-inline-edit"))
@@ -379,10 +376,10 @@ namespace WebVella.TagHelpers.TagHelpers.WvFieldImage
 					}
 					if (!tagHelperInitialized)
 					{
-						var scriptContent = WvHelpers.GetEmbeddedTextResource("inline-edit.js", "WebVella.TagHelpers.TagHelpers.WvFieldImage","WebVella.TagHelpers");
+						var scriptContent = WvHelpers.GetEmbeddedTextResource("inline-edit.js", "WebVella.TagHelpers.TagHelpers.WvFieldImage", "WebVella.TagHelpers");
 						var scriptEl = new TagBuilder("script");
 						scriptEl.Attributes.Add("type", "text/javascript");
-						scriptEl.InnerHtml.AppendHtml(jsCompressor.Compress(scriptContent));
+						scriptEl.InnerHtml.AppendHtml(scriptContent);
 						output.PostContent.AppendHtml(scriptEl);
 
 						ViewContext.HttpContext.Items[typeof(WvFieldImage) + "-inline-edit"] = new WvTagHelperContext()
@@ -417,7 +414,7 @@ namespace WebVella.TagHelpers.TagHelpers.WvFieldImage
 
 					scriptTemplate = scriptTemplate.Replace("{{ConfigJson}}", JsonConvert.SerializeObject(fieldConfig));
 
-					initScript.InnerHtml.AppendHtml(jsCompressor.Compress(scriptTemplate));
+					initScript.InnerHtml.AppendHtml(scriptTemplate);
 
 					output.PostContent.AppendHtml(initScript);
 					#endregion

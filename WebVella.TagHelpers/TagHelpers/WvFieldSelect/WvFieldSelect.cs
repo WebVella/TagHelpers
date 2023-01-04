@@ -1,6 +1,5 @@
 ﻿using HtmlAgilityPack;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using Newtonsoft.Json;
 using System;
@@ -9,7 +8,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebVella.TagHelpers.Models;
 using WebVella.TagHelpers.Utilities;
-using Yahoo.Yui.Compressor;
 
 namespace WebVella.TagHelpers.TagHelpers
 {
@@ -52,20 +50,23 @@ namespace WebVella.TagHelpers.TagHelpers
 				return;
 			}
 
-			if(Options == null)
+			if (Options == null)
 				Options = new List<WvSelectOption>();
 
 			if (Options.Count == 0 && AjaxDatasource != null && AjaxDatasource.InitOptions.Count > 0)
 				Options = AjaxDatasource.InitOptions;
 
-			if(AjaxDatasource != null && String.IsNullOrWhiteSpace(AjaxDatasourceApi)){
-				if(!AjaxDatasource.UseSelectApi){
+			if (AjaxDatasource != null && String.IsNullOrWhiteSpace(AjaxDatasourceApi))
+			{
+				if (!AjaxDatasource.UseSelectApi)
+				{
 					//old fashion call
-					AjaxDatasourceApi = "/api/v3/en_US/eql-ds";			
+					AjaxDatasourceApi = "/api/v3/en_US/eql-ds";
 				}
-				else{
+				else
+				{
 					//The new api
-					AjaxDatasourceApi = "/api/v3/en_US/eql-ds-select2";			
+					AjaxDatasourceApi = "/api/v3/en_US/eql-ds-select2";
 				}
 			}
 
@@ -98,14 +99,14 @@ namespace WebVella.TagHelpers.TagHelpers
 				var errorListEl = new TagBuilder("ul");
 				errorListEl.AddCssClass("erp-error-list list-unstyled");
 
-					var errorEl = new TagBuilder("li");
-					errorEl.AddCssClass("go-red");
+				var errorEl = new TagBuilder("li");
+				errorEl.AddCssClass("go-red");
 
-					var iconEl = new TagBuilder("span");
-					iconEl.AddCssClass("fa fa-fw fa-exclamation");
+				var iconEl = new TagBuilder("span");
+				iconEl.AddCssClass("fa fa-fw fa-exclamation");
 
-					errorEl.InnerHtml.AppendHtml(iconEl);
-					errorEl.InnerHtml.Append($"Error: Select options cannot be null");
+				errorEl.InnerHtml.AppendHtml(iconEl);
+				errorEl.InnerHtml.Append($"Error: Select options cannot be null");
 
 				errorListEl.InnerHtml.AppendHtml(errorEl);
 				divEl.InnerHtml.AppendHtml(errorListEl);
@@ -121,8 +122,6 @@ namespace WebVella.TagHelpers.TagHelpers
 
 			#endregion
 
-
-
 			#region << Render >>
 			if (Mode == WvFieldRenderMode.Form)
 			{
@@ -133,7 +132,8 @@ namespace WebVella.TagHelpers.TagHelpers
 					{
 						inputGroupEl.AddCssClass("input-group");
 					}
-					else {
+					else
+					{
 						inputGroupEl.AddCssClass("");
 					}
 					//Prepend
@@ -196,7 +196,8 @@ namespace WebVella.TagHelpers.TagHelpers
 					}
 
 					//At least one option should be in the select so it can submit
-					if(!emptyOptionAdded && Options.Count == 0){
+					if (!emptyOptionAdded && Options.Count == 0)
+					{
 						var optionEl = new TagBuilder("option");
 						// Should work only with <option></option> and the select2 placeholder to be presented
 						selectEl.InnerHtml.AppendHtml(optionEl);
@@ -217,8 +218,6 @@ namespace WebVella.TagHelpers.TagHelpers
 					}
 
 					output.Content.AppendHtml(inputGroupEl);
-
-					var jsCompressor = new JavaScriptCompressor();
 
 					#region << Init Select2 >>
 					{
@@ -263,7 +262,6 @@ namespace WebVella.TagHelpers.TagHelpers
 					}
 					#endregion
 
-
 					#region << Init Scripts >>
 					var tagHelperInitialized = false;
 					if (ViewContext.HttpContext.Items.ContainsKey(typeof(WvFieldSelect) + "-form"))
@@ -273,7 +271,7 @@ namespace WebVella.TagHelpers.TagHelpers
 					}
 					if (!tagHelperInitialized)
 					{
-						var scriptContent = WvHelpers.GetEmbeddedTextResource("form.js", "WebVella.TagHelpers.TagHelpers.WvFieldSelect","WebVella.TagHelpers");
+						var scriptContent = WvHelpers.GetEmbeddedTextResource("form.js", "WebVella.TagHelpers.TagHelpers.WvFieldSelect", "WebVella.TagHelpers");
 						var scriptEl = new TagBuilder("script");
 						scriptEl.Attributes.Add("type", "text/javascript");
 						//scriptEl.InnerHtml.AppendHtml(jsCompressor.Compress(scriptContent));
@@ -311,7 +309,7 @@ namespace WebVella.TagHelpers.TagHelpers
 
 					scriptTemplate = scriptTemplate.Replace("{{ConfigJson}}", JsonConvert.SerializeObject(fieldConfig));
 
-					initScript.InnerHtml.AppendHtml(jsCompressor.Compress(scriptTemplate));
+					initScript.InnerHtml.AppendHtml(scriptTemplate);
 
 					output.PostContent.AppendHtml(initScript);
 					#endregion
@@ -508,7 +506,8 @@ namespace WebVella.TagHelpers.TagHelpers
 				{
 					output.Content.AppendHtml("");
 				}
-				else {
+				else
+				{
 					var selectedOption = Options.FirstOrDefault(x => x.Value == valueString);
 					if (selectedOption == null)
 					{
@@ -528,7 +527,8 @@ namespace WebVella.TagHelpers.TagHelpers
 						{
 							output.Content.Append(selectedOption.Label);
 						}
-						else {
+						else
+						{
 							var color = "#999";
 							if (!String.IsNullOrWhiteSpace(selectedOption.Color))
 								color = selectedOption.Color;
@@ -658,7 +658,7 @@ namespace WebVella.TagHelpers.TagHelpers
 						var selectEl = new TagBuilder("select");
 						selectEl.Attributes.Add("id", $"input-{FieldId}");
 						selectEl.Attributes.Add("name", $"{Name}");
-						
+
 						var emptyOptionAdded = false;
 						if (Required)
 						{
@@ -689,7 +689,8 @@ namespace WebVella.TagHelpers.TagHelpers
 						}
 
 						//At least one option should be in the select so it can submit
-						if(!emptyOptionAdded && Options.Count == 0){
+						if (!emptyOptionAdded && Options.Count == 0)
+						{
 							var optionEl = new TagBuilder("option");
 							// Should work only with <option></option> and the select2 placeholder to be presented
 							selectEl.InnerHtml.AppendHtml(optionEl);
@@ -715,8 +716,6 @@ namespace WebVella.TagHelpers.TagHelpers
 						output.Content.AppendHtml(editWrapperEl);
 					}
 					#endregion
-
-					var jsCompressor = new JavaScriptCompressor();
 
 					#region << Init Select2 >>
 					{
@@ -761,7 +760,6 @@ namespace WebVella.TagHelpers.TagHelpers
 					}
 					#endregion
 
-
 					#region << Init Scripts >>
 					var tagHelperInitialized = false;
 					if (ViewContext.HttpContext.Items.ContainsKey(typeof(WvFieldSelect) + "-inline-edit"))
@@ -771,7 +769,7 @@ namespace WebVella.TagHelpers.TagHelpers
 					}
 					if (!tagHelperInitialized)
 					{
-						var scriptContent = WvHelpers.GetEmbeddedTextResource("inline-edit.js", "WebVella.TagHelpers.TagHelpers.WvFieldSelect","WebVella.TagHelpers");
+						var scriptContent = WvHelpers.GetEmbeddedTextResource("inline-edit.js", "WebVella.TagHelpers.TagHelpers.WvFieldSelect", "WebVella.TagHelpers");
 						var scriptEl = new TagBuilder("script");
 						scriptEl.Attributes.Add("type", "text/javascript");
 						//scriptEl.InnerHtml.AppendHtml(jsCompressor.Compress(scriptContent));
@@ -810,7 +808,7 @@ namespace WebVella.TagHelpers.TagHelpers
 
 					scriptTemplate = scriptTemplate.Replace("{{ConfigJson}}", JsonConvert.SerializeObject(fieldConfig));
 
-					initScript.InnerHtml.AppendHtml(jsCompressor.Compress(scriptTemplate));
+					initScript.InnerHtml.AppendHtml(scriptTemplate);
 
 					output.PostContent.AppendHtml(initScript);
 					#endregion

@@ -3,11 +3,9 @@ using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using WebVella.TagHelpers.Models;
 using WebVella.TagHelpers.Utilities;
-using Yahoo.Yui.Compressor;
 
 namespace WebVella.TagHelpers.TagHelpers
 {
@@ -61,8 +59,8 @@ namespace WebVella.TagHelpers.TagHelpers
 
 			output.TagName = "td";
 
-			if(IsHeader)
-				output.TagName = "th";	
+			if (IsHeader)
+				output.TagName = "th";
 
 			if (!String.IsNullOrWhiteSpace(Class))
 			{

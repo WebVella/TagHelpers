@@ -26,7 +26,7 @@ namespace WebVella.TagHelpers.TagHelpers
 		[HtmlAttributeName("class")]
 		public string Class { get; set; } = "";
 
-		public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
+		public override void Process(TagHelperContext context, TagHelperOutput output)
 		{
 			if (String.IsNullOrEmpty(Message) && Errors.Count == 0)
 			{

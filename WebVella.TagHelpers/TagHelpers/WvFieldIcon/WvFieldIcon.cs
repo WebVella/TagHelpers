@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using WebVella.TagHelpers.Models;
 using WebVella.TagHelpers.Utilities;
-using Yahoo.Yui.Compressor;
 
 namespace WebVella.TagHelpers.TagHelpers
 {
@@ -14,7 +13,7 @@ namespace WebVella.TagHelpers.TagHelpers
 	[HtmlTargetElement("wv-field-icon")]
 	public class WvFieldIcon : WvFieldBase
 	{
-		public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
+		public override void Process(TagHelperContext context, TagHelperOutput output)
 		{
 			if (!isVisible)
 			{
@@ -31,8 +30,6 @@ namespace WebVella.TagHelpers.TagHelpers
 			}
 
 			#endregion
-
-
 
 			#region << Render >>
 			if (Mode == WvFieldRenderMode.Form)
@@ -82,8 +79,6 @@ namespace WebVella.TagHelpers.TagHelpers
 
 					output.Content.AppendHtml(inputGroupEl);
 
-					var jsCompressor = new JavaScriptCompressor();
-
 					#region << Init FA Icons >>
 					{
 						var wvFAIconsLibraryInitialized = false;
@@ -94,18 +89,19 @@ namespace WebVella.TagHelpers.TagHelpers
 							wvFAIconsLibraryInitialized = tagHelperContext.Initialized;
 						}
 
-						if(!wvFAIconsLibraryInitialized){
+						if (!wvFAIconsLibraryInitialized)
+						{
 							var libJsEl = new TagBuilder("script");
 							libJsEl.Attributes.Add("type", "text/javascript");
 							var scriptIconTemplate = @"
 								WvFontAwesomeIcons = {{FAIcons}}
 							";
 							scriptIconTemplate = scriptIconTemplate.Replace("{{FAIcons}}", JsonConvert.SerializeObject(WvHelpers.GetAllFontAwesomeIcons()));
-							libJsEl.InnerHtml.AppendHtml(jsCompressor.Compress(scriptIconTemplate));
-						
-							output.PostContent.AppendHtml(libJsEl);	
-							output.PostContent.AppendHtml("\r\n\t");			
-						
+							libJsEl.InnerHtml.AppendHtml(scriptIconTemplate);
+
+							output.PostContent.AppendHtml(libJsEl);
+							output.PostContent.AppendHtml("\r\n\t");
+
 							ViewContext.HttpContext.Items[libraryItemsKey] = new WvTagHelperContext()
 							{
 								Initialized = true
@@ -124,30 +120,31 @@ namespace WebVella.TagHelpers.TagHelpers
 							wvLibraryInitialized = tagHelperContext.Initialized;
 						}
 
-						if(!wvLibraryInitialized){
+						if (!wvLibraryInitialized)
+						{
 							{
-							var libCssEl = new TagBuilder("link");
-							libCssEl.Attributes.Add("href", "/_content/WebVella.TagHelpers/lib/select2/css/select2.min.css");
-							libCssEl.Attributes.Add("type", "text/css");
-							libCssEl.Attributes.Add("rel", "stylesheet");
-							output.PostContent.AppendHtml(libCssEl);	
-							output.PostContent.AppendHtml("\r\n\t");
+								var libCssEl = new TagBuilder("link");
+								libCssEl.Attributes.Add("href", "/_content/WebVella.TagHelpers/lib/select2/css/select2.min.css");
+								libCssEl.Attributes.Add("type", "text/css");
+								libCssEl.Attributes.Add("rel", "stylesheet");
+								output.PostContent.AppendHtml(libCssEl);
+								output.PostContent.AppendHtml("\r\n\t");
 							}
 							{
-							var libCssEl = new TagBuilder("link");
-							libCssEl.Attributes.Add("href", "/_content/WebVella.TagHelpers/lib/select2-bootstrap-theme/select2-bootstrap4.css");
-							libCssEl.Attributes.Add("type", "text/css");
-							libCssEl.Attributes.Add("rel", "stylesheet");
-							output.PostContent.AppendHtml(libCssEl);	
-							output.PostContent.AppendHtml("\r\n\t");
+								var libCssEl = new TagBuilder("link");
+								libCssEl.Attributes.Add("href", "/_content/WebVella.TagHelpers/lib/select2-bootstrap-theme/select2-bootstrap4.css");
+								libCssEl.Attributes.Add("type", "text/css");
+								libCssEl.Attributes.Add("rel", "stylesheet");
+								output.PostContent.AppendHtml(libCssEl);
+								output.PostContent.AppendHtml("\r\n\t");
 							}
 
 							var libJsEl = new TagBuilder("script");
 							libJsEl.Attributes.Add("type", "text/javascript");
 							libJsEl.Attributes.Add("src", "/_content/WebVella.TagHelpers/lib/select2/js/select2.min.js");
-							output.PostContent.AppendHtml(libJsEl);	
-							output.PostContent.AppendHtml("\r\n\t");			
-						
+							output.PostContent.AppendHtml(libJsEl);
+							output.PostContent.AppendHtml("\r\n\t");
+
 							ViewContext.HttpContext.Items[libraryItemsKey] = new WvTagHelperContext()
 							{
 								Initialized = true
@@ -165,7 +162,7 @@ namespace WebVella.TagHelpers.TagHelpers
 					}
 					if (!tagHelperInitialized)
 					{
-						var scriptContent = WvHelpers.GetEmbeddedTextResource("form.js", "WebVella.TagHelpers.TagHelpers.WvFieldIcon","WebVella.TagHelpers");
+						var scriptContent = WvHelpers.GetEmbeddedTextResource("form.js", "WebVella.TagHelpers.TagHelpers.WvFieldIcon", "WebVella.TagHelpers");
 						var scriptEl = new TagBuilder("script");
 						scriptEl.Attributes.Add("type", "text/javascript");
 						//scriptEl.InnerHtml.AppendHtml(jsCompressor.Compress(scriptContent));
@@ -199,7 +196,7 @@ namespace WebVella.TagHelpers.TagHelpers
 
 					scriptTemplate = scriptTemplate.Replace("{{ConfigJson}}", JsonConvert.SerializeObject(fieldConfig));
 
-					initScript.InnerHtml.AppendHtml(jsCompressor.Compress(scriptTemplate));
+					initScript.InnerHtml.AppendHtml(scriptTemplate);
 
 					output.PostContent.AppendHtml(initScript);
 					#endregion
@@ -313,7 +310,7 @@ namespace WebVella.TagHelpers.TagHelpers
 						var viewFormControlEl = new TagBuilder("div");
 						viewFormControlEl.AddCssClass("form-control erp-select");
 
-						if(Value != null)
+						if (Value != null)
 						{
 							viewFormControlEl.InnerHtml.AppendHtml($"{Value.ToString()}");
 						}
@@ -364,7 +361,7 @@ namespace WebVella.TagHelpers.TagHelpers
 
 						formControl.Attributes.Add("data-original-value", JsonConvert.SerializeObject((Value ?? "").ToString()));
 
-						if(Value != null)
+						if (Value != null)
 						{
 							var optionEl = new TagBuilder("option");
 							optionEl.Attributes.Add("value", Value.ToString());
@@ -393,8 +390,6 @@ namespace WebVella.TagHelpers.TagHelpers
 					}
 					#endregion
 
-					var jsCompressor = new JavaScriptCompressor();
-
 					#region << Init Libraries >>
 					{
 						var wvLibraryInitialized = false;
@@ -405,18 +400,19 @@ namespace WebVella.TagHelpers.TagHelpers
 							wvLibraryInitialized = tagHelperContext.Initialized;
 						}
 
-						if(!wvLibraryInitialized){
+						if (!wvLibraryInitialized)
+						{
 							var libJsEl = new TagBuilder("script");
 							libJsEl.Attributes.Add("type", "text/javascript");
 							var scriptIconTemplate = @"
 								var WvFontAwesomeIcons = {{FAIcons}}
 							";
 							scriptIconTemplate = scriptIconTemplate.Replace("{{FAIcons}}", JsonConvert.SerializeObject(WvHelpers.GetAllFontAwesomeIcons()));
-							libJsEl.InnerHtml.AppendHtml(jsCompressor.Compress(scriptIconTemplate));
-						
-							output.PostContent.AppendHtml(libJsEl);	
-							output.PostContent.AppendHtml("\r\n\t");			
-						
+							libJsEl.InnerHtml.AppendHtml(scriptIconTemplate);
+
+							output.PostContent.AppendHtml(libJsEl);
+							output.PostContent.AppendHtml("\r\n\t");
+
 							ViewContext.HttpContext.Items[libraryItemsKey] = new WvTagHelperContext()
 							{
 								Initialized = true
@@ -435,29 +431,30 @@ namespace WebVella.TagHelpers.TagHelpers
 							wvLibraryInitialized = tagHelperContext.Initialized;
 						}
 
-						if(!wvLibraryInitialized){
+						if (!wvLibraryInitialized)
+						{
 							{
-							var libCssEl = new TagBuilder("link");
-							libCssEl.Attributes.Add("href", "/_content/WebVella.TagHelpers/lib/select2/css/select2.min.css");
-							libCssEl.Attributes.Add("type", "text/css");
-							libCssEl.Attributes.Add("rel", "stylesheet");
-							output.PostContent.AppendHtml(libCssEl);	
-							output.PostContent.AppendHtml("\r\n\t");
+								var libCssEl = new TagBuilder("link");
+								libCssEl.Attributes.Add("href", "/_content/WebVella.TagHelpers/lib/select2/css/select2.min.css");
+								libCssEl.Attributes.Add("type", "text/css");
+								libCssEl.Attributes.Add("rel", "stylesheet");
+								output.PostContent.AppendHtml(libCssEl);
+								output.PostContent.AppendHtml("\r\n\t");
 							}
 							{
-							var libCssEl = new TagBuilder("link");
-							libCssEl.Attributes.Add("href", "/_content/WebVella.TagHelpers/lib/select2-bootstrap-theme/select2-bootstrap4.css");
-							libCssEl.Attributes.Add("type", "text/css");
-							libCssEl.Attributes.Add("rel", "stylesheet");
-							output.PostContent.AppendHtml(libCssEl);	
-							output.PostContent.AppendHtml("\r\n\t");
+								var libCssEl = new TagBuilder("link");
+								libCssEl.Attributes.Add("href", "/_content/WebVella.TagHelpers/lib/select2-bootstrap-theme/select2-bootstrap4.css");
+								libCssEl.Attributes.Add("type", "text/css");
+								libCssEl.Attributes.Add("rel", "stylesheet");
+								output.PostContent.AppendHtml(libCssEl);
+								output.PostContent.AppendHtml("\r\n\t");
 							}
 							var libJsEl = new TagBuilder("script");
 							libJsEl.Attributes.Add("type", "text/javascript");
 							libJsEl.Attributes.Add("src", "/_content/WebVella.TagHelpers/lib/select2/js/select2.min.js");
-							output.PostContent.AppendHtml(libJsEl);	
-							output.PostContent.AppendHtml("\r\n\t");			
-						
+							output.PostContent.AppendHtml(libJsEl);
+							output.PostContent.AppendHtml("\r\n\t");
+
 							ViewContext.HttpContext.Items[libraryItemsKey] = new WvTagHelperContext()
 							{
 								Initialized = true
@@ -475,7 +472,7 @@ namespace WebVella.TagHelpers.TagHelpers
 					}
 					if (!tagHelperInitialized)
 					{
-						var scriptContent = WvHelpers.GetEmbeddedTextResource("inline-edit.js", "WebVella.TagHelpers.TagHelpers.WvFieldIcon","WebVella.TagHelpers");
+						var scriptContent = WvHelpers.GetEmbeddedTextResource("inline-edit.js", "WebVella.TagHelpers.TagHelpers.WvFieldIcon", "WebVella.TagHelpers");
 						var scriptEl = new TagBuilder("script");
 						scriptEl.Attributes.Add("type", "text/javascript");
 						//scriptEl.InnerHtml.AppendHtml(jsCompressor.Compress(scriptContent));
@@ -509,7 +506,7 @@ namespace WebVella.TagHelpers.TagHelpers
 
 					scriptTemplate = scriptTemplate.Replace("{{ConfigJson}}", JsonConvert.SerializeObject(fieldConfig));
 
-					initScript.InnerHtml.AppendHtml(jsCompressor.Compress(scriptTemplate));
+					initScript.InnerHtml.AppendHtml(scriptTemplate);
 
 					output.PostContent.AppendHtml(initScript);
 					#endregion
@@ -530,7 +527,7 @@ namespace WebVella.TagHelpers.TagHelpers
 					formControlEl.AddCssClass("form-control erp-select");
 
 
-					if(Value != null)
+					if (Value != null)
 					{
 						var optionEl = new TagBuilder("option");
 						optionEl.Attributes.Add("value", Value.ToString());

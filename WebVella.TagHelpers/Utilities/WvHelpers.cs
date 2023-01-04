@@ -1,4 +1,5 @@
 ﻿using CsvHelper;
+using CsvHelper.Configuration;
 using HtmlAgilityPack;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -4209,7 +4210,7 @@ namespace WebVella.TagHelpers.Utilities
 				Uri uri = new Uri(hreflink);
 				return Path.GetFileName(uri.LocalPath);
 			}
-			catch (Exception ex)
+			catch
 			{
 				return "unknown name";
 			}
@@ -4239,28 +4240,31 @@ namespace WebVella.TagHelpers.Utilities
 			var records = new List<dynamic>();
 			using (TextReader reader = new StringReader(csvData))
 			{
-				using (var csvReader = new CsvReader(reader, CultureInfo.InvariantCulture))
+				var config = new CsvConfiguration(CultureInfo.InvariantCulture)
 				{
-					switch (delimiterName)
-					{
-						case "tab":
-							csvReader.Configuration.Delimiter = "\t";
-							break;
-						default:
-							break;
-					}
+					Encoding = Encoding.UTF8,
+					IgnoreBlankLines = true,
+					BadDataFound = null,
+					TrimOptions = TrimOptions.Trim,
+					HasHeaderRecord = hasHeader
+				};
 
-					csvReader.Configuration.Encoding = Encoding.UTF8;
-					csvReader.Configuration.IgnoreBlankLines = true;
-					csvReader.Configuration.BadDataFound = null;
-					csvReader.Configuration.TrimOptions = CsvHelper.Configuration.TrimOptions.Trim;
-					csvReader.Configuration.HasHeaderRecord = hasHeader;
-					if (hasHeader)
-					{
-						var headerList = GetCsvHeader(csvData, delimiterName);
-						csvReader.Configuration.PrepareHeaderForMatch = (string header, int index) => headerList[index];
-					}
+				if (hasHeader)
+				{
+					var headerList = GetCsvHeader(csvData, delimiterName);
+					config.PrepareHeaderForMatch = (args) => headerList[args.FieldIndex];
+				}
+				switch (delimiterName)
+				{
+					case "tab":
+						config.Delimiter = "\t";
+						break;
+					default:
+						break;
+				}
 
+				using (var csvReader = new CsvReader(reader, config))
+				{
 					records = csvReader.GetRecords<dynamic>().ToList();
 				}
 			}
@@ -4273,24 +4277,26 @@ namespace WebVella.TagHelpers.Utilities
 			var headerList = new List<string>();
 			using (TextReader reader = new StringReader(csvData))
 			{
-				using (var csvReader = new CsvReader(reader, CultureInfo.InvariantCulture))
+				var config = new CsvConfiguration(CultureInfo.InvariantCulture)
 				{
-					switch (delimiterName)
-					{
-						case "tab":
-							csvReader.Configuration.Delimiter = "\t";
-							break;
-						default:
-							break;
-					}
+					Encoding = Encoding.UTF8,
+					IgnoreBlankLines = true,
+					BadDataFound = null,
+					TrimOptions = TrimOptions.Trim,
+					HasHeaderRecord = false
+				};
 
-					csvReader.Configuration.Encoding = Encoding.UTF8;
-					csvReader.Configuration.IgnoreBlankLines = true;
-					csvReader.Configuration.BadDataFound = null;
-					csvReader.Configuration.TrimOptions = CsvHelper.Configuration.TrimOptions.Trim;
+				switch (delimiterName)
+				{
+					case "tab":
+						config.Delimiter = "\t";
+						break;
+					default:
+						break;
+				}
 
-					csvReader.Configuration.HasHeaderRecord = false;
-
+				using (var csvReader = new CsvReader(reader, config))
+				{
 					records = csvReader.GetRecords<dynamic>().ToList();
 
 					if (records.Count > 0)

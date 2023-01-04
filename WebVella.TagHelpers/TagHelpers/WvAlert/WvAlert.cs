@@ -38,7 +38,7 @@ namespace WebVella.TagHelpers.TagHelpers
 		[HtmlAttributeName("title")]
 		public string Title { get; set; } = "";
 
-		public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
+		public override void Process(TagHelperContext context, TagHelperOutput output)
 		{
 			if (String.IsNullOrWhiteSpace(Title) && String.IsNullOrWhiteSpace(Content))
 			{

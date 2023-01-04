@@ -1,12 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using WebVella.TagHelpers.Models;
-using Yahoo.Yui.Compressor;
 
 namespace WebVella.TagHelpers.TagHelpers
 {
@@ -40,7 +37,7 @@ namespace WebVella.TagHelpers.TagHelpers
 			#region << Render >>
 			if (Value == null)
 				Value = "";
-			
+
 			//Apply Value string
 			var templateValue = (Value ?? "").ToString();
 			if (!String.IsNullOrWhiteSpace(Template))
@@ -64,7 +61,7 @@ namespace WebVella.TagHelpers.TagHelpers
 				inputEl.Attributes.Add("type", "text");
 				inputEl.Attributes.Add("value", templateValue);
 				inputEl.Attributes.Add("id", $"fake-{FieldId}");
-				
+
 				if (Required)
 				{
 					inputEl.Attributes.Add("required", null);

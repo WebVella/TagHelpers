@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using WebVella.TagHelpers.Models;
 using WebVella.TagHelpers.Utilities;
-using Yahoo.Yui.Compressor;
 
 namespace WebVella.TagHelpers.TagHelpers
 {
@@ -129,8 +128,6 @@ namespace WebVella.TagHelpers.TagHelpers
 				output.Content.AppendHtml(inputGroupEl);
 				if (Access == WvFieldAccess.Full || Access == WvFieldAccess.FullAndCreate)
 				{
-					var jsCompressor = new JavaScriptCompressor();
-
 					#region << Init Libraries >>
 					var wvLibraryInitialized = false;
 					var libraryItemsKey = "WebVella-" + "flatpickr";
@@ -140,20 +137,21 @@ namespace WebVella.TagHelpers.TagHelpers
 						wvLibraryInitialized = tagHelperContext.Initialized;
 					}
 
-					if(!wvLibraryInitialized){
+					if (!wvLibraryInitialized)
+					{
 						var libCssEl = new TagBuilder("link");
 						libCssEl.Attributes.Add("href", "/_content/WebVella.TagHelpers/lib/flatpickr/flatpickr.min.css");
 						libCssEl.Attributes.Add("type", "text/css");
 						libCssEl.Attributes.Add("rel", "stylesheet");
-						output.PostContent.AppendHtml(libCssEl);	
+						output.PostContent.AppendHtml(libCssEl);
 						output.PostContent.AppendHtml("\r\n\t");
 
 						var libJsEl = new TagBuilder("script");
 						libJsEl.Attributes.Add("type", "text/javascript");
 						libJsEl.Attributes.Add("src", "/_content/WebVella.TagHelpers/lib/flatpickr/flatpickr.min.js");
-						output.PostContent.AppendHtml(libJsEl);	
-						output.PostContent.AppendHtml("\r\n\t");			
-						
+						output.PostContent.AppendHtml(libJsEl);
+						output.PostContent.AppendHtml("\r\n\t");
+
 						ViewContext.HttpContext.Items[libraryItemsKey] = new WvTagHelperContext()
 						{
 							Initialized = true
@@ -170,10 +168,10 @@ namespace WebVella.TagHelpers.TagHelpers
 					}
 					if (!tagHelperInitialized)
 					{
-						var scriptContent = WvHelpers.GetEmbeddedTextResource("form.js", "WebVella.TagHelpers.TagHelpers.WvFieldTime","WebVella.TagHelpers");
+						var scriptContent = WvHelpers.GetEmbeddedTextResource("form.js", "WebVella.TagHelpers.TagHelpers.WvFieldTime", "WebVella.TagHelpers");
 						var scriptEl = new TagBuilder("script");
 						scriptEl.Attributes.Add("type", "text/javascript");
-						scriptEl.InnerHtml.AppendHtml(jsCompressor.Compress(scriptContent));
+						scriptEl.InnerHtml.AppendHtml(scriptContent);
 						output.PostContent.AppendHtml(scriptEl);
 
 						ViewContext.HttpContext.Items[typeof(WvFieldTime) + "-form"] = new WvTagHelperContext()
@@ -199,7 +197,7 @@ namespace WebVella.TagHelpers.TagHelpers
 					};
 					scriptTemplate = scriptTemplate.Replace("{{ConfigJson}}", JsonConvert.SerializeObject(fieldConfig));
 
-					initScript.InnerHtml.AppendHtml(jsCompressor.Compress(scriptTemplate));
+					initScript.InnerHtml.AppendHtml(scriptTemplate);
 
 					output.PostContent.AppendHtml(initScript);
 					#endregion
@@ -345,8 +343,6 @@ namespace WebVella.TagHelpers.TagHelpers
 					}
 					#endregion
 
-					var jsCompressor = new JavaScriptCompressor();
-
 					#region << Init Libraries >>
 					var wvLibraryInitialized = false;
 					var libraryItemsKey = "WebVella-" + "flatpickr";
@@ -356,20 +352,21 @@ namespace WebVella.TagHelpers.TagHelpers
 						wvLibraryInitialized = tagHelperContext.Initialized;
 					}
 
-					if(!wvLibraryInitialized){
+					if (!wvLibraryInitialized)
+					{
 						var libCssEl = new TagBuilder("link");
 						libCssEl.Attributes.Add("href", "/_content/WebVella.TagHelpers/lib/flatpickr/flatpickr.min.css");
 						libCssEl.Attributes.Add("type", "text/css");
 						libCssEl.Attributes.Add("rel", "stylesheet");
-						output.PostContent.AppendHtml(libCssEl);	
+						output.PostContent.AppendHtml(libCssEl);
 						output.PostContent.AppendHtml("\r\n\t");
 
 						var libJsEl = new TagBuilder("script");
 						libJsEl.Attributes.Add("type", "text/javascript");
 						libJsEl.Attributes.Add("src", "/_content/WebVella.TagHelpers/lib/flatpickr/flatpickr.min.js");
-						output.PostContent.AppendHtml(libJsEl);	
-						output.PostContent.AppendHtml("\r\n\t");			
-						
+						output.PostContent.AppendHtml(libJsEl);
+						output.PostContent.AppendHtml("\r\n\t");
+
 						ViewContext.HttpContext.Items[libraryItemsKey] = new WvTagHelperContext()
 						{
 							Initialized = true
@@ -386,10 +383,10 @@ namespace WebVella.TagHelpers.TagHelpers
 					}
 					if (!tagHelperInitialized)
 					{
-						var scriptContent = WvHelpers.GetEmbeddedTextResource("inline-edit.js", "WebVella.TagHelpers.TagHelpers.WvFieldTime","WebVella.TagHelpers");
+						var scriptContent = WvHelpers.GetEmbeddedTextResource("inline-edit.js", "WebVella.TagHelpers.TagHelpers.WvFieldTime", "WebVella.TagHelpers");
 						var scriptEl = new TagBuilder("script");
 						scriptEl.Attributes.Add("type", "text/javascript");
-						scriptEl.InnerHtml.AppendHtml(jsCompressor.Compress(scriptContent));
+						scriptEl.InnerHtml.AppendHtml(scriptContent);
 						output.PostContent.AppendHtml(scriptEl);
 
 						ViewContext.HttpContext.Items[typeof(WvFieldTime) + "-inline-edit"] = new WvTagHelperContext()
@@ -419,7 +416,7 @@ namespace WebVella.TagHelpers.TagHelpers
 
 					scriptTemplate = scriptTemplate.Replace("{{ConfigJson}}", JsonConvert.SerializeObject(fieldConfig));
 
-					initScript.InnerHtml.AppendHtml(jsCompressor.Compress(scriptTemplate));
+					initScript.InnerHtml.AppendHtml(scriptTemplate);
 
 					output.PostContent.AppendHtml(initScript);
 					#endregion

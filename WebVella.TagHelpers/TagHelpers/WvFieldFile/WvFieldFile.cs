@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using Newtonsoft.Json;
 using System;
@@ -8,7 +7,6 @@ using System.IO;
 using System.Threading.Tasks;
 using WebVella.TagHelpers.Models;
 using WebVella.TagHelpers.Utilities;
-using Yahoo.Yui.Compressor;
 
 namespace WebVella.TagHelpers.TagHelpers
 {
@@ -76,7 +74,8 @@ namespace WebVella.TagHelpers.TagHelpers
 					var fakeInputEl = new TagBuilder("div");
 					var inputElCssClassList = new List<string>();
 					inputElCssClassList.Add("form-control erp-file with-progress ");
-					if(String.IsNullOrWhiteSpace(Value)){
+					if (String.IsNullOrWhiteSpace(Value))
+					{
 						inputElCssClassList.Add("erp-file-trigger");
 					}
 					fakeInputEl.Attributes.Add("id", $"fake-{FieldId}");
@@ -102,7 +101,8 @@ namespace WebVella.TagHelpers.TagHelpers
 
 					var appendEl = new TagBuilder("span");
 					appendEl.AddCssClass("input-group-append action erp-file");
-					if (!Required) {
+					if (!Required)
+					{
 						var appendDeleteLink = new TagBuilder("button");
 						appendDeleteLink.Attributes.Add("type", $"button");
 						appendDeleteLink.Attributes.Add("id", $"remove-{FieldId}");
@@ -113,7 +113,8 @@ namespace WebVella.TagHelpers.TagHelpers
 						appendDeleteLink.InnerHtml.AppendHtml(appendDeleteLinkIcon);
 						appendEl.InnerHtml.AppendHtml(appendDeleteLink);
 					}
-					if(ClipboardSupport){
+					if (ClipboardSupport)
+					{
 						var appendPasteLink = new TagBuilder("button");
 						appendPasteLink.Attributes.Add("type", $"button");
 						appendPasteLink.Attributes.Add("id", $"paste-{FieldId}");
@@ -122,7 +123,7 @@ namespace WebVella.TagHelpers.TagHelpers
 						var appendDeleteLinkIcon = new TagBuilder("span");
 						appendDeleteLinkIcon.AddCssClass("icon fa fa-fw fa-paste");
 						appendPasteLink.InnerHtml.AppendHtml(appendDeleteLinkIcon);
-						appendEl.InnerHtml.AppendHtml(appendPasteLink);				
+						appendEl.InnerHtml.AppendHtml(appendPasteLink);
 					}
 					var selectFileLink = new TagBuilder("button");
 					selectFileLink.Attributes.Add("type", $"button");
@@ -152,8 +153,6 @@ namespace WebVella.TagHelpers.TagHelpers
 					realSubmitInput.Attributes.Add("value", $"{Value}");
 					output.Content.AppendHtml(realSubmitInput);
 
-					var jsCompressor = new JavaScriptCompressor();
-
 					#region << Init Scripts >>
 					var tagHelperInitialized = false;
 					if (ViewContext.HttpContext.Items.ContainsKey(typeof(WvFieldFile) + "-form"))
@@ -163,7 +162,7 @@ namespace WebVella.TagHelpers.TagHelpers
 					}
 					if (!tagHelperInitialized)
 					{
-						var scriptContent = WvHelpers.GetEmbeddedTextResource("form.js", "WebVella.TagHelpers.TagHelpers.WvFieldFile","WebVella.TagHelpers");
+						var scriptContent = WvHelpers.GetEmbeddedTextResource("form.js", "WebVella.TagHelpers.TagHelpers.WvFieldFile", "WebVella.TagHelpers");
 						var scriptEl = new TagBuilder("script");
 						scriptEl.Attributes.Add("type", "text/javascript");
 						//scriptEl.InnerHtml.AppendHtml(jsCompressor.Compress(scriptContent));
@@ -199,7 +198,7 @@ namespace WebVella.TagHelpers.TagHelpers
 
 					scriptTemplate = scriptTemplate.Replace("{{ConfigJson}}", JsonConvert.SerializeObject(fieldConfig));
 
-					initScript.InnerHtml.AppendHtml(jsCompressor.Compress(scriptTemplate));
+					initScript.InnerHtml.AppendHtml(scriptTemplate);
 
 					output.PostContent.AppendHtml(initScript);
 					#endregion
@@ -241,11 +240,12 @@ namespace WebVella.TagHelpers.TagHelpers
 						hiddenInput.Attributes.Add("value", (Value ?? "").ToString());
 						output.Content.AppendHtml(hiddenInput);
 					}
-					else {
+					else
+					{
 						var inputEl = new TagBuilder("input");
 						inputEl.Attributes.Add("readonly", null);
 						inputEl.AddCssClass("form-control erp-file");
-						inputEl.Attributes.Add("value","");
+						inputEl.Attributes.Add("value", "");
 						inputEl.Attributes.Add("name", Name);
 						output.Content.AppendHtml(inputEl);
 					}
@@ -361,7 +361,8 @@ namespace WebVella.TagHelpers.TagHelpers
 						var fakeInputEl = new TagBuilder("div");
 						var inputElCssClassList = new List<string>();
 						inputElCssClassList.Add("form-control erp-file with-progress ");
-						if(String.IsNullOrWhiteSpace(Value)){
+						if (String.IsNullOrWhiteSpace(Value))
+						{
 							inputElCssClassList.Add("erp-file-trigger");
 						}
 
@@ -458,8 +459,6 @@ namespace WebVella.TagHelpers.TagHelpers
 					}
 					#endregion
 
-					var jsCompressor = new JavaScriptCompressor();
-
 					#region << Init Scripts >>
 					var tagHelperInitialized = false;
 					if (ViewContext.HttpContext.Items.ContainsKey(typeof(WvFieldFile) + "-inline-edit"))
@@ -469,11 +468,11 @@ namespace WebVella.TagHelpers.TagHelpers
 					}
 					if (!tagHelperInitialized)
 					{
-						var scriptContent = WvHelpers.GetEmbeddedTextResource("inline-edit.js", "WebVella.TagHelpers.TagHelpers.WvFieldFile","WebVella.TagHelpers");
+						var scriptContent = WvHelpers.GetEmbeddedTextResource("inline-edit.js", "WebVella.TagHelpers.TagHelpers.WvFieldFile", "WebVella.TagHelpers");
 						var scriptEl = new TagBuilder("script");
 						scriptEl.Attributes.Add("type", "text/javascript");
 						//scriptEl.InnerHtml.AppendHtml(scriptContent);
-						scriptEl.InnerHtml.AppendHtml(jsCompressor.Compress(scriptContent));
+						scriptEl.InnerHtml.AppendHtml(scriptContent);
 						output.PostContent.AppendHtml(scriptEl);
 
 						ViewContext.HttpContext.Items[typeof(WvFieldFile) + "-inline-edit"] = new WvTagHelperContext()
@@ -505,7 +504,7 @@ namespace WebVella.TagHelpers.TagHelpers
 
 					scriptTemplate = scriptTemplate.Replace("{{ConfigJson}}", JsonConvert.SerializeObject(fieldConfig));
 
-					initScript.InnerHtml.AppendHtml(jsCompressor.Compress(scriptTemplate));
+					initScript.InnerHtml.AppendHtml(scriptTemplate);
 
 					output.PostContent.AppendHtml(initScript);
 					#endregion

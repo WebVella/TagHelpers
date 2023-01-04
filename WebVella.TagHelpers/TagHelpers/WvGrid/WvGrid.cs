@@ -9,7 +9,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebVella.TagHelpers.Models;
 using WebVella.TagHelpers.Utilities;
-using Yahoo.Yui.Compressor;
 
 namespace WebVella.TagHelpers.TagHelpers
 {
@@ -199,7 +198,8 @@ namespace WebVella.TagHelpers.TagHelpers
 				{
 					var thEl = new TagBuilder("th");
 					var columnCssList = new List<string>();
-					if (!String.IsNullOrWhiteSpace(column.Class)) {
+					if (!String.IsNullOrWhiteSpace(column.Class))
+					{
 						columnCssList.Add(column.Class);
 					}
 					thEl.Attributes.Add("data-filter-name", $"{column.Name}");
@@ -362,8 +362,6 @@ namespace WebVella.TagHelpers.TagHelpers
 			}
 			#endregion
 
-			var jsCompressor = new JavaScriptCompressor();
-
 			#region << Init Scripts >>
 			var tagHelperInitialized = false;
 			if (ViewContext.HttpContext.Items.ContainsKey(typeof(WvGrid) + "-sort"))
@@ -373,10 +371,10 @@ namespace WebVella.TagHelpers.TagHelpers
 			}
 			if (!tagHelperInitialized)
 			{
-				var scriptContent = WvHelpers.GetEmbeddedTextResource("sort-and-page.js", "WebVella.TagHelpers.TagHelpers.WvGrid","WebVella.TagHelpers");
+				var scriptContent = WvHelpers.GetEmbeddedTextResource("sort-and-page.js", "WebVella.TagHelpers.TagHelpers.WvGrid", "WebVella.TagHelpers");
 				var scriptEl = new TagBuilder("script");
 				scriptEl.Attributes.Add("type", "text/javascript");
-				scriptEl.InnerHtml.AppendHtml(jsCompressor.Compress(scriptContent));
+				scriptEl.InnerHtml.AppendHtml(scriptContent);
 				output.PostElement.AppendHtml(scriptEl);
 
 				ViewContext.HttpContext.Items[typeof(WvGrid) + "-sort"] = new WvTagHelperContext()
@@ -400,7 +398,7 @@ namespace WebVella.TagHelpers.TagHelpers
 			scriptTemplate = scriptTemplate.Replace("{{QueryStringSortOrder}}", (String.IsNullOrWhiteSpace(Prefix) ? "" : Prefix) + QueryStringSortOrder);
 			scriptTemplate = scriptTemplate.Replace("{{QueryStringPage}}", (String.IsNullOrWhiteSpace(Prefix) ? "" : Prefix) + QueryStringPage);
 
-			initScript.InnerHtml.AppendHtml(jsCompressor.Compress(scriptTemplate));
+			initScript.InnerHtml.AppendHtml(scriptTemplate);
 
 			output.PostElement.AppendHtml(initScript);
 			#endregion
@@ -426,8 +424,9 @@ namespace WebVella.TagHelpers.TagHelpers
 			{
 				context.Items["Columns"] = Columns;
 			}
-			if (VerticalAlign != WvVerticalAlignmentType.None) {
-				context.Items[typeof (WvVerticalAlignmentType)] = VerticalAlign;
+			if (VerticalAlign != WvVerticalAlignmentType.None)
+			{
+				context.Items[typeof(WvVerticalAlignmentType)] = VerticalAlign;
 			}
 			//return Task.CompletedTask;
 		}

@@ -1,11 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
-using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using Yahoo.Yui.Compressor;
 
 
 namespace WebVella.TagHelpers.TagHelpers
@@ -43,7 +39,7 @@ namespace WebVella.TagHelpers.TagHelpers
 			{
 				output.Content.AppendHtml(EmptyValEl);
 			}
-	
+
 			#endregion
 
 			return Task.CompletedTask;
