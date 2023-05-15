@@ -66,8 +66,12 @@ namespace WebVella.TagHelpers.TagHelpers
 
 				var inputGroupEl = new TagBuilder("div");
 				inputGroupEl.AddCssClass("input-group");
-				//Prepend
-				if (PrependHtml.Count > 0)
+                if (Size == WvCssSize.Large)
+                    inputGroupEl.AddCssClass("input-group-lg");
+                if (Size == WvCssSize.Small)
+                    inputGroupEl.AddCssClass("input-group-sm");
+                //Prepend
+                if (PrependHtml.Count > 0)
 				{
 					var prependEl = new TagBuilder("span");
 					prependEl.AddCssClass($"input-group-prepend {(ValidationErrors.Count > 0 ? "is-invalid" : "")}");
@@ -215,7 +219,11 @@ namespace WebVella.TagHelpers.TagHelpers
 					var divEl = new TagBuilder("div");
 					divEl.Attributes.Add("id", $"input-{FieldId}");
 					divEl.AddCssClass("form-control-plaintext erp-datetime");
-					divEl.InnerHtml.Append(inputReadOnlyValue);
+                    if (Size == WvCssSize.Large)
+                        divEl.AddCssClass("input-group-lg");
+                    if (Size == WvCssSize.Small)
+                        divEl.AddCssClass("input-group-sm");
+                    divEl.InnerHtml.Append(inputReadOnlyValue);
 					output.Content.AppendHtml(divEl);
 				}
 				else
@@ -258,9 +266,13 @@ namespace WebVella.TagHelpers.TagHelpers
 						viewWrapperEl.AddCssClass("input-group view-wrapper");
 						viewWrapperEl.Attributes.Add("title", "double click to edit");
 						viewWrapperEl.Attributes.Add("id", $"view-{FieldId}");
+                        if (Size == WvCssSize.Large)
+                            viewWrapperEl.AddCssClass("input-group-lg");
+                        if (Size == WvCssSize.Small)
+                            viewWrapperEl.AddCssClass("input-group-sm");
 
-						//Prepend
-						if (PrependHtml.Count > 0)
+                        //Prepend
+                        if (PrependHtml.Count > 0)
 						{
 							var viewInputPrepend = new TagBuilder("span");
 							viewInputPrepend.AddCssClass("input-group-prepend");
@@ -298,9 +310,12 @@ namespace WebVella.TagHelpers.TagHelpers
 
 						var editInputGroupEl = new TagBuilder("div");
 						editInputGroupEl.AddCssClass("input-group");
-
-						//Prepend
-						if (PrependHtml.Count > 0)
+                        if (Size == WvCssSize.Large)
+                            editInputGroupEl.AddCssClass("input-group-lg");
+                        if (Size == WvCssSize.Small)
+                            editInputGroupEl.AddCssClass("input-group-sm");
+                        //Prepend
+                        if (PrependHtml.Count > 0)
 						{
 							var editInputPrepend = new TagBuilder("span");
 							editInputPrepend.AddCssClass("input-group-prepend");

@@ -199,9 +199,9 @@ namespace WebVella.TagHelpers.TagHelpers
 					divEl.Attributes.Add("id", $"input-{FieldId}");
 					divEl.AddCssClass("form-control-plaintext erp-text");
 					if (Size == WvCssSize.Large)
-						divEl.AddCssClass("input-group-lg");
+						divEl.AddCssClass("form-control-lg");
 					if (Size == WvCssSize.Small)
-						divEl.AddCssClass("input-group-sm");
+						divEl.AddCssClass("form-control-sm");
 
 					/*
 					 * Append an anchor field with the provided link value, if it is present
