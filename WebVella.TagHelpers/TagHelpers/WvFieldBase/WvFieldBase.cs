@@ -31,8 +31,11 @@ namespace WebVella.TagHelpers.TagHelpers
 		[HtmlAttributeName("label-help-text")]
 		public string LabelHelpText { get; set; } = "";
 
-		//Field
-		[HtmlAttributeName("field-id")]
+        [HtmlAttributeName("label-class")]
+        public string LabelClass { get; set; } = "";
+
+        //Field
+        [HtmlAttributeName("field-id")]
 		public Guid? FieldId { get; set; } = null;
 
 		[HtmlAttributeName("id")]
@@ -383,8 +386,11 @@ namespace WebVella.TagHelpers.TagHelpers
 				if (Size == WvCssSize.Small)
 					labelEl.AddCssClass("control-label-sm");
 
-				//Set Required 
-				if (Required && Mode == WvFieldRenderMode.Form)
+				if(!String.IsNullOrWhiteSpace(LabelClass))
+                    labelEl.AddCssClass(LabelClass);
+
+                //Set Required 
+                if (Required && Mode == WvFieldRenderMode.Form)
 				{
 					var requiredEl = new TagBuilder("abbr");
 					requiredEl.MergeAttribute("class", "go-red");

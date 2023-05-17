@@ -17,7 +17,10 @@ namespace WebVella.TagHelpers.TagHelpers
 		[HtmlAttributeName("options")]
 		public List<WvSelectOption> Options { get; set; } = new List<WvSelectOption>();
 
-		public override Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
+        [HtmlAttributeName("is-block")]
+        public bool IsBlock { get; set; } = false;
+
+        public override Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
 		{
 			if (!isVisible)
 			{
@@ -44,7 +47,7 @@ namespace WebVella.TagHelpers.TagHelpers
 				foreach (var selectOption in Options)
 				{
 					var wrapper2 = new TagBuilder("div");
-					wrapper2.AddCssClass("form-check form-check-inline ml-1");
+					wrapper2.AddCssClass($"form-check {(IsBlock ? "" : "form-check-inline")} ml-1");
 					var labelWrapper = new TagBuilder("label");
 					labelWrapper.AddCssClass("form-check-label");
 
