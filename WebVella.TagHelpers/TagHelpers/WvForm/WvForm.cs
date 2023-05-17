@@ -190,7 +190,7 @@ namespace WebVella.TagHelpers.TagHelpers
 					output.Attributes.Add("accept-charset", AcceptCharset);
 				}
 
-				if (Antiforgery && Method != "get")
+				if (Antiforgery && Method.ToLowerInvariant() != "get")
 				{
 					var antiforgeryTag = Generator.GenerateAntiforgery(ViewContext);
 					if (antiforgeryTag != null)
