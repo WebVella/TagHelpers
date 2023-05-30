@@ -368,7 +368,7 @@ namespace WebVella.TagHelpers.TagHelpers
 			{
 				var labelEl = new TagBuilder("label");
 				//Set label attributes
-				if (FieldId != null && (Mode == WvFieldRenderMode.Form || Mode == WvFieldRenderMode.InlineEdit))
+				if (FieldId != null && (Mode == WvFieldRenderMode.Form || Mode == WvFieldRenderMode.InlineEdit) && context.TagName != "wv-field-plaintext")
 				{
 					labelEl.Attributes.Add("for", "input-" + FieldId);
 				}
