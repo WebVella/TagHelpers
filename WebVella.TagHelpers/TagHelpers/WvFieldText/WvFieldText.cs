@@ -192,8 +192,21 @@ namespace WebVella.TagHelpers.TagHelpers
 			}
 			else if (Mode == WvFieldRenderMode.Display)
 			{
+                var inputGroupEl = new TagBuilder("div");
+                inputGroupEl.AddCssClass("input-group");
+                //Prepend
+                if (PrependHtml.Count > 0)
+                {
+                    var prependEl = new TagBuilder("span");
+                    prependEl.AddCssClass($"input-group-prepend {(ValidationErrors.Count > 0 ? "is-invalid" : "")}");
+                    foreach (var htmlString in PrependHtml)
+                    {
+                        prependEl.InnerHtml.AppendHtml(htmlString);
+                    }
+                    inputGroupEl.InnerHtml.AppendHtml(prependEl);
+                }
 
-				if (!String.IsNullOrWhiteSpace(Value))
+                if (!String.IsNullOrWhiteSpace(Value))
 				{
 					var divEl = new TagBuilder("div");
 					divEl.Attributes.Add("id", $"input-{FieldId}");
@@ -216,13 +229,27 @@ namespace WebVella.TagHelpers.TagHelpers
 					{
 						divEl.InnerHtml.Append((Value ?? "").ToString());
 					}
-					output.Content.AppendHtml(divEl);
+                    inputGroupEl.InnerHtml.AppendHtml(divEl);
 				}
 				else
 				{
-					output.Content.AppendHtml(EmptyValEl);
+                    inputGroupEl.InnerHtml.AppendHtml(EmptyValEl);
 				}
-			}
+
+                //Append
+                if (AppendHtml.Count > 0)
+                {
+                    var appendEl = new TagBuilder("span");
+                    appendEl.AddCssClass($"input-group-append {(ValidationErrors.Count > 0 ? "is-invalid" : "")}");
+
+                    foreach (var htmlString in AppendHtml)
+                    {
+                        appendEl.InnerHtml.AppendHtml(htmlString);
+                    }
+                    inputGroupEl.InnerHtml.AppendHtml(appendEl);
+                }
+                output.Content.AppendHtml(inputGroupEl);
+            }
 			else if (Mode == WvFieldRenderMode.Simple)
 			{
 				output.SuppressOutput();
