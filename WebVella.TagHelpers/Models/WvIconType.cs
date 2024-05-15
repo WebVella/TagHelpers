@@ -3563,6 +3563,10 @@ BsZoomOut,
 		MdfInvertColorsOff,
 		[Description("mdf-iso")]
 		MdfIso,
+		[Description("mdf-keep")]
+		MdfKeep,
+		[Description("mdf-keep-off")]
+		MdfKeepOff,
 		[Description("mdf-keyboard")]
 		MdfKeyboard,
 		[Description("mdf-keyboard_arrow_down")]
