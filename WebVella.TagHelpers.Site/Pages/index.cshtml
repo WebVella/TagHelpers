@@ -6,54 +6,54 @@
 @using System.Web;
 @using Microsoft.AspNetCore.Html;
 @{
-    Layout = null;
-    var apiUrl = "/";
-    var cb = DateTime.Now.ToString("yyyyMMddHHmmss");
-    var textFieldValue = "this is a test <script></script>";
-    var htmlValue = "<p>&lt;script&gt;</p>";
-    var chartDs = new WvChartDataset(){
+	Layout = null;
+	var apiUrl = "/";
+	var cb = DateTime.Now.ToString("yyyyMMddHHmmss");
+	var textFieldValue = "this is a test <script></script>";
+	var htmlValue = "<p>&lt;script&gt;</p>";
+	var chartDs = new WvChartDataset(){
         BorderColor = "#FF9800",
         Data = new List<decimal>{5,15,25}
     };
-    var autoNumberValue = (decimal)1.00;
-    var autonumberTemplate = "boz-{0}";
-    var chartDsList = new List<WvChartDataset>{ chartDs};
+	var autoNumberValue = (decimal)1.00;
+	var autonumberTemplate = "boz-{0}";
+	var chartDsList = new List<WvChartDataset>{ chartDs};
 
-    var htmlEncoded = HttpUtility.HtmlEncode("<div class=\"text\">text<script></div>");
-    var colorVal = "#FF9800";
-    var chGridRows = new List<WvSelectOption>(){
+	var htmlEncoded = HttpUtility.HtmlEncode("<div class=\"text\">text<script></div>");
+	var colorVal = "#FF9800";
+	var chGridRows = new List<WvSelectOption>(){
         new WvSelectOption(){Label = "row 1", Value = "row1"},
         new WvSelectOption(){Label = "row 2", Value = "row2"},
         new WvSelectOption(){Label = "row 3", Value = "row3"},
-       
+
     };
 
-    var chGridColumns = new List<WvSelectOption>(){
+	var chGridColumns = new List<WvSelectOption>(){
         new WvSelectOption(){Label = "col 1", Value = "col1"},
         new WvSelectOption(){Label = "col 2", Value = "col2"},
         new WvSelectOption(){Label = "col 3", Value = "col3"},
     };
 
-    var chGridValues = new List<WvKeyStringList>(){
+	var chGridValues = new List<WvKeyStringList>(){
         new WvKeyStringList(){Key = "row1",Values = new List<string>{"col1","col2"}}
     };
 
-    var chGridValuesJson = JsonSerializer.Serialize(chGridValues);
+	var chGridValuesJson = JsonSerializer.Serialize(chGridValues);
 
-    var chkBxList = new List<WvSelectOption>(){
+	var chkBxList = new List<WvSelectOption>(){
         new WvSelectOption(){Value = "1", Label = "one"},
         new WvSelectOption(){Value = "2", Label = "two"},
     };
 
-    var chkBxListValues = new List<string>{"1"};
+	var chkBxListValues = new List<string>{"1"};
 
-    decimal decVal = (decimal)23.3434;
+	decimal decVal = (decimal)23.3434;
 
-    var emailVal = "test@domain.com ";
+	var emailVal = "test@domain.com ";
 
-    var fileVal = "/_content/WebVella.TagHelpers/assets/background.png";
-    var multiFilesVal = new List<string>{"/_content/WebVella.TagHelpers/assets/background1.png","/_content/WebVella.TagHelpers/assets/background2.png"};
-    var multiFilesValRecords = new List<dynamic>{
+	var fileVal = "/_content/WebVella.TagHelpers/assets/background.png";
+	var multiFilesVal = new List<string>{"/_content/WebVella.TagHelpers/assets/background1.png","/_content/WebVella.TagHelpers/assets/background2.png"};
+	var multiFilesValRecords = new List<dynamic>{
         new {
             path = "/_content/WebVella.TagHelpers/assets/background1.png",
             name = "FileName1",
@@ -70,18 +70,21 @@
         }
     };
 
-    var guidVal = Guid.NewGuid();
+	var guidVal = Guid.NewGuid();
 
-    var iconVal = "fa fa-save";
-    var urlVal = "http://google.com";
+	var iconVal = "fa fa-save";
+	var urlVal = "http://google.com";
 
-    var gridColumns = new List<WvGridColumnMeta>{
+	var gridColumns = new List<WvGridColumnMeta>{
         new WvGridColumnMeta{
             Name = "col1",
             Label = "column 1"
         }
     };
-    var gridRecords = new List<string>{"one","two"};
+	var gridRecords = new List<string>();
+	for (var i = 0; i < 2; i++) {
+		gridRecords.Add(Guid.NewGuid().ToString());
+	}
 
     var valErrors = new List<KeyValuePair<string,string>>{
         new KeyValuePair<string, string>("name","Name is required"),
@@ -1558,13 +1561,14 @@
 
 	<h2>wv-grid</h2>
 	<div class="row">
-		<div class="col-3">
+		<div class="col-12">
 			<div class="card mt-3 mb-3">
 				<div class="card-header">
 					Form
 				</div>
 				<div class="card-body">
-					<wv-grid bordered="true" small="true" columns="@gridColumns" has-tfoot="false">
+					<wv-grid bordered="true" small="true" columns="@gridColumns"
+							 page="1" no-total="true">
 						@foreach (var record in gridRecords)
 						{
 							<wv-grid-row>

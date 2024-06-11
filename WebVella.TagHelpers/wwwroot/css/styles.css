@@ -1081,3 +1081,9 @@
 }
 
 /*#endregion*/
+
+/*#region <<erp-list>>*/
+.erp-list .pager-goto {
+	max-width:100px;
+}
+/*#endregion*/

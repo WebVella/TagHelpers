@@ -77,6 +77,9 @@ namespace WebVella.TagHelpers.TagHelpers
 		[HtmlAttributeName("total-count")]
 		public int TotalCount { get; set; } = 0;
 
+		[HtmlAttributeName("no-total")]
+		public bool NoTotal { get; set; } = false;
+
 		[HtmlAttributeName("page-size")]
 		public int PageSize { get; set; } = 0;
 
@@ -268,7 +271,7 @@ namespace WebVella.TagHelpers.TagHelpers
 				var tdEl = new TagBuilder("td");
 				tdEl.Attributes.Add("colspan", Columns.Count.ToString());
 
-				if (TotalCount > (PageSize * Page) || Page != 1)
+				if (NoTotal || TotalCount > (PageSize * Page) || Page != 1)
 				{
 					var inputGroupEl = new TagBuilder("div");
 					inputGroupEl.AddCssClass("input-group float-right input-group-sm pager-goto");
@@ -302,7 +305,7 @@ namespace WebVella.TagHelpers.TagHelpers
 					tdEl.InnerHtml.AppendHtml(floatEl);
 				}
 
-				if (TotalCount != 0)
+				if (!NoTotal && TotalCount != 0)
 				{
 					var upperRecordCount = Page * PageSize;
 					if (TotalCount < upperRecordCount)
@@ -316,10 +319,10 @@ namespace WebVella.TagHelpers.TagHelpers
 					tdEl.InnerHtml.AppendHtml(floatEl);
 				}
 
-				if (PageSize == RecordsCount || Page != 1)
+				if (NoTotal || PageSize == RecordsCount || Page != 1)
 				{
 					var pagePrevDisabled = Page == 1;
-					var pageNextDisabled = (TotalCount <= (PageSize * Page));
+					var pageNextDisabled = !NoTotal && (TotalCount <= (PageSize * Page));
 
 					var btnGroupEl = new TagBuilder("div");
 					btnGroupEl.AddCssClass("btn-group float-left pager");
