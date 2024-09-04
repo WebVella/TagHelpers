@@ -2807,6 +2807,8 @@ BsZoomOut,
 		MdfAutorenew,
 		[Description("mdf-av_timer")]
 		MdfAvTimer,
+		[Description("mdf-award_star")]
+		MdfAwardStar,
 		[Description("mdf-backspace")]
 		MdfBackspace,
 		[Description("mdf-backup")]
