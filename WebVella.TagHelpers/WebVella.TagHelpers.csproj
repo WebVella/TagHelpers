@@ -1,11 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
 	<PropertyGroup>
-		<TargetFramework>net8.0</TargetFramework>
+		<TargetFramework>net9.0</TargetFramework>
 		<IsPackable>true</IsPackable>
 		<RazorLangVersion>3.0</RazorLangVersion>
 		<GenerateEmbeddedFilesManifest>true</GenerateEmbeddedFilesManifest>
-		<Version>1.5.4</Version> 
+		<Version>1.6.0</Version> 
 		<Authors>WebVella</Authors>
 		<PackageProjectUrl>http://webvella.com/</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/WebVella/WebVella-ERP</RepositoryUrl>
@@ -80,12 +80,12 @@
 
 	<ItemGroup>
 		<PackageReference Include="CsvHelper" Version="33.0.1" />
-		<PackageReference Include="HtmlAgilityPack" Version="1.11.65" />
-		<PackageReference Include="Microsoft.AspNetCore.Components" Version="8.0.8" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.8" />
+		<PackageReference Include="HtmlAgilityPack" Version="1.11.71" />
+		<PackageReference Include="Microsoft.AspNetCore.Components" Version="9.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="9.0.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Razor" Version="2.2.0" />
-		<PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="8.0.8" />
+		<PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="9.0.0" />
 	</ItemGroup>
 
 
