@@ -23,6 +23,7 @@ namespace WebVella.TagHelpers.TagHelpers
 
 		public override Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
         {
+			output.TagMode = TagMode.StartTagAndEndTag;
 			output.Attributes.RemoveAll("wv-active-page-equals");
 
 			if (String.IsNullOrWhiteSpace(AspPage) && String.IsNullOrWhiteSpace(Href))

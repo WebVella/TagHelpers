@@ -35,6 +35,7 @@ namespace WebVella.TagHelpers.TagHelpers
 		{
 
 			output.TagName = "span";
+			output.TagMode = TagMode.StartTagAndEndTag;
 			var cssList = new List<string>();
 			cssList.Add("wv-icon");
 			cssList.Add(Class);

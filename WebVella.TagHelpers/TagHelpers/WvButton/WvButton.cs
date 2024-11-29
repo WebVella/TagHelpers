@@ -87,6 +87,7 @@ namespace WebVella.TagHelpers.TagHelpers
 
 		public override Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
 		{
+			output.TagMode = TagMode.StartTagAndEndTag;
 			if (!isVisible) {
 				output.SuppressOutput();
 				return Task.CompletedTask;

@@ -24,6 +24,7 @@ namespace WebVella.TagHelpers.TagHelpers
 
 		public override Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
         {
+			output.TagMode = TagMode.StartTagAndEndTag;
 			output.Attributes.RemoveAll("wv-active-page-regex");
 
 			if (!IsRegexPatternValid(RegexPattern) && String.IsNullOrWhiteSpace(Href))

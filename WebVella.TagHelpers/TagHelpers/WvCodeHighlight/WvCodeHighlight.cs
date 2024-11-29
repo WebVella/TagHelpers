@@ -7,13 +7,13 @@ using System.Web;
 
 namespace WebVella.TagHelpers.TagHelpers
 {
-    [HtmlTargetElement("wv-code-highlight")]
+	[HtmlTargetElement("wv-code-highlight")]
 	public class WvCodeHighlight : TagHelper
-    {
+	{
 
-        [HtmlAttributeNotBound]
-        [ViewContext]
-        public ViewContext ViewContext { get; set; }
+		[HtmlAttributeNotBound]
+		[ViewContext]
+		public ViewContext ViewContext { get; set; }
 
 		[HtmlAttributeName("is-visible")]
 		public bool isVisible { get; set; } = true;
@@ -32,19 +32,23 @@ namespace WebVella.TagHelpers.TagHelpers
 		}
 
 		public override Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
-        {
+		{
+			output.TagMode = TagMode.StartTagAndEndTag;
 			if (!isVisible)
 			{
 				output.SuppressOutput();
 				return Task.CompletedTask;
 			}
 
-			if(!String.IsNullOrWhiteSpace(Code)){
-				if(IsEncoded){
+			if (!String.IsNullOrWhiteSpace(Code))
+			{
+				if (IsEncoded)
+				{
 					Code = HttpUtility.HtmlDecode(Code);
 				}
 			}
-			else{
+			else
+			{
 				Code = "";
 			}
 
@@ -89,10 +93,10 @@ namespace WebVella.TagHelpers.TagHelpers
 
 			return Task.CompletedTask;
 
-        }
+		}
 
 
-    }
+	}
 
 
 }

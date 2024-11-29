@@ -27,7 +27,7 @@ namespace WebVella.TagHelpers.TagHelpers
 
 		public override Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
 		{
-
+			output.TagMode = TagMode.StartTagAndEndTag;
 			output.TagName = "";
 			//output.TagName = "div";
 			//var wrapperClassList = new List<string>();

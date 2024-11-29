@@ -40,6 +40,7 @@ namespace WebVella.TagHelpers.TagHelpers
 
 		public override void Process(TagHelperContext context, TagHelperOutput output)
 		{
+			output.TagMode = TagMode.StartTagAndEndTag;
 			if (String.IsNullOrWhiteSpace(Title) && String.IsNullOrWhiteSpace(Content))
 			{
 				output.SuppressOutput();
