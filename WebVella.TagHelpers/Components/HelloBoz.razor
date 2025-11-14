@@ -20,7 +20,7 @@ Test Name switch @Name
     private async Task Toggle()
     {
 
-        JSRuntime.InvokeVoidAsync("handleTickerChanged");
+        await JSRuntime.InvokeVoidAsync("handleTickerChanged");
         if (!Name.Contains("2"))
         {
             Name =  Name + "2";
